@@ -1,0 +1,109 @@
+﻿@model BMSPhase2Demo.Models.INBOND
+
+@{
+    ViewBag.Title = "Delete Inbond";
+}
+
+<h2>Delete Inbond</h2>
+
+<h3 class="text-danger">Are you sure you want to delete this InBond Details?</h3>
+
+<fieldset>
+    <legend>INBOND</legend>
+
+    <div class="col-lg-8">
+        <table class="table">
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCNUMBER):
+                </th>
+                <td>
+
+                    @Html.DisplayFor(model => model.LCNUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LCDATE)
+                </td>
+
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BOENUMBER):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BOENUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BOEDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BOEDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BONDER.BONDERNAME):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BONDER.BONDERNAME)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table class="table">
+                        @for (int i = 0; i < Model.INBONDRAWMATERIALs.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.INBONDRAWMATERIALs[i].RAWMATERIALCODE)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST)
+                                    </th>
+
+                                </tr>
+                            }
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].MATERIAL.MATERIALNAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY)
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].QUANTITYUNIT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST)
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].COSTUNIT)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="pull-right">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                </td>
+            </tr>
+        </table>
+    </div>
+</fieldset>

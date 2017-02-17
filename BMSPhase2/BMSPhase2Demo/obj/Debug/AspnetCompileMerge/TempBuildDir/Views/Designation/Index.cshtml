@@ -1,0 +1,80 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.DESIGNATION>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left : 250px;
+    }
+</style>
+
+ <p  style =" font-size :20px;margin-left : 250px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <tr><th colspan="8" style="text-align: center; ">Designation Summary View </th></tr>
+    <tr>
+        <th>
+            Designation SL No
+        </th>
+        <th>
+            Designation Code
+        </th>
+       @* <th>
+            Designation Code BG
+        </th>*@
+        <th>
+            Designation Name
+        </th>
+        @*<th>
+            Designation Name BG
+        </th>*@
+       <th colspan="3"  style="text-align :center " >
+            
+            Action
+     </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESSLNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DESCODE)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.DESCODEBG)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DESNAME)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.DESNAMEBG)
+            </td>*@
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DESSLNO })
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.DESSLNO })
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.DESSLNO })
+            </td>
+        </tr>
+    }
+
+</table>
+>

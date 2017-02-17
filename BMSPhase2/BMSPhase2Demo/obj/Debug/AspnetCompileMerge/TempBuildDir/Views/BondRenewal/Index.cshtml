@@ -1,0 +1,22 @@
+﻿
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<script src="~/Content/bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+@using (Html.BeginForm("Search", "BondRenewal", FormMethod.Post))
+{
+    <table>
+        <thead>
+            <tr>
+                <th><label><b>Bond License No :</b></label></th>
+                <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="BondLicenseNo" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" class="btn btn-success btn-small" value="Search" /></th>
+            </tr>
+        </thead>
+    </table>
+}
+

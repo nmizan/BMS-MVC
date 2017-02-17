@@ -1,0 +1,117 @@
+﻿@model IEnumerable<BMSPhase2Demo.BONDERLIENBANK>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LBANKSLNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BANKBRANCH.BRANCHNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LIENBANKCODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LIENBANKCODEBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CERATTACHFILENM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CERATTACHFILEPATH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INPUTBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INPUTDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFYDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BANK.BANKNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADDRESS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FAX)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LBANKSLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BONDER.BONDLICENSENO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BANKBRANCH.BRANCHNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIENBANKCODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LIENBANKCODEBG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CERATTACHFILENM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CERATTACHFILEPATH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INPUTBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INPUTDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFYDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BANK.BANKNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FAX)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

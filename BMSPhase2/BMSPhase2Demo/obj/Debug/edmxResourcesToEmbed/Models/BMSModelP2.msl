@@ -1,0 +1,1127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BMSModelStoreContainer" CdmEntityContainer="OracleEntitiesConnStr">
+    <EntitySetMapping Name="EXBONDBACKTOBACKs">
+      <EntityTypeMapping TypeName="BMSModel.EXBONDBACKTOBACK">
+        <MappingFragment StoreEntitySet="EXBONDBACKTOBACK">
+          <ScalarProperty Name="EXBONDID" ColumnName="EXBONDID" />
+          <ScalarProperty Name="BACKTOBACKID" ColumnName="BACKTOBACKID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPEXBONDLISTs">
+      <EntityTypeMapping TypeName="BMSModel.UPEXBONDLIST">
+        <MappingFragment StoreEntitySet="UPEXBONDLIST">
+          <ScalarProperty Name="EXBONDID" ColumnName="EXBONDID" />
+          <ScalarProperty Name="UPREQUESTID" ColumnName="UPREQUESTID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPs">
+      <EntityTypeMapping TypeName="BMSModel.UP">
+        <MappingFragment StoreEntitySet="UP">
+          <ScalarProperty Name="UPNO" ColumnName="UPNO" />
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="BONDERID" ColumnName="BONDERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPREQUESTs">
+      <EntityTypeMapping TypeName="BMSModel.UPREQUEST">
+        <MappingFragment StoreEntitySet="UPREQUEST">
+          <ScalarProperty Name="REJECTCOMMENT" ColumnName="REJECTCOMMENT" />
+          <ScalarProperty Name="BONDERID" ColumnName="BONDERID" />
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPREQUESTLISTs">
+      <EntityTypeMapping TypeName="BMSModel.UPREQUESTLIST">
+        <MappingFragment StoreEntitySet="UPREQUESTLIST">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UPID" ColumnName="UPID" />
+          <ScalarProperty Name="UPREQUESTID" ColumnName="UPREQUESTID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RAWMATERIALs">
+      <EntityTypeMapping TypeName="BMSModel.RAWMATERIAL">
+        <MappingFragment StoreEntitySet="RAWMATERIAL">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="PRODUCTID" ColumnName="PRODUCTID" />
+          <ScalarProperty Name="PERMITTEDWASTE" ColumnName="PERMITTEDWASTE" />
+          <ScalarProperty Name="UNIT" ColumnName="UNIT" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="RAWMATERIALCODE" ColumnName="RAWMATERIALCODE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BACKTOBACKLCs">
+      <EntityTypeMapping TypeName="BMSModel.BACKTOBACKLC">
+        <MappingFragment StoreEntitySet="BACKTOBACKLC">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="BONDERID" ColumnName="BONDERID" />
+          <ScalarProperty Name="UDPRODUCTDETAIL" ColumnName="UDPRODUCTDETAIL" />
+          <ScalarProperty Name="UDCORRECTIONDATE" ColumnName="UDCORRECTIONDATE" />
+          <ScalarProperty Name="UDDATE" ColumnName="UDDATE" />
+          <ScalarProperty Name="UDNUMBER" ColumnName="UDNUMBER" />
+          <ScalarProperty Name="MASTERLCCORRECTIONDATE" ColumnName="MASTERLCCORRECTIONDATE" />
+          <ScalarProperty Name="MASTERLCNUMBER" ColumnName="MASTERLCNUMBER" />
+          <ScalarProperty Name="PRICEUNIT" ColumnName="PRICEUNIT" />
+          <ScalarProperty Name="LCUSEDPRICE" ColumnName="LCUSEDPRICE" />
+          <ScalarProperty Name="QUANTITYUNIT" ColumnName="QUANTITYUNIT" />
+          <ScalarProperty Name="PRODUCTQUANTITY" ColumnName="PRODUCTQUANTITY" />
+          <ScalarProperty Name="CORRECTIONDATE" ColumnName="CORRECTIONDATE" />
+          <ScalarProperty Name="SHIPPINGDATE" ColumnName="SHIPPINGDATE" />
+          <ScalarProperty Name="BUYERSBANKBRANCHID" ColumnName="BUYERSBANKBRANCHID" />
+          <ScalarProperty Name="BUYERSBANKID" ColumnName="BUYERSBANKID" />
+          <ScalarProperty Name="LCDATE" ColumnName="LCDATE" />
+          <ScalarProperty Name="LCNUMBER" ColumnName="LCNUMBER" />
+          <ScalarProperty Name="BUYERSADDRESS" ColumnName="BUYERSADDRESS" />
+          <ScalarProperty Name="BUYERSNAME" ColumnName="BUYERSNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BACKTOBACKPRODUCTs">
+      <EntityTypeMapping TypeName="BMSModel.BACKTOBACKPRODUCT">
+        <MappingFragment StoreEntitySet="BACKTOBACKPRODUCT">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="BACKTOBACKLCID" ColumnName="BACKTOBACKLCID" />
+          <ScalarProperty Name="QUANTITYUNIT" ColumnName="QUANTITYUNIT" />
+          <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+          <ScalarProperty Name="SIZEANDDETAIL" ColumnName="SIZEANDDETAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXBONDs">
+      <EntityTypeMapping TypeName="BMSModel.EXBOND">
+        <MappingFragment StoreEntitySet="EXBOND">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="BONDERID" ColumnName="BONDERID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INBONDs">
+      <EntityTypeMapping TypeName="BMSModel.INBOND">
+        <MappingFragment StoreEntitySet="INBOND">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="BONDERID" ColumnName="BONDERID" />
+          <ScalarProperty Name="BOEDATE" ColumnName="BOEDATE" />
+          <ScalarProperty Name="BOENUMBER" ColumnName="BOENUMBER" />
+          <ScalarProperty Name="LCDATE" ColumnName="LCDATE" />
+          <ScalarProperty Name="LCNUMBER" ColumnName="LCNUMBER" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INBONDRAWMATERIALs">
+      <EntityTypeMapping TypeName="BMSModel.INBONDRAWMATERIAL">
+        <MappingFragment StoreEntitySet="INBONDRAWMATERIAL">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="INBONDID" ColumnName="INBONDID" />
+          <ScalarProperty Name="COSTUNIT" ColumnName="COSTUNIT" />
+          <ScalarProperty Name="PRODUCTCOST" ColumnName="PRODUCTCOST" />
+          <ScalarProperty Name="QUANTITYUNIT" ColumnName="QUANTITYUNIT" />
+          <ScalarProperty Name="PRODUCTQUANTITY" ColumnName="PRODUCTQUANTITY" />
+          <ScalarProperty Name="RAWMATERIALCODE" ColumnName="RAWMATERIALCODE" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ANNUALENTLRAWMATERIALs">
+      <EntityTypeMapping TypeName="BMSModel.ANNUALENTLRAWMATERIAL">
+        <MappingFragment StoreEntitySet="ANNUALENTLRAWMATERIAL">
+          <ScalarProperty Name="SPEC_GRADE" ColumnName="SPEC_GRADE" />
+          <ScalarProperty Name="AIL_HSCODE" ColumnName="AIL_HSCODE" />
+          <ScalarProperty Name="AEQTY" ColumnName="AEQTY" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MUSLNO" ColumnName="MUSLNO" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="AESLNO" ColumnName="AESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APPUSERs">
+      <EntityTypeMapping TypeName="BMSModel.APPUSER">
+        <MappingFragment StoreEntitySet="APPUSER">
+          <ScalarProperty Name="LASTLOGIN" ColumnName="LASTLOGIN" />
+          <ScalarProperty Name="ISACTIVE" ColumnName="ISACTIVE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+          <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+          <ScalarProperty Name="SALT" ColumnName="SALT" />
+          <ScalarProperty Name="PASSWARD" ColumnName="PASSWARD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ASSOCIATIONENROLLs">
+      <EntityTypeMapping TypeName="BMSModel.ASSOCIATIONENROLL">
+        <MappingFragment StoreEntitySet="ASSOCIATIONENROLL">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="RECATTACHFILEDATA" ColumnName="RECATTACHFILEDATA" />
+          <ScalarProperty Name="RECATTACHFILEPATH" ColumnName="RECATTACHFILEPATH" />
+          <ScalarProperty Name="RECATTACHFILENM" ColumnName="RECATTACHFILENM" />
+          <ScalarProperty Name="CERATTACHFILEDATA" ColumnName="CERATTACHFILEDATA" />
+          <ScalarProperty Name="CERATTACHFILEPATH" ColumnName="CERATTACHFILEPATH" />
+          <ScalarProperty Name="CERATTACHFILENM" ColumnName="CERATTACHFILENM" />
+          <ScalarProperty Name="EXPDATE" ColumnName="EXPDATE" />
+          <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+          <ScalarProperty Name="MEMBERSHIPREGNOBG" ColumnName="MEMBERSHIPREGNOBG" />
+          <ScalarProperty Name="MEMBERSHIPREGNO" ColumnName="MEMBERSHIPREGNO" />
+          <ScalarProperty Name="BSNO" ColumnName="BSNO" />
+          <ScalarProperty Name="OFFICESLNO" ColumnName="OFFICESLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="ASSOENSLNO" ColumnName="ASSOENSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ATTACHMENTs">
+      <EntityTypeMapping TypeName="BMSModel.ATTACHMENT">
+        <MappingFragment StoreEntitySet="ATTACHMENT">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="UPREQUESTID" ColumnName="UPREQUESTID" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BANKs">
+      <EntityTypeMapping TypeName="BMSModel.BANK">
+        <MappingFragment StoreEntitySet="BANK">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="WEB" ColumnName="WEB" />
+          <ScalarProperty Name="SWIFT" ColumnName="SWIFT" />
+          <ScalarProperty Name="BANKNAMEBG" ColumnName="BANKNAMEBG" />
+          <ScalarProperty Name="BANKNAME" ColumnName="BANKNAME" />
+          <ScalarProperty Name="BANKSLNO" ColumnName="BANKSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BANKBRANCHes">
+      <EntityTypeMapping TypeName="BMSModel.BANKBRANCH">
+        <MappingFragment StoreEntitySet="BANKBRANCH">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="OTHERBG" ColumnName="OTHERBG" />
+          <ScalarProperty Name="OTHER" ColumnName="OTHER" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FAXBG" ColumnName="FAXBG" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="PHONEBG" ColumnName="PHONEBG" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESSBG" ColumnName="ADDRESSBG" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="BRANCHNAMEBG" ColumnName="BRANCHNAMEBG" />
+          <ScalarProperty Name="BRANCHNAME" ColumnName="BRANCHNAME" />
+          <ScalarProperty Name="BANKSLNO" ColumnName="BANKSLNO" />
+          <ScalarProperty Name="BBRANCHSLNO" ColumnName="BBRANCHSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDAPPLICATIONPROGRESSes">
+      <EntityTypeMapping TypeName="BMSModel.BONDAPPLICATIONPROGRESS">
+        <MappingFragment StoreEntitySet="BONDAPPLICATIONPROGRESS">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="ATTACHFILEDATA" ColumnName="ATTACHFILEDATA" />
+          <ScalarProperty Name="ATTACHFILEPATH" ColumnName="ATTACHFILEPATH" />
+          <ScalarProperty Name="ATTACHFILENM" ColumnName="ATTACHFILENM" />
+          <ScalarProperty Name="ACTIONDATE" ColumnName="ACTIONDATE" />
+          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+          <ScalarProperty Name="READYFORAPP" ColumnName="READYFORAPP" />
+          <ScalarProperty Name="BSNO" ColumnName="BSNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="PROGRESSSLNO" ColumnName="PROGRESSSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDCATEGORies">
+      <EntityTypeMapping TypeName="BMSModel.BONDCATEGORY">
+        <MappingFragment StoreEntitySet="BONDCATEGORY">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BCATNAMEBG" ColumnName="BCATNAMEBG" />
+          <ScalarProperty Name="BCATNAME" ColumnName="BCATNAME" />
+          <ScalarProperty Name="BCATSLNO" ColumnName="BCATSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDCIRCLEs">
+      <EntityTypeMapping TypeName="BMSModel.BONDCIRCLE">
+        <MappingFragment StoreEntitySet="BONDCIRCLE">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BONDCIRCLENAMEBG" ColumnName="BONDCIRCLENAMEBG" />
+          <ScalarProperty Name="BONDCIRCLENAME" ColumnName="BONDCIRCLENAME" />
+          <ScalarProperty Name="BONDDIVISIONSLNO" ColumnName="BONDDIVISIONSLNO" />
+          <ScalarProperty Name="BONDCIRCLESLNO" ColumnName="BONDCIRCLESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDDIVISIONs">
+      <EntityTypeMapping TypeName="BMSModel.BONDDIVISION">
+        <MappingFragment StoreEntitySet="BONDDIVISION">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BONDDIVISIONNAMEBG" ColumnName="BONDDIVISIONNAMEBG" />
+          <ScalarProperty Name="BONDDIVISIONNAME" ColumnName="BONDDIVISIONNAME" />
+          <ScalarProperty Name="BONDDIVISIONSLNO" ColumnName="BONDDIVISIONSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERs">
+      <EntityTypeMapping TypeName="BMSModel.BONDER">
+        <MappingFragment StoreEntitySet="BONDER">
+          <ScalarProperty Name="COADDRESS" ColumnName="COADDRESS" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="DECLARNMBLOCK" ColumnName="DECLARNMBLOCK" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="DECLARDATE" ColumnName="DECLARDATE" />
+          <ScalarProperty Name="DECLARDESSLNO" ColumnName="DECLARDESSLNO" />
+          <ScalarProperty Name="DECLARSEALFILEDATA" ColumnName="DECLARSEALFILEDATA" />
+          <ScalarProperty Name="DECLARSEALFILENM" ColumnName="DECLARSEALFILENM" />
+          <ScalarProperty Name="DECLARSIGFILEDATA" ColumnName="DECLARSIGFILEDATA" />
+          <ScalarProperty Name="DECLARSIGFILENM" ColumnName="DECLARSIGFILENM" />
+          <ScalarProperty Name="DECLARFILEDATA" ColumnName="DECLARFILEDATA" />
+          <ScalarProperty Name="DECLARFILENM" ColumnName="DECLARFILENM" />
+          <ScalarProperty Name="PHOTOFILEDATA" ColumnName="PHOTOFILEDATA" />
+          <ScalarProperty Name="PHOTOFILENM" ColumnName="PHOTOFILENM" />
+          <ScalarProperty Name="INITIALAUTHSIGFILEDATA" ColumnName="INITIALAUTHSIGFILEDATA" />
+          <ScalarProperty Name="INITIALAUTHSIGFILENM" ColumnName="INITIALAUTHSIGFILENM" />
+          <ScalarProperty Name="AUTHORIZEDSIGNAMEBG" ColumnName="AUTHORIZEDSIGNAMEBG" />
+          <ScalarProperty Name="AUTHORIZEDSIGNAME" ColumnName="AUTHORIZEDSIGNAME" />
+          <ScalarProperty Name="TOTFGWHHEIGHT" ColumnName="TOTFGWHHEIGHT" />
+          <ScalarProperty Name="TOTFGWHWIDTH" ColumnName="TOTFGWHWIDTH" />
+          <ScalarProperty Name="TOTFGWHLENG" ColumnName="TOTFGWHLENG" />
+          <ScalarProperty Name="TOTRMWHHEIGHT" ColumnName="TOTRMWHHEIGHT" />
+          <ScalarProperty Name="TOTRMWHWIDTH" ColumnName="TOTRMWHWIDTH" />
+          <ScalarProperty Name="TOTRMWHLENG" ColumnName="TOTRMWHLENG" />
+          <ScalarProperty Name="TOTFACWIDTH" ColumnName="TOTFACWIDTH" />
+          <ScalarProperty Name="TOTFACLENG" ColumnName="TOTFACLENG" />
+          <ScalarProperty Name="OWNERCATEGORY" ColumnName="OWNERCATEGORY" />
+          <ScalarProperty Name="BONDFACPREVLICENNOBG" ColumnName="BONDFACPREVLICENNOBG" />
+          <ScalarProperty Name="BONDFACPREVLICENNO" ColumnName="BONDFACPREVLICENNO" />
+          <ScalarProperty Name="BONDFACPREV" ColumnName="BONDFACPREV" />
+          <ScalarProperty Name="BSCATSLNO" ColumnName="BSCATSLNO" />
+          <ScalarProperty Name="BCATSLNO" ColumnName="BCATSLNO" />
+          <ScalarProperty Name="BTYPESLNO" ColumnName="BTYPESLNO" />
+          <ScalarProperty Name="BONDEDFAC" ColumnName="BONDEDFAC" />
+          <ScalarProperty Name="VCHALNFILEDATA" ColumnName="VCHALNFILEDATA" />
+          <ScalarProperty Name="VCHALNFILENM" ColumnName="VCHALNFILENM" />
+          <ScalarProperty Name="RENTVATCHALLANNO" ColumnName="RENTVATCHALLANNO" />
+          <ScalarProperty Name="DOLILFILEDATA" ColumnName="DOLILFILEDATA" />
+          <ScalarProperty Name="DOLILFILENM" ColumnName="DOLILFILENM" />
+          <ScalarProperty Name="DEEDFILEDATA" ColumnName="DEEDFILEDATA" />
+          <ScalarProperty Name="DEEDFILENM" ColumnName="DEEDFILENM" />
+          <ScalarProperty Name="RSDAGNO" ColumnName="RSDAGNO" />
+          <ScalarProperty Name="CSDAGNO" ColumnName="CSDAGNO" />
+          <ScalarProperty Name="OWNERSHIPDOLILNO" ColumnName="OWNERSHIPDOLILNO" />
+          <ScalarProperty Name="OWNERSHIPDATE" ColumnName="OWNERSHIPDATE" />
+          <ScalarProperty Name="HIREDEEDNO" ColumnName="HIREDEEDNO" />
+          <ScalarProperty Name="HIREEXPDATE" ColumnName="HIREEXPDATE" />
+          <ScalarProperty Name="HIREDATE" ColumnName="HIREDATE" />
+          <ScalarProperty Name="PREMESISSTATUS" ColumnName="PREMESISSTATUS" />
+          <ScalarProperty Name="HOMOBILEBG" ColumnName="HOMOBILEBG" />
+          <ScalarProperty Name="HOFAXBG" ColumnName="HOFAXBG" />
+          <ScalarProperty Name="HOPHONEBG" ColumnName="HOPHONEBG" />
+          <ScalarProperty Name="HOCITYPOUROBG" ColumnName="HOCITYPOUROBG" />
+          <ScalarProperty Name="HOWARDBG" ColumnName="HOWARDBG" />
+          <ScalarProperty Name="HOPSTATIONBG" ColumnName="HOPSTATIONBG" />
+          <ScalarProperty Name="HOUNIONBG" ColumnName="HOUNIONBG" />
+          <ScalarProperty Name="HOMOWJABG" ColumnName="HOMOWJABG" />
+          <ScalarProperty Name="HOAREAVILLAGEBG" ColumnName="HOAREAVILLAGEBG" />
+          <ScalarProperty Name="HOROADNOBG" ColumnName="HOROADNOBG" />
+          <ScalarProperty Name="HOHOLDINGNOBG" ColumnName="HOHOLDINGNOBG" />
+          <ScalarProperty Name="HOEMAIL" ColumnName="HOEMAIL" />
+          <ScalarProperty Name="HOMOBILE" ColumnName="HOMOBILE" />
+          <ScalarProperty Name="HOFAX" ColumnName="HOFAX" />
+          <ScalarProperty Name="HOPHONE" ColumnName="HOPHONE" />
+          <ScalarProperty Name="HOCITYPOURO" ColumnName="HOCITYPOURO" />
+          <ScalarProperty Name="HOWARD" ColumnName="HOWARD" />
+          <ScalarProperty Name="HOPSTATION" ColumnName="HOPSTATION" />
+          <ScalarProperty Name="HODISTRICTSLNO" ColumnName="HODISTRICTSLNO" />
+          <ScalarProperty Name="HOUPAZILASLNO" ColumnName="HOUPAZILASLNO" />
+          <ScalarProperty Name="HOUNION" ColumnName="HOUNION" />
+          <ScalarProperty Name="HOMOWJA" ColumnName="HOMOWJA" />
+          <ScalarProperty Name="HOAREAVILLAGE" ColumnName="HOAREAVILLAGE" />
+          <ScalarProperty Name="HOROADNO" ColumnName="HOROADNO" />
+          <ScalarProperty Name="HOHOLDINGNO" ColumnName="HOHOLDINGNO" />
+          <ScalarProperty Name="MOBILEBG" ColumnName="MOBILEBG" />
+          <ScalarProperty Name="FAXBG" ColumnName="FAXBG" />
+          <ScalarProperty Name="PHONEBG" ColumnName="PHONEBG" />
+          <ScalarProperty Name="CITYPOUROBG" ColumnName="CITYPOUROBG" />
+          <ScalarProperty Name="WARDBG" ColumnName="WARDBG" />
+          <ScalarProperty Name="PSTATIONBG" ColumnName="PSTATIONBG" />
+          <ScalarProperty Name="UNIONBG" ColumnName="UNIONBG" />
+          <ScalarProperty Name="MOWJABG" ColumnName="MOWJABG" />
+          <ScalarProperty Name="AREAVILLAGEBG" ColumnName="AREAVILLAGEBG" />
+          <ScalarProperty Name="ROADNOBG" ColumnName="ROADNOBG" />
+          <ScalarProperty Name="HOLDINGNOBG" ColumnName="HOLDINGNOBG" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="CITYPOURO" ColumnName="CITYPOURO" />
+          <ScalarProperty Name="WARD" ColumnName="WARD" />
+          <ScalarProperty Name="PSTATION" ColumnName="PSTATION" />
+          <ScalarProperty Name="BDISTRICTSLNO" ColumnName="BDISTRICTSLNO" />
+          <ScalarProperty Name="BUPAZILASLNO" ColumnName="BUPAZILASLNO" />
+          <ScalarProperty Name="UNIONNAME" ColumnName="UNIONNAME" />
+          <ScalarProperty Name="MOWJA" ColumnName="MOWJA" />
+          <ScalarProperty Name="AREAVILLAGE" ColumnName="AREAVILLAGE" />
+          <ScalarProperty Name="ROADNO" ColumnName="ROADNO" />
+          <ScalarProperty Name="HOLDINGNO" ColumnName="HOLDINGNO" />
+          <ScalarProperty Name="BONDERNAMEBG" ColumnName="BONDERNAMEBG" />
+          <ScalarProperty Name="BONDERNAME" ColumnName="BONDERNAME" />
+          <ScalarProperty Name="BONDSTATUS" ColumnName="BONDSTATUS" />
+          <ScalarProperty Name="BONDLICENSENOBG" ColumnName="BONDLICENSENOBG" />
+          <ScalarProperty Name="BONDLICENSENO" ColumnName="BONDLICENSENO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERANNUALENTITLEMENTs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERANNUALENTITLEMENT">
+        <MappingFragment StoreEntitySet="BONDERANNUALENTITLEMENT">
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="PERCENTVAL" ColumnName="PERCENTVAL" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="ENTITLETO" ColumnName="ENTITLETO" />
+          <ScalarProperty Name="ENTITLEFROM" ColumnName="ENTITLEFROM" />
+          <ScalarProperty Name="ENTITLEPERCENTBG" ColumnName="ENTITLEPERCENTBG" />
+          <ScalarProperty Name="ENTITLEPERCENTEN" ColumnName="ENTITLEPERCENTEN" />
+          <ScalarProperty Name="ETMUSLNO" ColumnName="ETMUSLNO" />
+          <ScalarProperty Name="ENTITLEPERCENTQTY" ColumnName="ENTITLEPERCENTQTY" />
+          <ScalarProperty Name="ONETIMESTORAGEQTYBG" ColumnName="ONETIMESTORAGEQTYBG" />
+          <ScalarProperty Name="ONETIMESTORAGEQTYEN" ColumnName="ONETIMESTORAGEQTYEN" />
+          <ScalarProperty Name="OTMUSLNO" ColumnName="OTMUSLNO" />
+          <ScalarProperty Name="ONETIMESTORAGEQTY" ColumnName="ONETIMESTORAGEQTY" />
+          <ScalarProperty Name="TOTALSTORAGEQTYBG" ColumnName="TOTALSTORAGEQTYBG" />
+          <ScalarProperty Name="TOTALSTORAGEQTYEN" ColumnName="TOTALSTORAGEQTYEN" />
+          <ScalarProperty Name="TSMUSLNO" ColumnName="TSMUSLNO" />
+          <ScalarProperty Name="TOTALSTORAGEQTY" ColumnName="TOTALSTORAGEQTY" />
+          <ScalarProperty Name="ENTLTYPE" ColumnName="ENTLTYPE" />
+          <ScalarProperty Name="BSNO" ColumnName="BSNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="AESLNO" ColumnName="AESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERANNUALENTITLEMENTCOEDETs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERANNUALENTITLEMENTCOEDET">
+        <MappingFragment StoreEntitySet="BONDERANNUALENTITLEMENTCOEDET">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="NETQT" ColumnName="NETQT" />
+          <ScalarProperty Name="SHRINKAGEQT" ColumnName="SHRINKAGEQT" />
+          <ScalarProperty Name="WASTAGEQT" ColumnName="WASTAGEQT" />
+          <ScalarProperty Name="GROSSQT" ColumnName="GROSSQT" />
+          <ScalarProperty Name="RMSLNO" ColumnName="RMSLNO" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="AESLNO" ColumnName="AESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERANNUALENTITLEMENTCOMs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERANNUALENTITLEMENTCOM">
+        <MappingFragment StoreEntitySet="BONDERANNUALENTITLEMENTCOM">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MDESC" ColumnName="MDESC" />
+          <ScalarProperty Name="MACHINESLNO" ColumnName="MACHINESLNO" />
+          <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+          <ScalarProperty Name="MSIZE" ColumnName="MSIZE" />
+          <ScalarProperty Name="MEASUREMENT" ColumnName="MEASUREMENT" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="AESLNO" ColumnName="AESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERANNUALENTITLEMENTDETs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERANNUALENTITLEMENTDET">
+        <MappingFragment StoreEntitySet="BONDERANNUALENTITLEMENTDET">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MUSLNO" ColumnName="MUSLNO" />
+          <ScalarProperty Name="ENTITLEMENTQTY" ColumnName="ENTITLEMENTQTY" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERLIENBANKs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERLIENBANK">
+        <MappingFragment StoreEntitySet="BONDERLIENBANK">
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="BANKSLNO" ColumnName="BANKSLNO" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="CERATTACHFILEDATA" ColumnName="CERATTACHFILEDATA" />
+          <ScalarProperty Name="CERATTACHFILEPATH" ColumnName="CERATTACHFILEPATH" />
+          <ScalarProperty Name="CERATTACHFILENM" ColumnName="CERATTACHFILENM" />
+          <ScalarProperty Name="LIENBANKCODEBG" ColumnName="LIENBANKCODEBG" />
+          <ScalarProperty Name="LIENBANKCODE" ColumnName="LIENBANKCODE" />
+          <ScalarProperty Name="BBRANCHSLNO" ColumnName="BBRANCHSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="LBANKSLNO" ColumnName="LBANKSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERPRODUCTs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERPRODUCT">
+        <MappingFragment StoreEntitySet="BONDERPRODUCT">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="REGFROMBG" ColumnName="REGFROMBG" />
+          <ScalarProperty Name="REGFROM" ColumnName="REGFROM" />
+          <ScalarProperty Name="FPSLNO" ColumnName="FPSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDERRAWMATERIALs">
+      <EntityTypeMapping TypeName="BMSModel.BONDERRAWMATERIAL">
+        <MappingFragment StoreEntitySet="BONDERRAWMATERIAL">
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MUSLNO" ColumnName="MUSLNO" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDREGISTRATIONs">
+      <EntityTypeMapping TypeName="BMSModel.BONDREGISTRATION">
+        <MappingFragment StoreEntitySet="BONDREGISTRATION">
+          <ScalarProperty Name="AUTORENEWAL" ColumnName="AUTORENEWAL" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="RENEWALDATE" ColumnName="RENEWALDATE" />
+          <ScalarProperty Name="EXPIRYDATE" ColumnName="EXPIRYDATE" />
+          <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+          <ScalarProperty Name="TOTAMT" ColumnName="TOTAMT" />
+          <ScalarProperty Name="VATAMT" ColumnName="VATAMT" />
+          <ScalarProperty Name="VATPCT" ColumnName="VATPCT" />
+          <ScalarProperty Name="FEEAMT" ColumnName="FEEAMT" />
+          <ScalarProperty Name="BONDCIRCLESLNO" ColumnName="BONDCIRCLESLNO" />
+          <ScalarProperty Name="BTYPESLNO" ColumnName="BTYPESLNO" />
+          <ScalarProperty Name="BONDLICENSENO" ColumnName="BONDLICENSENO" />
+          <ScalarProperty Name="BSNO" ColumnName="BSNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="RGSLNO" ColumnName="RGSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDSTATUS">
+      <EntityTypeMapping TypeName="BMSModel.BONDSTATU">
+        <MappingFragment StoreEntitySet="BONDSTATUS">
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="SUBMITTEDBYNM" ColumnName="SUBMITTEDBYNM" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BSDATE" ColumnName="BSDATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="REFNO" ColumnName="REFNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="BSNO" ColumnName="BSNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDSUBCATEGORies">
+      <EntityTypeMapping TypeName="BMSModel.BONDSUBCATEGORY">
+        <MappingFragment StoreEntitySet="BONDSUBCATEGORY">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BSCATNAMEBG" ColumnName="BSCATNAMEBG" />
+          <ScalarProperty Name="BSCATNAME" ColumnName="BSCATNAME" />
+          <ScalarProperty Name="BSTYPECODEBG" ColumnName="BSTYPECODEBG" />
+          <ScalarProperty Name="BSTYPECODE" ColumnName="BSTYPECODE" />
+          <ScalarProperty Name="BSCATSLNO" ColumnName="BSCATSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDTYPEs">
+      <EntityTypeMapping TypeName="BMSModel.BONDTYPE">
+        <MappingFragment StoreEntitySet="BONDTYPE">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BTYPENAMEBG" ColumnName="BTYPENAMEBG" />
+          <ScalarProperty Name="BTYPENAME" ColumnName="BTYPENAME" />
+          <ScalarProperty Name="BTYPECODEBG" ColumnName="BTYPECODEBG" />
+          <ScalarProperty Name="BTYPECODE" ColumnName="BTYPECODE" />
+          <ScalarProperty Name="BTYPESLNO" ColumnName="BTYPESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COUNTRies">
+      <EntityTypeMapping TypeName="BMSModel.COUNTRY">
+        <MappingFragment StoreEntitySet="COUNTRY">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="COUNTRYNAMEBG" ColumnName="COUNTRYNAMEBG" />
+          <ScalarProperty Name="COUNTRYNAME" ColumnName="COUNTRYNAME" />
+          <ScalarProperty Name="COUNTRYCODEBG" ColumnName="COUNTRYCODEBG" />
+          <ScalarProperty Name="COUNTRYCODE" ColumnName="COUNTRYCODE" />
+          <ScalarProperty Name="COUNTRYSLNO" ColumnName="COUNTRYSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CURRENCies">
+      <EntityTypeMapping TypeName="BMSModel.CURRENCY">
+        <MappingFragment StoreEntitySet="CURRENCY">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="CURRENCYNAMEBG" ColumnName="CURRENCYNAMEBG" />
+          <ScalarProperty Name="CURRENCYNAME" ColumnName="CURRENCYNAME" />
+          <ScalarProperty Name="CURRENCYSNMBG" ColumnName="CURRENCYSNMBG" />
+          <ScalarProperty Name="CURRENCYSNM" ColumnName="CURRENCYSNM" />
+          <ScalarProperty Name="CURRENCYCODE" ColumnName="CURRENCYCODE" />
+          <ScalarProperty Name="CURRSLNO" ColumnName="CURRSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DESIGNATIONs">
+      <EntityTypeMapping TypeName="BMSModel.DESIGNATION">
+        <MappingFragment StoreEntitySet="DESIGNATION">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="DESNAMEBG" ColumnName="DESNAMEBG" />
+          <ScalarProperty Name="DESNAME" ColumnName="DESNAME" />
+          <ScalarProperty Name="DESCODEBG" ColumnName="DESCODEBG" />
+          <ScalarProperty Name="DESCODE" ColumnName="DESCODE" />
+          <ScalarProperty Name="DESSLNO" ColumnName="DESSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTRICTs">
+      <EntityTypeMapping TypeName="BMSModel.DISTRICT">
+        <MappingFragment StoreEntitySet="DISTRICT">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="DISTRICTNAMEBG" ColumnName="DISTRICTNAMEBG" />
+          <ScalarProperty Name="DISTRICTNAME" ColumnName="DISTRICTNAME" />
+          <ScalarProperty Name="COUNTRYSLNO" ColumnName="COUNTRYSLNO" />
+          <ScalarProperty Name="DISTRICTSLNO" ColumnName="DISTRICTSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOCHEADINGINFOes">
+      <EntityTypeMapping TypeName="BMSModel.DOCHEADINGINFO">
+        <MappingFragment StoreEntitySet="DOCHEADINGINFO">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="DOCHEADINGNAMEBG" ColumnName="DOCHEADINGNAMEBG" />
+          <ScalarProperty Name="DOCHEADINGNAME" ColumnName="DOCHEADINGNAME" />
+          <ScalarProperty Name="DOCHEADINGSLNO" ColumnName="DOCHEADINGSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DOCUMENTATTACHMENTs">
+      <EntityTypeMapping TypeName="BMSModel.DOCUMENTATTACHMENT">
+        <MappingFragment StoreEntitySet="DOCUMENTATTACHMENT">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="ATTACHFILEDATA" ColumnName="ATTACHFILEDATA" />
+          <ScalarProperty Name="ATTACHFILEPATH" ColumnName="ATTACHFILEPATH" />
+          <ScalarProperty Name="ATTACHFILENM" ColumnName="ATTACHFILENM" />
+          <ScalarProperty Name="EXPDATE" ColumnName="EXPDATE" />
+          <ScalarProperty Name="ISSUEDATE" ColumnName="ISSUEDATE" />
+          <ScalarProperty Name="RGATTCHNAMEBG" ColumnName="RGATTCHNAMEBG" />
+          <ScalarProperty Name="RGATTCHNAME" ColumnName="RGATTCHNAME" />
+          <ScalarProperty Name="DOCHEADINGNAMEBG" ColumnName="DOCHEADINGNAMEBG" />
+          <ScalarProperty Name="DOCHEADINGNAME" ColumnName="DOCHEADINGNAME" />
+          <ScalarProperty Name="APPLICANTREFNO" ColumnName="APPLICANTREFNO" />
+          <ScalarProperty Name="BSNO" ColumnName="BSNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="ATTCHSLNO" ColumnName="ATTCHSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLOYEEs">
+      <EntityTypeMapping TypeName="BMSModel.EMPLOYEE">
+        <MappingFragment StoreEntitySet="EMPLOYEE">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="EMPLOYEETYPE" ColumnName="EMPLOYEETYPE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="MOBILEBG" ColumnName="MOBILEBG" />
+          <ScalarProperty Name="MOBILE" ColumnName="MOBILE" />
+          <ScalarProperty Name="PHONEBG" ColumnName="PHONEBG" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="DESSLNO" ColumnName="DESSLNO" />
+          <ScalarProperty Name="PHOTOFILEDATA" ColumnName="PHOTOFILEDATA" />
+          <ScalarProperty Name="PHOTOFILENM" ColumnName="PHOTOFILENM" />
+          <ScalarProperty Name="EMPLOYEENAMEBG" ColumnName="EMPLOYEENAMEBG" />
+          <ScalarProperty Name="EMPLOYEENAME" ColumnName="EMPLOYEENAME" />
+          <ScalarProperty Name="OFFICESLNO" ColumnName="OFFICESLNO" />
+          <ScalarProperty Name="EMPLOYEESLNO" ColumnName="EMPLOYEESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FINISHEDPRODUCTS">
+      <EntityTypeMapping TypeName="BMSModel.FINISHEDPRODUCT">
+        <MappingFragment StoreEntitySet="FINISHEDPRODUCTS">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="FPDESCRIPTIONBG" ColumnName="FPDESCRIPTIONBG" />
+          <ScalarProperty Name="FPDESCRIPTION" ColumnName="FPDESCRIPTION" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+          <ScalarProperty Name="FPNAMEBG" ColumnName="FPNAMEBG" />
+          <ScalarProperty Name="FPNAME" ColumnName="FPNAME" />
+          <ScalarProperty Name="PRODCODEBG" ColumnName="PRODCODEBG" />
+          <ScalarProperty Name="PRODCODE" ColumnName="PRODCODE" />
+          <ScalarProperty Name="FPSLNO" ColumnName="FPSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="INSTALLEDMACHINEINFOes">
+      <EntityTypeMapping TypeName="BMSModel.INSTALLEDMACHINEINFO">
+        <MappingFragment StoreEntitySet="INSTALLEDMACHINEINFO">
+          <ScalarProperty Name="MODELSLNO" ColumnName="MODELSLNO" />
+          <ScalarProperty Name="COUNTRYSLNO" ColumnName="COUNTRYSLNO" />
+          <ScalarProperty Name="MANUFACTUREYEARBG" ColumnName="MANUFACTUREYEARBG" />
+          <ScalarProperty Name="MANUFACTUREYEAR" ColumnName="MANUFACTUREYEAR" />
+          <ScalarProperty Name="DESCRIPTIONBG" ColumnName="DESCRIPTIONBG" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="TRANSFERLIENBANKDT" ColumnName="TRANSFERLIENBANKDT" />
+          <ScalarProperty Name="TRANSFERLIENBANKNOCNOBG" ColumnName="TRANSFERLIENBANKNOCNOBG" />
+          <ScalarProperty Name="TRANSFERLIENBANKNOCNO" ColumnName="TRANSFERLIENBANKNOCNO" />
+          <ScalarProperty Name="TRANSFERLIENBANK" ColumnName="TRANSFERLIENBANK" />
+          <ScalarProperty Name="LOCALPURPERMISSIONFROMCBCDT" ColumnName="LOCALPURPERMISSIONFROMCBCDT" />
+          <ScalarProperty Name="LOCALPURPERMISSIONFROMCBC" ColumnName="LOCALPURPERMISSIONFROMCBC" />
+          <ScalarProperty Name="LOCALPURCLEARENCEDT" ColumnName="LOCALPURCLEARENCEDT" />
+          <ScalarProperty Name="LOCALPURCLEARENCENOBG" ColumnName="LOCALPURCLEARENCENOBG" />
+          <ScalarProperty Name="LOCALPURCLEARENCENO" ColumnName="LOCALPURCLEARENCENO" />
+          <ScalarProperty Name="LOCALPURCLEARENCEFROMBG" ColumnName="LOCALPURCLEARENCEFROMBG" />
+          <ScalarProperty Name="LOCALPURCLEARENCEFROM" ColumnName="LOCALPURCLEARENCEFROM" />
+          <ScalarProperty Name="ACTRELEASDT" ColumnName="ACTRELEASDT" />
+          <ScalarProperty Name="DUERELEASDT" ColumnName="DUERELEASDT" />
+          <ScalarProperty Name="CASHCHALNVOUCHDT" ColumnName="CASHCHALNVOUCHDT" />
+          <ScalarProperty Name="CASHCHALNVOUCHNOBG" ColumnName="CASHCHALNVOUCHNOBG" />
+          <ScalarProperty Name="CASHCHALNVOUCHNO" ColumnName="CASHCHALNVOUCHNO" />
+          <ScalarProperty Name="INDEMNITYUNDERTKDT" ColumnName="INDEMNITYUNDERTKDT" />
+          <ScalarProperty Name="INDEMNITYUNDERTKNOBG" ColumnName="INDEMNITYUNDERTKNOBG" />
+          <ScalarProperty Name="INDEMNITYUNDERTKNO" ColumnName="INDEMNITYUNDERTKNO" />
+          <ScalarProperty Name="INDEMNITYBOND" ColumnName="INDEMNITYBOND" />
+          <ScalarProperty Name="PROCUREMENTTYPE" ColumnName="PROCUREMENTTYPE" />
+          <ScalarProperty Name="MACHINETYPE" ColumnName="MACHINETYPE" />
+          <ScalarProperty Name="MACHINEQTY" ColumnName="MACHINEQTY" />
+          <ScalarProperty Name="LCNODATE" ColumnName="LCNODATE" />
+          <ScalarProperty Name="LCNOBG" ColumnName="LCNOBG" />
+          <ScalarProperty Name="LCNO" ColumnName="LCNO" />
+          <ScalarProperty Name="INVOICENODATE" ColumnName="INVOICENODATE" />
+          <ScalarProperty Name="INVOICENOBG" ColumnName="INVOICENOBG" />
+          <ScalarProperty Name="INVOICENO" ColumnName="INVOICENO" />
+          <ScalarProperty Name="BLNODATE" ColumnName="BLNODATE" />
+          <ScalarProperty Name="BLNOBG" ColumnName="BLNOBG" />
+          <ScalarProperty Name="BLNO" ColumnName="BLNO" />
+          <ScalarProperty Name="VATCHNODATE" ColumnName="VATCHNODATE" />
+          <ScalarProperty Name="VATCHNOBG" ColumnName="VATCHNOBG" />
+          <ScalarProperty Name="VATCHNO" ColumnName="VATCHNO" />
+          <ScalarProperty Name="BENODATE" ColumnName="BENODATE" />
+          <ScalarProperty Name="BENOBG" ColumnName="BENOBG" />
+          <ScalarProperty Name="BENO" ColumnName="BENO" />
+          <ScalarProperty Name="DATEOFINSTALL" ColumnName="DATEOFINSTALL" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="MACHINESLNO" ColumnName="MACHINESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MACHINEINFORMATIONs">
+      <EntityTypeMapping TypeName="BMSModel.MACHINEINFORMATION">
+        <MappingFragment StoreEntitySet="MACHINEINFORMATION">
+          <ScalarProperty Name="BRAND_NAME" ColumnName="BRAND_NAME" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="MODELNMBG" ColumnName="MODELNMBG" />
+          <ScalarProperty Name="MODELNM" ColumnName="MODELNM" />
+          <ScalarProperty Name="MACHINESLNO" ColumnName="MACHINESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIALS">
+      <EntityTypeMapping TypeName="BMSModel.MATERIAL">
+        <MappingFragment StoreEntitySet="MATERIALS">
+          <ScalarProperty Name="MATERIALNAME" ColumnName="MATERIALNAME" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="MTYPE" ColumnName="MTYPE" />
+          <ScalarProperty Name="MUSLNO" ColumnName="MUSLNO" />
+          <ScalarProperty Name="SPGRADEBG" ColumnName="SPGRADEBG" />
+          <ScalarProperty Name="SPGRADE" ColumnName="SPGRADE" />
+          <ScalarProperty Name="MDESCRIPTIONBG" ColumnName="MDESCRIPTIONBG" />
+          <ScalarProperty Name="MDESCRIPTION" ColumnName="MDESCRIPTION" />
+          <ScalarProperty Name="MHSCODEBG" ColumnName="MHSCODEBG" />
+          <ScalarProperty Name="MHSCODE" ColumnName="MHSCODE" />
+          <ScalarProperty Name="MGSLNO" ColumnName="MGSLNO" />
+          <ScalarProperty Name="MSLNO" ColumnName="MSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MATERIALSGROUPs">
+      <EntityTypeMapping TypeName="BMSModel.MATERIALSGROUP">
+        <MappingFragment StoreEntitySet="MATERIALSGROUP">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MGROUPCODENAMEBG" ColumnName="MGROUPCODENAMEBG" />
+          <ScalarProperty Name="MGROUPCODENAME" ColumnName="MGROUPCODENAME" />
+          <ScalarProperty Name="MGROUPCODEBG" ColumnName="MGROUPCODEBG" />
+          <ScalarProperty Name="MGROUPCODE" ColumnName="MGROUPCODE" />
+          <ScalarProperty Name="MGSLNO" ColumnName="MGSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEASUREMENTUNITs">
+      <EntityTypeMapping TypeName="BMSModel.MEASUREMENTUNIT">
+        <MappingFragment StoreEntitySet="MEASUREMENTUNIT">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MUNAMEBG" ColumnName="MUNAMEBG" />
+          <ScalarProperty Name="MUNAME" ColumnName="MUNAME" />
+          <ScalarProperty Name="MUSLNO" ColumnName="MUSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MEASUREMENTUNITCONVERSIONs">
+      <EntityTypeMapping TypeName="BMSModel.MEASUREMENTUNITCONVERSION">
+        <MappingFragment StoreEntitySet="MEASUREMENTUNITCONVERSION">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="CONVVALUE" ColumnName="CONVVALUE" />
+          <ScalarProperty Name="MUSLNO2" ColumnName="MUSLNO2" />
+          <ScalarProperty Name="MUSLNO1" ColumnName="MUSLNO1" />
+          <ScalarProperty Name="CONVSLNO" ColumnName="CONVSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODELs">
+      <EntityTypeMapping TypeName="BMSModel.MODEL">
+        <MappingFragment StoreEntitySet="MODEL">
+          <ScalarProperty Name="MACHINESLNO" ColumnName="MACHINESLNO" />
+          <ScalarProperty Name="MODELNM" ColumnName="MODELNM" />
+          <ScalarProperty Name="MODELSLNO" ColumnName="MODELSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OFFICEs">
+      <EntityTypeMapping TypeName="BMSModel.OFFICE">
+        <MappingFragment StoreEntitySet="OFFICE">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="OFFICETYPE" ColumnName="OFFICETYPE" />
+          <ScalarProperty Name="WEB" ColumnName="WEB" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="FAXBG" ColumnName="FAXBG" />
+          <ScalarProperty Name="FAX" ColumnName="FAX" />
+          <ScalarProperty Name="PHONEBG" ColumnName="PHONEBG" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="MOBILENOBG" ColumnName="MOBILENOBG" />
+          <ScalarProperty Name="MOBILENO" ColumnName="MOBILENO" />
+          <ScalarProperty Name="DESSLNO" ColumnName="DESSLNO" />
+          <ScalarProperty Name="CONTACTPERSONBG" ColumnName="CONTACTPERSONBG" />
+          <ScalarProperty Name="CONTACTPERSON" ColumnName="CONTACTPERSON" />
+          <ScalarProperty Name="DISTRICTSLNO" ColumnName="DISTRICTSLNO" />
+          <ScalarProperty Name="COUNTRYSLNO" ColumnName="COUNTRYSLNO" />
+          <ScalarProperty Name="ADDRESSBG" ColumnName="ADDRESSBG" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="OFFICESNAMEBG" ColumnName="OFFICESNAMEBG" />
+          <ScalarProperty Name="OFFICESNAME" ColumnName="OFFICESNAME" />
+          <ScalarProperty Name="OFFICENAMEBG" ColumnName="OFFICENAMEBG" />
+          <ScalarProperty Name="OFFICENAME" ColumnName="OFFICENAME" />
+          <ScalarProperty Name="OFFICESLNO" ColumnName="OFFICESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OWNERASSOCIATEBUSINESSes">
+      <EntityTypeMapping TypeName="BMSModel.OWNERASSOCIATEBUSINESS">
+        <MappingFragment StoreEntitySet="OWNERASSOCIATEBUSINESS">
+          <ScalarProperty Name="OWNERNATIONALZIDNO" ColumnName="OWNERNATIONALZIDNO" />
+          <ScalarProperty Name="OWNERTINISSDT" ColumnName="OWNERTINISSDT" />
+          <ScalarProperty Name="OWNERTINNO" ColumnName="OWNERTINNO" />
+          <ScalarProperty Name="OWNERNAME" ColumnName="OWNERNAME" />
+          <ScalarProperty Name="OWNERDESSLNO" ColumnName="OWNERDESSLNO" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BUSINESSSHAREBG" ColumnName="BUSINESSSHAREBG" />
+          <ScalarProperty Name="BUSINESSSHARE" ColumnName="BUSINESSSHARE" />
+          <ScalarProperty Name="BUSINESSPOSBG" ColumnName="BUSINESSPOSBG" />
+          <ScalarProperty Name="BUSINESSPOS" ColumnName="BUSINESSPOS" />
+          <ScalarProperty Name="BUSINESSNATUREBG" ColumnName="BUSINESSNATUREBG" />
+          <ScalarProperty Name="BUSINESSNATURE" ColumnName="BUSINESSNATURE" />
+          <ScalarProperty Name="BINDATE" ColumnName="BINDATE" />
+          <ScalarProperty Name="BINASSOBUSINESSBG" ColumnName="BINASSOBUSINESSBG" />
+          <ScalarProperty Name="BINASSOBUSINESS" ColumnName="BINASSOBUSINESS" />
+          <ScalarProperty Name="TINDATE" ColumnName="TINDATE" />
+          <ScalarProperty Name="TINASSOBUSINESSBG" ColumnName="TINASSOBUSINESSBG" />
+          <ScalarProperty Name="TINASSOBUSINESS" ColumnName="TINASSOBUSINESS" />
+          <ScalarProperty Name="ASSOBUSINESSADDRESSBG" ColumnName="ASSOBUSINESSADDRESSBG" />
+          <ScalarProperty Name="ASSOBUSINESSADDRESS" ColumnName="ASSOBUSINESSADDRESS" />
+          <ScalarProperty Name="ASSOBUSINESSNAMEBG" ColumnName="ASSOBUSINESSNAMEBG" />
+          <ScalarProperty Name="ASSOBUSINESSNAME" ColumnName="ASSOBUSINESSNAME" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="OWNERSLNO" ColumnName="OWNERSLNO" />
+          <ScalarProperty Name="ASSOCIATESLNO" ColumnName="ASSOCIATESLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OWNERINFOes">
+      <EntityTypeMapping TypeName="BMSModel.OWNERINFO">
+        <MappingFragment StoreEntitySet="OWNERINFO">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="PHOTOFILEDATA" ColumnName="PHOTOFILEDATA" />
+          <ScalarProperty Name="PHOTOFILEPATH" ColumnName="PHOTOFILEPATH" />
+          <ScalarProperty Name="PHOTOFILENM" ColumnName="PHOTOFILENM" />
+          <ScalarProperty Name="SIGNATUREFILEDATA" ColumnName="SIGNATUREFILEDATA" />
+          <ScalarProperty Name="SIGNATUREFILEPATH" ColumnName="SIGNATUREFILEPATH" />
+          <ScalarProperty Name="SIGNATUREFILENM" ColumnName="SIGNATUREFILENM" />
+          <ScalarProperty Name="NATIONALZIDNO" ColumnName="NATIONALZIDNO" />
+          <ScalarProperty Name="NATIONALITYBG" ColumnName="NATIONALITYBG" />
+          <ScalarProperty Name="NATIONALITY" ColumnName="NATIONALITY" />
+          <ScalarProperty Name="PASSEXPDT" ColumnName="PASSEXPDT" />
+          <ScalarProperty Name="PASSISSUEDT" ColumnName="PASSISSUEDT" />
+          <ScalarProperty Name="PASSDISTRICTSLNO" ColumnName="PASSDISTRICTSLNO" />
+          <ScalarProperty Name="PASSPORTNO" ColumnName="PASSPORTNO" />
+          <ScalarProperty Name="TINISSDT" ColumnName="TINISSDT" />
+          <ScalarProperty Name="TINNO" ColumnName="TINNO" />
+          <ScalarProperty Name="OWNERMOBPHONEBG" ColumnName="OWNERMOBPHONEBG" />
+          <ScalarProperty Name="OWNERMOBPHONE" ColumnName="OWNERMOBPHONE" />
+          <ScalarProperty Name="OWNERRESPHONEBG" ColumnName="OWNERRESPHONEBG" />
+          <ScalarProperty Name="OWNERRESPHONE" ColumnName="OWNERRESPHONE" />
+          <ScalarProperty Name="OWNERCONTACTNOBG" ColumnName="OWNERCONTACTNOBG" />
+          <ScalarProperty Name="OWNERCONTACTNO" ColumnName="OWNERCONTACTNO" />
+          <ScalarProperty Name="OWNERPRSADDRESSBG" ColumnName="OWNERPRSADDRESSBG" />
+          <ScalarProperty Name="OWNERPRSADDRESS" ColumnName="OWNERPRSADDRESS" />
+          <ScalarProperty Name="OWNERPERADDRESSBG" ColumnName="OWNERPERADDRESSBG" />
+          <ScalarProperty Name="OWNERPERADDRESS" ColumnName="OWNERPERADDRESS" />
+          <ScalarProperty Name="OWNERFHNAMEBG" ColumnName="OWNERFHNAMEBG" />
+          <ScalarProperty Name="OWNERFHNAME" ColumnName="OWNERFHNAME" />
+          <ScalarProperty Name="OWNERNAMEBG" ColumnName="OWNERNAMEBG" />
+          <ScalarProperty Name="OWNERNAME" ColumnName="OWNERNAME" />
+          <ScalarProperty Name="DESSLNO" ColumnName="DESSLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="OWNERSLNO" ColumnName="OWNERSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODCAPACITYMACHINEWISEDETs">
+      <EntityTypeMapping TypeName="BMSModel.PRODCAPACITYMACHINEWISEDET">
+        <MappingFragment StoreEntitySet="PRODCAPACITYMACHINEWISEDET">
+          <ScalarProperty Name="MACHINETYPE" ColumnName="MACHINETYPE" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MACHINEQTY" ColumnName="MACHINEQTY" />
+          <ScalarProperty Name="MACHINESLNO" ColumnName="MACHINESLNO" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="FPSLNO" ColumnName="FPSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODCAPACITYMACHINEWISEMs">
+      <EntityTypeMapping TypeName="BMSModel.PRODCAPACITYMACHINEWISEM">
+        <MappingFragment StoreEntitySet="PRODCAPACITYMACHINEWISEM">
+          <ScalarProperty Name="MHSCODE" ColumnName="MHSCODE" />
+          <ScalarProperty Name="MACHINEQTY" ColumnName="MACHINEQTY" />
+          <ScalarProperty Name="MACHINESLNO" ColumnName="MACHINESLNO" />
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="MUSLNO" ColumnName="MUSLNO" />
+          <ScalarProperty Name="ANNUALPRODUCTION" ColumnName="ANNUALPRODUCTION" />
+          <ScalarProperty Name="BONDERSLNO" ColumnName="BONDERSLNO" />
+          <ScalarProperty Name="FPSLNO" ColumnName="FPSLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STATUS">
+      <EntityTypeMapping TypeName="BMSModel.STATUS">
+        <MappingFragment StoreEntitySet="STATUS">
+          <ScalarProperty Name="MODIFIEDDATE" ColumnName="MODIFIEDDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPAZILAs">
+      <EntityTypeMapping TypeName="BMSModel.UPAZILA">
+        <MappingFragment StoreEntitySet="UPAZILA">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="UPAZILANAMEBG" ColumnName="UPAZILANAMEBG" />
+          <ScalarProperty Name="UPAZILANAME" ColumnName="UPAZILANAME" />
+          <ScalarProperty Name="DISTRICTSLNO" ColumnName="DISTRICTSLNO" />
+          <ScalarProperty Name="UPAZILASLNO" ColumnName="UPAZILASLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERPERMISSIONs">
+      <EntityTypeMapping TypeName="BMSModel.USERPERMISSION">
+        <MappingFragment StoreEntitySet="USERPERMISSION">
+          <ScalarProperty Name="EMPLOYID" ColumnName="EMPLOYID" />
+          <ScalarProperty Name="BONDERID" ColumnName="BONDERID" />
+          <ScalarProperty Name="ROLENAME" ColumnName="ROLENAME" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BONDAREAs">
+      <EntityTypeMapping TypeName="IsTypeOf(BMSModel.BONDAREA)">
+        <MappingFragment StoreEntitySet="BONDAREA">
+          <ScalarProperty Name="MODIFYDATE" ColumnName="MODIFYDATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="INPUTDATE" ColumnName="INPUTDATE" />
+          <ScalarProperty Name="INPUTBY" ColumnName="INPUTBY" />
+          <ScalarProperty Name="BONDAREAENAMEBG" ColumnName="BONDAREAENAMEBG" />
+          <ScalarProperty Name="BONDAREAENAME" ColumnName="BONDAREAENAME" />
+          <ScalarProperty Name="BONDDIVISIONSLNO" ColumnName="BONDDIVISIONSLNO" />
+          <ScalarProperty Name="BONDAREASLNO" ColumnName="BONDAREASLNO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

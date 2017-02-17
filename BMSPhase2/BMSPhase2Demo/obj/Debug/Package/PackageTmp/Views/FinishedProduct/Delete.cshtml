@@ -1,0 +1,103 @@
+﻿@model BMSPhase2Demo.Models.FINISHEDPRODUCT
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>FINISHEDPRODUCT</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FPSLNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FPSLNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PRODCODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PRODCODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PRODCODEBG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PRODCODEBG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FPNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FPNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FPNAMEBG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FPNAMEBG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MSLNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MSLNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FPDESCRIPTION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FPDESCRIPTION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FPDESCRIPTIONBG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FPDESCRIPTIONBG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFYDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFYDATE)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.BANK>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+        margin-left : 240px;
+    }
+    
+    .textBOxSize {
+        width:220px;
+    }
+</style>
+
+<p  style =" font-size :20px;margin-left : 240px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <thead>
+        <tr><th colspan="8" style="text-align: center;">Bank Summary View </th> </tr>
+        <tr>
+            <th>
+                Bank SL No.
+            </th>
+            <th>
+                Bank Name
+            </th>
+           @* <th>
+                Bank Name (Bangla)
+            </th>*@
+            <th>
+                Swift Code
+            </th>
+            <th>
+                Email
+            </th>
+            <th  colspan="3"  style="text-align :center ">
+               Action
+            </th>
+          
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BANKSLNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BANKNAME)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.BANKNAMEBG)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.SWIFT)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WEB)
+            </td>
+           
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BANKSLNO}) 
+            </td>
+
+            <td>
+        
+                @Html.ActionLink("Details", "Details", new { id = item.BANKSLNO }) 
+            </td>
+            <td>
+         
+                @Html.ActionLink("Delete", "Delete", new { id = item.BANKSLNO })
+            </td>
+        </tr>
+    }
+</tbody>
+</table>
+

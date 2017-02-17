@@ -1,0 +1,48 @@
+﻿@model BMSPhase2Demo.Models.LoginModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+    <div class="row">
+
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="well" style="width:100%; margin:0 auto;">
+                <hgroup class="title">
+                    <h1>@ViewBag.Title.</h1>
+                </hgroup>
+                <div style="overflow: hidden;margin:0 auto;">
+
+                    @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <fieldset>
+                            <legend>Log in Form</legend>
+                            <form role="form">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.USERNAME)
+                                    @Html.TextBoxFor(m => m.USERNAME,new{style = "width: 100%"})
+                                    @Html.ValidationMessageFor(m => m.USERNAME)
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.PASSWARD)
+                                    @Html.PasswordFor(m => m.PASSWARD, new { style = "width: 100%" })
+                                    @Html.ValidationMessageFor(m => m.PASSWARD)
+                                </div>
+                            </form>
+                            <input type="submit" value="Log in" class="btn-lg btn-primary" style="width:100%;"/>
+                        </fieldset>
+                    }
+                </div>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

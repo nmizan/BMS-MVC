@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Bond Module System</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({ dateFormat: 'yy-mm-dd', changeYear: true });
+        })
+
+       
+    </script>
+    
+    @RenderSection("scripts", required: false)
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jqueryui")
+    @Styles.Render("~/Content/bootstrapcss")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
+    <!-- Required jQuery and jQuery UI Javascript references -->
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.0/themes/base/jquery-ui.css" rel="stylesheet" />
+  
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrapjs")
+   
+    <style>
+        a.hover {
+            text-decoration: none;
+            background: none;
+        }
+    </style>
+
+  <style type="text/css">
+    .backcolor {
+        background: rgba(242,246,248,1);
+        background: -moz-linear-gradient(left, rgba(242,246,248,1) 4%, rgba(242,246,248,1) 8%, rgba(181,198,208,1) 41%, rgba(216,225,231,1) 70%, rgba(224,239,249,1) 91%, rgba(224,239,249,1) 98%);
+        background: -webkit-gradient(left top, right top, color-stop(4%, rgba(242,246,248,1)), color-stop(8%, rgba(242,246,248,1)), color-stop(41%, rgba(181,198,208,1)), color-stop(70%, rgba(216,225,231,1)), color-stop(91%, rgba(224,239,249,1)), color-stop(98%, rgba(224,239,249,1)));
+        background: -webkit-linear-gradient(left, rgba(242,246,248,1) 4%, rgba(242,246,248,1) 8%, rgba(181,198,208,1) 41%, rgba(216,225,231,1) 70%, rgba(224,239,249,1) 91%, rgba(224,239,249,1) 98%);
+        background: -o-linear-gradient(left, rgba(242,246,248,1) 4%, rgba(242,246,248,1) 8%, rgba(181,198,208,1) 41%, rgba(216,225,231,1) 70%, rgba(224,239,249,1) 91%, rgba(224,239,249,1) 98%);
+        background: -ms-linear-gradient(left, rgba(242,246,248,1) 4%, rgba(242,246,248,1) 8%, rgba(181,198,208,1) 41%, rgba(216,225,231,1) 70%, rgba(224,239,249,1) 91%, rgba(224,239,249,1) 98%);
+        background: linear-gradient(to right, rgba(242,246,248,1) 4%, rgba(242,246,248,1) 8%, rgba(181,198,208,1) 41%, rgba(216,225,231,1) 70%, rgba(224,239,249,1) 91%, rgba(224,239,249,1) 98%);
+    }
+  </style>
+
+</head>
+<body class ="backcolor">
+    <header>
+        <div class="row" style="padding: 10px 0px;">
+            <div class="col-md-12">
+                <div class="col-md-9" style="padding-right: 0px;">
+                    <nav class="navbar " role="navigation" style =" font-size: 15px;">
+                        <div class="container-fluid">
+                      <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav">
+                                    <li> @Html.ActionLink("Home", "Index", "Home")</li>
+                                     @if (Request.IsAuthenticated)
+                                  {
+                                    <li>@Html.ActionLink("User Management", "Index", "AppUser")</li>
+                                     if(System.Web.HttpContext.Current.User.IsInRole("Operation Admin"))
+                                   {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Parameter <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Bank", "Index", "Bank")</li>
+                                            <li>@Html.ActionLink("Bank Branch", "Index", "BankBranch")</li>
+                                            <li>@Html.ActionLink("Bond Area", "Index", "BondArea")</li>
+                                            <li>@Html.ActionLink("Bond Category", "Index", "BondCategory")</li>
+                                            <li>@Html.ActionLink("Bond Circle", "Index", "BondCircle")</li> 
+                                            <li>@Html.ActionLink("Bond Division", "Index", "BondDivision")</li>
+                                          @*  <li>@Html.ActionLink("Bond Status", "Index", "BondStatus")</li>*@
+                                            <li>@Html.ActionLink("Bond Sub Category", "Index", "BondSubCategory")</li>
+                                            <li>@Html.ActionLink("Bond Type", "Index", "BondType")</li>
+                                            <li>@Html.ActionLink("Country", "Index", "Country")</li>
+                                            <li>@Html.ActionLink("Currency", "Index", "Currency")</li>
+                                            <li>@Html.ActionLink("Designation", "Index", "Designation")</li>
+                                            <li>@Html.ActionLink("District", "Index", "District")</li>
+                                            <li>@Html.ActionLink("Material Group", "Index", "MaterialGroup")</li>
+                                            <li>@Html.ActionLink("Materials", "Index", "Materials")</li>
+                                            <li>@Html.ActionLink("Measurement Unit", "Index", "MeasurementUnit")</li>
+                                            <li>@Html.ActionLink("Office", "Index", "Office")</li>
+                                            <li>@Html.ActionLink("Upazila", "Index", "Upazila")</li>
+                                        </ul>
+                                    </li>
+                                   }
+                                     <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bond Registration <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Create", "Start", "BondRegistration")</li>
+                                            <li>@Html.ActionLink("List of Applicants", "ApplicantsList", "BondRegistration")</li>
+                                            <li>@Html.ActionLink("List of Bonders", "BondersList", "BondRegistration")</li>
+                                            <li>@Html.ActionLink("Renewal Due", "RenewalList", "BondRegistration")</li>
+                                            <li>@Html.ActionLink("List of Renew Applicants", "ApplicantsList", "BondRenewal")</li>
+                                        </ul>
+                                    </li>
+                                    @*<li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bond Renewal <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Create", "Search", "BondRenewal")</li>
+                                            <li>@Html.ActionLink("List of Applicants", "ApplicantsList", "BondRenewal")</li>
+         
+                                        </ul>
+                                    </li>*@
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bond Entitlement <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("Add New", "Search", "BondEntitlementRenewal")</li>
+                                            <li>@Html.ActionLink("List of Entitlement", "BondEntitlementList", "BondEntitlementRenewal")</li>
+                                            <li>@Html.ActionLink("Report of Entitlement", "EntitlementReport", "BondEntitlementRenewal")</li>
+                                            <li>@Html.ActionLink("Annual Entitlement", "Index", "AnnualEntitlement")</li>
+         
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> UP <b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li>@Html.ActionLink("In Bond", "Index", "InBond")</li>
+                                            <li>@Html.ActionLink("LC", "Index", "Back2BackLC")</li>
+                                            <li>@Html.ActionLink("Ex Bond", "Index", "ExBond")</li>
+                                            <li>@Html.ActionLink("UP Request", "Index", "UPRequest")</li>
+                                            @if (System.Web.HttpContext.Current.User.IsInRole("Operation Admin"))
+                                             {
+                                            <li>@Html.ActionLink("UP", "Create", "UP")</li>
+                                             }
+         
+                                        </ul>
+                                    </li>
+                                         
+                               try
+                                {
+
+                                    if (System.Web.HttpContext.Current.User.IsInRole("Operation Admin") || System.Web.HttpContext.Current.User.IsInRole("Bonder"))
+                                    {
+                                        <li>@Html.ActionLink("Reports", "Index", "Reports")</li>
+                                    }
+                                }
+                                catch (Exception e)
+                                {
+
+                                }
+                                
+                            }
+
+                                    @*else
+                                     {
+                                     ViewBag.linkUrl = System.Web.Configuration.WebConfigurationManager.AppSettings["linkURL"];
+                                     ViewBag.linkText = System.Web.Configuration.WebConfigurationManager.AppSettings["linkText"];
+                                     
+                                    <li> <a href="@ViewBag.linkUrl" style="color:#999999;">@ViewBag.linkText</a></li>
+                                     }*@
+                                </ul>
+
+                                
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </div>
+                        <!-- /.container-fluid -->
+                    </nav> 
+                </div>
+                <div class="col-md-3" style="padding-left: 5px; padding-right: 5px;">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                </div>
+            </div>
+        </div>
+        @*<div class="row" style="margin: 10px 0px;">*@
+        <div class="row" >
+            <div class="col-md-4 pull-left">
+                <img src='@Url.Content("~/Images/EU.png")' />
+            </div>
+            <div class="col-md-4 text-center">
+                <img src='@Url.Content("~/Images/Bangladesh.jpg")' width="90" height="90" />
+            </div>
+            <div class="col-md-4 pull-right">
+                <img src='@Url.Content("~/Images/Logo_BGAPMEA.jpg")' width="90" height="90" class="pull-right" />
+            </div>
+        </div>
+        <section class="featured col-md-12 text-center" style="background: #39B1CC; margin: 0px; padding: 0px;">
+            <hgroup class="title" style="margin-top: 10px;">
+                <h2><strong>Bond Module System</strong></h2>
+            </hgroup>
+        </section>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="row  text-center" style="background: #39B1CC; margin-bottom: 10px; margin-left: 0px;  margin-right: 0px;">
+            <div class="col-md-12" style="color: white; font-size: 1.4em;">
+                <strong>
+                    Bond Module Systems for issuance of Utilization Permission (UP) for raw materials import
+                </strong>
+            </div>
+        </div>
+        <div class="row text-center" style="background: #008000; color: white; margin-left: 0px; margin-right: 0px; ">
+            <div class="col-md-12">
+                <h2 style="margin-bottom:0px;">
+                    <strong>
+                        Bangladesh INSPIRED
+                    </strong>
+                </h2>
+
+            </div>
+            <div class="col-md-12">
+                <h3 style="margin-top: 5px; margin-bottom: 20px;">
+                    <em>Developing SMEs </em>
+                </h3>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 3px; margin-right: 5px; margin-left: 0px;">
+            <div class="col-md-12">
+                <strong>
+                    Implemented By: Bangladesh Garments Accessories & Packaging Manufacturers & Exporters Association (BGAPMEA)
+                </strong>
+                <div class="pull-right"> <strong>Developed By: Convince Computer Ltd.</strong></div>
+
+
+            </div>
+            <div class="col-md-12">
+                <strong>Funded By: The European Union & Ministry of Industries, Govt of People's Republic of Bangladesh</strong>
+            </div>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
+
+<script type ="text/javascript" >
+
+    $('ul.nav li.dropdown').hover(function () {
+        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+    }, function () {
+        $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+    });
+ </script>

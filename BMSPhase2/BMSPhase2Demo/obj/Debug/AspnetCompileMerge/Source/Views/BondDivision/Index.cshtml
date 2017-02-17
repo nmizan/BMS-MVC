@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.BONDDIVISION>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left : 270px;
+    }
+</style>
+
+<p  style =" font-size :20px;margin-left : 270px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <tr><th colspan="6" style="text-align: center;">Bond Division Summary View </th></tr>
+
+    <tr>
+        <th>
+            Division SL NO
+        </th>
+        <th>
+            Division Name
+        </th>
+       @* <th>
+            Division Name BG
+        </th>*@
+       <th colspan="3"  style="text-align :center " >
+            
+            Action
+     </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BONDDIVISIONSLNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BONDDIVISIONNAME)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.BONDDIVISIONNAMEBG)
+            </td>*@
+
+            <td>
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.BONDDIVISIONSLNO }) 
+
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Details", "Details", new { id = item.BONDDIVISIONSLNO })
+
+            </td>
+            <td>
+
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.BONDDIVISIONSLNO })
+            </td>
+        </tr>
+    }
+
+</table>

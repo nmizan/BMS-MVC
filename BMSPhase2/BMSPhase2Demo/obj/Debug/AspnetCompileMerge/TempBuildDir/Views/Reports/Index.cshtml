@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "ReportList";
+}
+
+
+<div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="well-lg" style="width:100%; margin:0 auto;">
+            <hgroup class="title">
+                <h2>Reports</h2>
+            </hgroup>
+            <div style="overflow: hidden;margin:0 auto;">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Sn.</th>
+                        <th>Name</th>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td class="action-link">@Html.ActionLink("Bond Applicants", "BondApplicants","Report", new { }, new { target = "_blank" })</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td class="action-link">@Html.ActionLink("Bonders", "Bonders","Report", new { }, new { target = "_blank" })</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td class="action-link">@Html.ActionLink("BGAPMEA Members", "BGAPMEAMembers","Report", new { }, new { target = "_blank" })</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td class="action-link">@Html.ActionLink("In-Bond Ex-Bond Raw Material Status", "InbondExbondRawMaterialStatus")</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td class="action-link">@Html.ActionLink("Production And Raw Material For The UP", "ProductAndRawMaterialStatus")</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td class="action-link">@Html.ActionLink("In Bond/Import Report", "InBondImportReport")</td>
+                    </tr>
+                     <tr>
+                        <td>7.</td>
+                        <td class="action-link">@Html.ActionLink("Ex Bond/Usage Report", "ExBondUsageReport")</td>
+                    </tr>
+                     <tr>
+                        <td>8.</td>
+                        <td class="action-link">@Html.ActionLink("Export Report-Bonder", "BonderExportReport")</td>
+                    </tr>
+                     <tr>
+                        <td>9.</td>
+                        <td class="action-link">@Html.ActionLink("Export Report-Total", "TotalExportReport")</td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <div class="col-md-3">
+            </div>
+        </div>
+    </div>
+</div>

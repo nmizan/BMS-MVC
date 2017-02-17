@@ -1,0 +1,99 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.FINISHEDPRODUCT>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FPSLNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODCODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODCODEBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FPNAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FPNAMEBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MSLNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FPDESCRIPTION)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FPDESCRIPTIONBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INPUTBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INPUTDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFYDATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FPSLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODCODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODCODEBG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FPNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FPNAMEBG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MSLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FPDESCRIPTION)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FPDESCRIPTIONBG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INPUTBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INPUTDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFYDATE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

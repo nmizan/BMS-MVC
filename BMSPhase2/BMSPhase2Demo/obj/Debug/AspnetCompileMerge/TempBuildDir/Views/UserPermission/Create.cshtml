@@ -1,0 +1,110 @@
+﻿@model BMSPhase2Demo.Models.USERPERMISSION
+
+@{
+    ViewBag.Title = "Manage Permission";
+}
+
+
+<div class="row">
+
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="well" style="width:70%; margin:0 auto;">
+            <hgroup class="title">
+                <h3 class="text-center">@ViewBag.Title</h3>
+            </hgroup>
+            <div style="overflow: hidden;margin:0 auto;">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        <legend>USERPERMISSION</legend>
+                        <form role="form">
+                            <div class="form-group">
+                                    @Html.LabelFor(model => model.USERID)
+                                    @Html.DropDownList("USERID",null,new { Style = "width: 100%" })
+                                    @Html.ValidationMessageFor(model => model.USERID)
+                            </div>
+                           
+                            <div class="form-group">
+                                    @Html.LabelFor(model => model.ROLENAME)
+                                    @Html.DropDownList("ROLENAME", null, new { @id = "roles", onchange = "roleSelected()", Style = "width: 100%"  })
+                                    @Html.ValidationMessageFor(model => model.ROLENAME)
+                            </div>
+
+                            <div class="form-group">
+                                <div class="optionalBonder">
+                                        @Html.LabelFor(model => model.BONDERID)
+                                        @Html.DropDownList("BONDERID", null, new { Style = "width: 100%" })
+                                        @Html.ValidationMessageFor(model => model.BONDERID)
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="optionalEmployee">
+                                        @Html.LabelFor(model => model.EMPLOYID)
+                                        @Html.DropDownList("EMPLOYID", null,new { Style = "width: 100%" })
+                                        @Html.ValidationMessageFor(model => model.EMPLOYID)
+                                </div>
+                            </div>
+                            <input type="hidden" id="Type" name="Type" value="BONDER" />
+                            <p>
+                                <input type="submit" value="Save" class="btn-lg btn-primary" style="width:100%;" />
+                            </p>
+                            <div>
+                                @Html.ActionLink("Back to List", "Index","AppUser","",new { @class = "action-link" })
+                            </div>
+                            </form>
+</fieldset>
+                }
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+
+    function roleSelected() {
+        if ($('#roles').val() === 'Bonder') {
+            $('.optionalEmployee').css('display', 'none');
+            $('.optionalBonder').css('display', 'inline');
+            $('#Type').val('Bonder');
+        }
+        else if ($('#roles').val() === 'Operation Admin') {
+
+            $('.optionalEmployee').css('display', 'inline');
+            $('.optionalBonder').css('display', 'none');
+            $('#Type').val('Operation Admin');
+        }
+        else {
+            
+            $('.optionalEmployee').css('display', 'none');
+        }
+    }
+    $(document).ready(function () {
+        if ($('#roles').val() === 'Bonder') {
+            $('.optionalEmployee').css('display', 'none');
+            $('.optionalBonder').css('display', 'inline');
+            $('#Type').val('Bonder');
+        }
+        else if ($('#roles').val() === 'Operation Admin') {
+
+            $('.optionalEmployee').css('display', 'inline');
+            $('.optionalBonder').css('display', 'none');
+            $('#Type').val('Operation Admin');
+        }
+        else {
+
+            $('.optionalEmployee').css('display', 'none');
+        }
+    });
+</script>

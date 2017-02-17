@@ -1,0 +1,100 @@
+﻿@model BMSPhase2Demo.Models.RAWMATERIAL
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>RAWMATERIAL</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NAME)
+            @Html.ValidationMessageFor(model => model.NAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QUANTITY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QUANTITY)
+            @Html.ValidationMessageFor(model => model.QUANTITY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UNIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UNIT)
+            @Html.ValidationMessageFor(model => model.UNIT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERMITTEDWASTE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERMITTEDWASTE)
+            @Html.ValidationMessageFor(model => model.PERMITTEDWASTE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRODUCTID, "BACKTOBACKPRODUCT")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("PRODUCTID", String.Empty)
+            @Html.ValidationMessageFor(model => model.PRODUCTID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CREATEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CREATEDBY)
+            @Html.ValidationMessageFor(model => model.CREATEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CREATEDDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CREATEDDATE)
+            @Html.ValidationMessageFor(model => model.CREATEDDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDDATE)
+            @Html.ValidationMessageFor(model => model.MODIFIEDDATE)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

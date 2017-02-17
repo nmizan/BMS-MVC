@@ -1,0 +1,49 @@
+﻿@model BMSPhase2Demo.Models.RAWMATERIAL
+@using BMSPhase2Demo.Helpers
+<table id="rawMaterialTables" class="table" style="font-size:10px">
+
+    @*@using (Html.BeginAjaxContentValidation("form0"))
+    {*@
+        @using (Html.BeginCollectionItem2("RAWMATERIALs"))
+    {
+        <tr>
+            <th>
+                @Html.LabelFor(model => model.RAWMATERIALCODE)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.QUANTITY)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.UNIT)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.PERMITTEDWASTE)
+            </th>
+
+        </tr>
+        <tr>
+            <td class="col-lg-3">
+                @Html.DropDownListFor(model => model.RAWMATERIALCODE, null, "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RAWMATERIALCODE)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.QUANTITY, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.QUANTITY)
+            </td>
+            <td>
+                @Html.DropDownListFor(model => model.UNIT, null, "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UNIT)
+            </td>
+
+            <td>
+                @Html.TextBoxFor(model => model.PERMITTEDWASTE, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.PERMITTEDWASTE)
+            </td>
+            <td>
+                <input type="button" class="btn btn-danger" value="Delete" onclick='$(this).parent().parent().parent().remove();' />
+            </td>
+
+        </tr>
+    }
+    
+</table>

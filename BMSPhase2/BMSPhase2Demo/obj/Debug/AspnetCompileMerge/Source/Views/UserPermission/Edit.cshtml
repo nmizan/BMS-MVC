@@ -1,0 +1,62 @@
+﻿@model BMSPhase2Demo.Models.USERPERMISSION
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>USERPERMISSION</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USERID, "APPUSER")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("USERID", String.Empty)
+            @Html.ValidationMessageFor(model => model.USERID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ROLENAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ROLENAME)
+            @Html.ValidationMessageFor(model => model.ROLENAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BONDERID, "BONDER")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BONDERID", String.Empty)
+            @Html.ValidationMessageFor(model => model.BONDERID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EMPLOYID, "EMPLOYEE")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EMPLOYID", String.Empty)
+            @Html.ValidationMessageFor(model => model.EMPLOYID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

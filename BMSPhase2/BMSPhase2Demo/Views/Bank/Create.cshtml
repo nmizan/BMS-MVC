@@ -1,0 +1,106 @@
+﻿@model BMSPhase2Demo.Models.BANK
+
+@{
+    ViewBag.Title = "Create";
+}
+<style type="text/css">
+    .editor-label,.editor-field {
+      
+        margin-left : 240px;
+    }
+
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Bank Information</p>
+<h2 style ="margin-left :240px;">Create</h2>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+  <fieldset>
+        <legend>BANK</legend>
+
+        <div class="editor-label">
+          
+          Bank Name
+        </div>
+        <div class="editor-field">
+             @Html.EditorFor(model => model.BANKNAME)
+             @Html.ValidationMessageFor(model => model.BANKNAME)
+        </div>
+
+        <div class="editor-label">
+         
+            Bank Name BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BANKNAMEBG)
+            @Html.ValidationMessageFor(model => model.BANKNAMEBG)
+        </div>
+        <div class="editor-label">
+          Swift:
+        </div>
+        <div class="editor-field">
+             @Html.EditorFor(model => model.SWIFT)
+             @Html.ValidationMessageFor(model => model.SWIFT)
+        </div>
+
+        <div class="editor-label">
+         
+           Email
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WEB)
+            @Html.ValidationMessageFor(model => model.WEB)
+        </div>
+
+          <div class="editor-label">
+            @*@Html.LabelFor(model => model.INPUTBY)*@
+            Input By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTBY)
+            @Html.ValidationMessageFor(model => model.INPUTBY)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.INPUTDATE)*@
+            Input Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTDATE)
+            @Html.ValidationMessageFor(model => model.INPUTDATE)
+        </div>
+
+        <div class="editor-label">
+          @*  @Html.LabelFor(model => model.MODIFIEDBY)*@
+            Modified By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.MODIFYDATE)*@
+            Modify Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFYDATE)
+            @Html.ValidationMessageFor(model => model.MODIFYDATE)
+        </div>
+
+        <div class="editor-label">
+           &nbsp;&nbsp;
+        </div>
+        <p style ="margin-left :240px;">
+            <input type="submit" value="Save" />|
+             @Html.ActionLink("Back to List", "Index")
+        </p>
+
+  </fieldset>
+}
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

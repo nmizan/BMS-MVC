@@ -1,0 +1,43 @@
+﻿@model BMSPhase2Demo.Models.USERPERMISSION
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>USERPERMISSION</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.APPUSER.USERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.APPUSER.USERNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ROLENAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ROLENAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEENAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMPLOYEE.EMPLOYEENAME)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

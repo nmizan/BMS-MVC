@@ -1,0 +1,142 @@
+﻿@model PagedList.IPagedList<BMSPhase2Demo.Models.BACKTOBACKLC>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Index";
+}
+<p style="color: red; padding-left:350px;">@ViewBag.error</p>
+<h2> Select one or more Back To Back LC To create Exbond</h2>
+
+@using (Html.BeginForm("Create", "ExBond", FormMethod.Post))
+{
+    if (!System.Web.HttpContext.Current.User.IsInRole("Bonder"))
+    {
+        <table class="table table-striped table-bordered ">
+            <tr>
+
+                <th id="search-th">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BONDER.BONDERNAME):
+                </th>
+                <td id="search-td">
+                    @Html.DropDownList("BONDERID", null, "-- Select Bonder --", new { @class = "form-control" })
+
+                </td>
+            </tr>
+        </table>
+
+        <button type="submit" name="submit" class="btn btn-primary">Search</button>
+    }
+}
+
+@if ((short)ViewBag.resultofbonderID > 0)
+{
+    string names = BMSPhase2Demo.Utils.BonderInfoUtils.getBonderName((short)ViewBag.resultofbonderID);
+    <p style="padding-left: 350px;" class="well text-success"> Result showing for Bonder: @names </p>
+}
+@using (Html.BeginForm("CreateorEditExbond", "ExBond", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr id="tr">
+                        <th id="th">
+                            @Html.DisplayName("Select")
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].BUYERSNAME)
+
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].LCNUMBER)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].UDNUMBER)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].UDDATE)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].UDCORRECTIONDATE)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].UDPRODUCTDETAIL)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].BONDER.BONDERNAME)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayName("No of Product")
+                        </th>
+                        <th id="th" width="1%">
+                            Action
+                        </th>
+                    </tr>
+
+
+
+                    @{int j = 0; string trgb = "#c1deef";}
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        j++;
+                        if (i % 2 == 0) { trgb = "#e6ebee"; }
+                        else { trgb = "#c1deef"; }
+
+                        <tr style="background: @trgb">
+                            <td id="td">
+                                @Html.CheckBoxFor(modelItem => Model[i].IsSelected)
+                                @Html.HiddenFor(modelItem => Model[i].ID)
+                                @Html.HiddenFor(modelItem => Model[i].BONDER.BONDERSLNO)
+
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].BUYERSNAME)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].LCNUMBER)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].UDNUMBER)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].UDDATE)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].UDCORRECTIONDATE)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].UDPRODUCTDETAIL)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].BONDER.BONDERNAME)
+                            </td>
+                            <td id="td">
+                                @Model[i].BACKTOBACKPRODUCTs.Count()
+                            </td>
+
+
+                            <td id="td">
+                                @Html.ActionLink("Add Product", "Edit", "Back2BackLC", new { id = Model[i].ID }, new { @class = "action-link" })
+
+
+                            </td>
+                        </tr>
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            @Html.Hidden("ID", (short)ViewBag.ExbondID)
+            <button type="submit" name="submit" class="btn btn-primary">Create Exbond</button>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+}
+<p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+@Html.PagedListPager(Model, page => Url.Action("Create", new { page, filterBonderId = ViewBag.filterBonderId }))

@@ -1,0 +1,123 @@
+﻿@model BMSPhase2Demo.Models.BONDERANNUALENTITLEMENTCOEDET
+
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.AESLNO)
+    @Html.HiddenFor(model => model.BONDERSLNO)
+    @Html.HiddenFor(model => model.MSLNO)
+    @Html.HiddenFor(model => model.RMSLNO)
+
+    <fieldset>
+        <legend>BONDERANNUALENTITLEMENTCOEDET</legend>
+
+        @*        <div class="editor-label">
+                @Html.LabelFor(model => model.AESLNO)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AESLNO)
+                @Html.ValidationMessageFor(model => model.AESLNO)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.BONDERSLNO)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.BONDERSLNO)
+                @Html.ValidationMessageFor(model => model.BONDERSLNO)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MSLNO)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MSLNO)
+                @Html.ValidationMessageFor(model => model.MSLNO)
+            </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MATERIAL.MATERIALNAME, "Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MATERIAL.MATERIALNAME, new { disabled = "disabled" })
+            @Html.ValidationMessageFor(model => model.RMSLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GROSSQT, "Gross Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GROSSQT)
+            @Html.ValidationMessageFor(model => model.GROSSQT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WASTAGEQT, "Wastage Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WASTAGEQT)
+            @Html.ValidationMessageFor(model => model.WASTAGEQT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SHRINKAGEQT, "Shrinkage Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SHRINKAGEQT)
+            @Html.ValidationMessageFor(model => model.SHRINKAGEQT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NETQT, "Net Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NETQT)
+            @Html.ValidationMessageFor(model => model.NETQT)
+        </div>
+
+        @*  <div class="editor-label">
+                @Html.LabelFor(model => model.INPUTBY)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.INPUTBY)
+                @Html.ValidationMessageFor(model => model.INPUTBY)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.INPUTDATE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.INPUTDATE)
+                @Html.ValidationMessageFor(model => model.INPUTDATE)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MODIFIEDBY)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MODIFIEDBY)
+                @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MODIFYDATE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MODIFYDATE)
+                @Html.ValidationMessageFor(model => model.MODIFYDATE)
+            </div>*@
+
+        <p>
+            <input type="submit" value="Add" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

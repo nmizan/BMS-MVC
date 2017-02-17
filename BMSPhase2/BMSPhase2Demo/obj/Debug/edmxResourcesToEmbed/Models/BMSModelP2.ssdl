@@ -1,0 +1,2459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BMSModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ANNUALENTLRAWMATERIAL">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="AEQTY" Type="number" Precision="12" Scale="2" />
+    <Property Name="AIL_HSCODE" Type="varchar2" MaxLength="50" />
+    <Property Name="SPEC_GRADE" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="APPUSER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="USERNAME" Type="varchar2" MaxLength="155" Nullable="false" />
+    <Property Name="PASSWARD" Type="varchar2" MaxLength="155" Nullable="false" />
+    <Property Name="SALT" Type="varchar2" MaxLength="15" Nullable="false" />
+    <Property Name="FIRSTNAME" Type="varchar2" MaxLength="255" />
+    <Property Name="LASTNAME" Type="varchar2" MaxLength="255" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="255" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="255" />
+    <Property Name="ISACTIVE" Type="number" Precision="1" Scale="0" Nullable="false" />
+    <Property Name="LASTLOGIN" Type="date" />
+  </EntityType>
+  <EntityType Name="ASSOCIATIONENROLL">
+    <Key>
+      <PropertyRef Name="ASSOENSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="OFFICESLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="ASSOENSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="OFFICESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BSNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MEMBERSHIPREGNO" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="MEMBERSHIPREGNOBG" Type="varchar2" MaxLength="200" />
+    <Property Name="ISSUEDATE" Type="date" />
+    <Property Name="EXPDATE" Type="date" />
+    <Property Name="CERATTACHFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="CERATTACHFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="CERATTACHFILEDATA" Type="blob" />
+    <Property Name="RECATTACHFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="RECATTACHFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="RECATTACHFILEDATA" Type="blob" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="ATTACHMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="CONTENT" Type="varchar2" MaxLength="200" />
+    <Property Name="UPREQUESTID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BACKTOBACKLC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BUYERSNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BUYERSADDRESS" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="LCNUMBER" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="LCDATE" Type="date" Nullable="false" />
+    <Property Name="BUYERSBANKID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BUYERSBANKBRANCHID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="SHIPPINGDATE" Type="date" />
+    <Property Name="CORRECTIONDATE" Type="date" />
+    <Property Name="PRODUCTQUANTITY" Type="number" Precision="38" Scale="0" />
+    <Property Name="QUANTITYUNIT" Type="varchar2" MaxLength="10" />
+    <Property Name="LCUSEDPRICE" Type="number" Precision="38" Scale="0" />
+    <Property Name="PRICEUNIT" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="MASTERLCNUMBER" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="MASTERLCCORRECTIONDATE" Type="date" Nullable="false" />
+    <Property Name="UDNUMBER" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="UDDATE" Type="date" Nullable="false" />
+    <Property Name="UDCORRECTIONDATE" Type="date" />
+    <Property Name="UDPRODUCTDETAIL" Type="varchar2" MaxLength="200" />
+    <Property Name="BONDERID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BACKTOBACKPRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="SIZEANDDETAIL" Type="varchar2" MaxLength="200" />
+    <Property Name="QUANTITY" Type="number" Precision="38" Scale="0" />
+    <Property Name="QUANTITYUNIT" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="BACKTOBACKLCID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BANK">
+    <Key>
+      <PropertyRef Name="BANKSLNO" />
+    </Key>
+    <Property Name="BANKSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BANKNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BANKNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="SWIFT" Type="varchar2" MaxLength="100" />
+    <Property Name="WEB" Type="varchar2" MaxLength="100" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BANKBRANCH">
+    <Key>
+      <PropertyRef Name="BBRANCHSLNO" />
+    </Key>
+    <Property Name="BBRANCHSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BANKSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BRANCHNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BRANCHNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="500" />
+    <Property Name="ADDRESSBG" Type="varchar2" MaxLength="500" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="FAX" Type="varchar2" MaxLength="100" />
+    <Property Name="FAXBG" Type="varchar2" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+    <Property Name="OTHER" Type="varchar2" MaxLength="150" />
+    <Property Name="OTHERBG" Type="varchar2" MaxLength="150" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDAPPLICATIONPROGRESS">
+    <Key>
+      <PropertyRef Name="PROGRESSSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="PROGRESSSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BSNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="READYFORAPP" Type="varchar2" MaxLength="2" />
+    <Property Name="ACTION" Type="varchar2" MaxLength="150" />
+    <Property Name="ACTIONDATE" Type="date" />
+    <Property Name="ATTACHFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="ATTACHFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="ATTACHFILEDATA" Type="blob" />
+    <Property Name="REMARKS" Type="varchar2" MaxLength="100" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDAREA">
+    <Key>
+      <PropertyRef Name="BONDAREASLNO" />
+    </Key>
+    <Property Name="BONDAREASLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDDIVISIONSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BONDAREAENAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BONDAREAENAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDCATEGORY">
+    <Key>
+      <PropertyRef Name="BCATSLNO" />
+    </Key>
+    <Property Name="BCATSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BCATNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BCATNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDCIRCLE">
+    <Key>
+      <PropertyRef Name="BONDCIRCLESLNO" />
+    </Key>
+    <Property Name="BONDCIRCLESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDDIVISIONSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BONDCIRCLENAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BONDCIRCLENAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDDIVISION">
+    <Key>
+      <PropertyRef Name="BONDDIVISIONSLNO" />
+    </Key>
+    <Property Name="BONDDIVISIONSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDDIVISIONNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BONDDIVISIONNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDER">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BONDLICENSENO" Type="varchar2" MaxLength="100" />
+    <Property Name="BONDLICENSENOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="BONDSTATUS" Type="varchar2" MaxLength="2" />
+    <Property Name="BONDERNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BONDERNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="HOLDINGNO" Type="varchar2" MaxLength="20" />
+    <Property Name="ROADNO" Type="varchar2" MaxLength="20" />
+    <Property Name="AREAVILLAGE" Type="varchar2" MaxLength="100" />
+    <Property Name="MOWJA" Type="varchar2" MaxLength="100" />
+    <Property Name="UNIONNAME" Type="varchar2" MaxLength="100" />
+    <Property Name="BUPAZILASLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BDISTRICTSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="PSTATION" Type="varchar2" MaxLength="100" />
+    <Property Name="WARD" Type="varchar2" MaxLength="100" />
+    <Property Name="CITYPOURO" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="FAX" Type="varchar2" MaxLength="100" />
+    <Property Name="MOBILE" Type="varchar2" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+    <Property Name="HOLDINGNOBG" Type="varchar2" MaxLength="20" />
+    <Property Name="ROADNOBG" Type="varchar2" MaxLength="20" />
+    <Property Name="AREAVILLAGEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="MOWJABG" Type="varchar2" MaxLength="100" />
+    <Property Name="UNIONBG" Type="varchar2" MaxLength="100" />
+    <Property Name="PSTATIONBG" Type="varchar2" MaxLength="100" />
+    <Property Name="WARDBG" Type="varchar2" MaxLength="100" />
+    <Property Name="CITYPOUROBG" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="FAXBG" Type="varchar2" MaxLength="100" />
+    <Property Name="MOBILEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOHOLDINGNO" Type="varchar2" MaxLength="20" />
+    <Property Name="HOROADNO" Type="varchar2" MaxLength="20" />
+    <Property Name="HOAREAVILLAGE" Type="varchar2" MaxLength="100" />
+    <Property Name="HOMOWJA" Type="varchar2" MaxLength="100" />
+    <Property Name="HOUNION" Type="varchar2" MaxLength="100" />
+    <Property Name="HOUPAZILASLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="HODISTRICTSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="HOPSTATION" Type="varchar2" MaxLength="100" />
+    <Property Name="HOWARD" Type="varchar2" MaxLength="100" />
+    <Property Name="HOCITYPOURO" Type="varchar2" MaxLength="100" />
+    <Property Name="HOPHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="HOFAX" Type="varchar2" MaxLength="100" />
+    <Property Name="HOMOBILE" Type="varchar2" MaxLength="100" />
+    <Property Name="HOEMAIL" Type="varchar2" MaxLength="100" />
+    <Property Name="HOHOLDINGNOBG" Type="varchar2" MaxLength="20" />
+    <Property Name="HOROADNOBG" Type="varchar2" MaxLength="20" />
+    <Property Name="HOAREAVILLAGEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOMOWJABG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOUNIONBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOPSTATIONBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOWARDBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOCITYPOUROBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOPHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOFAXBG" Type="varchar2" MaxLength="100" />
+    <Property Name="HOMOBILEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="PREMESISSTATUS" Type="varchar2" MaxLength="100" />
+    <Property Name="HIREDATE" Type="date" />
+    <Property Name="HIREEXPDATE" Type="date" />
+    <Property Name="HIREDEEDNO" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERSHIPDATE" Type="date" />
+    <Property Name="OWNERSHIPDOLILNO" Type="varchar2" MaxLength="100" />
+    <Property Name="CSDAGNO" Type="varchar2" MaxLength="100" />
+    <Property Name="RSDAGNO" Type="varchar2" MaxLength="100" />
+    <Property Name="DEEDFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="DEEDFILEDATA" Type="blob" />
+    <Property Name="DOLILFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="DOLILFILEDATA" Type="blob" />
+    <Property Name="RENTVATCHALLANNO" Type="varchar2" MaxLength="30" />
+    <Property Name="VCHALNFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="VCHALNFILEDATA" Type="blob" />
+    <Property Name="BONDEDFAC" Type="varchar2" MaxLength="1" />
+    <Property Name="BTYPESLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BCATSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BSCATSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BONDFACPREV" Type="varchar2" MaxLength="2" />
+    <Property Name="BONDFACPREVLICENNO" Type="varchar2" MaxLength="100" />
+    <Property Name="BONDFACPREVLICENNOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERCATEGORY" Type="varchar2" MaxLength="4" />
+    <Property Name="TOTFACLENG" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTFACWIDTH" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTRMWHLENG" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTRMWHWIDTH" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTRMWHHEIGHT" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTFGWHLENG" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTFGWHWIDTH" Type="number" Precision="10" Scale="2" />
+    <Property Name="TOTFGWHHEIGHT" Type="number" Precision="10" Scale="2" />
+    <Property Name="AUTHORIZEDSIGNAME" Type="varchar2" MaxLength="100" />
+    <Property Name="AUTHORIZEDSIGNAMEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="INITIALAUTHSIGFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="INITIALAUTHSIGFILEDATA" Type="blob" />
+    <Property Name="PHOTOFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="PHOTOFILEDATA" Type="blob" />
+    <Property Name="DECLARFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="DECLARFILEDATA" Type="blob" />
+    <Property Name="DECLARSIGFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="DECLARSIGFILEDATA" Type="blob" />
+    <Property Name="DECLARSEALFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="DECLARSEALFILEDATA" Type="blob" />
+    <Property Name="DECLARDESSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="DECLARDATE" Type="date" />
+    <Property Name="REMARKS" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="DECLARNMBLOCK" Type="varchar2" MaxLength="200" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="300" />
+    <Property Name="COADDRESS" Type="varchar2" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENT">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BSNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="ENTLTYPE" Type="varchar2" MaxLength="2" />
+    <Property Name="TOTALSTORAGEQTY" Type="number" Precision="12" Scale="2" />
+    <Property Name="TSMUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="TOTALSTORAGEQTYEN" Type="varchar2" MaxLength="100" />
+    <Property Name="TOTALSTORAGEQTYBG" Type="varchar2" MaxLength="100" />
+    <Property Name="ONETIMESTORAGEQTY" Type="number" Precision="12" Scale="2" />
+    <Property Name="OTMUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="ONETIMESTORAGEQTYEN" Type="varchar2" MaxLength="100" />
+    <Property Name="ONETIMESTORAGEQTYBG" Type="varchar2" MaxLength="100" />
+    <Property Name="ENTITLEPERCENTQTY" Type="number" Precision="12" Scale="2" />
+    <Property Name="ETMUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="ENTITLEPERCENTEN" Type="varchar2" MaxLength="100" />
+    <Property Name="ENTITLEPERCENTBG" Type="varchar2" MaxLength="100" />
+    <Property Name="ENTITLEFROM" Type="date" />
+    <Property Name="ENTITLETO" Type="date" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="PERCENTVAL" Type="number" Precision="12" Scale="2" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENTCOEDET">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+      <PropertyRef Name="RMSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="RMSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="GROSSQT" Type="number" Precision="12" Scale="2" />
+    <Property Name="WASTAGEQT" Type="number" Precision="12" Scale="2" />
+    <Property Name="SHRINKAGEQT" Type="number" Precision="12" Scale="2" />
+    <Property Name="NETQT" Type="number" Precision="12" Scale="2" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENTCOM">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MEASUREMENT" Type="varchar2" MaxLength="100" />
+    <Property Name="MSIZE" Type="varchar2" MaxLength="100" />
+    <Property Name="WEIGHT" Type="varchar2" MaxLength="100" />
+    <Property Name="MACHINESLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="MDESC" Type="varchar2" MaxLength="150" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENTDET">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="ENTITLEMENTQTY" Type="number" Precision="12" Scale="2" />
+    <Property Name="MUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDERLIENBANK">
+    <Key>
+      <PropertyRef Name="LBANKSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BBRANCHSLNO" />
+    </Key>
+    <Property Name="LBANKSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BBRANCHSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="LIENBANKCODE" Type="varchar2" MaxLength="25" />
+    <Property Name="LIENBANKCODEBG" Type="varchar2" MaxLength="25" />
+    <Property Name="CERATTACHFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="CERATTACHFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="CERATTACHFILEDATA" Type="blob" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="BANKSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="250" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="50" />
+    <Property Name="FAX" Type="varchar2" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="BONDERPRODUCT">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="FPSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="FPSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="REGFROM" Type="varchar2" MaxLength="100" />
+    <Property Name="REGFROMBG" Type="varchar2" MaxLength="100" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDERRAWMATERIAL">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="QTY" Type="number" Precision="12" Scale="2" />
+  </EntityType>
+  <EntityType Name="BONDREGISTRATION">
+    <Key>
+      <PropertyRef Name="RGSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="RGSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BSNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDLICENSENO" Type="varchar2" MaxLength="150" />
+    <Property Name="BTYPESLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="BONDCIRCLESLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="FEEAMT" Type="number" Precision="12" Scale="2" />
+    <Property Name="VATPCT" Type="number" Precision="12" Scale="2" />
+    <Property Name="VATAMT" Type="number" Precision="12" Scale="2" />
+    <Property Name="TOTAMT" Type="number" Precision="12" Scale="2" />
+    <Property Name="ISSUEDATE" Type="date" />
+    <Property Name="EXPIRYDATE" Type="date" />
+    <Property Name="RENEWALDATE" Type="date" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="AUTORENEWAL" Type="varchar2" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="BONDSTATUS">
+    <Key>
+      <PropertyRef Name="BSNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="BSNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="REFNO" Type="varchar2" MaxLength="100" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="2" />
+    <Property Name="BSDATE" Type="date" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="SUBMITTEDBYNM" Type="varchar2" MaxLength="200" />
+    <Property Name="REMARKS" Type="varchar2" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="BONDSUBCATEGORY">
+    <Key>
+      <PropertyRef Name="BSCATSLNO" />
+    </Key>
+    <Property Name="BSCATSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BSTYPECODE" Type="varchar2" MaxLength="10" />
+    <Property Name="BSTYPECODEBG" Type="varchar2" MaxLength="10" />
+    <Property Name="BSCATNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BSCATNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="BONDTYPE">
+    <Key>
+      <PropertyRef Name="BTYPESLNO" />
+    </Key>
+    <Property Name="BTYPESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BTYPECODE" Type="varchar2" MaxLength="10" />
+    <Property Name="BTYPECODEBG" Type="varchar2" MaxLength="10" />
+    <Property Name="BTYPENAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="BTYPENAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="COUNTRY">
+    <Key>
+      <PropertyRef Name="COUNTRYSLNO" />
+    </Key>
+    <Property Name="COUNTRYSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="COUNTRYCODE" Type="varchar2" MaxLength="10" />
+    <Property Name="COUNTRYCODEBG" Type="varchar2" MaxLength="10" />
+    <Property Name="COUNTRYNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="COUNTRYNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="CURRENCY">
+    <Key>
+      <PropertyRef Name="CURRSLNO" />
+    </Key>
+    <Property Name="CURRSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CURRENCYCODE" Type="varchar2" MaxLength="10" />
+    <Property Name="CURRENCYSNM" Type="varchar2" MaxLength="5" />
+    <Property Name="CURRENCYSNMBG" Type="varchar2" MaxLength="5" />
+    <Property Name="CURRENCYNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="CURRENCYNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="DESIGNATION">
+    <Key>
+      <PropertyRef Name="DESSLNO" />
+    </Key>
+    <Property Name="DESSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="DESCODE" Type="varchar2" MaxLength="50" />
+    <Property Name="DESCODEBG" Type="varchar2" MaxLength="50" />
+    <Property Name="DESNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="DESNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="DISTRICT">
+    <Key>
+      <PropertyRef Name="DISTRICTSLNO" />
+    </Key>
+    <Property Name="DISTRICTSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="COUNTRYSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="DISTRICTNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="DISTRICTNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="DOCHEADINGINFO">
+    <Key>
+      <PropertyRef Name="DOCHEADINGSLNO" />
+    </Key>
+    <Property Name="DOCHEADINGSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="DOCHEADINGNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="DOCHEADINGNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="DOCUMENTATTACHMENT">
+    <Key>
+      <PropertyRef Name="ATTCHSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="ATTCHSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="BSNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="APPLICANTREFNO" Type="varchar2" MaxLength="100" />
+    <Property Name="DOCHEADINGNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="DOCHEADINGNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="RGATTCHNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="RGATTCHNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="ISSUEDATE" Type="date" />
+    <Property Name="EXPDATE" Type="date" />
+    <Property Name="ATTACHFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="ATTACHFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="ATTACHFILEDATA" Type="blob" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPLOYEESLNO" />
+    </Key>
+    <Property Name="EMPLOYEESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="OFFICESLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="EMPLOYEENAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="EMPLOYEENAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="PHOTOFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="PHOTOFILEDATA" Type="blob" />
+    <Property Name="DESSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="MOBILE" Type="varchar2" MaxLength="100" />
+    <Property Name="MOBILEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="2" />
+    <Property Name="EMPLOYEETYPE" Type="varchar2" MaxLength="2" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="EXBOND">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="200" />
+    <Property Name="BONDERID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="EXBONDBACKTOBACK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="EXBONDID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BACKTOBACKID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FINISHEDPRODUCTS">
+    <Key>
+      <PropertyRef Name="FPSLNO" />
+    </Key>
+    <Property Name="FPSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="PRODCODE" Type="varchar2" MaxLength="50" />
+    <Property Name="PRODCODEBG" Type="varchar2" MaxLength="50" />
+    <Property Name="FPNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="FPNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="FPDESCRIPTION" Type="varchar2" MaxLength="300" />
+    <Property Name="FPDESCRIPTIONBG" Type="varchar2" MaxLength="300" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="INBOND">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="LCNUMBER" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="LCDATE" Type="date" Nullable="false" />
+    <Property Name="BOENUMBER" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="BOEDATE" Type="date" Nullable="false" />
+    <Property Name="BONDERID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="100" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="100" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="INBONDRAWMATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="RAWMATERIALCODE" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="PRODUCTQUANTITY" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUANTITYUNIT" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="PRODUCTCOST" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COSTUNIT" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="INBONDID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="INSTALLEDMACHINEINFO">
+    <Key>
+      <PropertyRef Name="MACHINESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="MACHINESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="DATEOFINSTALL" Type="date" />
+    <Property Name="BENO" Type="varchar2" MaxLength="50" />
+    <Property Name="BENOBG" Type="varchar2" MaxLength="50" />
+    <Property Name="BENODATE" Type="date" />
+    <Property Name="VATCHNO" Type="varchar2" MaxLength="50" />
+    <Property Name="VATCHNOBG" Type="varchar2" MaxLength="50" />
+    <Property Name="VATCHNODATE" Type="date" />
+    <Property Name="BLNO" Type="varchar2" MaxLength="50" />
+    <Property Name="BLNOBG" Type="varchar2" MaxLength="50" />
+    <Property Name="BLNODATE" Type="date" />
+    <Property Name="INVOICENO" Type="varchar2" MaxLength="50" />
+    <Property Name="INVOICENOBG" Type="varchar2" MaxLength="50" />
+    <Property Name="INVOICENODATE" Type="date" />
+    <Property Name="LCNO" Type="varchar2" MaxLength="50" />
+    <Property Name="LCNOBG" Type="varchar2" MaxLength="50" />
+    <Property Name="LCNODATE" Type="date" />
+    <Property Name="MACHINEQTY" Type="number" Precision="38" Scale="0" />
+    <Property Name="MACHINETYPE" Type="varchar2" MaxLength="2" />
+    <Property Name="PROCUREMENTTYPE" Type="varchar2" MaxLength="25" />
+    <Property Name="INDEMNITYBOND" Type="varchar2" MaxLength="1" />
+    <Property Name="INDEMNITYUNDERTKNO" Type="varchar2" MaxLength="100" />
+    <Property Name="INDEMNITYUNDERTKNOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="INDEMNITYUNDERTKDT" Type="date" />
+    <Property Name="CASHCHALNVOUCHNO" Type="varchar2" MaxLength="100" />
+    <Property Name="CASHCHALNVOUCHNOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="CASHCHALNVOUCHDT" Type="date" />
+    <Property Name="DUERELEASDT" Type="date" />
+    <Property Name="ACTRELEASDT" Type="date" />
+    <Property Name="LOCALPURCLEARENCEFROM" Type="varchar2" MaxLength="100" />
+    <Property Name="LOCALPURCLEARENCEFROMBG" Type="varchar2" MaxLength="100" />
+    <Property Name="LOCALPURCLEARENCENO" Type="varchar2" MaxLength="100" />
+    <Property Name="LOCALPURCLEARENCENOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="LOCALPURCLEARENCEDT" Type="date" />
+    <Property Name="LOCALPURPERMISSIONFROMCBC" Type="varchar2" MaxLength="100" />
+    <Property Name="LOCALPURPERMISSIONFROMCBCDT" Type="date" />
+    <Property Name="TRANSFERLIENBANK" Type="number" Precision="5" Scale="0" />
+    <Property Name="TRANSFERLIENBANKNOCNO" Type="varchar2" MaxLength="100" />
+    <Property Name="TRANSFERLIENBANKNOCNOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="TRANSFERLIENBANKDT" Type="date" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="200" />
+    <Property Name="DESCRIPTIONBG" Type="varchar2" MaxLength="200" />
+    <Property Name="MANUFACTUREYEAR" Type="varchar2" MaxLength="25" />
+    <Property Name="MANUFACTUREYEARBG" Type="varchar2" MaxLength="25" />
+    <Property Name="COUNTRYSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="MODELSLNO" Type="number" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityType Name="MACHINEINFORMATION">
+    <Key>
+      <PropertyRef Name="MACHINESLNO" />
+    </Key>
+    <Property Name="MACHINESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MODELNM" Type="varchar2" MaxLength="200" />
+    <Property Name="MODELNMBG" Type="varchar2" MaxLength="200" />
+    <Property Name="REMARKS" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="BRAND_NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MATERIALS">
+    <Key>
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="MSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MGSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="MHSCODE" Type="varchar2" MaxLength="50" />
+    <Property Name="MHSCODEBG" Type="varchar2" MaxLength="50" />
+    <Property Name="MDESCRIPTION" Type="varchar2" MaxLength="400" />
+    <Property Name="MDESCRIPTIONBG" Type="varchar2" MaxLength="400" />
+    <Property Name="SPGRADE" Type="varchar2" MaxLength="100" />
+    <Property Name="SPGRADEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="MUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="MTYPE" Type="varchar2" MaxLength="1" />
+    <Property Name="REMARKS" Type="varchar2" MaxLength="100" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="MATERIALNAME" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="MATERIALSGROUP">
+    <Key>
+      <PropertyRef Name="MGSLNO" />
+    </Key>
+    <Property Name="MGSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MGROUPCODE" Type="varchar2" MaxLength="50" />
+    <Property Name="MGROUPCODEBG" Type="varchar2" MaxLength="50" />
+    <Property Name="MGROUPCODENAME" Type="varchar2" MaxLength="400" />
+    <Property Name="MGROUPCODENAMEBG" Type="varchar2" MaxLength="400" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="MEASUREMENTUNIT">
+    <Key>
+      <PropertyRef Name="MUSLNO" />
+    </Key>
+    <Property Name="MUSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MUNAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="MUNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="MEASUREMENTUNITCONVERSION">
+    <Key>
+      <PropertyRef Name="CONVSLNO" />
+    </Key>
+    <Property Name="CONVSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MUSLNO1" Type="number" Precision="5" Scale="0" />
+    <Property Name="MUSLNO2" Type="number" Precision="5" Scale="0" />
+    <Property Name="CONVVALUE" Type="number" Precision="15" Scale="6" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="MODEL">
+    <Key>
+      <PropertyRef Name="MODELSLNO" />
+    </Key>
+    <Property Name="MODELSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MODELNM" Type="varchar2" MaxLength="100" />
+    <Property Name="MACHINESLNO" Type="number" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityType Name="OFFICE">
+    <Key>
+      <PropertyRef Name="OFFICESLNO" />
+    </Key>
+    <Property Name="OFFICESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="OFFICENAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="OFFICENAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="OFFICESNAME" Type="varchar2" MaxLength="60" />
+    <Property Name="OFFICESNAMEBG" Type="varchar2" MaxLength="60" />
+    <Property Name="ADDRESS" Type="varchar2" MaxLength="300" />
+    <Property Name="ADDRESSBG" Type="varchar2" MaxLength="300" />
+    <Property Name="COUNTRYSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="DISTRICTSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="CONTACTPERSON" Type="varchar2" MaxLength="100" />
+    <Property Name="CONTACTPERSONBG" Type="varchar2" MaxLength="100" />
+    <Property Name="DESSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="MOBILENO" Type="varchar2" MaxLength="100" />
+    <Property Name="MOBILENOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="PHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="FAX" Type="varchar2" MaxLength="100" />
+    <Property Name="FAXBG" Type="varchar2" MaxLength="100" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="100" />
+    <Property Name="WEB" Type="varchar2" MaxLength="100" />
+    <Property Name="OFFICETYPE" Type="varchar2" MaxLength="3" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="OWNERASSOCIATEBUSINESS">
+    <Key>
+      <PropertyRef Name="ASSOCIATESLNO" />
+      <PropertyRef Name="OWNERSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="ASSOCIATESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="OWNERSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="ASSOBUSINESSNAME" Type="varchar2" MaxLength="150" />
+    <Property Name="ASSOBUSINESSNAMEBG" Type="varchar2" MaxLength="150" />
+    <Property Name="ASSOBUSINESSADDRESS" Type="varchar2" MaxLength="200" />
+    <Property Name="ASSOBUSINESSADDRESSBG" Type="varchar2" MaxLength="200" />
+    <Property Name="TINASSOBUSINESS" Type="varchar2" MaxLength="100" />
+    <Property Name="TINASSOBUSINESSBG" Type="varchar2" MaxLength="100" />
+    <Property Name="TINDATE" Type="date" />
+    <Property Name="BINASSOBUSINESS" Type="varchar2" MaxLength="100" />
+    <Property Name="BINASSOBUSINESSBG" Type="varchar2" MaxLength="100" />
+    <Property Name="BINDATE" Type="date" />
+    <Property Name="BUSINESSNATURE" Type="varchar2" MaxLength="100" />
+    <Property Name="BUSINESSNATUREBG" Type="varchar2" MaxLength="100" />
+    <Property Name="BUSINESSPOS" Type="varchar2" MaxLength="100" />
+    <Property Name="BUSINESSPOSBG" Type="varchar2" MaxLength="100" />
+    <Property Name="BUSINESSSHARE" Type="varchar2" MaxLength="100" />
+    <Property Name="BUSINESSSHAREBG" Type="varchar2" MaxLength="100" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="OWNERDESSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="OWNERNAME" Type="varchar2" MaxLength="200" />
+    <Property Name="OWNERTINNO" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERTINISSDT" Type="date" />
+    <Property Name="OWNERNATIONALZIDNO" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="OWNERINFO">
+    <Key>
+      <PropertyRef Name="OWNERSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="OWNERSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="DESSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="OWNERNAME" Type="varchar2" MaxLength="200" />
+    <Property Name="OWNERNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="OWNERFHNAME" Type="varchar2" MaxLength="200" />
+    <Property Name="OWNERFHNAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="OWNERPERADDRESS" Type="varchar2" MaxLength="300" />
+    <Property Name="OWNERPERADDRESSBG" Type="varchar2" MaxLength="300" />
+    <Property Name="OWNERPRSADDRESS" Type="varchar2" MaxLength="300" />
+    <Property Name="OWNERPRSADDRESSBG" Type="varchar2" MaxLength="300" />
+    <Property Name="OWNERCONTACTNO" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERCONTACTNOBG" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERRESPHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERRESPHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERMOBPHONE" Type="varchar2" MaxLength="100" />
+    <Property Name="OWNERMOBPHONEBG" Type="varchar2" MaxLength="100" />
+    <Property Name="TINNO" Type="varchar2" MaxLength="100" />
+    <Property Name="TINISSDT" Type="date" />
+    <Property Name="PASSPORTNO" Type="varchar2" MaxLength="100" />
+    <Property Name="PASSDISTRICTSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="PASSISSUEDT" Type="date" />
+    <Property Name="PASSEXPDT" Type="date" />
+    <Property Name="NATIONALITY" Type="varchar2" MaxLength="100" />
+    <Property Name="NATIONALITYBG" Type="varchar2" MaxLength="100" />
+    <Property Name="NATIONALZIDNO" Type="varchar2" MaxLength="100" />
+    <Property Name="SIGNATUREFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="SIGNATUREFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="SIGNATUREFILEDATA" Type="blob" />
+    <Property Name="PHOTOFILENM" Type="varchar2" MaxLength="200" />
+    <Property Name="PHOTOFILEPATH" Type="varchar2" MaxLength="200" />
+    <Property Name="PHOTOFILEDATA" Type="blob" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="PRODCAPACITYMACHINEWISEDET">
+    <Key>
+      <PropertyRef Name="FPSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MACHINESLNO" />
+    </Key>
+    <Property Name="FPSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="MACHINESLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="MACHINEQTY" Type="number" Precision="5" Scale="0" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="MACHINETYPE" Type="varchar2" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="PRODCAPACITYMACHINEWISEM">
+    <Key>
+      <PropertyRef Name="FPSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="FPSLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="ANNUALPRODUCTION" Type="number" Precision="12" Scale="2" />
+    <Property Name="MUSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+    <Property Name="MACHINESLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="MACHINEQTY" Type="number" Precision="5" Scale="0" />
+    <Property Name="MHSCODE" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RAWMATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="RAWMATERIALCODE" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="QUANTITY" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="UNIT" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="PERMITTEDWASTE" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PRODUCTID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="NAME" Type="varchar2" MaxLength="100" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="200" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="100" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="100" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="UP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="BONDERID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+    <Property Name="UPNO" Type="varchar2" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UPAZILA">
+    <Key>
+      <PropertyRef Name="UPAZILASLNO" />
+    </Key>
+    <Property Name="UPAZILASLNO" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="DISTRICTSLNO" Type="number" Precision="5" Scale="0" />
+    <Property Name="UPAZILANAME" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="UPAZILANAMEBG" Type="varchar2" MaxLength="200" />
+    <Property Name="INPUTBY" Type="varchar2" MaxLength="50" />
+    <Property Name="INPUTDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="50" />
+    <Property Name="MODIFYDATE" Type="date" />
+  </EntityType>
+  <EntityType Name="UPEXBONDLIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="EXBONDID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="UPREQUESTID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UPREQUEST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="STATUS" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="155" />
+    <Property Name="MODIFIEDDATE" Type="date" />
+    <Property Name="BONDERID" Type="number" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="REJECTCOMMENT" Type="varchar2" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="UPREQUESTLIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="UPREQUESTID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="UPID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USERPERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="USERID" Type="number" Precision="5" Scale="0" />
+    <Property Name="ROLENAME" Type="varchar2" MaxLength="100" />
+    <Property Name="BONDERID" Type="number" Precision="6" Scale="0" />
+    <Property Name="EMPLOYID" Type="number" Precision="5" Scale="0" />
+  </EntityType>
+  <Association Name="FK_ATTACHMENT_UPREQ">
+    <End Role="UPREQUEST" Type="Self.UPREQUEST" Multiplicity="1" />
+    <End Role="ATTACHMENT" Type="Self.ATTACHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPREQUEST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ATTACHMENT">
+        <PropertyRef Name="UPREQUESTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_B2BPRODUT_B2B">
+    <End Role="BACKTOBACKLC" Type="Self.BACKTOBACKLC" Multiplicity="1" />
+    <End Role="BACKTOBACKPRODUCT" Type="Self.BACKTOBACKPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BACKTOBACKLC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BACKTOBACKPRODUCT">
+        <PropertyRef Name="BACKTOBACKLCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BACK2BACK_BANKBRANCH">
+    <End Role="BANKBRANCH" Type="Self.BANKBRANCH" Multiplicity="1" />
+    <End Role="BACKTOBACKLC" Type="Self.BACKTOBACKLC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKBRANCH">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Principal>
+      <Dependent Role="BACKTOBACKLC">
+        <PropertyRef Name="BUYERSBANKBRANCHID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BACK2BACKLC_BANK">
+    <End Role="BANK" Type="Self.BANK" Multiplicity="1" />
+    <End Role="BACKTOBACKLC" Type="Self.BACKTOBACKLC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Principal>
+      <Dependent Role="BACKTOBACKLC">
+        <PropertyRef Name="BUYERSBANKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BACKTOBACKLC_BONDER">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BACKTOBACKLC" Type="Self.BACKTOBACKLC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BACKTOBACKLC">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BRANCH">
+    <End Role="BANKBRANCH" Type="Self.BANKBRANCH" Multiplicity="0..1" />
+    <End Role="INSTALLEDMACHINEINFO" Type="Self.INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKBRANCH">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="TRANSFERLIENBANK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COUNTRYSLNO">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="0..1" />
+    <End Role="INSTALLEDMACHINEINFO" Type="Self.INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXBOND_BONDER">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="EXBOND" Type="Self.EXBOND" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="EXBOND">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXBONDB2B_B2BLC">
+    <End Role="BACKTOBACKLC" Type="Self.BACKTOBACKLC" Multiplicity="1" />
+    <End Role="EXBONDBACKTOBACK" Type="Self.EXBONDBACKTOBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BACKTOBACKLC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXBONDBACKTOBACK">
+        <PropertyRef Name="BACKTOBACKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXBONDB2B_EXBOND">
+    <End Role="EXBOND" Type="Self.EXBOND" Multiplicity="1" />
+    <End Role="EXBONDBACKTOBACK" Type="Self.EXBONDBACKTOBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXBOND">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXBONDBACKTOBACK">
+        <PropertyRef Name="EXBONDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INBONDRAWMATERIAL_INBOND">
+    <End Role="INBOND" Type="Self.INBOND" Multiplicity="1" />
+    <End Role="INBONDRAWMATERIAL" Type="Self.INBONDRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INBOND">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INBONDRAWMATERIAL">
+        <PropertyRef Name="INBONDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INBONDRAWMATERIAL_MATERIAL">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="INBONDRAWMATERIAL" Type="Self.INBONDRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="INBONDRAWMATERIAL">
+        <PropertyRef Name="RAWMATERIALCODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSTALLEDMACHINE_MODELSLNO">
+    <End Role="MODEL" Type="Self.MODEL" Multiplicity="0..1" />
+    <End Role="INSTALLEDMACHINEINFO" Type="Self.INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODEL">
+        <PropertyRef Name="MODELSLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="MODELSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIENBANK_BANK">
+    <End Role="BANK" Type="Self.BANK" Multiplicity="0..1" />
+    <End Role="BONDERLIENBANK" Type="Self.BONDERLIENBANK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Principal>
+      <Dependent Role="BONDERLIENBANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MACHINEINFO_MACHINESLNO">
+    <End Role="MACHINEINFORMATION" Type="Self.MACHINEINFORMATION" Multiplicity="0..1" />
+    <End Role="MODEL" Type="Self.MODEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="MODEL">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MACHINESLNO">
+    <End Role="MACHINEINFORMATION" Type="Self.MACHINEINFORMATION" Multiplicity="0..1" />
+    <End Role="PRODCAPACITYMACHINEWISEM" Type="Self.PRODCAPACITYMACHINEWISEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEM">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWMATERIAL_B2BPRODUCT">
+    <End Role="BACKTOBACKPRODUCT" Type="Self.BACKTOBACKPRODUCT" Multiplicity="1" />
+    <End Role="RAWMATERIAL" Type="Self.RAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BACKTOBACKPRODUCT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RAWMATERIAL">
+        <PropertyRef Name="PRODUCTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWMATERIAL_MATERIALS">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="RAWMATERIAL" Type="Self.RAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="RAWMATERIAL">
+        <PropertyRef Name="RAWMATERIALCODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UP_BONDER">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="UP" Type="Self.UP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="UP">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPEXBONDLIST_EXBOND">
+    <End Role="EXBOND" Type="Self.EXBOND" Multiplicity="1" />
+    <End Role="UPEXBONDLIST" Type="Self.UPEXBONDLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXBOND">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPEXBONDLIST">
+        <PropertyRef Name="EXBONDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPEXBONDLIST_UPREQUEST">
+    <End Role="UPREQUEST" Type="Self.UPREQUEST" Multiplicity="1" />
+    <End Role="UPEXBONDLIST" Type="Self.UPEXBONDLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPREQUEST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPEXBONDLIST">
+        <PropertyRef Name="UPREQUESTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPREQLIST_UP">
+    <End Role="UP" Type="Self.UP" Multiplicity="1" />
+    <End Role="UPREQUESTLIST" Type="Self.UPREQUESTLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPREQUESTLIST">
+        <PropertyRef Name="UPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPREQLIST_UPREQ">
+    <End Role="UPREQUEST" Type="Self.UPREQUEST" Multiplicity="1" />
+    <End Role="UPREQUESTLIST" Type="Self.UPREQUESTLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPREQUEST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPREQUESTLIST">
+        <PropertyRef Name="UPREQUESTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPREQUEST_BONDER">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="UPREQUEST" Type="Self.UPREQUEST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="UPREQUEST">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERMISSION_APPUSER">
+    <End Role="APPUSER" Type="Self.APPUSER" Multiplicity="0..1" />
+    <End Role="USERPERMISSION" Type="Self.USERPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPUSER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERPERMISSION">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERMISSION_BONDER">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="0..1" />
+    <End Role="USERPERMISSION" Type="Self.USERPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="USERPERMISSION">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERMISSION_EMPLOY">
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="0..1" />
+    <End Role="USERPERMISSION" Type="Self.USERPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEESLNO" />
+      </Principal>
+      <Dependent Role="USERPERMISSION">
+        <PropertyRef Name="EMPLOYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_ANNUALENTLRAWMATERIAL">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="ANNUALENTLRAWMATERIAL" Type="Self.ANNUALENTLRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="ANNUALENTLRAWMATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_ASSOCIATIONENROLL">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="ASSOCIATIONENROLL" Type="Self.ASSOCIATIONENROLL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="ASSOCIATIONENROLL">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BANKBRANCH">
+    <End Role="BANK" Type="Self.BANK" Multiplicity="0..1" />
+    <End Role="BANKBRANCH" Type="Self.BANKBRANCH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Principal>
+      <Dependent Role="BANKBRANCH">
+        <PropertyRef Name="BANKSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDAPPLICATIONPROGRESS">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDAPPLICATIONPROGRESS" Type="Self.BONDAPPLICATIONPROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDAPPLICATIONPROGRESS">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDCIRCLE">
+    <End Role="BONDDIVISION" Type="Self.BONDDIVISION" Multiplicity="0..1" />
+    <End Role="BONDCIRCLE" Type="Self.BONDCIRCLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDDIVISION">
+        <PropertyRef Name="BONDDIVISIONSLNO" />
+      </Principal>
+      <Dependent Role="BONDCIRCLE">
+        <PropertyRef Name="BONDDIVISIONSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDER">
+    <End Role="UPAZILA" Type="Self.UPAZILA" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPAZILA">
+        <PropertyRef Name="UPAZILASLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BUPAZILASLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERANNUALENTITLEMENT">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDERANNUALENTITLEMENT" Type="Self.BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERANNUALENTITLEMENTCOD">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="BONDERANNUALENTITLEMENTCOEDET" Type="Self.BONDERANNUALENTITLEMENTCOEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOEDET">
+        <PropertyRef Name="MSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERANNUALENTTLMNTCM">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="BONDERANNUALENTITLEMENTCOM" Type="Self.BONDERANNUALENTITLEMENTCOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOM">
+        <PropertyRef Name="MSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERLIENBANK">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDERLIENBANK" Type="Self.BONDERLIENBANK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERLIENBANK">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERPRODUCT">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="BONDERPRODUCT" Type="Self.BONDERPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERPRODUCT">
+        <PropertyRef Name="FPSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDREGISTRATION">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDREGISTRATION" Type="Self.BONDREGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDREGISTRATION">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDSTATUS">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDSTATUS" Type="Self.BONDSTATUS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDSTATUS">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_DISTRICT">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="0..1" />
+    <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Principal>
+      <Dependent Role="DISTRICT">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_DOCUMENTATTACHMENT">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="DOCUMENTATTACHMENT" Type="Self.DOCUMENTATTACHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="DOCUMENTATTACHMENT">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_EMPLOYEE">
+    <End Role="DESIGNATION" Type="Self.DESIGNATION" Multiplicity="0..1" />
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="DESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_INSTALLEDMACHINEINFO">
+    <End Role="MACHINEINFORMATION" Type="Self.MACHINEINFORMATION" Multiplicity="1" />
+    <End Role="INSTALLEDMACHINEINFO" Type="Self.INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_MATERIALS">
+    <End Role="MATERIALSGROUP" Type="Self.MATERIALSGROUP" Multiplicity="0..1" />
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALSGROUP">
+        <PropertyRef Name="MGSLNO" />
+      </Principal>
+      <Dependent Role="MATERIALS">
+        <PropertyRef Name="MGSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_MEASUREMENTUNITCONVERSION">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="MEASUREMENTUNITCONVERSION" Type="Self.MEASUREMENTUNITCONVERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="MEASUREMENTUNITCONVERSION">
+        <PropertyRef Name="MUSLNO1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_OFFICE">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="0..1" />
+    <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Principal>
+      <Dependent Role="OFFICE">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_OWNERINFO">
+    <End Role="DESIGNATION" Type="Self.DESIGNATION" Multiplicity="0..1" />
+    <End Role="OWNERINFO" Type="Self.OWNERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="OWNERINFO">
+        <PropertyRef Name="DESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_PRODCAPACITYMACHINEWISEDET">
+    <End Role="MACHINEINFORMATION" Type="Self.MACHINEINFORMATION" Multiplicity="1" />
+    <End Role="PRODCAPACITYMACHINEWISEDET" Type="Self.PRODCAPACITYMACHINEWISEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEDET">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_PRODCAPACITYMACHINEWISEM">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="PRODCAPACITYMACHINEWISEM" Type="Self.PRODCAPACITYMACHINEWISEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEM">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_UPAZILA">
+    <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="0..1" />
+    <End Role="UPAZILA" Type="Self.UPAZILA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="UPAZILA">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_ASSOCIATIONENROLL">
+    <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="1" />
+    <End Role="ASSOCIATIONENROLL" Type="Self.ASSOCIATIONENROLL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFICE">
+        <PropertyRef Name="OFFICESLNO" />
+      </Principal>
+      <Dependent Role="ASSOCIATIONENROLL">
+        <PropertyRef Name="OFFICESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDAPPLICATIONPROGRESS">
+    <End Role="BONDSTATUS" Type="Self.BONDSTATUS" Multiplicity="1" />
+    <End Role="BONDAPPLICATIONPROGRESS" Type="Self.BONDAPPLICATIONPROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDSTATUS">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDAPPLICATIONPROGRESS">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDER">
+    <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BDISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERANNUALENTITLEMENT">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="BONDERANNUALENTITLEMENT" Type="Self.BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="TSMUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERANNUALENTITLEMENTCOD">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDERANNUALENTITLEMENTCOEDET" Type="Self.BONDERANNUALENTITLEMENTCOEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOEDET">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERANNUALENTTLMNTCM">
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="1" />
+    <End Role="BONDERANNUALENTITLEMENTCOM" Type="Self.BONDERANNUALENTITLEMENTCOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOM">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERLIENBANK">
+    <End Role="BANKBRANCH" Type="Self.BANKBRANCH" Multiplicity="1" />
+    <End Role="BONDERLIENBANK" Type="Self.BONDERLIENBANK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKBRANCH">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Principal>
+      <Dependent Role="BONDERLIENBANK">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERRAWMATERIAL">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="BONDERRAWMATERIAL" Type="Self.BONDERRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERRAWMATERIAL">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDREGISTRATION">
+    <End Role="BONDTYPE" Type="Self.BONDTYPE" Multiplicity="0..1" />
+    <End Role="BONDREGISTRATION" Type="Self.BONDREGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDTYPE">
+        <PropertyRef Name="BTYPESLNO" />
+      </Principal>
+      <Dependent Role="BONDREGISTRATION">
+        <PropertyRef Name="BTYPESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_EMPLOYEE">
+    <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="0..1" />
+    <End Role="EMPLOYEE" Type="Self.EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFICE">
+        <PropertyRef Name="OFFICESLNO" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="OFFICESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_MATERIALS">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="MATERIALS">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_MEASUREMENTUNITCONVERSION">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="MEASUREMENTUNITCONVERSION" Type="Self.MEASUREMENTUNITCONVERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="MEASUREMENTUNITCONVERSION">
+        <PropertyRef Name="MUSLNO2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_OFFICE">
+    <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="0..1" />
+    <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="OFFICE">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_OWNERINFO">
+    <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="0..1" />
+    <End Role="OWNERINFO" Type="Self.OWNERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="OWNERINFO">
+        <PropertyRef Name="PASSDISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_PRODCAPACITYMACHINEWISEDET">
+    <End Role="PRODCAPACITYMACHINEWISEM" Type="Self.PRODCAPACITYMACHINEWISEM" Multiplicity="1" />
+    <End Role="PRODCAPACITYMACHINEWISEDET" Type="Self.PRODCAPACITYMACHINEWISEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODCAPACITYMACHINEWISEM">
+        <PropertyRef Name="FPSLNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEDET">
+        <PropertyRef Name="FPSLNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_ANNUALENTLRAWMATERIAL">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="ANNUALENTLRAWMATERIAL" Type="Self.ANNUALENTLRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="ANNUALENTLRAWMATERIAL">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDER">
+    <End Role="UPAZILA" Type="Self.UPAZILA" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPAZILA">
+        <PropertyRef Name="UPAZILASLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="HOUPAZILASLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDERANNUALENTITLEMENT">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="BONDERANNUALENTITLEMENT" Type="Self.BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="OTMUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDERANNUALENTITLEMENTCOD">
+    <End Role="MATERIALS" Type="Self.MATERIALS" Multiplicity="1" />
+    <End Role="BONDERANNUALENTITLEMENTCOEDET" Type="Self.BONDERANNUALENTITLEMENTCOEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALS">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOEDET">
+        <PropertyRef Name="RMSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDERANNUALENTTLMNTCM">
+    <End Role="MACHINEINFORMATION" Type="Self.MACHINEINFORMATION" Multiplicity="0..1" />
+    <End Role="BONDERANNUALENTITLEMENTCOM" Type="Self.BONDERANNUALENTITLEMENTCOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOM">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDREGISTRATION">
+    <End Role="BONDCIRCLE" Type="Self.BONDCIRCLE" Multiplicity="0..1" />
+    <End Role="BONDREGISTRATION" Type="Self.BONDREGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDCIRCLE">
+        <PropertyRef Name="BONDCIRCLESLNO" />
+      </Principal>
+      <Dependent Role="BONDREGISTRATION">
+        <PropertyRef Name="BONDCIRCLESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_OFFICE">
+    <End Role="DESIGNATION" Type="Self.DESIGNATION" Multiplicity="0..1" />
+    <End Role="OFFICE" Type="Self.OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="OFFICE">
+        <PropertyRef Name="DESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK4_BONDER">
+    <End Role="DISTRICT" Type="Self.DISTRICT" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="HODISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK4_BONDERANNUALENTITLEMENT">
+    <End Role="MEASUREMENTUNIT" Type="Self.MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Role="BONDERANNUALENTITLEMENT" Type="Self.BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="ETMUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK5_BONDER">
+    <End Role="BONDTYPE" Type="Self.BONDTYPE" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDTYPE">
+        <PropertyRef Name="BTYPESLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BTYPESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK5_BONDERANNUALENTITLEMENT">
+    <End Role="BONDSTATUS" Type="Self.BONDSTATUS" Multiplicity="0..1" />
+    <End Role="BONDERANNUALENTITLEMENT" Type="Self.BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDSTATUS">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK6_BONDER">
+    <End Role="BONDCATEGORY" Type="Self.BONDCATEGORY" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDCATEGORY">
+        <PropertyRef Name="BCATSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BCATSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK7_BONDER">
+    <End Role="BONDSUBCATEGORY" Type="Self.BONDSUBCATEGORY" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDSUBCATEGORY">
+        <PropertyRef Name="BSCATSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BSCATSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK8_BONDER">
+    <End Role="DESIGNATION" Type="Self.DESIGNATION" Multiplicity="0..1" />
+    <End Role="BONDER" Type="Self.BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="DECLARDESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0011192">
+    <End Role="DESIGNATION" Type="Self.DESIGNATION" Multiplicity="0..1" />
+    <End Role="OWNERASSOCIATEBUSINESS" Type="Self.OWNERASSOCIATEBUSINESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="OWNERASSOCIATEBUSINESS">
+        <PropertyRef Name="OWNERDESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BMSModelStoreContainer">
+    <EntitySet Name="ANNUALENTLRAWMATERIAL" EntityType="Self.ANNUALENTLRAWMATERIAL" store:Type="Tables" />
+    <EntitySet Name="APPUSER" EntityType="Self.APPUSER" store:Type="Tables" />
+    <EntitySet Name="ASSOCIATIONENROLL" EntityType="Self.ASSOCIATIONENROLL" store:Type="Tables" />
+    <EntitySet Name="ATTACHMENT" EntityType="Self.ATTACHMENT" store:Type="Tables" />
+    <EntitySet Name="BACKTOBACKLC" EntityType="Self.BACKTOBACKLC" store:Type="Tables" />
+    <EntitySet Name="BACKTOBACKPRODUCT" EntityType="Self.BACKTOBACKPRODUCT" store:Type="Tables" />
+    <EntitySet Name="BANK" EntityType="Self.BANK" store:Type="Tables" />
+    <EntitySet Name="BANKBRANCH" EntityType="Self.BANKBRANCH" store:Type="Tables" />
+    <EntitySet Name="BONDAPPLICATIONPROGRESS" EntityType="Self.BONDAPPLICATIONPROGRESS" store:Type="Tables" />
+    <EntitySet Name="BONDAREA" EntityType="Self.BONDAREA" store:Type="Tables" />
+    <EntitySet Name="BONDCATEGORY" EntityType="Self.BONDCATEGORY" store:Type="Tables" />
+    <EntitySet Name="BONDCIRCLE" EntityType="Self.BONDCIRCLE" store:Type="Tables" />
+    <EntitySet Name="BONDDIVISION" EntityType="Self.BONDDIVISION" store:Type="Tables" />
+    <EntitySet Name="BONDER" EntityType="Self.BONDER" store:Type="Tables" />
+    <EntitySet Name="BONDERANNUALENTITLEMENT" EntityType="Self.BONDERANNUALENTITLEMENT" store:Type="Tables" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTCOEDET" EntityType="Self.BONDERANNUALENTITLEMENTCOEDET" store:Type="Tables" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTCOM" EntityType="Self.BONDERANNUALENTITLEMENTCOM" store:Type="Tables" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTDET" EntityType="Self.BONDERANNUALENTITLEMENTDET" store:Type="Tables" />
+    <EntitySet Name="BONDERLIENBANK" EntityType="Self.BONDERLIENBANK" store:Type="Tables" />
+    <EntitySet Name="BONDERPRODUCT" EntityType="Self.BONDERPRODUCT" store:Type="Tables" />
+    <EntitySet Name="BONDERRAWMATERIAL" EntityType="Self.BONDERRAWMATERIAL" store:Type="Tables" />
+    <EntitySet Name="BONDREGISTRATION" EntityType="Self.BONDREGISTRATION" store:Type="Tables" />
+    <EntitySet Name="BONDSTATUS" EntityType="Self.BONDSTATUS" store:Type="Tables" />
+    <EntitySet Name="BONDSUBCATEGORY" EntityType="Self.BONDSUBCATEGORY" store:Type="Tables" />
+    <EntitySet Name="BONDTYPE" EntityType="Self.BONDTYPE" store:Type="Tables" />
+    <EntitySet Name="COUNTRY" EntityType="Self.COUNTRY" store:Type="Tables" />
+    <EntitySet Name="CURRENCY" EntityType="Self.CURRENCY" store:Type="Tables" />
+    <EntitySet Name="DESIGNATION" EntityType="Self.DESIGNATION" store:Type="Tables" />
+    <EntitySet Name="DISTRICT" EntityType="Self.DISTRICT" store:Type="Tables" />
+    <EntitySet Name="DOCHEADINGINFO" EntityType="Self.DOCHEADINGINFO" store:Type="Tables" />
+    <EntitySet Name="DOCUMENTATTACHMENT" EntityType="Self.DOCUMENTATTACHMENT" store:Type="Tables" />
+    <EntitySet Name="EMPLOYEE" EntityType="Self.EMPLOYEE" store:Type="Tables" />
+    <EntitySet Name="EXBOND" EntityType="Self.EXBOND" store:Type="Tables" />
+    <EntitySet Name="EXBONDBACKTOBACK" EntityType="Self.EXBONDBACKTOBACK" store:Type="Tables" />
+    <EntitySet Name="FINISHEDPRODUCTS" EntityType="Self.FINISHEDPRODUCTS" store:Type="Tables" />
+    <EntitySet Name="INBOND" EntityType="Self.INBOND" store:Type="Tables" />
+    <EntitySet Name="INBONDRAWMATERIAL" EntityType="Self.INBONDRAWMATERIAL" store:Type="Tables" />
+    <EntitySet Name="INSTALLEDMACHINEINFO" EntityType="Self.INSTALLEDMACHINEINFO" store:Type="Tables" />
+    <EntitySet Name="MACHINEINFORMATION" EntityType="Self.MACHINEINFORMATION" store:Type="Tables" />
+    <EntitySet Name="MATERIALS" EntityType="Self.MATERIALS" store:Type="Tables" />
+    <EntitySet Name="MATERIALSGROUP" EntityType="Self.MATERIALSGROUP" store:Type="Tables" />
+    <EntitySet Name="MEASUREMENTUNIT" EntityType="Self.MEASUREMENTUNIT" store:Type="Tables" />
+    <EntitySet Name="MEASUREMENTUNITCONVERSION" EntityType="Self.MEASUREMENTUNITCONVERSION" store:Type="Tables" />
+    <EntitySet Name="MODEL" EntityType="Self.MODEL" store:Type="Tables" />
+    <EntitySet Name="OFFICE" EntityType="Self.OFFICE" store:Type="Tables" />
+    <EntitySet Name="OWNERASSOCIATEBUSINESS" EntityType="Self.OWNERASSOCIATEBUSINESS" store:Type="Tables" />
+    <EntitySet Name="OWNERINFO" EntityType="Self.OWNERINFO" store:Type="Tables" />
+    <EntitySet Name="PRODCAPACITYMACHINEWISEDET" EntityType="Self.PRODCAPACITYMACHINEWISEDET" store:Type="Tables" />
+    <EntitySet Name="PRODCAPACITYMACHINEWISEM" EntityType="Self.PRODCAPACITYMACHINEWISEM" store:Type="Tables" />
+    <EntitySet Name="RAWMATERIAL" EntityType="Self.RAWMATERIAL" store:Type="Tables" />
+    <EntitySet Name="STATUS" EntityType="Self.STATUS" store:Type="Tables" />
+    <EntitySet Name="UP" EntityType="Self.UP" store:Type="Tables" />
+    <EntitySet Name="UPAZILA" EntityType="Self.UPAZILA" store:Type="Tables" />
+    <EntitySet Name="UPEXBONDLIST" EntityType="Self.UPEXBONDLIST" store:Type="Tables" />
+    <EntitySet Name="UPREQUEST" EntityType="Self.UPREQUEST" store:Type="Tables" />
+    <EntitySet Name="UPREQUESTLIST" EntityType="Self.UPREQUESTLIST" store:Type="Tables" />
+    <EntitySet Name="USERPERMISSION" EntityType="Self.USERPERMISSION" store:Type="Tables" />
+    <AssociationSet Name="FK_ATTACHMENT_UPREQ" Association="Self.FK_ATTACHMENT_UPREQ">
+      <End Role="UPREQUEST" EntitySet="UPREQUEST" />
+      <End Role="ATTACHMENT" EntitySet="ATTACHMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_B2BPRODUT_B2B" Association="Self.FK_B2BPRODUT_B2B">
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLC" />
+      <End Role="BACKTOBACKPRODUCT" EntitySet="BACKTOBACKPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BACK2BACK_BANKBRANCH" Association="Self.FK_BACK2BACK_BANKBRANCH">
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCH" />
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BACK2BACKLC_BANK" Association="Self.FK_BACK2BACKLC_BANK">
+      <End Role="BANK" EntitySet="BANK" />
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BACKTOBACKLC_BONDER" Association="Self.FK_BACKTOBACKLC_BONDER">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLC" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BRANCH" Association="Self.FK_BRANCH">
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCH" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COUNTRYSLNO" Association="Self.FK_COUNTRYSLNO">
+      <End Role="COUNTRY" EntitySet="COUNTRY" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXBOND_BONDER" Association="Self.FK_EXBOND_BONDER">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="EXBOND" EntitySet="EXBOND" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXBONDB2B_B2BLC" Association="Self.FK_EXBONDB2B_B2BLC">
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLC" />
+      <End Role="EXBONDBACKTOBACK" EntitySet="EXBONDBACKTOBACK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXBONDB2B_EXBOND" Association="Self.FK_EXBONDB2B_EXBOND">
+      <End Role="EXBOND" EntitySet="EXBOND" />
+      <End Role="EXBONDBACKTOBACK" EntitySet="EXBONDBACKTOBACK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INBONDRAWMATERIAL_INBOND" Association="Self.FK_INBONDRAWMATERIAL_INBOND">
+      <End Role="INBOND" EntitySet="INBOND" />
+      <End Role="INBONDRAWMATERIAL" EntitySet="INBONDRAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INBONDRAWMATERIAL_MATERIAL" Association="Self.FK_INBONDRAWMATERIAL_MATERIAL">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="INBONDRAWMATERIAL" EntitySet="INBONDRAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSTALLEDMACHINE_MODELSLNO" Association="Self.FK_INSTALLEDMACHINE_MODELSLNO">
+      <End Role="MODEL" EntitySet="MODEL" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIENBANK_BANK" Association="Self.FK_LIENBANK_BANK">
+      <End Role="BANK" EntitySet="BANK" />
+      <End Role="BONDERLIENBANK" EntitySet="BONDERLIENBANK" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MACHINEINFO_MACHINESLNO" Association="Self.FK_MACHINEINFO_MACHINESLNO">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATION" />
+      <End Role="MODEL" EntitySet="MODEL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MACHINESLNO" Association="Self.FK_MACHINESLNO">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATION" />
+      <End Role="PRODCAPACITYMACHINEWISEM" EntitySet="PRODCAPACITYMACHINEWISEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWMATERIAL_B2BPRODUCT" Association="Self.FK_RAWMATERIAL_B2BPRODUCT">
+      <End Role="BACKTOBACKPRODUCT" EntitySet="BACKTOBACKPRODUCT" />
+      <End Role="RAWMATERIAL" EntitySet="RAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWMATERIAL_MATERIALS" Association="Self.FK_RAWMATERIAL_MATERIALS">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="RAWMATERIAL" EntitySet="RAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UP_BONDER" Association="Self.FK_UP_BONDER">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="UP" EntitySet="UP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPEXBONDLIST_EXBOND" Association="Self.FK_UPEXBONDLIST_EXBOND">
+      <End Role="EXBOND" EntitySet="EXBOND" />
+      <End Role="UPEXBONDLIST" EntitySet="UPEXBONDLIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPEXBONDLIST_UPREQUEST" Association="Self.FK_UPEXBONDLIST_UPREQUEST">
+      <End Role="UPREQUEST" EntitySet="UPREQUEST" />
+      <End Role="UPEXBONDLIST" EntitySet="UPEXBONDLIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPREQLIST_UP" Association="Self.FK_UPREQLIST_UP">
+      <End Role="UP" EntitySet="UP" />
+      <End Role="UPREQUESTLIST" EntitySet="UPREQUESTLIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPREQLIST_UPREQ" Association="Self.FK_UPREQLIST_UPREQ">
+      <End Role="UPREQUEST" EntitySet="UPREQUEST" />
+      <End Role="UPREQUESTLIST" EntitySet="UPREQUESTLIST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPREQUEST_BONDER" Association="Self.FK_UPREQUEST_BONDER">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="UPREQUEST" EntitySet="UPREQUEST" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERMISSION_APPUSER" Association="Self.FK_USERPERMISSION_APPUSER">
+      <End Role="APPUSER" EntitySet="APPUSER" />
+      <End Role="USERPERMISSION" EntitySet="USERPERMISSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERMISSION_BONDER" Association="Self.FK_USERPERMISSION_BONDER">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="USERPERMISSION" EntitySet="USERPERMISSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERMISSION_EMPLOY" Association="Self.FK_USERPERMISSION_EMPLOY">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+      <End Role="USERPERMISSION" EntitySet="USERPERMISSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_ANNUALENTLRAWMATERIAL" Association="Self.FK1_ANNUALENTLRAWMATERIAL">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="ANNUALENTLRAWMATERIAL" EntitySet="ANNUALENTLRAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_ASSOCIATIONENROLL" Association="Self.FK1_ASSOCIATIONENROLL">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="ASSOCIATIONENROLL" EntitySet="ASSOCIATIONENROLL" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BANKBRANCH" Association="Self.FK1_BANKBRANCH">
+      <End Role="BANK" EntitySet="BANK" />
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCH" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDAPPLICATIONPROGRESS" Association="Self.FK1_BONDAPPLICATIONPROGRESS">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDAPPLICATIONPROGRESS" EntitySet="BONDAPPLICATIONPROGRESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDCIRCLE" Association="Self.FK1_BONDCIRCLE">
+      <End Role="BONDDIVISION" EntitySet="BONDDIVISION" />
+      <End Role="BONDCIRCLE" EntitySet="BONDCIRCLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDER" Association="Self.FK1_BONDER">
+      <End Role="UPAZILA" EntitySet="UPAZILA" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERANNUALENTITLEMENT" Association="Self.FK1_BONDERANNUALENTITLEMENT">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERANNUALENTITLEMENTCOD" Association="Self.FK1_BONDERANNUALENTITLEMENTCOD">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="BONDERANNUALENTITLEMENTCOEDET" EntitySet="BONDERANNUALENTITLEMENTCOEDET" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERANNUALENTTLMNTCM" Association="Self.FK1_BONDERANNUALENTTLMNTCM">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="BONDERANNUALENTITLEMENTCOM" EntitySet="BONDERANNUALENTITLEMENTCOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERLIENBANK" Association="Self.FK1_BONDERLIENBANK">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDERLIENBANK" EntitySet="BONDERLIENBANK" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERPRODUCT" Association="Self.FK1_BONDERPRODUCT">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="BONDERPRODUCT" EntitySet="BONDERPRODUCT" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDREGISTRATION" Association="Self.FK1_BONDREGISTRATION">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDREGISTRATION" EntitySet="BONDREGISTRATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDSTATUS" Association="Self.FK1_BONDSTATUS">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDSTATUS" EntitySet="BONDSTATUS" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_DISTRICT" Association="Self.FK1_DISTRICT">
+      <End Role="COUNTRY" EntitySet="COUNTRY" />
+      <End Role="DISTRICT" EntitySet="DISTRICT" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_DOCUMENTATTACHMENT" Association="Self.FK1_DOCUMENTATTACHMENT">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="DOCUMENTATTACHMENT" EntitySet="DOCUMENTATTACHMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_EMPLOYEE" Association="Self.FK1_EMPLOYEE">
+      <End Role="DESIGNATION" EntitySet="DESIGNATION" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_INSTALLEDMACHINEINFO" Association="Self.FK1_INSTALLEDMACHINEINFO">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATION" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_MATERIALS" Association="Self.FK1_MATERIALS">
+      <End Role="MATERIALSGROUP" EntitySet="MATERIALSGROUP" />
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_MEASUREMENTUNITCONVERSION" Association="Self.FK1_MEASUREMENTUNITCONVERSION">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="MEASUREMENTUNITCONVERSION" EntitySet="MEASUREMENTUNITCONVERSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_OFFICE" Association="Self.FK1_OFFICE">
+      <End Role="COUNTRY" EntitySet="COUNTRY" />
+      <End Role="OFFICE" EntitySet="OFFICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_OWNERINFO" Association="Self.FK1_OWNERINFO">
+      <End Role="DESIGNATION" EntitySet="DESIGNATION" />
+      <End Role="OWNERINFO" EntitySet="OWNERINFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_PRODCAPACITYMACHINEWISEDET" Association="Self.FK1_PRODCAPACITYMACHINEWISEDET">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATION" />
+      <End Role="PRODCAPACITYMACHINEWISEDET" EntitySet="PRODCAPACITYMACHINEWISEDET" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_PRODCAPACITYMACHINEWISEM" Association="Self.FK1_PRODCAPACITYMACHINEWISEM">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="PRODCAPACITYMACHINEWISEM" EntitySet="PRODCAPACITYMACHINEWISEM" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_UPAZILA" Association="Self.FK1_UPAZILA">
+      <End Role="DISTRICT" EntitySet="DISTRICT" />
+      <End Role="UPAZILA" EntitySet="UPAZILA" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_ASSOCIATIONENROLL" Association="Self.FK2_ASSOCIATIONENROLL">
+      <End Role="OFFICE" EntitySet="OFFICE" />
+      <End Role="ASSOCIATIONENROLL" EntitySet="ASSOCIATIONENROLL" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDAPPLICATIONPROGRESS" Association="Self.FK2_BONDAPPLICATIONPROGRESS">
+      <End Role="BONDSTATUS" EntitySet="BONDSTATUS" />
+      <End Role="BONDAPPLICATIONPROGRESS" EntitySet="BONDAPPLICATIONPROGRESS" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDER" Association="Self.FK2_BONDER">
+      <End Role="DISTRICT" EntitySet="DISTRICT" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERANNUALENTITLEMENT" Association="Self.FK2_BONDERANNUALENTITLEMENT">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERANNUALENTITLEMENTCOD" Association="Self.FK2_BONDERANNUALENTITLEMENTCOD">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDERANNUALENTITLEMENTCOEDET" EntitySet="BONDERANNUALENTITLEMENTCOEDET" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERANNUALENTTLMNTCM" Association="Self.FK2_BONDERANNUALENTTLMNTCM">
+      <End Role="BONDER" EntitySet="BONDER" />
+      <End Role="BONDERANNUALENTITLEMENTCOM" EntitySet="BONDERANNUALENTITLEMENTCOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERLIENBANK" Association="Self.FK2_BONDERLIENBANK">
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCH" />
+      <End Role="BONDERLIENBANK" EntitySet="BONDERLIENBANK" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERRAWMATERIAL" Association="Self.FK2_BONDERRAWMATERIAL">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="BONDERRAWMATERIAL" EntitySet="BONDERRAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDREGISTRATION" Association="Self.FK2_BONDREGISTRATION">
+      <End Role="BONDTYPE" EntitySet="BONDTYPE" />
+      <End Role="BONDREGISTRATION" EntitySet="BONDREGISTRATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_EMPLOYEE" Association="Self.FK2_EMPLOYEE">
+      <End Role="OFFICE" EntitySet="OFFICE" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEE" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_MATERIALS" Association="Self.FK2_MATERIALS">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_MEASUREMENTUNITCONVERSION" Association="Self.FK2_MEASUREMENTUNITCONVERSION">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="MEASUREMENTUNITCONVERSION" EntitySet="MEASUREMENTUNITCONVERSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_OFFICE" Association="Self.FK2_OFFICE">
+      <End Role="DISTRICT" EntitySet="DISTRICT" />
+      <End Role="OFFICE" EntitySet="OFFICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_OWNERINFO" Association="Self.FK2_OWNERINFO">
+      <End Role="DISTRICT" EntitySet="DISTRICT" />
+      <End Role="OWNERINFO" EntitySet="OWNERINFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_PRODCAPACITYMACHINEWISEDET" Association="Self.FK2_PRODCAPACITYMACHINEWISEDET">
+      <End Role="PRODCAPACITYMACHINEWISEM" EntitySet="PRODCAPACITYMACHINEWISEM" />
+      <End Role="PRODCAPACITYMACHINEWISEDET" EntitySet="PRODCAPACITYMACHINEWISEDET" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_ANNUALENTLRAWMATERIAL" Association="Self.FK3_ANNUALENTLRAWMATERIAL">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="ANNUALENTLRAWMATERIAL" EntitySet="ANNUALENTLRAWMATERIAL" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDER" Association="Self.FK3_BONDER">
+      <End Role="UPAZILA" EntitySet="UPAZILA" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDERANNUALENTITLEMENT" Association="Self.FK3_BONDERANNUALENTITLEMENT">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDERANNUALENTITLEMENTCOD" Association="Self.FK3_BONDERANNUALENTITLEMENTCOD">
+      <End Role="MATERIALS" EntitySet="MATERIALS" />
+      <End Role="BONDERANNUALENTITLEMENTCOEDET" EntitySet="BONDERANNUALENTITLEMENTCOEDET" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDERANNUALENTTLMNTCM" Association="Self.FK3_BONDERANNUALENTTLMNTCM">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATION" />
+      <End Role="BONDERANNUALENTITLEMENTCOM" EntitySet="BONDERANNUALENTITLEMENTCOM" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDREGISTRATION" Association="Self.FK3_BONDREGISTRATION">
+      <End Role="BONDCIRCLE" EntitySet="BONDCIRCLE" />
+      <End Role="BONDREGISTRATION" EntitySet="BONDREGISTRATION" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_OFFICE" Association="Self.FK3_OFFICE">
+      <End Role="DESIGNATION" EntitySet="DESIGNATION" />
+      <End Role="OFFICE" EntitySet="OFFICE" />
+    </AssociationSet>
+    <AssociationSet Name="FK4_BONDER" Association="Self.FK4_BONDER">
+      <End Role="DISTRICT" EntitySet="DISTRICT" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK4_BONDERANNUALENTITLEMENT" Association="Self.FK4_BONDERANNUALENTITLEMENT">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNIT" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK5_BONDER" Association="Self.FK5_BONDER">
+      <End Role="BONDTYPE" EntitySet="BONDTYPE" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK5_BONDERANNUALENTITLEMENT" Association="Self.FK5_BONDERANNUALENTITLEMENT">
+      <End Role="BONDSTATUS" EntitySet="BONDSTATUS" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK6_BONDER" Association="Self.FK6_BONDER">
+      <End Role="BONDCATEGORY" EntitySet="BONDCATEGORY" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK7_BONDER" Association="Self.FK7_BONDER">
+      <End Role="BONDSUBCATEGORY" EntitySet="BONDSUBCATEGORY" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="FK8_BONDER" Association="Self.FK8_BONDER">
+      <End Role="DESIGNATION" EntitySet="DESIGNATION" />
+      <End Role="BONDER" EntitySet="BONDER" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0011192" Association="Self.SYS_C0011192">
+      <End Role="DESIGNATION" EntitySet="DESIGNATION" />
+      <End Role="OWNERASSOCIATEBUSINESS" EntitySet="OWNERASSOCIATEBUSINESS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

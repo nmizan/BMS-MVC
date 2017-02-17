@@ -1,0 +1,73 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.DISTRICT>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+        margin-left : 280px;
+    }
+    
+ 
+</style>
+
+<p  style =" font-size :20px; margin-left : 280px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table >
+    <tr><th colspan="7" style="text-align: center;">District Summary View </th></tr>
+    <tr>
+        <th>
+            District SL NO
+        </th>
+        <th>
+            Country Name
+        </th>
+        <th>
+            District Name
+        </th>
+       @* <th>
+           District Name BG
+        </th>*@
+      <th colspan="3"  style="text-align :center " >
+            
+            Action
+     </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DISTRICTSLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTRY.COUNTRYNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DISTRICTNAME)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.DISTRICTNAMEBG)
+        </td>*@
+         <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.DISTRICTSLNO }) 
+            
+        </td>
+         <td>
+          
+            @Html.ActionLink("Details", "Details", new { id = item.DISTRICTSLNO }) 
+           
+        </td>
+        <td>
+           
+            @Html.ActionLink("Delete", "Delete", new { id = item.DISTRICTSLNO })
+        </td>
+    </tr>
+}
+
+</table>

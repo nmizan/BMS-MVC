@@ -1,0 +1,191 @@
+﻿@model BMSPhase2Demo.Models.BANKBRANCH
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<style type="text/css">
+    .editor-label,.editor-field {
+      
+        margin-left : 270px;
+    }
+    
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Branch Information</p>
+<h2  style ="margin-left :270px;">Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+     @Html.AntiForgeryToken()
+
+   <fieldset>
+        <legend>BANKBRANCH</legend>
+
+       @* <div class="editor-label">
+            @Html.LabelFor(model => model.BBRANCHSLNO)
+            Branch SL No
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BBRANCHSLNO)
+            @Html.ValidationMessageFor(model => model.BBRANCHSLNO)
+        </div>*@
+
+        <div class="editor-label">
+          @*  @Html.LabelFor(model => model.BANKSLNO, "BANK")*@
+            Bank
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BANKSLNO", String.Empty)
+            @Html.ValidationMessageFor(model => model.BANKSLNO)
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.BRANCHNAME)*@
+            Branch Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BRANCHNAME)
+            @Html.ValidationMessageFor(model => model.BRANCHNAME)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.BRANCHNAMEBG)*@
+            Branch Name BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BRANCHNAMEBG)
+            @Html.ValidationMessageFor(model => model.BRANCHNAMEBG)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.ADDRESS)*@
+            Address
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.ADDRESSBG)*@
+            Address BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESSBG)
+            @Html.ValidationMessageFor(model => model.ADDRESSBG)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.PHONE)*@
+            Phone
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONE)
+            @Html.ValidationMessageFor(model => model.PHONE)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.PHONEBG)*@
+            Phone BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONEBG)
+            @Html.ValidationMessageFor(model => model.PHONEBG)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.FAX)*@
+            Fax
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FAX)
+            @Html.ValidationMessageFor(model => model.FAX)
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.FAXBG)*@
+            Fax BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FAXBG)
+            @Html.ValidationMessageFor(model => model.FAXBG)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.EMAIL)*@
+            Email
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMAIL)
+            @Html.ValidationMessageFor(model => model.EMAIL)
+        </div>
+
+        <div class="editor-label">
+          @*  @Html.LabelFor(model => model.OTHER)*@
+            Other
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OTHER)
+            @Html.ValidationMessageFor(model => model.OTHER)
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.OTHERBG)*@
+            Other BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OTHERBG)
+            @Html.ValidationMessageFor(model => model.OTHERBG)
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.INPUTBY)*@
+            Input By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTBY)
+            @Html.ValidationMessageFor(model => model.INPUTBY)
+        </div>
+
+        <div class="editor-label">
+           @* @Html.LabelFor(model => model.INPUTDATE)*@
+            Input Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTDATE)
+            @Html.ValidationMessageFor(model => model.INPUTDATE)
+        </div>
+
+        <div class="editor-label">
+          @*  @Html.LabelFor(model => model.MODIFIEDBY)*@
+            Modified By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+            @*@Html.LabelFor(model => model.MODIFYDATE)*@
+            Modify Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFYDATE)
+            @Html.ValidationMessageFor(model => model.MODIFYDATE)
+        </div>
+        <div class="editor-label">
+           &nbsp;&nbsp;
+        </div>
+        <p style ="margin-left :270px;">
+            <input type="submit" value="Save" /> |
+             @Html.ActionLink("Back to List", "Index")
+        </p>
+    </fieldset>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

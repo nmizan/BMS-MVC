@@ -1,0 +1,138 @@
+﻿@model PagedList.IPagedList<BMSPhase2Demo.Models.INBOND>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "In Bond";
+}
+<h3 style=" margin:0 auto; width:50%;"> Imported LC Details for Bonders </h3>
+<div class="row">
+    <div class="col-lg-12 text-center">
+
+        @if (ViewBag.Message != null)
+        {
+
+            <p class="well text-warning"> Message: @ViewBag.Message </p>
+        }
+
+    </div>
+
+</div>
+@using (Html.BeginForm("Index", "InBond", FormMethod.Post))
+{
+    <table class="table table-striped table-bordered ">
+        <tr>
+            <th id="search-th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().LCNUMBER):
+            </th>
+            <td id="search-td">
+                @Html.TextBox("LCNo", ViewBag.CurrentFilterLC as string, new { @class = "form-control" })
+            </td>
+
+            <th id="search-th">
+                From @Html.DisplayNameFor(model => model.FirstOrDefault().LCDATE):
+            </th>
+            <td id="search-td">
+                @Html.TextBox("FromDate", ViewBag.CurrentFilterFrDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+            <th id="search-th">
+                To @Html.DisplayNameFor(model => model.FirstOrDefault().LCDATE):
+            </th>
+            <td id="search-td">
+                @Html.TextBox("ToDate", ViewBag.CurrentFilterToDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+        </tr>
+        @if (!System.Web.HttpContext.Current.User.IsInRole("Bonder"))
+        {
+            <tr>
+                <th id="search-th">
+                    <span>Bonder</span>
+                </th>
+                <td id="search-td">
+                    @Html.DropDownList("BONDERID", null, "-- Select Bonder --", new { @class = "form-control" })
+
+                </td>
+            </tr>
+        }
+    </table>
+
+    <button type="submit" name="submit" class="btn btn-primary">Search</button>
+}
+@if ((short)ViewBag.resultofbonderID > 0)
+{
+    string names = BMSPhase2Demo.Utils.BonderInfoUtils.getBonderName((short)ViewBag.resultofbonderID);
+    <p style="padding-left: 350px;" class="well text-success"> Result showing for Bonder: @names </p>
+}
+<p>
+    @Html.ActionLink("Add a New In-Bond", "Create", "", new { @class = "action-link" })
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr id="tr">
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().LCNUMBER)
+            </th>
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().LCDATE)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().BOENUMBER)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().BOEDATE)
+            </th>
+            <th id="th">
+                @Html.DisplayName("Action")
+            </th>
+        </tr>
+    </thead>
+
+    @{int i = 0; string trgb = "#c1deef";}
+
+    @foreach (var item in Model)
+    {
+        i++;
+        if (i % 2 == 0) { trgb = "#e6ebee"; }
+        else { trgb = "#c1deef"; }
+        <tbody>
+            <tr style="background: @trgb">
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.LCNUMBER)
+                </td>
+
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.LCDATE)
+                </td>
+
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.BOENUMBER)
+                </td>
+
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.BOEDATE)
+                </td>
+
+                <td id="td">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "action-link" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "action-link" })
+                    @if (!System.Web.HttpContext.Current.User.IsInRole("Bonder"))
+                    {
+                        <span> |@Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "action-link" })</span>
+                    }
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+@*Html.Partial("../Shared/pager", new ViewDataDictionary { { "currentPage", @ViewBag.currentPage }, { "numberOfRecords", @ViewBag.noOfRecords } })*@
+@if (Model.PageCount > 1)
+{
+    <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+                                                        new { page, currentFilterLC = ViewBag.CurrentFilterLC, currentFilterFrDate = ViewBag.CurrentFilterFrDate, currentFilterToDate = ViewBag.CurrentFilterToDate, filterBonderId = ViewBag.filterBonderId }))
+}

@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A" xml:space="preserve">
+    <value>ক</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>যোগ করুন</value>
+  </data>
+  <data name="AddEntitlement" xml:space="preserve">
+    <value>এনটাইটেলমেন্ট যোগ করুন</value>
+  </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>নতুন যোগ করুন</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>ঠিকানা</value>
+  </data>
+  <data name="Approval" xml:space="preserve">
+    <value>অনুমোদন</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>অনুমোদন করুন</value>
+  </data>
+  <data name="AssociationEnroll" xml:space="preserve">
+    <value>এ্যাসোসিয়েশন এনরোল</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>খ</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>ব্যাংক</value>
+  </data>
+  <data name="BankBranch" xml:space="preserve">
+    <value>ব্যাংক ব্রাঞ্চ</value>
+  </data>
+  <data name="BGAPMEALicenseNo" xml:space="preserve">
+    <value>বিজিএপিএমইএ লাইসেন্স নং</value>
+  </data>
+  <data name="BGAPMEAMembers" xml:space="preserve">
+    <value>বিজিএপিএমইএ সদস্যগন</value>
+  </data>
+  <data name="Bond" xml:space="preserve">
+    <value>বন্ড</value>
+  </data>
+  <data name="BondApplicants" xml:space="preserve">
+    <value>বন্ড আবেদনকারীগণ</value>
+  </data>
+  <data name="BondArea" xml:space="preserve">
+    <value>বন্ড এরিয়া</value>
+  </data>
+  <data name="BondCategory" xml:space="preserve">
+    <value>বন্ড ক্যাটাগরি</value>
+  </data>
+  <data name="BondCircle" xml:space="preserve">
+    <value>বন্ড সার্কেল</value>
+  </data>
+  <data name="BondDivision" xml:space="preserve">
+    <value>বন্ড ডিভিশন</value>
+  </data>
+  <data name="BondEntitlement" xml:space="preserve">
+    <value>বন্ড এনটাইটেলমেন্ট</value>
+  </data>
+  <data name="Bonder" xml:space="preserve">
+    <value>বণ্ডার</value>
+  </data>
+  <data name="BonderLienBank" xml:space="preserve">
+    <value>বন্ডার লিয়েন ব্যাংক</value>
+  </data>
+  <data name="BonderProduct" xml:space="preserve">
+    <value>বন্ডার প্রোডাক্ট</value>
+  </data>
+  <data name="BonderRawMaterial" xml:space="preserve">
+    <value>বন্ডার র ম্যাটারিয়াল</value>
+  </data>
+  <data name="Bonders" xml:space="preserve">
+    <value>বণ্ডারগন</value>
+  </data>
+  <data name="BondLicenseNo" xml:space="preserve">
+    <value>বন্ড লাইসেন্স নং</value>
+  </data>
+  <data name="BondRegistration" xml:space="preserve">
+    <value>বন্ড রেজিস্ট্রেশন</value>
+  </data>
+  <data name="BondRenewal" xml:space="preserve">
+    <value>বন্ড রিনিউয়াল</value>
+  </data>
+  <data name="BondStatus" xml:space="preserve">
+    <value>বন্ড স্ট্যাটাস</value>
+  </data>
+  <data name="BondSubCategory" xml:space="preserve">
+    <value>বন্ড সাব ক্যাটাগরি</value>
+  </data>
+  <data name="BondType" xml:space="preserve">
+    <value>বন্ড টাইপ</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>গ</value>
+  </data>
+  <data name="CorporateHeadOffice" xml:space="preserve">
+    <value>কর্পোরেট/সদর দপ্তর</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>দেশ</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>তৈরি করুন</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>মুদ্রা</value>
+  </data>
+  <data name="D" xml:space="preserve">
+    <value>ঘ</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>তারিখ</value>
+  </data>
+  <data name="Designation" xml:space="preserve">
+    <value>ডেসিগনেশন</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>জেলা</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>সম্পাদন করুন</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>ইমেইল</value>
+  </data>
+  <data name="Entitlement" xml:space="preserve">
+    <value>এনটাইটেলমেন্ট</value>
+  </data>
+  <data name="EntitlementDetails" xml:space="preserve">
+    <value>এনটাইটেলমেন্ট বিশদ</value>
+  </data>
+  <data name="Expiry" xml:space="preserve">
+    <value>মেয়াদ উত্তীর্নের</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>ফ্যাক্স</value>
+  </data>
+  <data name="FinishedProduct" xml:space="preserve">
+    <value>ফিনিশড প্রোডাক্ট</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>হোম</value>
+  </data>
+  <data name="ListOfApplicants" xml:space="preserve">
+    <value>আবেদনকারীদের তালিকা</value>
+  </data>
+  <data name="ListOfBonders" xml:space="preserve">
+    <value>বণ্ডারদের তালিকা</value>
+  </data>
+  <data name="ListOfEntitlement" xml:space="preserve">
+    <value>এনটাইটেলমেন্ট এর তালিকা</value>
+  </data>
+  <data name="Manufacturing" xml:space="preserve">
+    <value>মেনুফেকচারিং</value>
+  </data>
+  <data name="ManufacturingUnitInformation" xml:space="preserve">
+    <value>মেনুফেকচারিং ইউনিট এর তথ্য</value>
+  </data>
+  <data name="MaterialGroup" xml:space="preserve">
+    <value>ম্যাটারিয়াল গ্রুপ</value>
+  </data>
+  <data name="Materials" xml:space="preserve">
+    <value>ম্যাটারিয়ালস</value>
+  </data>
+  <data name="MeasurementUnit" xml:space="preserve">
+    <value>মিজারমেন্ট ইউনিট</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>মোবাইল</value>
+  </data>
+  <data name="NameOfTheBonder" xml:space="preserve">
+    <value>আবেদনকারীর নাম</value>
+  </data>
+  <data name="NameOfTheManufacturingUnit" xml:space="preserve">
+    <value>মেনুফেকচারিং ইউনিট এর নামঃ</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>পরবর্তী</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>অফিস</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>প্যারামিটার</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>ফোন</value>
+  </data>
+  <data name="Premises" xml:space="preserve">
+    <value>প্রেমিসেস</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>রিপোর্ট</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>খুঁজুন</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>অনুচ্ছেদ</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>স্ট্যাটাস</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>বন্ড মডিউল সিস্টেম</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>টাইপ</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>ইউনিট</value>
+  </data>
+  <data name="Upazila" xml:space="preserve">
+    <value>উপজেলা</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>দেখুন</value>
+  </data>
+  <data name="ViewEntitlement" xml:space="preserve">
+    <value>এনটাইটেলমেন্ট দেখুন</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>বন্ড মডিউল সিস্টেমে স্বাগতম</value>
+  </data>
+</root>

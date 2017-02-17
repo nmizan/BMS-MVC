@@ -1,0 +1,152 @@
+﻿@model BMSPhase2Demo.Models.OFFICE
+
+@{
+    ViewBag.Title = "Details";
+}
+<style type="text/css">
+    table, th, td {
+        border: 0px;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+        font-size : 15px;
+        margin-left : 250px;
+    }
+    .textBOxSize {
+        width: 220px;
+    }
+ 
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Office Information</p>
+<h2 style ="margin-left :250px;">Details</h2>
+
+<fieldset>
+    <legend>OFFICE</legend>
+
+
+
+     <table>
+            
+                <tr>
+                    <td>
+                        Office SL No:
+                        @Html.HiddenFor(model => model.OFFICESLNO         )
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.OFFICESLNO    , new { @readonly="readonly" }) 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Office Name :
+                    </td>
+                    <td> @Html.TextBoxFor(model => model.OFFICENAME    , new { @readonly="readonly" })</td>
+                </tr>
+        
+                <tr>
+                    <td>
+                         Office Name BG :
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model =>  model.OFFICENAMEBG     , new { @readonly="readonly" }) 
+                    </td>
+                </tr>
+                <tr>
+                    <td>Office SName:</td>
+                    <td>@Html.TextBoxFor(model => model.OFFICESNAME   , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Office SName BG:</td>
+                    <td>@Html.TextBoxFor(model => model.OFFICESNAMEBG   , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Address  :</td>
+                    <td>@Html.TextBoxFor(model => model.ADDRESS      , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Address BG:</td>
+                    <td>@Html.TextBoxFor(model => model.ADDRESSBG     , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Country Code :</td>
+                    <td>@Html.TextBoxFor(model => model.COUNTRY .COUNTRYCODE  , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>District Name:</td>
+                    <td>@Html.TextBoxFor(model => model.DISTRICT .DISTRICTNAME   , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Contact Person:</td>
+                    <td>@Html.TextBoxFor(model => model.CONTACTPERSON    , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Contact Person BG:</td>
+                    <td>@Html.TextBoxFor(model => model.CONTACTPERSONBG    , new { @readonly="readonly" })</td>
+                </tr>
+                 
+                 <tr>
+                    <td>Designation  :</td>
+                    <td>@Html.TextBoxFor(model => model.DESIGNATION      , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Mobile:</td>
+                    <td>@Html.TextBoxFor(model => model.MOBILENO     , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Mobile BG :</td>
+                    <td>@Html.TextBoxFor(model => model.MOBILENOBG      , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td>@Html.TextBoxFor(model => model.PHONE    , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Phone BG:</td>
+                    <td>@Html.TextBoxFor(model => model.PHONEBG    , new { @readonly="readonly" })</td>
+                </tr>
+           <tr>
+                    <td>Email:</td>
+                    <td>@Html.TextBoxFor(model => model.EMAIL   , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Fax  :</td>
+                    <td>@Html.TextBoxFor(model => model.FAX      , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Fax BG:</td>
+                    <td>@Html.TextBoxFor(model => model.FAXBG     , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Office Type:</td>
+                    <td>@Html.TextBoxFor(model => model.OFFICETYPE      , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Web:</td>
+                    <td>@Html.TextBoxFor(model => model.WEB    , new { @readonly="readonly" })</td>
+                </tr>
+              
+                <tr>
+                    <td>Input By:</td>
+                    <td>@Html.TextBoxFor(model => model.INPUTBY , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Input date:</td>
+                    <td>@Html.TextBoxFor(model => model.INPUTDATE , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Modify By:</td>
+                    <td>@Html.TextBoxFor(model => model.MODIFIEDBY , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Modified Date:</td>
+                    <td>@Html.TextBoxFor(model => model.MODIFYDATE , new { @readonly="readonly" })</td>
+                </tr>
+      </table>
+
+</fieldset>
+<p style ="margin-left :250px;">
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.OFFICESLNO  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

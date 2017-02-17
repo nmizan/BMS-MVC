@@ -1,0 +1,181 @@
+﻿@model BMSPhase2Demo.Models.RenewalViewModel
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+
+
+<h4>@Model.Bonder.BONDERNAME</h4>
+
+
+
+<hr />
+
+
+@using (Html.BeginForm("DocumentAttachment", "BondRenewal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+    <table class="table ">
+
+
+
+        <tr>
+            <td>TIN NO.</td>
+            <td><input type="text" name="tinno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" class="datefield" name="tinissuedate"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="tinexpiredate" class="datefield"></td>
+            <td><input type="file" name="tinfile"></td>
+
+        </tr>
+
+        <tr>
+            <td>BOI Reg. No</td>
+            <td><input type="text" name="boiregno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="boiregnoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="boiregnoexpiredate" class="datefield"></td>
+            <td><input type="file" name="boiregnofile"></td>
+
+        </tr>
+
+
+        <tr>
+            <td>BSCIC Reg. No</td>
+            <td><input type="text" name="bscicregno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="bscicregnoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="bscicregnoexpiredate" class="datefield"></td>
+            <td><input type="file" name="bscicregnofile"></td>
+
+        </tr>
+
+
+        <tr>
+            <td>ERC No</td>
+            <td><input type="text" name="ercno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="ercnoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="ercnoexpiredate" class="datefield"></td>
+            <td><input type="file" name="ercnofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>IRC No</td>
+            <td><input type="text" name="ircno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="ircnoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="ircnoexpiredate" class="datefield"></td>
+            <td><input type="file" name="ircnofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>VAT Reg. No(BIN)</td>
+            <td><input type="text" name="vatregno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="vatregnoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="vatregnoexpiredate" class="datefield"></td>
+            <td><input type="file" name="vatregnofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>Trade License No</td>
+            <td><input type="text" name="tradelicenseno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="tradelicensenoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="tradelicensenoexpiredate" class="datefield"></td>
+            <td><input type="file" name="tradelicensenofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>Fire License No</td>
+            <td><input type="text" name="firelicenseno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="firelicensenoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="firelicensenoexpiredate" class="datefield"></td>
+            <td><input type="file" name="firelicensenofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>Environment Certificate No(If applicable)</td>
+            <td><input type="text" name="environmentcertificateno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="environmentcertificatenoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="environmentcertificatenoexpiredate" class="datefield"></td>
+            <td><input type="file" name="environmentcertificatenofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>Boiler Certificate No(if applicable)</td>
+            <td><input type="text" name="boilercertificateno"></td>
+            <td>Issue Date</td>
+            <td><input type="text" name="boilercertificatenoissuedate" class="datefield"></td>
+            <td>Expire Date</td>
+            <td><input type="text" name="boilercertificatenoexpiredate" class="datefield"></td>
+            <td><input type="file" name="boilercertificatenofile"></td>
+        </tr>
+
+
+        <tr>
+            <td>Increment  ^^^^^</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+
+    </table>
+
+
+
+
+
+
+    <input class="btn-info" type="submit" value=" Save">
+
+
+
+}
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $(".datefield").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+    </script>
+}
+

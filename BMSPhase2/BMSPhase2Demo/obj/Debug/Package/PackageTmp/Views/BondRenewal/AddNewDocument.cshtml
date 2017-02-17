@@ -1,0 +1,154 @@
+﻿@model  BMSPhase2Demo.Models.DOCUMENTATTACHMENT
+
+@{
+    ViewBag.Title = "AddNewDocument";
+}
+
+<h2>AddNewDocument</h2>
+
+@using (Html.BeginForm("AddNewDocument", "BondRenewal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DOCUMENTATTACHMENT</legend>
+
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.ATTCHSLNO)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.ATTCHSLNO)
+                @Html.ValidationMessageFor(model => model.ATTCHSLNO)
+            </div>*@
+
+
+        <input type="hidden" name="bonderslno" value="@ViewBag.BonderSlno">
+        <input type="hidden" name="bsno" value="@ViewBag.BonderStatus">
+
+
+
+        @*   <div class="editor-label">
+                @Html.LabelFor(model => model.APPLICANTREFNO)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.APPLICANTREFNO)
+                @Html.ValidationMessageFor(model => model.APPLICANTREFNO)
+            </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DOCHEADINGNAME, "Document Name")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DOCHEADINGNAME)
+            @Html.ValidationMessageFor(model => model.DOCHEADINGNAME)
+        </div>
+
+        @*   <div class="editor-label">
+                @Html.LabelFor(model => model.DOCHEADINGNAMEBG)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DOCHEADINGNAMEBG)
+                @Html.ValidationMessageFor(model => model.DOCHEADINGNAMEBG)
+            </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RGATTCHNAME, "RG Number")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RGATTCHNAME)
+            @Html.ValidationMessageFor(model => model.RGATTCHNAME)
+        </div>
+
+        @* <div class="editor-label">
+                @Html.LabelFor(model => model.RGATTCHNAMEBG)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.RGATTCHNAMEBG)
+                @Html.ValidationMessageFor(model => model.RGATTCHNAMEBG)
+            </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ISSUEDATE, "Issue Date")
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.ISSUEDATE, new { @class = "datefield" })
+            @Html.ValidationMessageFor(model => model.ISSUEDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EXPDATE, "Expire Date")
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.EXPDATE, new { @class = "datefield" })
+            @Html.ValidationMessageFor(model => model.EXPDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ATTACHFILENM, "Upload File")
+        </div>
+        @* <div class="editor-field">
+                @Html.EditorFor(model => model.ATTACHFILENM)
+                @Html.ValidationMessageFor(model => model.ATTACHFILENM)
+            </div>*@
+
+
+        <div>
+            <input type="file" id="file" name="file">
+        </div>
+
+        @*  <div class="editor-label">
+                @Html.LabelFor(model => model.INPUTBY)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.INPUTBY)
+                @Html.ValidationMessageFor(model => model.INPUTBY)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.INPUTDATE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.INPUTDATE)
+                @Html.ValidationMessageFor(model => model.INPUTDATE)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MODIFIEDBY)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MODIFIEDBY)
+                @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MODIFYDATE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MODIFYDATE)
+                @Html.ValidationMessageFor(model => model.MODIFYDATE)
+            </div>*@
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $(".datefield").datepicker({
+                dateFormat: "dd/mm/yy",
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+    </script>
+}

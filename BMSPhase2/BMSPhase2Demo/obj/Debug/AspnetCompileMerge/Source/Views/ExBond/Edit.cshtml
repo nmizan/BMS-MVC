@@ -1,0 +1,117 @@
+﻿@model IList<BMSPhase2Demo.Models.BACKTOBACKLC>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2> LC </h2>
+<p style="color: red; padding-left:350px;">@ViewBag.error</p>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="table-responsive">
+            <table class="table">
+                <tr id="tr">
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].BUYERSNAME)
+
+                    </th>
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].LCNUMBER)
+                    </th>
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].UDNUMBER)
+                    </th>
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].UDDATE)
+                    </th>
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].UDCORRECTIONDATE)
+                    </th>
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].UDPRODUCTDETAIL)
+                    </th>
+                    <th id="th">
+                        @Html.DisplayNameFor(model => model[0].BONDER.BONDERNAME)
+                    </th>
+                    <th id="th">
+                        @Html.DisplayName("No of Product")
+                    </th>
+                    <th id="th">
+                        @Html.DisplayName("Action")
+                    </th>
+                </tr>
+
+
+                @{int j = 0; string trgb = "#c1deef";}
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+
+                    j++;
+                    if (i % 2 == 0) { trgb = "#e6ebee"; }
+                    else { trgb = "#c1deef"; }
+
+                    <tr style="background: @trgb">
+
+
+                        @Html.HiddenFor(modelItem => Model[i].ID)
+                        @Html.HiddenFor(modelItem => Model[i].BONDER.BONDERSLNO)
+
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].BUYERSNAME)
+                        </td>
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].LCNUMBER)
+                        </td>
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].UDNUMBER)
+                        </td>
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].UDDATE)
+                        </td>
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].UDCORRECTIONDATE)
+                        </td>
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].UDPRODUCTDETAIL)
+                        </td>
+                        <td id="td">
+                            @Html.DisplayFor(modelItem => Model[i].BONDER.BONDERNAME)
+                        </td>
+                        <td id="td">
+                            @Model[i].BACKTOBACKPRODUCTs.Count()
+                        </td>
+                        <td id="td">
+                            @Html.ActionLink("Delete", "DeleteBack2backLc", "ExBond", new { id = Model[i].ID }, new { @class = "action-link" }) |
+                            @Html.ActionLink("Details", "Details", "Back2BackLC", new { id = Model[i].ID }, new { @class = "action-link" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("addMoreB2BLC", "ExBond", FormMethod.Post))
+{
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            @Html.Hidden("ID", (short)ViewBag.ExbondID)
+            <button type="submit" name="submit" class="btn btn-info">Add More LC</button>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+}
+
+@using (Html.BeginForm("save", "ExBond", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            @Html.Hidden("ID", (short)ViewBag.ExbondID)
+            <button type="submit" name="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+}

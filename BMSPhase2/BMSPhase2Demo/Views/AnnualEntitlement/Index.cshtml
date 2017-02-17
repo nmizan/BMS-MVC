@@ -1,0 +1,135 @@
+﻿
+@model PagedList.IPagedList<BMSPhase2Demo.Models.ANNUALENTLRAWMATERIAL>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Annual Entitlement";
+}
+
+<h3 class="text-center">Annual Entitlement List For Bonders</h3>
+
+@using (Html.BeginForm("Index", "AnnualEntitlement", FormMethod.Post))
+{
+    <table class="table table-striped table-bordered ">
+        <tr>
+            <th id="search-th">
+                AE @Html.DisplayNameFor(model => model.FirstOrDefault().ENTITLEFROM):
+            </th>
+            <td id="search-td">
+                @Html.TextBox("FromDate", ViewBag.CurrentFilterFrDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+            <th id="search-th">
+                AE @Html.DisplayNameFor(model => model.FirstOrDefault().ENTITLETO):
+            </th>
+            <td id="search-td">
+                @Html.TextBox("ToDate", ViewBag.CurrentFilterToDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+            @if (!System.Web.HttpContext.Current.User.IsInRole("Bonder"))
+            {
+
+
+
+            <th id="search-th">
+                <span>Bonder</span>
+            </th>
+            <td id="search-td">
+                @Html.DropDownList("BONDERID", null, "-- Select Bonder --", new { @class = "form-control" })
+
+            </td>
+
+
+
+            }
+        </tr>
+    </table>
+        <button type="submit" name="submit" class="btn btn-primary">Search</button>
+   
+}
+@if ((short)ViewBag.resultofbonderID >0)
+{
+    string names = BMSPhase2Demo.Utils.BonderInfoUtils.getBonderName((short)ViewBag.resultofbonderID);
+    <p style="padding-left: 350px;" class="well text-success"   > Result showing for Bonder: @names </p>
+}
+<table class="table">
+    <thead>
+        <tr id="tr">
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MATERIAL.MATERIALNAME)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MATERIAL.MHSCODE)
+            </th>
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MATERIAL.MDESCRIPTION)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MATERIAL.SPGRADE)
+            </th>
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().AEQTY)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().MEASUREMENTUNIT.MUNAME)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ENTITLEFROM)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ENTITLETO)
+            </th>
+        </tr>
+    </thead>
+
+    @{int i = 0; string trgb = "#c1deef";}
+
+    @foreach (var item in Model)
+    {
+        i++;
+        if (i % 2 == 0) { trgb = "#e6ebee"; }
+        else { trgb = "#c1deef"; }
+        <tbody>
+            <tr style="background: @trgb">
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.MATERIAL.MATERIALNAME)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.MATERIAL.MHSCODE)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.MATERIAL.MDESCRIPTION)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.MATERIAL.SPGRADE)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.AEQTY)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.MEASUREMENTUNIT.MUNAME)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.ENTITLEFROM)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => item.ENTITLETO)
+                </td>
+
+
+
+
+                @*<td id="td">
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+            </tr>
+        </tbody>
+    }
+
+</table>
+<p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, filterBonderId = ViewBag.filterBonderId }))

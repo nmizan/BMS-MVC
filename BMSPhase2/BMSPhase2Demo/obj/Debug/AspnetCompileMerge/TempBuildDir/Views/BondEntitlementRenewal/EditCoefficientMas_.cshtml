@@ -1,0 +1,67 @@
+﻿@model BMSPhase2Demo.Models.BONDERANNUALENTITLEMENTCOM
+
+@{
+    ViewBag.Title = "EditCoefficientMas";
+}
+
+<h2>EditCoefficientMas</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>BONDERANNUALENTITLEMENTCOM</legend>
+
+        @Html.HiddenFor(model => model.AESLNO)
+        @Html.HiddenFor(model => model.BONDERSLNO)
+        @Html.HiddenFor(model => model.MSLNO)
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MEASUREMENT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MEASUREMENT)
+            @Html.ValidationMessageFor(model => model.MEASUREMENT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MSIZE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MSIZE)
+            @Html.ValidationMessageFor(model => model.MSIZE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WEIGHT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WEIGHT)
+            @Html.ValidationMessageFor(model => model.WEIGHT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MACHINESLNO)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("MachineList", null, "", new { name = "MachineList" });
+            @Html.ValidationMessageFor(model => model.MACHINESLNO)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

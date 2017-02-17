@@ -1,0 +1,69 @@
+﻿@model BMSPhase2Demo.Models.UP
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>UP</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BONDERID, "BONDER")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BONDERID", String.Empty)
+            @Html.ValidationMessageFor(model => model.BONDERID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CREATEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CREATEDBY)
+            @Html.ValidationMessageFor(model => model.CREATEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CREATEDDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CREATEDDATE)
+            @Html.ValidationMessageFor(model => model.CREATEDDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDDATE)
+            @Html.ValidationMessageFor(model => model.MODIFIEDDATE)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

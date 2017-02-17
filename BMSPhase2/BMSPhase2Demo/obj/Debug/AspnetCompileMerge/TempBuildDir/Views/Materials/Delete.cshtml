@@ -1,0 +1,113 @@
+﻿@model BMSPhase2Demo.Models.MATERIAL
+
+@{
+    ViewBag.Title = "Delete";
+}
+<style type="text/css">
+    table, th, td {
+        border: 0px;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+        font-size : 15px;
+        margin-left : 250px;
+    }
+    .textBOxSize {
+        width: 220px;
+    }
+ 
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Materials Information</p>
+<h2  style ="margin-left :250px;">Delete</h2>
+
+<h3  style ="margin-left :250px;">Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>MATERIAL</legend>
+
+
+
+    <table>
+            
+                <tr>
+                    <td>
+                        Material SL No:
+                        @Html.HiddenFor(model => model.MSLNO        )
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model => model.MSLNO   , new { @readonly="readonly" }) 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Material Group Code:
+                    </td>
+                    <td> @Html.TextBoxFor(model => model.MATERIALSGROUP .MGROUPCODE   , new { @readonly="readonly" })</td>
+                </tr>
+        
+                <tr>
+                    <td>
+                         MHS Code :
+                    </td>
+                    <td>
+                        @Html.TextBoxFor(model =>  model.MHSCODE    , new { @readonly="readonly" }) 
+                    </td>
+                </tr>
+                <tr>
+                    <td>MHS Code BG:</td>
+                    <td>@Html.TextBoxFor(model => model.MHSCODEBG  , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Material Type:</td>
+                    <td>@Html.TextBoxFor(model => model.MTYPE  , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Material Name  :</td>
+                    <td>@Html.TextBoxFor(model => model.MATERIALNAME     , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Material Description:</td>
+                    <td>@Html.TextBoxFor(model => model.MDESCRIPTION    , new { @readonly="readonly" })</td>
+                </tr>
+                 <tr>
+                    <td>Material Description BG :</td>
+                    <td>@Html.TextBoxFor(model => model.MDESCRIPTIONBG     , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Measurement Unit:</td>
+                    <td>@Html.TextBoxFor(model => model.MEASUREMENTUNIT .MUNAME   , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Remarks:</td>
+                    <td>@Html.TextBoxFor(model => model.REMARKS   , new { @readonly="readonly" })</td>
+                </tr>
+                
+                <tr>
+                    <td>Input By:</td>
+                    <td>@Html.TextBoxFor(model => model.INPUTBY , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Input date:</td>
+                    <td>@Html.TextBoxFor(model => model.INPUTDATE , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Modify By:</td>
+                    <td>@Html.TextBoxFor(model => model.MODIFIEDBY , new { @readonly="readonly" })</td>
+                </tr>
+                <tr>
+                    <td>Modified Date:</td>
+                    <td>@Html.TextBoxFor(model => model.MODIFYDATE , new { @readonly="readonly" })</td>
+                </tr>
+      </table>
+
+</fieldset>
+@using (Html.BeginForm()) {
+     @Html.ValidationSummary(true)
+     @Html.AntiForgeryToken()
+
+    <p  style ="margin-left :250px;">
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

@@ -1,0 +1,170 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.BACKTOBACKLC>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h3 style=" margin:0 auto; width:40%;">Select LC </h3>
+@using (Html.BeginForm("Index", "Back2BackLC", FormMethod.Post))
+{
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LCNUMBER)
+        </th>
+        <td>
+            @Html.TextBox("LCNo")
+        </td>
+    </tr>
+    <tr>
+        <th>
+            From @Html.DisplayNameFor(model => model.LCDATE)
+        </th>
+        <td>
+            @Html.TextBox("FromDate", "", new { @class = "datepicker" })
+            
+        </td>
+        <th>
+            To @Html.DisplayNameFor(model => model.LCDATE)
+        </th>
+        <td>
+            @Html.TextBox("ToDate", "", new { @class = "datepicker" })
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <input type="submit" name="submit" value="Search" id="submit" />
+        </th>
+    </tr>
+</table>   
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table border="1" id="table">
+    <tr id="tr">
+        <th id="th">
+            @Html.DisplayNameFor(model => model.BUYERSNAME)
+            & <br />
+            @Html.DisplayNameFor(model => model.BUYERSADDRESS)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.LCNUMBER)
+            <br />
+            @Html.DisplayNameFor(model => model.LCDATE)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.BANK.BANKNAME)
+            & <br />
+            @Html.DisplayNameFor(model => model.BANKBRANCH.BRANCHNAME)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.SHIPPINGDATE)
+            & <br />
+            @Html.DisplayNameFor(model => model.CORRECTIONDATE)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.PRODUCTQUANTITY)
+            <br />
+            @Html.DisplayNameFor(model => model.QUANTITYUNIT)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.LCUSEDPRICE)
+            <br />
+            @Html.DisplayNameFor(model => model.PRICEUNIT)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.MASTERLCNUMBER)
+            & <br />
+            @Html.DisplayNameFor(model => model.MASTERLCCORRECTIONDATE)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.UDNUMBER)
+            & <br />
+            @Html.DisplayNameFor(model => model.UDDATE)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.UDCORRECTIONDATE)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.UDPRODUCTDETAIL)
+        </th>
+        <th id="th">
+            @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+        </th>
+        <th id="th">
+            Action
+        </th>
+    </tr>
+
+    @{int i = 0; string trgb = "#c1deef";}
+
+    @foreach (var item in Model)
+    {
+        i++;
+        if (i % 2 == 0) { trgb = "#e6ebee"; }
+        else { trgb = "#c1deef"; }
+        
+        <tr style="background: @trgb">
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.BUYERSNAME)
+                <br />
+                @Html.DisplayFor(modelItem => item.BUYERSADDRESS)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.LCNUMBER)
+                <br />
+                @Html.DisplayFor(modelItem => item.LCDATE)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.BANK.BANKNAME)
+                <br />
+                @Html.DisplayFor(modelItem => item.BANKBRANCH.BRANCHNAME)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.SHIPPINGDATE)
+                & <br />
+                @Html.DisplayFor(modelItem => item.CORRECTIONDATE)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.PRODUCTQUANTITY)
+                <br />
+                @Html.DisplayFor(modelItem => item.QUANTITYUNIT)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.LCUSEDPRICE)
+                <br />
+                @Html.DisplayFor(modelItem => item.PRICEUNIT)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.MASTERLCNUMBER)
+                <br />
+                @Html.DisplayFor(modelItem => item.MASTERLCCORRECTIONDATE)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.UDNUMBER)
+                <br />
+                @Html.DisplayFor(modelItem => item.UDDATE)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.UDCORRECTIONDATE)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.UDPRODUCTDETAIL)
+            </td>
+            <td id="td">
+                @Html.DisplayFor(modelItem => item.BONDER.BONDLICENSENO)
+            </td>
+
+            <td id="td">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+

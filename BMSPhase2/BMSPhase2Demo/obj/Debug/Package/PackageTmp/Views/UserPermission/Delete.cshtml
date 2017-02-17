@@ -1,0 +1,47 @@
+﻿@model BMSPhase2Demo.Models.USERPERMISSION
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>USERPERMISSION</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.APPUSER.USERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.APPUSER.USERNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ROLENAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ROLENAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMPLOYEE.EMPLOYEENAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMPLOYEE.EMPLOYEENAME)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

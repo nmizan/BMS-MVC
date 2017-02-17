@@ -1,0 +1,106 @@
+﻿@model BMSPhase2Demo.Models.BONDAPPLICATIONPROGRESS
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>BONDAPPLICATIONPROGRESS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PROGRESSSLNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PROGRESSSLNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BONDSTATU.REFNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BONDSTATU.REFNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.READYFORAPP)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.READYFORAPP)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACTION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACTION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACTIONDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACTIONDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ATTACHFILENM)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ATTACHFILENM)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ATTACHFILEPATH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ATTACHFILEPATH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.REMARKS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.REMARKS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFYDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFYDATE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

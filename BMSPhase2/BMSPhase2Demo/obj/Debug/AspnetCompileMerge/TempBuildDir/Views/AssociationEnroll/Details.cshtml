@@ -1,0 +1,127 @@
+﻿@model BMSPhase2Demo.Models.ASSOCIATIONENROLL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ASSOCIATIONENROLL</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ASSOENSLNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ASSOENSLNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BONDER.BONDLICENSENO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OFFICE.OFFICENAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OFFICE.OFFICENAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BSNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BSNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MEMBERSHIPREGNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MEMBERSHIPREGNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MEMBERSHIPREGNOBG)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MEMBERSHIPREGNOBG)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ISSUEDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ISSUEDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EXPDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EXPDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CERATTACHFILENM)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CERATTACHFILENM)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CERATTACHFILEPATH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CERATTACHFILEPATH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RECATTACHFILENM)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RECATTACHFILENM)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RECATTACHFILEPATH)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RECATTACHFILEPATH)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFYDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFYDATE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<BMSPhase2Demo.INBONDRAWMATERIAL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTCODE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTQUANTITY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QUANTITYUNIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUCTCOST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COSTUNIT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INBOND.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CREATEDDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFIEDDATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCTCODE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCTQUANTITY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QUANTITYUNIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUCTCOST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COSTUNIT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INBOND.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CREATEDDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFIEDDATE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

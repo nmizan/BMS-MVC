@@ -1,0 +1,34 @@
+﻿@model BMSPhase2Demo.Models.INBONDRAWMATERIAL
+
+    @using (Html.BeginCollectionItem("INBONDRAWMATERIALs"))
+    {
+
+        <tr>
+            <td class="col-lg-2">
+                @Html.TextBoxFor(model => model.PRODUCTCODE, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.PRODUCTCODE)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PRODUCTQUANTITY, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.PRODUCTQUANTITY)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.PRODUCTQUANTITY, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.QUANTITYUNIT)
+            </td>
+
+            <td>
+                @Html.TextBoxFor(model => model.PRODUCTCOST, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.PRODUCTCOST)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.COSTUNIT, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.COSTUNIT)
+            </td>
+
+            <td>
+                <input type="button" class="btn btn-danger" value="Delete" onclick='$(this).parent().parent().remove();' />
+            </td>
+
+        </tr>
+    }

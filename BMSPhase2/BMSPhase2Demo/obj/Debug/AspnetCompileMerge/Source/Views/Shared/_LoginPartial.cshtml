@@ -1,0 +1,39 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>
+        Hello, @User.Identity.Name
+        &nbsp; &nbsp;
+        @*Html.ActionLink(User.Identity.Name, "Edit", "AppUser", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!*@
+        @{
+    BMSPhase2Demo.Util.SessionAttributeRetreival session = new BMSPhase2Demo.Util.SessionAttributeRetreival();
+    BMSPhase2Demo.Models.USERPERMISSION permission = session.getStoredUserPermission();
+
+    if (permission != null)
+    {
+        if (permission.BONDER != null)
+        {
+            <span>Bonder: </span>
+
+            @permission.BONDER.BONDERNAME;
+        }
+        if (permission.EMPLOYEE != null)
+        {
+            <span>Admin: </span>
+            @permission.EMPLOYEE.OFFICE.OFFICENAME;
+
+        }
+    }
+        }
+        &nbsp; &nbsp;
+        @using (Html.BeginForm("LogOff", "Login", FormMethod.Post, new { id = "logoutForm" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()" class="btn" style="padding-left: 10px; padding-right: 10px;">Log off</a>
+        }
+    </text>
+}
+else
+{
+    @Html.ActionLink("Log in", "Login", "Login", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn", @style = "padding-left: 10px; padding-right: 10px;" })
+
+}

@@ -1,0 +1,252 @@
+﻿@model List<BMSPhase2Demo.Models.BonderProductRawMaterial>
+
+@{
+    ViewBag.Title = "Product And Raw Material For The UP";
+}
+
+<div class="row">
+    @*<div class="col-md-1"></div>*@
+    <div class="col-md-12">
+        <div class="well" style="width:100%; margin:0 auto;">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+            </hgroup>
+            <div style="overflow: auto; margin:0 auto;">
+                <p>
+                    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                </p>
+
+                <h3 style="color:#ff6a00">@ViewBag.ErrorMsg</h3>
+
+                @if (Model != null)
+                {
+                    using (Html.BeginForm("ExportProductRawMaterialReport", "Reports", FormMethod.Post))
+                    {
+                        @Html.Hidden("SearchBonderID")
+                        @Html.Hidden("SearchUPNO")
+                        //@Html.Hidden("SearchToDate")
+
+                        <button type="submit" name="submit" class="btn btn-info">Export as PDF</button>
+                    }
+                }
+
+                @using (Html.BeginForm("ProductAndRawMaterialStatus", "Reports", FormMethod.Post))
+                {
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <td class="col-lg-1">
+                                @Html.Label("Bonder: ")
+                            </td>
+                            <td class="col-lg-5">
+                                @Html.DropDownList("BonderID", null, "--Select Bonder--", new { @class = "form-control", id = "BonderDropDownID" })
+                            </td>
+                          
+                                <td class="col-lg-2">
+                                    @Html.Label("UP No: ")
+                                </td>
+                                <td>
+                                    @Html.DropDownList("UPNO", null, "------Select UP No------", new { @class = "form-control", id = "UPDropDownID" })
+                                </td>
+                           
+                            @*<td>
+                                @Html.Label("From Date: ")
+                            </td>
+                            <td>
+                                @Html.TextBox("FromDate", ViewBag.FromDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+                            </td>
+                            <td>
+                                @Html.Label("To Date: ")
+                            </td>
+                            <td>
+                                @Html.TextBox("ToDate", ViewBag.ToDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+                            </td>*@
+                        </tr>
+                    </table>
+
+                    <button type="submit" name="submit" class="btn btn-primary">Search</button>
+                }
+
+                @if (Model != null)
+                {
+                    //Show data table
+                    <table class="table table-bordered">
+
+                        <tr>
+                            <th class="col-lg-2">
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().BonderName):
+                            </th>
+                            <td class="col-lg-4">
+                                @Html.DisplayFor(model => model.FirstOrDefault().BonderName)
+                            </td>
+                            <th class="col-lg-2">
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().BonderLCNo):
+                            </th>
+                            <td class="col-lg-4">
+                                @Html.DisplayFor(model => model.FirstOrDefault().BonderLCNo)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().UPNo):
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstOrDefault().UPNo)
+                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().BonderAddress):
+                            </th>
+                            <td>
+                                @Html.DisplayFor(model => model.FirstOrDefault().BonderAddress)
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>
+                                @Html.Label("Date"):
+                            </th>
+                            <td colspan="3">
+                                @Html.DisplayFor(model => model.FirstOrDefault().DateFrom)
+                                @Html.Label("---To---")
+                                @Html.DisplayFor(model => model.FirstOrDefault().DateTo)
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().BuyerName)
+                                &
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().UDNo)
+                                &
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().UDDate)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().UDProduct)
+                                &
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().UDProductQuantity)
+                            </th>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().ProductName)
+                                &
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().ProductSize)
+                                &
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().ProductDescription)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().ProductQuantity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().RawMaterialName)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().RawMaterialQuantity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().QuantityWastage)
+                                @Html.DisplayNameFor(model => model.FirstOrDefault().TotalUsageQuantity)
+                            </th>
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BuyerName)
+
+                                    @Html.DisplayFor(modelItem => item.UDNo)
+
+                                    @Html.DisplayFor(modelItem => item.UDDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UDProduct)
+
+                                    @Html.DisplayFor(modelItem => item.UDProductQuantity)
+
+                                    @Html.DisplayFor(modelItem => item.UDProductQuantityUnit)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.ProductSize)
+                                    <br />
+                                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                                    @Html.DisplayFor(modelItem => item.ProductQuantityUnit)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.RawMaterialName)
+                                    @Html.DisplayFor(modelItem => item.RawMaterialQuantity)
+                                    @Html.DisplayFor(modelItem => item.RawMaterialQuantityUnit)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QuantityWastage)
+                                    @Html.DisplayFor(modelItem => item.TotalUsageQuantity)
+                                    @Html.DisplayFor(modelItem => item.TotalUsageQuantityUnit)
+                                </td>
+
+                            </tr>
+                        }
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+    @*<div class="col-md-1"></div>*@
+</div>
+
+<script>
+    
+    $('#BonderDropDownID').change(function () {
+        // Call the Send method on the hub.
+
+        var u = '@Url.Action("UPFromBonderID", "Reports")';
+
+        $.ajax
+        ({
+            type: 'get',
+            url: u,
+            data: { "BonderID": $('#BonderDropDownID').val() },
+            contentType: "application/json;charset=utf-8",
+            dataType:"json",
+            
+            error: function (xhr, status, error) {
+                console.log(xhr);
+                alert(status);
+                alert(error);
+            },
+            success: function (result) {
+                //result = result.replace(/\\/g, "");
+                result = JSON.stringify(result).replace(/\\/g, "");
+                //console.log(result);
+
+                var resultObj = jQuery.parseJSON(result);
+                //console.log(resultObj.upList);
+
+                var $select = $('#UPDropDownID');
+                $('#UPDropDownID').empty();                
+                var option = $('<option>', {
+                    value: ""
+                }).html("------Select UP No------").appendTo($select);
+
+
+                $.each(resultObj.upList, function (i, upItem) {
+                    var option = $('<option>', {
+                        value: upItem.ID
+                    }).html(upItem.UPNO.trim()).appendTo($select);
+                });
+                //$("#UPDropDownID").val(resourceName); 
+            }
+        });
+
+
+    });
+
+</script>

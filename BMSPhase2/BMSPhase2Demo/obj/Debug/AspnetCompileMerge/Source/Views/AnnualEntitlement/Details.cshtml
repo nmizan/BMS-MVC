@@ -1,0 +1,92 @@
+﻿@model BMSPhase2Demo.Models.ANNUALENTLRAWMATERIAL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ANNUALENTLRAWMATERIAL</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AESLNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AESLNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BONDERSLNO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BONDERSLNO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MATERIAL.MHSCODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MATERIAL.MHSCODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MEASUREMENTUNIT.MUNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MEASUREMENTUNIT.MUNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.INPUTDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.INPUTDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFYDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFYDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AEQTY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AEQTY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AIL_HSCODE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AIL_HSCODE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SPEC_GRADE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SPEC_GRADE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

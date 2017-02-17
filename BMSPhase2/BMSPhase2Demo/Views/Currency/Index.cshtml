@@ -1,0 +1,86 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.CURRENCY>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left : 230px;
+    }
+</style>
+
+<p  style =" font-size :20px;margin-left : 230px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <tr><th colspan="9" style="text-align: center; ">Currency Summary View </th></tr>
+    <tr>
+        <th>
+            Currency SL No
+        </th>
+        <th>
+            Currency Code
+        </th>
+        <th>
+            Currency Short Name
+        </th>
+       @* <th>
+            Currency SName BG
+        </th>*@
+        <th>
+            Currency Name
+        </th>
+        @*<th>
+            Currency Name BG
+        </th>*@
+         <th colspan="3"  style="text-align :center " >
+            
+            Action
+     </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURRSLNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURRENCYCODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CURRENCYSNM)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.CURRENCYSNMBG)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.CURRENCYNAME)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CURRENCYNAMEBG)
+            </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.CURRSLNO })
+
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.CURRSLNO })
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.CURRSLNO })
+            </td>
+        </tr>
+    }
+
+</table>

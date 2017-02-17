@@ -1,0 +1,67 @@
+﻿@model BMSPhase2Demo.Models.INBONDRAWMATERIAL
+
+<table id="rawMaterialTable" class="table">
+        @using (Html.BeginCollectionItem("INBONDRAWMATERIALs"))
+    {
+@Html.ValidationSummary(true)
+        <tr>
+        
+            <th class="col-lg-2">
+                @Html.LabelFor(model => model.RAWMATERIALCODE)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.PRODUCTQUANTITY)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.QUANTITYUNIT)
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.PRODUCTCOST)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.COSTUNIT)
+            </th>
+            
+        </tr>
+    <tr>
+        <td>
+            @Html.DropDownListFor(model => model.RAWMATERIALCODE, null, "-- Select --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RAWMATERIALCODE)
+        </td>
+        <td>
+            @Html.TextBoxFor(model => model.PRODUCTQUANTITY, new { @class = "form-control", @placeholder = "" })
+            @Html.ValidationMessageFor(model => model.PRODUCTQUANTITY)
+        </td>
+        <td>
+           @Html.DropDownListFor(model => model.QUANTITYUNIT, null, "-- Select --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.QUANTITYUNIT)
+        </td>
+
+        <td>
+            @Html.TextBoxFor(model => model.PRODUCTCOST, new { @class = "form-control", @placeholder = "" })
+            @Html.ValidationMessageFor(model => model.PRODUCTCOST)
+        </td>
+        <td>
+            @Html.DropDownListFor(model => model.COSTUNIT, null, "-- Select --", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.COSTUNIT)
+        </td>
+   
+       
+        
+  
+            <td>
+                <input type="button" class="btn btn-danger" value="Delete" onclick='$(this).parent().parent().parent().remove();' />
+            </td>
+
+        </tr>
+             
+    }
+</table>
+
+@*<script>
+        function deleteRow($em) {
+            //$("#addRawMaterial").attr('value', 'Add Raw Material');
+            $em.parent().parent().parent().remove();
+        };
+    </script>*@

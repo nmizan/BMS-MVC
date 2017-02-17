@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.BONDERANNUALENTITLEMENT>
+@{
+    ViewBag.Title = "Bond Entitlement List";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<style type="text/css">
+    /*table, th, td {
+        border: 1px solid #66d9ff;
+        border-collapse: collapse;
+    }*/
+
+    .textBoxSize {
+        width: 200px;
+    }
+
+    .bigddl {
+        width: 312px;
+    }
+</style>
+<h3 class="text-center">Bond Entitlement List</h3>
+
+<table class="table table-hover table-condensed table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Bonder Name
+            </th>
+            <th>
+                Bonder Lincense No
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.INPUTBY)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "EntitlementDetails", new { id = item.AESLNO })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

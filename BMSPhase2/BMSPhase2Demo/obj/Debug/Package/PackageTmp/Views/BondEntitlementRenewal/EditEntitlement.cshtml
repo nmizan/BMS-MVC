@@ -1,0 +1,78 @@
+﻿@model BMSPhase2Demo.Models.ANNUALENTLRAWMATERIAL
+
+@{
+    ViewBag.Title = "EditEntitlement";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ANNUALENTLRAWMATERIAL</legend>
+
+        @Html.HiddenFor(model => model.AESLNO)
+        @Html.HiddenFor(model => model.BONDERSLNO)
+        @Html.HiddenFor(model => model.MSLNO)
+
+        @* <div class="editor-label">
+                @Html.LabelFor(model => model.MSLNO)
+            </div>
+            <div class="editor-field">*@
+        @*@Html.DropDownList("Rawmaterilas", String.Empty)*@
+        @*    @Html.DropDownList("Rawmaterilas", null, "--Select A Raw Material--", new { name = "rawmaterilas", id = "rawmaterilas" , @disabled = "disabled"  })
+                @Html.ValidationMessageFor(model => model.MSLNO)
+            </div>*@
+
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.MATERIAL.MDESCRIPTION)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MATERIAL.MDESCRIPTION, new
+            { disabled = "disabled", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.MATERIAL.MDESCRIPTION)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MATERIAL.SPGRADE)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model =>  model.MATERIAL.SPGRADE,new
+            { disabled = "disabled", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model =>  model.MATERIAL.SPGRADE)
+            </div>*@
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AEQTY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AEQTY)
+            @Html.ValidationMessageFor(model => model.AEQTY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MEASUREMENTUNIT.MUNAME)
+        </div>
+        <div class="editor-field">
+            @* @Html.DropDownList("Unit", String.Empty);*@
+            @Html.DropDownList("Unit", null, "--Select Unit--", new { name = "unit", id = "unit" })
+            @Html.ValidationMessageFor(model => model.MEASUREMENTUNIT.MUNAME)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

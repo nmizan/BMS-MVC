@@ -1,0 +1,295 @@
+﻿@model BMSPhase2Demo.Models.BACKTOBACKLC
+
+@{
+    ViewBag.Title = "Create LC";
+}
+
+<h3 style=" margin:0 auto; width:50%;">Create New Local LC</h3>
+
+@using (Html.BeginForm("Create", "Back2BackLC", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    <fieldset>
+        <legend>BACKTOBACKLC</legend>
+        <div class="col-lg-12">
+            <table class="table">
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.BUYERSNAME):
+                    </th>
+                    <td class="col-lg-7">
+                        @Html.TextBoxFor(model => model.BUYERSNAME, new { @class = "form-control", autocomplete = "true", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BUYERSNAME)
+                    </td>
+                    <td class="col-lg-2"></td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.BUYERSADDRESS):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.BUYERSADDRESS, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.BUYERSADDRESS)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.LCNUMBER):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.LCNUMBER, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.LCNUMBER)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.LCDATE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.LCDATE, "{0:yyyy-MM-dd}", new { @class = " form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.LCDATE)
+                    </td>
+
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.BUYERSBANKID, "Bank"):
+                    </th>
+                    <td>
+                        @Html.DropDownList("BUYERSBANKID", null, "-- Select Bank --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BUYERSBANKID)
+                    </td>
+
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.BUYERSBANKBRANCHID, "Bank Branch"):
+                    </th>
+                    <td>
+                        @Html.DropDownList("BUYERSBANKBRANCHID", null, "-- Select Branch --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BUYERSBANKBRANCHID)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.SHIPPINGDATE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.SHIPPINGDATE, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.SHIPPINGDATE)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.CORRECTIONDATE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.CORRECTIONDATE, "{0:yyyy-MM-dd", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.CORRECTIONDATE)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.PRODUCTQUANTITY):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.PRODUCTQUANTITY, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.PRODUCTQUANTITY)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.QUANTITYUNIT):
+                    </th>
+                    <td>
+                        @Html.DropDownListFor(model => model.QUANTITYUNIT, null, "-- Select --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.QUANTITYUNIT)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.LCUSEDPRICE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.LCUSEDPRICE, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.LCUSEDPRICE)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.PRICEUNIT):
+                    </th>
+                    <td>
+                        @Html.DropDownListFor(model => model.PRICEUNIT, null, "-- Select --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.PRICEUNIT)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.MASTERLCNUMBER):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.MASTERLCNUMBER, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.MASTERLCNUMBER)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.MASTERLCCORRECTIONDATE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.MASTERLCCORRECTIONDATE, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.MASTERLCCORRECTIONDATE)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.UDNUMBER):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.UDNUMBER, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.UDNUMBER)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.UDDATE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.UDDATE, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.UDDATE)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.UDCORRECTIONDATE):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.UDCORRECTIONDATE, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.UDCORRECTIONDATE)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.UDPRODUCTDETAIL):
+                    </th>
+                    <td>
+                        @Html.TextBoxFor(model => model.UDPRODUCTDETAIL, new { @class = "form-control", @placeholder = "" })
+                        @Html.ValidationMessageFor(model => model.UDPRODUCTDETAIL)
+                    </td>
+                </tr>
+                <tr>
+                    <th class="pull-right">
+                        @Html.LabelFor(model => model.BONDER.BONDERNAME):
+                    </th>
+                    <td>
+                        @Html.DropDownList("BONDERID", null, "-- Select Bonder --", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BONDERID)
+                    </td>
+                </tr>
+                @if (Model != null) { 
+                for (int i = 0; i < Model.BACKTOBACKPRODUCTs.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <tr>
+                            <td colspan="3" class="col-lg-7">
+                                @Html.Display("Product Details:")
+                            </td>
+                        </tr>
+                    }
+                    @Html.HiddenFor(model => model.BACKTOBACKPRODUCTs[i].BACKTOBACKLCID)
+                    @Html.HiddenFor(model => model.BACKTOBACKPRODUCTs[i].ID)
+
+                    <tr>
+                        <td colspan="3" class="col-lg-12">
+                            <table class="table">
+
+                                <tr>
+                                    <th class="col-lg-2">
+                                        @Html.LabelFor(model => model.BACKTOBACKPRODUCTs[i].NAME)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.BACKTOBACKPRODUCTs[i].SIZEANDDETAIL)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => model.BACKTOBACKPRODUCTs[i].QUANTITY)
+                                    </th>
+
+                                    <th>
+                                        @Html.LabelFor(model => model.BACKTOBACKPRODUCTs[i].QUANTITYUNIT)
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <td class="col-lg-2">
+                                        @Html.TextBoxFor(model => model.BACKTOBACKPRODUCTs[i].NAME, new { @class = "form-control", @placeholder = "" })
+                                        @Html.ValidationMessageFor(model => model.BACKTOBACKPRODUCTs[i].NAME)
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.BACKTOBACKPRODUCTs[i].SIZEANDDETAIL, new { @class = "form-control", @placeholder = "" })
+                                        @Html.ValidationMessageFor(model => model.BACKTOBACKPRODUCTs[i].SIZEANDDETAIL)
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(model => model.BACKTOBACKPRODUCTs[i].QUANTITY, new { @class = "form-control", @placeholder = "" })
+                                        @Html.ValidationMessageFor(model => model.BACKTOBACKPRODUCTs[i].QUANTITY)
+                                    </td>
+
+                                    <td>
+                                        @Html.DropDownListFor(model => model.BACKTOBACKPRODUCTs[i].QUANTITYUNIT, null, "-- Select --", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.BACKTOBACKPRODUCTs[i].QUANTITYUNIT)
+                                    </td>
+                                    <td>
+                                        <input type="button" class="btn btn-danger" value="Delete" onclick='$(this).parent().parent().parent().remove();' />
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                }
+            }
+                <tr>
+                    <td colspan="3" class="col-lg-7">
+                        <ul id="products" style="list-style-type: none; padding-left: 0px;">                            
+                            <li style=" display: inline-block;">                              
+                            </li>
+                        </ul>
+                        
+                        @*@Html.Partial("RawMaterialEntryEditor", Model)*@
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-lg-3"></td>
+                    <td>
+                        <input type="button" name="addProduct" class="btn btn-info" id="addProduct" value="Add Product" onclick='addNewRow();' />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-lg-3"></td>
+                    <td>
+                        <button type="submit" name="submit" class="btn btn-primary">Create</button>
+                        @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                    </td>
+                </tr>
+            </table>           
+        </div>
+
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function addNewRow() {
+        //alert("This function is under development.");
+        $.get('/Back2BackLC/ProductEntryEditorRow', function (template) {
+            $("#products").append(template);
+        });
+    };
+</script>

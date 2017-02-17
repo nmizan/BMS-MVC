@@ -1,0 +1,95 @@
+﻿@model BMSPhase2Demo.Models.CURRENCY
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style type="text/css">
+    table, th, td {
+        border: 0px;
+        border-collapse: collapse;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 15px;
+        margin-left :230px;
+    }
+
+    .textBOxSize {
+        width: 220px;
+    }
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Currency Information</p>
+<h2 style ="margin-left :230px;">Details</h2>
+
+<fieldset>
+    <legend>CURRENCY</legend>
+
+   
+
+    <table>
+
+        <tr>
+            <td>
+                Currency SL No:
+                @Html.HiddenFor(model => model.CURRSLNO)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.CURRSLNO, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Currency Code:
+            </td>
+            <td> @Html.TextBoxFor(model => model.CURRENCYCODE, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>
+                Currency SName :
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.CURRENCYSNM, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Currency SName BG:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.CURRENCYSNMBG, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>Currency Name:</td>
+            <td>@Html.TextBoxFor(model => model.CURRENCYNAME, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Currency Name BG :</td>
+            <td>@Html.TextBoxFor(model => model.CURRENCYNAMEBG, new { @readonly = "readonly" })</td>
+        </tr>
+
+
+        <tr>
+            <td>Input By:</td>
+            <td>@Html.TextBoxFor(model => model.INPUTBY, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Input date:</td>
+            <td>@Html.TextBoxFor(model => model.INPUTDATE, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Modify By:</td>
+            <td>@Html.TextBoxFor(model => model.MODIFIEDBY, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Modified Date:</td>
+            <td>@Html.TextBoxFor(model => model.MODIFYDATE, new { @readonly = "readonly" })</td>
+        </tr>
+    </table>
+</fieldset>
+<p style ="margin-left :230px;">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CURRSLNO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

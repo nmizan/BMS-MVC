@@ -1,0 +1,209 @@
+﻿@model PagedList.IPagedList<BMSPhase2Demo.Models.UPREQUEST>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm("Create", "UP", FormMethod.Post))
+{
+    if (!System.Web.HttpContext.Current.User.IsInRole("Bonder"))
+    {
+        <table class="table table-striped table-bordered ">
+            <tr>
+
+                <th id="search-th">
+                    @Html.DisplayNameFor(model => model.FirstOrDefault().BONDER.BONDERNAME):
+                </th>
+                <td id="search-td">
+                    @Html.DropDownList("BONDERID", null, "-- Select Bonder --", new { @class = "form-control" })
+
+                </td>
+            </tr>
+        </table>
+
+        <button type="submit" name="submit" class="btn btn-primary">Search</button>
+    }
+}
+@Html.ValidationSummary(true)
+<p style="color: red; padding-left:350px;">@ViewBag.error</p>
+@Html.ActionLink("Show Approve List", "Index", "UP", null, new { @class = "action-link" })
+<h2> Select one or more Request to Approve </h2>
+<p style="color: red; padding-left:350px;">@ViewBag.modelError</p>
+
+@using (Html.BeginForm("CreateOREditUP", "UP", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr id="tr">
+                        <th id="th">
+                            @Html.DisplayName("Select")
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].ID)
+
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].STATUS)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].CREATEDBY)
+                        </th>
+                        <th id="th">
+                            @Html.DisplayNameFor(model => model[0].CREATEDDATE)
+                        </th>
+
+                        <th id="th">
+                            @Html.DisplayName("No of EXBOND")
+                        </th>
+                        <th id="th">
+                            Action
+                        </th>
+
+                    </tr>
+
+
+                    @{int j = 0; string trgb = "#c1deef";}
+                    @for (int i = 0; i < Model.Count(); i++)
+                    {
+                        j++;
+                        if (i % 2 == 0) { trgb = "#e6ebee"; }
+                        else { trgb = "#c1deef"; }
+                        //if (Model[i].BACKTOBACKPRODUCTs.Count() < 1) { trgb = "#e6ebee"; }
+                        // else { trgb = "#c1deef"; }
+
+                        <tr>
+                            <td id="td">
+                                @Html.CheckBoxFor(modelItem => Model[i].IsSelected)
+                                @Html.HiddenFor(modelItem => Model[i].ID)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].ID)
+                            </td>
+                            @if (Model[i].STATUS == 20)
+                            {
+                                <td id="td">
+                                    @Html.DisplayName("Approved")
+                                </td>
+                            }
+                            else if (Model[i].STATUS == 2)
+                            {
+                                <td id="td">
+                                    @Html.DisplayName("Pending For Approval")
+                                </td>
+                            }
+                            else
+                            {
+                                <td id="td">
+                                    @Html.DisplayFor(modelItem => Model[i].STATUS)
+                                </td>
+                            }
+
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].CREATEDBY)
+                            </td>
+                            <td id="td">
+                                @Html.DisplayFor(modelItem => Model[i].CREATEDDATE)
+                            </td>
+
+                            <td id="td">
+                                @Model[i].UPEXBONDLISTs.Count()
+                            </td>
+                            <td id="td_@Model[i].ID">
+                                @Html.ActionLink("View Details", "Details", "UPRequest", new { id = Model[i].ID }, new { @class = "action-link" })|
+                                <input type="button" onclick="return takeconfirmation(@Model[i].ID);" class="btn btn-danger" value="Reject" />
+                                @*
+                                @Ajax.ActionLink("Reject", "DeleteRequest", new { id =Model[i].ID },
+                                            new AjaxOptions()
+                                            {
+                                                HttpMethod = "Delete",
+                                                OnBegin="return takeconfirmation()",
+                                           
+                                                OnComplete = "$('#td_" + @Model[i].ID + "').parent().remove();"
+                                            }, new { @class = "btn btn-danger" })*@
+                            </td>
+
+
+                        </tr>
+
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped table-bordered ">
+        <tr>
+            @if (Model.Count() > 0)
+            {
+                <th id="search-th">
+                    @Html.DisplayName("UP No"):
+                </th>
+                <td id="search-td">
+                    @Html.TextBox("UPNO", "", new { @class = "form-control" })
+                    @Html.ValidationMessage("UPNO")
+
+                </td>
+            }
+        </tr>
+    </table>
+
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            @Html.Hidden("ID", (short)ViewBag.requestID)
+            <button type="submit" name="submit" class="btn btn-primary">Approve</button>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+
+}
+<p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+
+@Html.PagedListPager(Model, page => Url.Action("Create", new { page, filterBonderId = ViewBag.filterBonderId }))
+
+<script>
+    function takeconfirmation(id) {
+        
+        while (true) {
+            var rejectMessage = prompt("Do You Really Want to Reject?\nPlease Enter Your Reason for Rejection.")
+            if (rejectMessage != null && rejectMessage !== "") {
+                $.ajax
+                        ({
+                            url: '@Url.Action("DeleteRequest")',
+                            data: { "id": id, "rejectMessage": rejectMessage },
+                            async: false,
+                            type: 'get', error: function (xhr, status, error) {
+                                alert(error);
+                            },
+                            success: function (result) {
+                                $('#td_' + id).parent().remove();
+                            }
+                        });
+
+                return true;
+            }
+            else if (rejectMessage === "") {
+                alert("Please Provide a Reason to Reject.");
+                
+            }
+            else {
+                break;
+            }
+        }
+        return false;
+        
+    }
+    function MyConfirm() {
+        alertify.confirm("Do you really want to do that??", function (e) {
+
+            // this actually makes the ajax call if required
+            if (e) doAjaxCall();
+        });
+
+
+        return false;
+    }
+</script>

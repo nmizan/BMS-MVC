@@ -1,0 +1,22 @@
+
+
+ 1.Package Location =  Drive => Folder
+
+ 2. IIS => Sites=> Add Web Site => site name,physical path,port (8081)=>ok
+
+ 3. Double Click => IIS-Application Pool - Double Click-site name-select framework 4.0
+
+ 3. Web Config file Link Change :
+
+    In Phase 2 : <add key="linkText" value="BMS Main" />
+                 <add key="linkURL" value="http://ccl-6" />  --- PC Name
+
+
+    In Phase 1 : Source code open - Layout.cstml file- 
+                   
+               <a href="http://ccl-6:8081" target="_blank">Utilization Permission </a>
+
+
+4. Copy Layout.cstml file and paste into the root directory-web.config-views-shared-Layout.cstml
+
+     

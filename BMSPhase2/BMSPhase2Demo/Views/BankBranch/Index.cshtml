@@ -1,0 +1,120 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.BANKBRANCH>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+        margin-left : 70px;
+    }
+    
+ 
+</style>
+
+<p  style =" font-size :20px;margin-left : 70px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+    <thead>
+         <tr><th colspan="14" style="text-align: center; ">Branch Summary View </th> </tr>
+    <tr>
+        <th>
+            Branch SL No
+        </th>
+        <th>
+            Bank Name
+        </th>
+        <th>
+            Branch Name
+        </th>
+       @* <th>
+            Branch Name BG
+        </th>*@
+        <th>
+            Address
+        </th>
+       @* <th>
+            Address BG
+        </th>*@
+        <th>
+           Phone
+        </th>
+        @*<th>
+           Phone BG
+        </th>*@
+        <th>
+            Fax
+        </th>
+        @*<th>
+            Fax BG
+        </th>*@
+        <th>
+            Email
+        </th>
+        
+        <th colspan="3"  style="text-align :center ">
+            Action
+
+        </th>
+        
+    </tr>
+</thead>
+   <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BBRANCHSLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BANK.BANKNAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BRANCHNAME)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.BRANCHNAMEBG)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.ADDRESSBG)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.PHONEBG)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.FAX)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.FAXBG)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.BBRANCHSLNO   }) 
+            
+        </td>
+        <td>
+           
+            @Html.ActionLink("Details", "Details", new {  id=item.BBRANCHSLNO   }) 
+           
+        </td>
+        <td>
+           
+            @Html.ActionLink("Delete", "Delete", new {  id=item.BBRANCHSLNO   })
+        </td>
+    </tr>
+}
+</tbody>
+</table>

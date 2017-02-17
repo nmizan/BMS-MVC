@@ -1,0 +1,46 @@
+﻿@model BMSPhase2Demo.BACKTOBACKLC
+
+<table>
+    @using (Html.BeginCollectionItem("BACKTOBACKLCs"))
+{
+
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.)
+            @Html.EditorFor(model => model.PRODUCTCODE)
+            @Html.ValidationMessageFor(model => model.PRODUCTCODE)
+        </td>
+    <td>
+        @Html.LabelFor(model => model.PRODUCTQUANTITY)
+        @Html.EditorFor(model => model.PRODUCTQUANTITY)
+        @Html.ValidationMessageFor(model => model.PRODUCTQUANTITY)
+    </td>
+    <td>
+    @Html.LabelFor(model => model.QUANTITYUNIT)
+    @Html.EditorFor(model => model.QUANTITYUNIT)
+    @Html.ValidationMessageFor(model => model.QUANTITYUNIT)
+    </td>
+       
+    <td>
+        @Html.LabelFor(model => model.PRODUCTCOST)
+        @Html.EditorFor(model => model.PRODUCTCOST)
+        @Html.ValidationMessageFor(model => model.PRODUCTCOST)
+    </td>
+    <td>
+        @Html.LabelFor(model => model.COSTUNIT)
+        @Html.EditorFor(model => model.COSTUNIT)
+        @Html.ValidationMessageFor(model => model.COSTUNIT)
+    </td>
+
+    @*<td>
+        @Html.LabelFor(model => model.INBONDID)
+        @Html.EditorFor(model => model.INBONDID, 12)
+        @Html.ValidationMessageFor(model => model.INBONDID)
+    </td>*@
+                 <td>
+                     <a href="#" onclick="$(this).parent().parent().remove();">Delete</a>
+                 </td>
+       
+        </tr>
+}
+</table>

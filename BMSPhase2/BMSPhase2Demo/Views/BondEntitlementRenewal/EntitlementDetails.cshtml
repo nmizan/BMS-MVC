@@ -1,0 +1,281 @@
+﻿@model BMSPhase2Demo.Models.AnnualCoefficientEntitlementViewModelList
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link href="~/CommonCss/StyleSheet1.css" rel="stylesheet" />
+<link rel="stylesheet" href="/resources/demos/style.css">
+@{
+    ViewBag.Title = "Entitlement Details";
+}
+
+<h3>Entitlement Details</h3>
+
+
+<div>
+
+    <table id="sTabContent" class="table table-bordered" style="width: 100%">
+        
+        @Html.ActionLink("Add New", "AddEntitlementRawMaterial", new { aeslno = Model.BonderAnnualEntitlement.AESLNO, bonderslno = Model.BonderAnnualEntitlement.BONDERSLNO }, new { @class = "btnAddNew" })
+
+        @* <tr>
+                <th></th>
+            </tr>*@
+        <tr>
+            <th colspan="7" style="text-align: center; background-color: lightcyan;">Annual Import/Local Purchase Entitlement for raw Materials</th>
+        </tr>
+        <tr>
+
+            <th>Raw Material</th>
+            <th>HS Code</th>
+            <th>Description</th>
+            <th>Specification/Grade</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+            <th>Action</th>
+
+        </tr>
+
+        @foreach (var item in Model.AnnualEntitlementRawMaterials)
+        {
+            <tr>
+                <td>@item.MATERIAL.MATERIALNAME</td>
+                <td>@item.MATERIAL.MHSCODE</td>
+                <td>@item.MATERIAL.MDESCRIPTION</td>
+                <td>@item.MATERIAL.SPGRADE</td>
+                <td>@item.AEQTY</td>
+                <td>@item.MEASUREMENTUNIT.MUNAME</td>
+                <td>
+                    @Html.ActionLink("Edit", "EditEntitlement", new { id = item.AESLNO, id2 = item.BONDERSLNO, id3 = item.MSLNO }) |
+                @Html.ActionLink("Delete", "DeleteAnnualEntlRawmaterial", new { id = item.AESLNO, id2 = item.BONDERSLNO, id3 = item.MSLNO })
+            </td>
+
+
+        </tr>
+        }
+    </table>
+
+    <hr />
+
+
+
+    @using (Html.BeginForm("CalculateStorageInfo", "BondEntitlementRenewal"))
+    {
+
+        @Html.HiddenFor(model => model.BonderAnnualEntitlement.AESLNO)
+        @Html.HiddenFor(model => model.BonderAnnualEntitlement.BONDERSLNO)
+
+        <table class="table table-bordered" style="width: 100%">
+
+
+            <tr>
+                <th>@Html.ActionLink("Edit", "EditStorageInfo", new { aeslno = Model.BonderAnnualEntitlement.AESLNO, bonderslno = Model.BonderAnnualEntitlement.BONDERSLNO })</th>
+            </tr>
+
+            <tr>
+                <th colspan="7" style="text-align: center; background-color: lightcyan;">Storage Information</th>
+            </tr>
+
+            <tr>
+                <td>Total Entitlement </td>
+                @*<td>Unit</td>*@
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.TOTALSTORAGEQTY, new { required = "required", @readonly = "readonly" })
+                   
+                </td>
+
+
+                <td>@Html.DropDownList("UnitTS", null, "--Select A Unit--", new { Name = "UnitTS", required = "required", @disabled = "disabled" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.TOTALSTORAGEQTYEN, new { @readonly = "readonly" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>One time Storage Quantity</td>
+                @*<td>Unit</td>*@
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ONETIMESTORAGEQTY, new { required = "required", @readonly = "readonly" })
+                </td>
+
+
+                <td>@Html.DropDownList("UnitOT", null, "--Select A Unit--", new { Name = "UnitOT", required = "required",@disabled="disabled" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ONETIMESTORAGEQTYEN, new { @readonly = "readonly" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>Percentage</td>
+                <td colspan="4">@Html.TextBoxFor(model => model.BonderAnnualEntitlement.PERCENTVAL, new { required = "required", @readonly = "readonly" })</td>
+            </tr>
+
+            <tr>
+                <td>Entitlement % according to Production</td>
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLEPERCENTQTY, new { Name = "UnitOT", required = "required", @readonly = "readonly" })
+                </td>
+                <td>@Html.DropDownList("UnitET", null, "--Select A Unit--", new { Name = "UnitET", required = "required", @disabled = "disabled" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLEPERCENTEN, new { @readonly="readonly" })
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="submit" value="Calculate" class="btn btn-success">
+                </td>
+
+
+
+            </tr>
+            <tr>
+                <th colspan="7" style="text-align: center; background-color: lightcyan;">Entitlement  period</th>
+            </tr>
+            <tr>
+                <td>Date From</td>
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLEFROM, new { required = "required", @class = "datefield", @readonly = "readonly" })
+                </td>
+                <td></td>
+                <td>Date To</td>
+                <td>
+                    @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLETO, new { required = "required", @class = "datefield", @readonly = "readonly" })
+                </td>
+            </tr>
+        </table>
+
+
+    }
+    <h4 style="text-align: center; text-decoration: underline;">Production Input-Output Coefficient Input</h4>
+
+    <table class="table table-bordered" id="TblRawmaterialsCoE">
+        @Html.ActionLink("Add New", "AddEntitlementCoefficient", new { aeslno = Model.BonderAnnualEntitlement.AESLNO, bonderslno = Model.BonderAnnualEntitlement.BONDERSLNO }, new { @class = "btnAddNew" })
+        @* <tr>
+                <th></th>
+            </tr>*@
+
+
+
+
+
+        @*  </table>
+
+            <hr />*@
+
+        @*<input type="button" value="Add Product" name="btnAddProductCoE" id="btnAddProductCoE" onclick="AddProductCoE()">*@
+
+        @*  <table class="table table-bordered" id="TblProductCoE">*@
+
+        <tr>
+            <th colspan="8" style="text-align: center; background-color: lightcyan;">Products</th>
+        </tr>
+
+        <tr>
+            <td style="width: 160px;">Product</td>
+            <td style="width: 100px;">Weight</td>
+            <td style="width: 100px;">HS Code</td>
+            <td style="width: 100px;">Size</td>
+            <td style="width: 100px;">Measurement</td>
+            <td style="width: 160px;">Raw Materilas</td>
+            <td style="width: 100px;">MotherMachine</td>
+            <td style="width: 100px;">Action</td>
+        </tr>
+
+        @foreach (var item in Model.BonderAnnualEntitlementCoMs)
+        {
+            <tr>
+                <td>@item.MATERIAL.MATERIALNAME</td>
+
+
+
+                <td style="width: 100px;">
+
+                    @item.WEIGHT
+                </td>
+
+                <td style="width: 160px;">
+
+                    @item.MATERIAL.MHSCODE
+                </td>
+
+                <td style="width: 80px;">
+
+                    @item.MSIZE
+                </td>
+
+                <td style="width: 80px;">
+
+                    @item.MEASUREMENT
+                </td>
+
+                <td style="width: 160px;">
+                    @foreach (var r in Model.BonderannualEntitlementCoEDets)
+                    {
+                        if (r.MSLNO == item.MSLNO)
+                        {
+                            <b>@r.INPUTBY</b>
+                        }
+                    }
+                </td>
+
+                <td style="width: 100px;">
+
+                    @item.MACHINEINFORMATION.MODELNM
+
+                </td>
+
+
+
+                <td style="width: 100px;">
+                    @Html.ActionLink("Edit", "EditCoefficientMas", new { id = item.AESLNO, id2 = item.BONDERSLNO, id3 = item.MSLNO }) |
+                @Html.ActionLink("Delete", "DeleteCoefficientMas", new { id = item.AESLNO, id2 = item.BONDERSLNO, id3 = item.MSLNO })
+            </td>
+
+        </tr>
+        }
+
+
+    </table>
+
+    @using (Html.BeginForm("ApproveEntitlement", "BondEntitlementRenewal"))
+    {
+
+
+
+        @*<input type="submit" class="btn btn-warning" value="Approve Entitlement">*@
+
+    }
+
+
+
+</div>
+
+@section Scripts{
+    @*<script type="text/javascript">
+
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $(".datefield").datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+    </script>*@
+@Scripts.Render("~/bundles/jqueryval")
+}  

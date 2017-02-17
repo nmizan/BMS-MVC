@@ -1,0 +1,129 @@
+﻿@model BMSPhase2Demo.Models.BONDERANNUALENTITLEMENT
+@*<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">*@
+@{
+    ViewBag.Title = "EditStorageInfo";
+}
+
+<h2>EditStorageInfo</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    
+        <table class="table table-bordered" style="width: 100%">
+
+            <tr>
+                <th colspan="7" style="text-align: center; background-color: lightcyan;">Storage Information</th>
+            </tr>
+
+            <tr>
+                <td>Total Entitlement </td>
+                @*<td>Unit</td>*@
+                <td>
+                    @Html.EditorFor(model => model.TOTALSTORAGEQTY, new { required = "required" })
+                </td>
+
+
+                <td>@Html.DropDownList("UnitTS", null, "--Select A Unit--", new { Name = "UnitTS", required = "required" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    @Html.EditorFor(model => model.TOTALSTORAGEQTYEN)
+                </td>
+            </tr>
+
+            <tr>
+                <td>One time Storage Quantity</td>
+                @*<td>Unit</td>*@
+                <td>
+                    @Html.EditorFor(model => model.ONETIMESTORAGEQTY, new { required = "required" })
+                </td>
+
+
+                <td>@Html.DropDownList("UnitOT", null, "--Select A Unit--", new { Name = "UnitOT", required = "required" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    @Html.EditorFor(model => model.ONETIMESTORAGEQTYEN)
+                </td>
+            </tr>
+
+            <tr>
+                <td>Percentage</td>
+                <td colspan="4">@Html.EditorFor(model => model.PERCENTVAL)</td>
+            </tr>
+
+            <tr>
+                <td>Entitlement % according to Production</td>
+                <td>
+                    @Html.EditorFor(model => model.ENTITLEPERCENTQTY, new { required = "required" })
+                </td>
+                <td>@Html.DropDownList("UnitET", null, "--Select A Unit--", new { Name = "UnitET", required = "required" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    @Html.EditorFor(model => model.ENTITLEPERCENTEN)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+
+            </tr>
+            <tr>
+                <th colspan="7" style="text-align: center; background-color: lightcyan;">Entitlement  period</th>
+            </tr>
+            <tr>
+                <td>Date From</td>
+                <td>
+                    @Html.EditorFor(model => model.ENTITLEFROM)
+
+                </td>
+                <td></td>
+                <td>Date To</td>
+                <td>
+                    @Html.EditorFor(model => model.ENTITLETO)
+
+                </td>
+            </tr>
+        </table>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+   
+}
+
+<div>
+    @Html.ActionLink("Back to List", "BondEntitlementList")
+</div>
+
+@section Scripts {
+
+@Scripts.Render("~/bundles/jqueryval")
+
+@*<script type="text/javascript">
+
+    $(function () {
+        $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+        $(".datefield").datepicker({
+            dateFormat: "dd/MM/yy",
+            changeMonth: true,
+            changeYear: true
+        }, $.datepicker.regional['bn-BD']);
+    });
+</script>*@
+
+
+ 
+    }

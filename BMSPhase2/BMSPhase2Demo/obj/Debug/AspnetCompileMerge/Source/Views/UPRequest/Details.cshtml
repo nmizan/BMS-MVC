@@ -1,0 +1,150 @@
+﻿@model BMSPhase2Demo.ViewModels.UpAttachmentViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>UP Request Details</h2>
+
+<p style="color: red; padding-left:350px;">@ViewBag.error</p>
+
+<table border="1" id="table">
+    <thead>
+        <tr id="tr">
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.uprequest.ID)
+
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.uprequest.STATUS)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="td">@Html.DisplayFor(model => model.uprequest.ID)</td>
+            @if (Model.uprequest.STATUS == 0 || Model.uprequest.STATUS == 2)
+            {
+                <td id="td">@Html.DisplayName("Pending for Approval")</td>
+            }
+            @if (Model.uprequest.STATUS == 20)
+            {
+                <td id="td">@Html.DisplayName("Approved")</td>
+            }
+        </tr>
+    </tbody>
+</table>
+<h2>  Exbonds </h2>
+<table border="1" id="table">
+    <thead>
+        <tr id="tr">
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.EXBONDs[0].ID)
+
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.EXBONDs[0].BONDER.BONDERNAME)
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of LC")
+            </th>
+            <th id="th">
+                @Html.DisplayName("Action")
+            </th>
+        </tr>
+    </thead>
+
+    @{string trgb = "#c1deef";}
+    @for (int i = 0; i < Model.EXBONDs.Count(); i++)
+    {
+
+        if (Model.EXBONDs[i].EXBONDBACKTOBACKs.Count() < 1) { trgb = "#e6ebee"; }
+        <tbody>
+            <tr style="background: @trgb">
+
+
+                @Html.HiddenFor(modelItem => Model.EXBONDs[i].ID)
+
+
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model.EXBONDs[i].ID)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model.EXBONDs[i].BONDER.BONDERNAME)
+                </td>
+
+                <td id="td">
+                    @Model.EXBONDs[i].EXBONDBACKTOBACKs.Count()
+                </td>
+                <td id="td">
+                    @Html.ActionLink("Details", "Details", "ExBond", new { id = Model.EXBONDs[i].ID }, new { @class = "action-link" })
+                </td>
+
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+
+<h2>  Attachments </h2>
+<table border="1" id="table">
+    <thead>
+        <tr id="tr">
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.ATTACHMENTs[0].ID)
+
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.ATTACHMENTs[0].NAME)
+            </th>
+            <th id="th">
+                @Html.DisplayName("Content Link")
+            </th>
+            
+        </tr>
+    </thead>
+
+    @{string trgb1 = "#c1deef";}
+    @for (int i = 0; i < Model.ATTACHMENTs.Count(); i++)
+    {
+
+
+        <tbody>
+            <tr style="background: @trgb1">
+
+
+                @Html.HiddenFor(modelItem => Model.ATTACHMENTs[i].ID)
+
+
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model.ATTACHMENTs[i].ID)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model.ATTACHMENTs[i].NAME)
+                </td>
+                <td id="td">
+                    @if (Model.ATTACHMENTs[i].CONTENT != null) {
+                        int lastind = Model.ATTACHMENTs[i].CONTENT.LastIndexOf('/');
+                        string fileName =Path.GetFileName(Model.ATTACHMENTs[i].CONTENT);
+                        <a href="@Url.Content("~/Attachments/"+fileName)" class="action-link">Content Link</a>
+                    }
+                </td>
+
+            </tr>
+        </tbody>
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index","", new { @class = "action-link" })
+    @if (Model.uprequest.UPREQUESTLISTs.Count() > 0 && !User.IsInRole("Bonder"))
+    {
+        <span>| @Html.ActionLink("UP Details", "Details", "UP", new { id = Model.uprequest.UPREQUESTLISTs.ElementAt(0).UPID }, new { @class = "action-link" })</span>
+    }
+</p>
+<a href="@Url.Content("~/Attachments/attachment_7ccfeda5-22f2-4a68-9c15-cdaf70084a8c.txt")">Link</a>

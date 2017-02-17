@@ -1,0 +1,64 @@
+﻿@model BMSPhase2Demo.ATTACHMENT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ATTACHMENT</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CONTENT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CONTENT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UPREQUEST.CREATEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UPREQUEST.CREATEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CREATEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CREATEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CREATEDDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CREATEDDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDDATE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

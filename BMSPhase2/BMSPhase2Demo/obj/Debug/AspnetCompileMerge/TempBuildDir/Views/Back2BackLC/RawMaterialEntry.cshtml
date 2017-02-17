@@ -1,0 +1,137 @@
+﻿@model BMSPhase2Demo.Models.BACKTOBACKPRODUCT
+
+@{
+    ViewBag.Title = "Add Raw Material";
+}
+@{Random rand = new Random();
+int ranid = rand.Next(1, 1000);
+}
+
+
+<h2>Add Raw Material</h2>
+
+@using (Html.BeginForm("AddRawMaterial", "Back2BackLC", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(product => product.ID)
+    @Html.HiddenFor(product => product.BACKTOBACKLCID)
+    <div>
+        <table class="table">
+
+            <tr>
+                <th class="pull-right">
+                    @Html.LabelFor(product => product.NAME):
+                </th>
+                <td>
+                    @Html.DisplayFor(product => product.NAME)
+                </td>
+                <td class="col-lg-3"></td>
+                <td class="col-lg-3"></td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.LabelFor(product => product.SIZEANDDETAIL):
+                </th>
+                <td>
+                    @Html.DisplayFor(product => product.SIZEANDDETAIL)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.LabelFor(product => product.QUANTITY):
+                </th>
+
+                <td>
+                    @Html.DisplayFor(product => product.QUANTITY)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.LabelFor(product => product.QUANTITYUNIT):
+                </th>
+                <td>
+                    @Html.DisplayFor(product => product.QUANTITYUNIT)
+                </td>
+            </tr>
+
+            @for (int i = 0; i < Model.RAWMATERIALs.Count; i++)
+            {
+                var rawMaterial = Model.RAWMATERIALs[i];
+                if (i == 0)
+                {
+                    <tr style="font-size:10px">
+
+                        <th>
+                            @Html.LabelFor(model => rawMaterial.RAWMATERIALCODE)
+                        </th>
+                        <th>
+                            @Html.LabelFor(model => rawMaterial.QUANTITY)
+                        </th>
+                        <th>
+                            @Html.LabelFor(model => rawMaterial.UNIT)
+                        </th>
+                        <th>
+                            @Html.LabelFor(model => rawMaterial.PERMITTEDWASTE)
+                        </th>
+
+                    </tr>
+                }
+                <tr style="font-size:10px">
+
+                    <td>
+                        @Html.DisplayFor(model => rawMaterial.MATERIAL.MATERIALNAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => rawMaterial.QUANTITY)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => rawMaterial.UNIT)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => rawMaterial.PERMITTEDWASTE)
+                    </td>
+                </tr>
+            }
+
+            <tr>
+                <td>
+                    <input type="button" name="addRawMaterial" class="btn btn-info" id="addRawMaterial" value="Add Raw Material" onclick='addNewRawMaterial(@ranid);' />
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <ul id="rawMaterials_@ranid" style="list-style-type: none; padding-left: 0px;">
+                        <li style=" display: inline-block;">
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-lg-3"></td>
+                <td>
+                    <button type="submit" name="submit" class="btn btn-primary">Add</button>
+                    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                </td>
+            </tr>
+
+        </table>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function addNewRawMaterial(ranID) {
+        //alert("This function is under development.");
+
+        $.get('/Back2BackLC/RawMaterialEntryRow?pid=@Html.DisplayFor(product => product.ID)', function (template) {
+            $("#rawMaterials_" + ranID).append(template);
+        });
+    };
+
+</script>

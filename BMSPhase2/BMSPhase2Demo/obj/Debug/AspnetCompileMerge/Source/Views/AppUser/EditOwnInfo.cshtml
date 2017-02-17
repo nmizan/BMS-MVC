@@ -1,0 +1,85 @@
+﻿@model BMSPhase2Demo.Models.APPUSER
+
+@{
+    ViewBag.Title = "Edit Your Existing Info";
+}
+<div class="row">
+
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6">
+        <div class="well" style="width:80%; margin:0 auto;">
+            <hgroup class="title">
+                <h3 class="text-center">@ViewBag.Title</h3>
+            </hgroup>
+            <div style="overflow: hidden;margin:0 auto;">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        <legend>APPUSER</legend>
+                        <form role="form">
+
+                            @Html.HiddenFor(model => model.ID)
+                            @Html.HiddenFor(model => model.USERNAME)
+                            @Html.HiddenFor(model => model.SALT)
+                            @Html.HiddenFor(model => model.LASTLOGIN)
+                            @Html.HiddenFor(model => model.ISACTIVE)
+                            @Html.HiddenFor(model => model.PASSWARD)
+                            @Html.Hidden("isPasswordChange",false)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PASSWARD)
+                                @Html.PasswordFor(model => model.PASSWARD,new { value=Model.PASSWARD,disabled = "disabled", Style = "width: 100%" })
+                                @Html.ActionLink("Change Password", "Edit", new { id = Model.ID, isPasswordChange = true }, new { @class = "action-link" })
+                                @Html.ValidationMessageFor(model => model.PASSWARD)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FIRSTNAME)
+                                @Html.TextBoxFor(model => model.FIRSTNAME, new { Style = "width: 100%" })
+                                @Html.ValidationMessageFor(model => model.FIRSTNAME)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.LASTNAME)
+                                @Html.TextBoxFor(model => model.LASTNAME, new { Style = "width: 100%" })
+                                @Html.ValidationMessageFor(model => model.LASTNAME)
+                            </div>
+                            <div class="form-group">
+
+                                @Html.LabelFor(model => model.EMAIL)
+                                @Html.TextBoxFor(model => model.EMAIL, new { Style = "width: 100%" })
+                                @Html.ValidationMessageFor(model => model.EMAIL)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PHONE)
+                                @Html.TextBoxFor(model => model.PHONE, new { Style = "width: 100%" })
+                                @Html.ValidationMessageFor(model => model.PHONE)
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ADDRESS)
+                                @Html.TextBoxFor(model => model.ADDRESS, new { Style = "width: 100%" })
+                                @Html.ValidationMessageFor(model => model.ADDRESS)
+                            </div>
+
+                            <p>
+                                <input type="submit" value="Save" class="btn-lg btn-primary" style="width:100%;" />
+                            </p>
+                            <div class="form-group">
+                                @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                            </div>
+                        </form>
+                    </fieldset>
+                }
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

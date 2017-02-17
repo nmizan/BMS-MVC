@@ -1,0 +1,110 @@
+﻿@model BMSPhase2Demo.INBONDRAWMATERIAL
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>INBONDRAWMATERIAL</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRODUCTCODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRODUCTCODE)
+            @Html.ValidationMessageFor(model => model.PRODUCTCODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRODUCTQUANTITY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRODUCTQUANTITY)
+            @Html.ValidationMessageFor(model => model.PRODUCTQUANTITY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.QUANTITYUNIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.QUANTITYUNIT)
+            @Html.ValidationMessageFor(model => model.QUANTITYUNIT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PRODUCTCOST)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PRODUCTCOST)
+            @Html.ValidationMessageFor(model => model.PRODUCTCOST)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COSTUNIT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COSTUNIT)
+            @Html.ValidationMessageFor(model => model.COSTUNIT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.INBONDID, "INBOND")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("INBONDID", String.Empty)
+            @Html.ValidationMessageFor(model => model.INBONDID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CREATEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CREATEDBY)
+            @Html.ValidationMessageFor(model => model.CREATEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CREATEDDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CREATEDDATE)
+            @Html.ValidationMessageFor(model => model.CREATEDDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDDATE)
+            @Html.ValidationMessageFor(model => model.MODIFIEDDATE)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

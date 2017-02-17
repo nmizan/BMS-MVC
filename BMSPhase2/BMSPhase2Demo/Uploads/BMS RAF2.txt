@@ -1,0 +1,831 @@
+http://localhost/www.bms.com/BMS/bms
+
+
+
+02/11/2015
+-------------------------------------------------------------------------------------
+The changes to the database were committed successfully, but an error occurred while updating the object context. 
+The ObjectContext might be in an inconsistent state. 
+Inner exception message: AcceptChanges cannot continue because the object's key values conflict with another object in the ObjectStateManager.
+Make sure that the key values are unique before calling AcceptChanges.
+
+03/11/2015
+--------------------------------------------------------------------------------------
+
+<html>
+<head>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+function AddRow()
+{
+    $('#myTable').append('<tr><td>test 2</td></tr>')
+}
+</script>
+<title></title>
+</head>
+<body>
+<input type="button" id="btnAdd" onclick="AddRow()"/>
+<a href="">test</a>
+<table id="myTable">
+  <tbody >
+    <tr>
+      <td>
+        test
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
+
+--------------------------------------------------------------------------------------
+
+
+$('#btnAddContent').click(function (e) {
+
+        if ($.trim($('#txtunit').val()) == '') {
+            var newDiv = $(document.createElement('div'));
+            newDiv.attr('title', 'Message');
+            newDiv.html('No Content Selected');
+            newDiv.dialog({
+                modal: true,
+                buttons: {
+                    Ok: function () {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+
+            return false;
+        }
+
+        $('#sTabContent > tbody:last').append('<tr><td><input type="hidden" name="unitname" id="unitname[]" value="' + $('#txtunitname').val() + '" />' 
+					+ $('#txtunitname').val() + '</td><td><input type="hidden" name="unitCodes" id="unitCodes[]" value="' 
+					+ $('#txtunit').val() + '" />' + $('#txtunit').val() 
+					+ '</td><td><input type="hidden" name="txtnotall" id="txtnotall[]" value="' 
+					+ $('#txtvalue').val() + '" />' + $('#txtvalue').val() 
+					+ '</td><td align="center">
+					<a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+       
+
+        $("#txtunit").val('');
+        $("#txtunitname").val('');
+        $("#txtvalue").val('');
+        //$("#APP_CODE_DATE2").val('');
+
+    });
+
+
+10/11/2015
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+@model BMS.Models.RenewalViewModel
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap.min.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+
+    function AddRow() {
+
+        $('#btnAdd').click(function (e) {
+
+            if ($.trim($('#txtdoc').val()) == '') {
+                var newDiv = $(document.createElement('div'));
+                newDiv.attr('title', 'Message');
+                newDiv.html('No Content Selected');
+                newDiv.dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                return false;
+            }
+
+            $('#myTable > tbody:last').append('<tr><td><input type="hidden" name="doc" id="doc[]" value="' + $('#txtdoc').val() + '" />' + $('#txtdoc').val() + '</td><td><input type="hidden" name="issuedate" id=" issuedate[]" value="' + $('#txtissuedate').val() + '" />' + $('#txtissuedate').val() + '</td><td><input type="hidden" name="expdate" id="expdate[]" value="' + $('#txtexpdate').val() + '" />' + $('#txtexpdate').val() + '</td><td><input type="file"  name="files"  id="files[]" value="' + $('#file').val() + '" />' + $('#file').val() + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+            
+            $("#txtdoc").val('');
+            $("#txtissuedate").val('');
+            $("#txtexpdate").val('');
+            $("#file").val('');
+            
+
+        });
+
+      }
+
+    function Save() {
+
+        $('#btnsave').click(function (e) {
+
+
+            if ('doc[]' == null) {
+
+                return false;
+
+            }
+
+
+        });
+       
+        }
+
+</script>
+
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h3>@Model.Bonder.BONDERNAME</h3>
+<hr />
+<h4>@Model.Bonder.BONDLICENSENO</h4>
+<h4>@Model.Bonder.BONDTYPE.BTYPENAME</h4>
+<h4>@Model.Bonder.HIREDATE</h4>
+<h4>@Model.Bonder.HIREEXPDATE</h4>
+<hr />
+<hr />
+
+
+
+
+
+@using (Html.BeginForm("Renewinfo", "BondRenewal", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    
+    @Html.HiddenFor(model => model.Bonder.BONDERSLNO)
+   
+    @Html.HiddenFor(model => model.Bonder.BONDLICENSENO)
+
+    @Html.HiddenFor(model => model.Bondstatus.BSNO)
+
+    
+
+
+    <table class="table table-bordered ">
+
+        <tr>
+
+        <th >Document Name</th>
+        <th >Issue Date</th>
+        <th >Expire Date</th>
+       
+       
+        </tr>
+
+        <tr>
+        
+       @* <td>@Html.EditorFor(model => model.DocumentAttachments.DOCHEADINGNAME)</td>
+        <td>@Html.EditorFor(model => model.DocumentAttachments.ISSUEDATE)</td>
+        <td>@Html.EditorFor(model => model.DocumentAttachments.EXPDATE)</td>
+       *@
+
+
+        <td><input type ="text" name="txtdoc" id="txtdoc" /></td>
+        <td><input type ="text" name="txtissuedate" id="txtissuedate" class="datefield" /></td>
+        <td><input type ="text" name="txtexpdate" id="txtexpdate"  class="datefield" /></td>
+        @*<td><input type="file" name="file" id="file" multiple/></td>
+       *@
+          @*  <td><input type="file" name="file" id="file"  multiple="multiple"/></td>*@
+        
+
+        </tr>
+
+        
+
+
+
+@*        @Html.LabelFor(model => model.DocumentAttachments.ATTACHFILEDATA)
+        @Html.TextBoxFor(model => model.DocumentAttachments.ATTACHFILEDATA, new { type = "file" })*@
+
+        </table>
+    
+  
+    
+   
+    <hr />
+
+       <input type="button" class="btn-primary" value="Add" id="btnAdd" onclick="AddRow()" />
+
+    <hr />
+        <table id="myTable" class="table ">
+            <tbody>
+                <tr>
+                    <th>Document Name
+                    </th>
+                    <th>Issue Date
+                    </th>
+                    <th>Expire Date
+                    </th>
+                    <th>File
+                    </th>
+                    <th>Action
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        
+        
+        @*<a href="#"></a>*@
+
+
+    <hr />
+
+    
+      
+    
+        <input type="submit"   value="Save" id="btnsave" class="btn-info" >
+}
+    
+    
+
+@*@foreach (var item in Model.DocumentAttachments)
+
+{ 
+    <p>@item.RGATTCHNAME</p>
+
+
+}*@
+ @section Scripts{    
+            <script type="text/javascript">
+                $(function () {
+                    $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+                    $(".datefield").datepicker({
+                        dateFormat: "dd/mm/yy",
+                        changeMonth: true,
+                        changeYear: true
+                    }, $.datepicker.regional['bn-BD']);
+                });
+            </script>
+}  
+
+
+26/11/2015
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@model BMS.Models.CoefficientEntitlementViewModel
+
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+
+<script type="text/javascript">
+
+
+    $(function () {
+        $("#tabs").tabs();
+    });
+
+    // WORK TODO......22-11-15
+
+    @*    $(function () {
+
+        $('#hscode').autocomplete({
+
+            source: '@Url.Action("GetRawmaterials")'
+
+        })
+
+    });
+   *@
+
+    @* $(document).ready(function () {
+        //Foo();
+        $("#hscode").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "@Url.Content("~/BondEntitlementRenewal/Autocomplete")",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: request.term },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.MHSCODE };
+
+                        }))
+
+                    }
+                })
+                //alert("test");
+            },
+            messages: {
+                noResults: "", results: ""
+            },
+
+            focus: function (event, ui) {
+                $("#hscode").val(ui.item.label);
+                return false;
+            },
+
+
+            select: function (event, ui) {
+                $("#hscode").val(ui.item.label);
+                //$("#txtUnitCode").val(ui.item.label);
+                $("#hscode").val(ui.item.value);
+                return false;
+            }
+
+        })
+
+    });
+*@
+
+
+    //...........22-11-15
+
+
+
+
+    function AddRow() {
+
+        $('#btnAddContent').click(function (e) {
+
+            if ($.trim($('#rawmaterial').val()) == '') {
+                var newDiv = $(document.createElement('div'));
+                newDiv.attr('title', 'Message');
+                newDiv.html('No Content Selected');
+                newDiv.dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                return false;
+            }
+
+
+            $('#sTabContent > tbody:last').append('<tr><td><input type="hidden" name="rawmaterials" id="rawmaterials[]" value="' + $('#rawmaterial').val() + '" />' + $('#rawmaterial').val()
+               + '</td><td><input type="hidden" name="hscodes" id="hscodes[]" value="' + $('#hscode').val() + '" />' + $('#hscode').val()
+                + '</td><td><input type="hidden" name="descriptions" id="descriptions[]" value="' + $('#description').val() + '" />' + $('#description').val()
+                 + '</td><td><input type="hidden" name="specificationorgrades" id="specificationorgrades[]" value="' + $('#specificationorgrade').val() + '" />' + $('#specificationorgrade').val()
+                  + '</td><td><input type="hidden" name="quantitys" id="quantitys[]" value="' + $('#quantity').val() + '" />' + $('#quantity').val()
+                   + '</td><td><input type="hidden" name="units" id="units[]" value="' + $('#unit').val() + '" />' + $('#unit').val()
+                    + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+
+
+
+            $("#rawmaterial").val('');
+            $("#hscode").val('');
+            $("#description").val('');
+            $("#rawmaterial").val('');
+            $("#specificationorgrade").val('');
+            $("#quantity").val('');
+            $("#unit").val('');
+        })
+
+    };
+
+
+
+
+
+    function AddRawMaterialsCoE() {
+
+        $('#btnAddCoE').click(function (e) {
+
+            if ($.trim($('#CoRawmaterials').val()) == '') {
+                var newDiv = $(document.createElement('div'));
+                newDiv.attr('title', 'Message');
+                newDiv.html('No Content Selected');
+                newDiv.dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                return false;
+            }
+
+
+            $('#TblRawmaterialsCoE > tbody:last').append('<tr><td><input type="hidden" name="rawmaterialsCoE" id="rawmaterialsCoE[]" value="' + $('#CoRawmaterials').val() + '" />' + $('#CoRawmaterials').val()
+   + '</td><td><input type="hidden" name="measuementoCoE" id="measuementoCoE[]" value="' + $('#UnitofMeasurementCoE').val() + '" />' + $('#UnitofMeasurementCoE').val()
+   + '</td><td><input type="hidden" name="hscodesCoE" id="hscodesCoE[]" value="' + $('#HSCodeCoE').val() + '" />' + $('#HSCodeCoE').val()
+   + '</td><td><input type="hidden" name="grossCoE" id="grossCoE[]" value="' + $('#GrossCoE').val() + '" />' + $('#GrossCoE').val()
+   + '</td><td><input type="hidden" name="wastageCoE" id="wastageCoE[]" value="' + $('#WastageCoE').val() + '" />' + $('#WastageCoE').val()
+   + '</td><td><input type="hidden" name="shrinkageCoE" id="shrinkageCoE[]" value="' + $('#ShrinkageCoE').val() + '" />' + $('#ShrinkageCoE').val()
+   + '</td><td><input type="hidden" name="netCoE" id="netCoE[]" value="' + $('#NetCoE').val() + '" />' + $('#NetCoE').val()
+
+   + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+
+
+
+            $("#CoRawmaterials").val('');
+            $("#UnitofMeasurementCoE").val('');
+            $("#HSCodeCoE").val('');
+            $("#GrossCoE").val('');
+            $("#WastageCoE").val('');
+            $("#ShrinkageCoE").val('');
+            $("#NetCoE").val('');
+        })
+
+    };
+
+
+
+    function AddProductCoE() {
+
+        $('#btnAddProductCoE').click(function (e) {
+
+            if ($.trim($('#CoProduct').val()) == '') {
+                var newDiv = $(document.createElement('div'));
+                newDiv.attr('title', 'Message');
+                newDiv.html('No Content Selected');
+                newDiv.dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                return false;
+            }
+            //work 1
+
+            $('#TblProductCoE > tbody:last').append('<tr><td><input type="hidden" name="ProductCoE" id="ProductCoE[]" value="' + $('#CoProduct').val() + '" />' + $('#CoProduct').val()
+     + '</td><td><input type="hidden" name="ProductWeightCoE" id="ProductWeightCoE[]" value="' + $('#ProductWeight').val() + '" />' + $('#ProductWeight').val()
+    + '</td><td><input type="hidden" name="ProductHSCodeCoE" id="ProductHSCodeCoE[]" value="' + $('#ProductHsCode').val() + '" />' + $('#ProductHsCode').val()
+     + '</td><td><input type="hidden" name="ProductSizeCoE" id="ProductSizeCoE[]" value="' + $('#Productsize').val() + '" />' + $('#Productsize').val()
+       + '</td><td><input type="hidden" name="ProductMeasurementCoE" id="ProductMeasurementCoE[]" value="' + $('#ProductMeasurement').val() + '" />' + $('#ProductMeasurement').val()
+          + '</td><td><input type="hidden" name="ProductRawmaterialsCoE" id="ProductRawmaterialsCoE[]" value="' + $('#CoProductMachine').val() + '" />' + $('#CoProductMachine').val()
+           + '</td><td><input type="hidden" name="ProductMachineCoE" id="ProductMachineCoE[]" value="' + $('#CoProductMachine').val() + '" />' + $('#CoProductMachine').val()
+
+ + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+
+
+
+            $("#CoProduct").val('');
+            $("#ProductWeight").val('');
+            $("#ProductHsCode").val('');
+            $("#Productsize").val('');
+            $("#ProductMeasurement").val('');
+            $("#CoProductMachine").val(''); 
+            $("#ProductDescription").val('');
+            $("#ProductUnit").val('');
+
+
+            //$("#NetCoE").val('');
+        })
+
+    };
+
+
+
+
+    function CalculateTotalUnit() {
+
+        $('#btnCalculateTotalUnit').click(function (e) {
+
+            var x;
+            var y;
+            var totalsum = 0;
+            var unitSum = 0;
+            var quantitySum = 0;
+            var unitlength = unit.length;
+            var quantitylength = quantity.length;
+
+            for (x = 0; x <= 2; x++) {
+                unitSum += unit[x];
+            }
+
+            for (y = 0; y <= 2; y++) {
+                quantitySum += quantity[x];
+            }
+
+            totalsum = unitSum * quantitySum;
+
+
+
+            $('#totalentitlementunit').val(totalsum);
+
+        })
+
+    };
+
+
+
+</script>
+
+<div id="tabs" class="tab-pane active">
+    <ul>
+        <li><a href="#tabs-1">Annual Import/Local Purchase Entitlement for Raw Materials</a></li>
+        <li><a href="#tabs-2">Production Input-Output Coefficient Input</a></li>
+
+    </ul>
+</div>
+
+<div id="tabs-1" class="tab-pane active">
+
+    <hr />
+
+
+    @using (Html.BeginForm("Create", "BondEntitlementRenewal", FormMethod.Post))
+    {
+        <h4 style="text-align: center; text-decoration: underline;">Annual Import/Local Purchase Entitlement for Raw Materials</h4>
+
+        <table class="table ">
+
+            <tr>
+                <td>Raw Materials</td>
+                <td>
+                    @Html.DropDownList("Rawmaterilas", null, "--Select A Raw Material--", new { id = "rawmaterial" })
+                    @* @Html.DropDownList("Rawmaterilas", null,null, new{ id="rawmaterial"})*@
+                    @*<input type="text" name="rawmaterial" id="rawmaterial">*@
+                </td>
+            </tr>
+
+            <tr>
+                <td>HS Code  </td>
+
+                <td>
+                    <input type="text" name="hscode" id="hscode">
+                </td>
+
+                @* @Html.TextBox("searchString" , null, new{ id="hscode" })*@
+
+
+            </tr>
+
+            <tr>
+                <td>Description</td>
+                <td>
+                    <input type="text" name="description" id="description"></td>
+            </tr>
+
+            <tr>
+                <td>Specification/Grade</td>
+                <td>
+                    <input type="text" name="specificationorgrade" id="specificationorgrade"></td>
+            </tr>
+
+            <tr>
+                <td>Quantity</td>
+                <td>
+                    <input type="text" name="quantity" id="quantity"></td>
+            </tr>
+            <tr>
+                <td>Unit </td>
+                <td>
+                    <input type="text" name="unit" id="unit"></td>
+            </tr>
+        </table>
+
+        <input type="button" id="btnAddContent" value="Add" onclick="AddRow()" />
+
+        <hr />
+        <table id="sTabContent" class="table table-bordered" style="width: 100%">
+            <tr>
+                <th colspan="7" style="text-align: center; background-color: lightcyan;">Annual Import/Local Purchase Entitlement for raw Materials</th>
+            </tr>
+            <tr>
+
+                <th>Raw Material</th>
+                <th>HS Code</th>
+                <th>Description</th>
+                <th>Specification/Grade</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+
+            </tr>
+        </table>
+    
+        <hr />
+        <input type="button" id="btnCalculateTotalUnit" value="Calculate Total Unit" onclick="CalculateTotalUnit()">
+        <hr>
+        <table class="table " style="width: 100%">
+
+            <tr>
+                <th colspan="5" style="text-align: center; background-color: lightcyan;">Storage Information</th>
+            </tr>
+
+            <tr>
+                <td>Total Entitlement </td>
+                @*<td>Unit</td>*@
+                <td>
+                    <input type="text" name="totalentitlement" id="totalentitlement" /></td>
+
+
+                <td>@Html.DropDownList("Unit", null, "--Select A Unit--", new { Name = "totalentitlementunit" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    <input type="text" name="totalentitlementinword" id="totalentitlementinword" /></td>
+            </tr>
+
+            <tr>
+                <td>One time Storage Quantity</td>
+                @*<td>Unit</td>*@
+                <td>
+                    <input type="text" name="onetimestoragequantity" id="onetimestoragequantity" /></td>
+
+
+                <td>@Html.DropDownList("Unit", null, "--Select A Unit--", new { Name = "onetimestoragequantitytunit" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    <input type="text" name="onetimestoragequantityinwords" id="onetimestoragequantityinwords" /></td>
+            </tr>
+
+            <tr>
+                <td>Entitlement % according to Production</td>
+                <td>
+                    <input type="text" name="entitlementpercentaccordingtoproduction" id="entitlementpercentaccordingtoproduction" /></td>
+                <td>@Html.DropDownList("Unit", null, "--Select A Unit--", new { Name = "entitlementpercentaccordingtoproductionunit" }) </td>
+
+                <td>In Words</td>
+                <td>
+                    <input type="text" name="entitlementpercentaccordingtoproductioninword" id="entitlementpercentaccordingtoproductioninword" /></td>
+            </tr>
+
+
+        </table>
+    
+    
+        <hr />
+    
+        <table class="table " style="width: 100%">
+
+            <tr>
+                <th colspan="4" style="text-align: center; background-color: lightcyan;">Entitlement  period</th>
+            </tr>
+            <tr>
+                <td>Date From</td>
+                <td>
+                    <input type="text" name="entitlementdatefrom" /></td>
+                <td>Date To</td>
+                <td>
+                    <input type="text" name="entitlementdateto" /></td>
+            </tr>
+        </table>
+        
+        <hr />
+
+    
+    
+    
+        <div>
+            <input type="submit" value="Save Entitlement" class="btn  btn-info" />
+        </div>
+   
+    }
+</div>
+<div id="tabs-2" class="tab-pane active">
+    <hr />
+    <h4 style="text-align: center; text-decoration: underline;">Production Input-Output Coefficient Input</h4>
+
+    <table class="table">
+
+        <tr>
+            <th colspan="10" style="text-align: center; background-color: lightcyan;">Product</th>
+        </tr>
+        @*work 1*@
+        <tr>
+            <td>Product</td>
+            <td>
+                @Html.DropDownList("Products", null, "--Select A Raw Material--", new { id = "CoProduct" })
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>HS Code  </td>
+
+            <td>
+                <input type="text" name="ProductHsCode" id="ProductHsCode"></td>
+
+            @* @Html.TextBox("searchString" , null, new{ id="hscode" })*@
+
+
+        </tr>
+
+        <tr>
+            <td>Description</td>
+
+            <td>
+                <input type="text" name="ProductHsCode" id="ProductDescription"></td>
+            </td>
+
+        </tr>
+
+        <tr>
+            <td>Unit</td>
+            <td>
+                <input type="text" name="ProductHsCode" id="ProductUnit"></td>
+            </td>
+
+            <tr>
+                <td>Mother Machine</td>
+                <td>
+                    @Html.DropDownList("MachineList", null, "--Select A Raw Material--", new { id = "CoProductMachine" })
+                </td>
+            </tr>
+
+        <tr>
+            <td>Size </td>
+            <td>
+                <input type="text" name="Productsize" id="Productsize"></td>
+        </tr>
+        <tr>
+            <td>Weight </td>
+            <td>
+                <input type="text" name="ProductWeight" id="ProductWeight"></td>
+        </tr>
+        <tr>
+            <td>Measurement </td>
+            <td>
+                <input type="text" name="ProductMeasurement" id="ProductMeasurement"></td>
+        </tr>
+    </table>
+
+    <table class="table" id="TblRawmaterialsCoE">
+
+        <tr>
+            <th colspan="8" style="text-align: center; background-color: lightcyan;">Raw Materials</th>
+        </tr>
+
+        <tr>
+            <td>Raw Materials </td>
+            <td>Measurement </td>
+            <td>HS Code</td>
+            <td>Gross</td>
+            <td>Wastage</td>
+            <td>Shrinkage</td>
+            <td>Net</td>
+            <td>Action</td>
+
+        </tr>
+
+        <tr>
+            <td style="width: 120px;">@Html.DropDownList("Rawmaterilas", null, "--Select A Raw Material--", new { id = "CoRawmaterials" })</td>
+            <td>
+                <input type="text" style="width: 100px;" name="UnitofMeasurementCoE" id="UnitofMeasurementCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="HSCodeCoE" id="HSCodeCoE"></td>
+            <td>
+                <input type="text" style="width: 100px;" name="GrossCoE" id="GrossCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="WastageCoE" id="WastageCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="ShrinkageCoE" id="ShrinkageCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="NetCoE" id="NetCoE">
+            </td>
+            <td>
+                <input type="button" value="Add" name="btnAddCoE" id="btnAddCoE" onclick="AddRawMaterialsCoE()">
+            </td>
+
+        </tr>
+
+    </table>
+
+    <hr />
+
+    <input type="button" value="Add Product" name="btnAddProductCoE" id="btnAddProductCoE" onclick="AddProductCoE()">
+
+    <table class="table" id="TblProductCoE">
+
+        <tr>
+            <th colspan="8" style="text-align: center; background-color: lightcyan;">Products</th>
+        </tr>
+
+        <tr>
+            <td>Product</td>
+            <td>Weight</td>
+            <td>HS Code</td>
+            <td>Size</td>
+            <td>Measurement</td>
+            <td>Raw Materilas</td>
+            <td>MotherMachine</td>
+        </tr>
+
+    </table>
+
+</div>
+
+
+
+
+

@@ -1,0 +1,23 @@
+﻿ table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    
+    .textBoxSize {
+        width:150px;
+    }
+    .bigddl {
+        width:312px;
+    }
+.addressBox {
+    width:650px;
+    height:auto;   
+}
+    a.btnAddNew
+{
+    background: url(../Images/btnAddNew.png) no-repeat top left;
+     display: block;
+     width: 80px;
+     height: 23px;
+     text-indent: -9999px; /* hides the link text */     
+}

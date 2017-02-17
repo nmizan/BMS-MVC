@@ -1,0 +1,78 @@
+﻿@model BMSPhase2Demo.RAWMATERIAL
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>RAWMATERIAL</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QUANTITY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QUANTITY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UNIT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UNIT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERMITTEDWASTE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERMITTEDWASTE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.BACKTOBACKPRODUCT.NAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BACKTOBACKPRODUCT.NAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CREATEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CREATEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CREATEDDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CREATEDDATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDBY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDBY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MODIFIEDDATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MODIFIEDDATE)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

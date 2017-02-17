@@ -1,0 +1,95 @@
+﻿@model BMSPhase2Demo.Models.BONDSUBCATEGORY
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style type="text/css">
+    table, th, td {
+        border: 0px;
+        border-collapse: collapse;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 15px;
+        margin-left :270px;
+    }
+
+    .textBOxSize {
+        width: 220px;
+    }
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Bond Sub Category Information</p>
+<h2  style ="margin-left :270px;">Delete</h2>
+
+<h3  style ="margin-left :270px;">Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>BONDSUBCATEGORY</legend>
+
+  
+
+    <table>
+
+        <tr>
+            <td>
+                Sub Category SL No:
+                @Html.HiddenFor(model => model.BSCATSLNO)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.BSCATSLNO, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                BS Type Code:
+            </td>
+            <td> @Html.TextBoxFor(model => model.BSTYPECODE, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>
+                BS Type Code BG:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.BSTYPECODEBG, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>Sub Category Name:</td>
+            <td>@Html.TextBoxFor(model => model.BSCATNAME, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Sub Category Name BG :</td>
+            <td>@Html.TextBoxFor(model => model.BSCATNAMEBG, new { @readonly = "readonly" })</td>
+        </tr>
+
+
+        <tr>
+            <td>Input By:</td>
+            <td>@Html.TextBoxFor(model => model.INPUTBY, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Input date:</td>
+            <td>@Html.TextBoxFor(model => model.INPUTDATE, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Modify By:</td>
+            <td>@Html.TextBoxFor(model => model.MODIFIEDBY, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Modified Date:</td>
+            <td>@Html.TextBoxFor(model => model.MODIFYDATE, new { @readonly = "readonly" })</td>
+        </tr>
+    </table>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <p  style ="margin-left :270px;">
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

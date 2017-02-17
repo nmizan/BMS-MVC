@@ -1,0 +1,142 @@
+﻿@model BMSPhase2Demo.Models.APPUSER
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="col-md-3">
+</div>
+<div class="col-md-6">
+    <div class="well" style="width:80%; margin:0 auto;">
+        <hgroup class="title">
+            <h3 class="text-center">@ViewBag.Title</h3>
+        </hgroup>
+        <h4 class="text-center">Are you sure you want to delete this?</h4>
+        <div style="overflow: hidden;margin:0 auto;">
+
+            <fieldset>
+                <legend>USER</legend>
+
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.USERNAME)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.USERNAME)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.FIRSTNAME)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.FIRSTNAME)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.LASTNAME)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.LASTNAME)
+                                </div>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.EMAIL)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.EMAIL)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.PHONE)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.PHONE)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.ADDRESS)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.ADDRESS)
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.ISACTIVE)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @if (Model.ISACTIVE == 1)
+                                    {
+                                        <span>Active</span>
+                                    }
+                                    else
+                                    {
+                                        <span>Inactive</span>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="display-label">
+                                    @Html.DisplayNameFor(model => model.LASTLOGIN)
+                                </div>
+                            </td>
+                            <td>
+                                <div class="display-field">
+                                    @Html.DisplayFor(model => model.LASTLOGIN)
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <p>
+                    <input type="submit" value="Delete" class="btn-lg btn-primary" style="width:100%;" />
+                    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                </p>
+            }
+
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
+</div>

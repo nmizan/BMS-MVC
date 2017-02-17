@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "InBondImport";
+}
+
+  <h2>In Bond Imports Report</h2>
+
+<p>
+    @Html.ActionLink("Back to Report", "Index", "", new { @class = "action-link" })
+</p>
+
+<h3 style="color:#ff6a00">@ViewBag.ErrorMsg</h3>
+
+
+
+@using (Html.BeginForm("InBondImportReport", "Reports", FormMethod.Post))
+{
+
+    <table class="table">
+        <tr>
+            <th id="search-th">
+                @Html.Label("Bonder: ")
+            </th>
+            <td id="search-td">
+                @Html.DropDownList("BonderID",null, "-Select Bonder-",new { @class = "form-control", @onchange="FillMaterial()"})
+            </td>
+
+            <th id="search-th">
+                @Html.Label("From Date: ")
+            </th>
+            <td id="search-td">
+                @Html.TextBox("FromDate", ViewBag.FromDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+            <th id="search-th">
+                @Html.Label("To Date: ")
+            </th>
+            <td id="search-td">
+                @Html.TextBox("ToDate", ViewBag.ToDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+        </tr>
+        <tr>
+            <th id="search-th">
+                @Html.Label("Raw Material: ")
+            </th>
+            <td id="search-td">
+                  @Html.DropDownList("RawMaterial", null,"-Select Raw Material-",new { @class = "form-control"})
+            </td>
+        </tr>
+    </table>
+
+    <button type="submit" name="submit"  class="btn btn-primary">Crystal Report</button>
+}
+@section Scripts {
+<script>
+    function FillMaterial() {
+        var bonderslNo = $('#BonderID').val();
+        
+        $.ajax({
+           
+            url: "@Url.Action("FillMaterial","Reports")",
+           type: "GET",
+       dataType: "JSON",
+       data: { bondersl: bonderslNo },
+       success: function (material) {
+           $('#RawMaterial').html(""); // clear before appending new list 
+           $.each(material, function (index, value) {
+               $("#RawMaterial").append(
+                   $('<option></option>').val(value).html(value));
+           });
+          
+       },
+       error: function (data) {
+           $('#RawMaterial').html("");
+       }
+      
+    }); 
+  }
+</script>
+}

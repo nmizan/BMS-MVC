@@ -1,0 +1,66 @@
+﻿@model BMSPhase2Demo.Models.BANK
+
+@{
+    ViewBag.Title = "Details";
+}
+<style type="text/css">
+    table, th, td {
+        border: 0px;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+        font-size : 15px;
+        margin-left : 240px;
+    }
+    .textBOxSize {
+        width: 220px;
+    }
+ 
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Bank Information</p>
+<h2 style ="margin-left :240px;">Details</h2>
+
+<fieldset>
+    <legend>BANK</legend>
+
+
+                <table>
+                  
+                    <tr>
+                        <td>
+                            Bank Name:
+                            @Html.HiddenFor(model => model.BANKSLNO)
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.BANKNAME, new { @readonly="readonly" }) 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Bank Name Bangla:
+                        </td>
+                        <td> @Html.TextBoxFor(model => model.BANKNAMEBG, new { @readonly="readonly" })</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Swift:
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(model => model.SWIFT, new { @readonly="readonly" }) 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>@Html.TextBoxFor(model => model.WEB, new { @readonly="readonly" })</td>
+                    </tr>
+                </table>
+                
+            </fieldset>
+  <p style ="margin-left :240px;">
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.BANKSLNO   }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

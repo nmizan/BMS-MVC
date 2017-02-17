@@ -1,0 +1,148 @@
+﻿@model BMSPhase2Demo.BONDERLIENBANK
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>BONDERLIENBANK</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LBANKSLNO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LBANKSLNO)
+            @Html.ValidationMessageFor(model => model.LBANKSLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BONDERSLNO, "BONDER")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BONDERSLNO", String.Empty)
+            @Html.ValidationMessageFor(model => model.BONDERSLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BBRANCHSLNO, "BANKBRANCH")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BBRANCHSLNO", String.Empty)
+            @Html.ValidationMessageFor(model => model.BBRANCHSLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LIENBANKCODE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LIENBANKCODE)
+            @Html.ValidationMessageFor(model => model.LIENBANKCODE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LIENBANKCODEBG)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LIENBANKCODEBG)
+            @Html.ValidationMessageFor(model => model.LIENBANKCODEBG)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CERATTACHFILENM)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CERATTACHFILENM)
+            @Html.ValidationMessageFor(model => model.CERATTACHFILENM)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CERATTACHFILEPATH)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CERATTACHFILEPATH)
+            @Html.ValidationMessageFor(model => model.CERATTACHFILEPATH)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.INPUTBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTBY)
+            @Html.ValidationMessageFor(model => model.INPUTBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.INPUTDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTDATE)
+            @Html.ValidationMessageFor(model => model.INPUTDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFIEDBY)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MODIFYDATE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFYDATE)
+            @Html.ValidationMessageFor(model => model.MODIFYDATE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BANKSLNO, "BANK")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BANKSLNO", String.Empty)
+            @Html.ValidationMessageFor(model => model.BANKSLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PHONE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONE)
+            @Html.ValidationMessageFor(model => model.PHONE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FAX)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FAX)
+            @Html.ValidationMessageFor(model => model.FAX)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

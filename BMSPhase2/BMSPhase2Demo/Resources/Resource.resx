@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="A" xml:space="preserve">
+    <value>A</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddEntitlement" xml:space="preserve">
+    <value>Add Entitlement</value>
+  </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>Add New</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Approval" xml:space="preserve">
+    <value>Approval</value>
+  </data>
+  <data name="Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="AssociationEnroll" xml:space="preserve">
+    <value>Association Enroll</value>
+  </data>
+  <data name="B" xml:space="preserve">
+    <value>B</value>
+  </data>
+  <data name="Bank" xml:space="preserve">
+    <value>Bank </value>
+  </data>
+  <data name="BankBranch" xml:space="preserve">
+    <value>Bank Branch</value>
+  </data>
+  <data name="BGAPMEALicenseNo" xml:space="preserve">
+    <value>BGAPMEA License No</value>
+  </data>
+  <data name="BGAPMEAMembers" xml:space="preserve">
+    <value>BGAPMEA Members</value>
+  </data>
+  <data name="Bond" xml:space="preserve">
+    <value>Bond</value>
+  </data>
+  <data name="BondApplicants" xml:space="preserve">
+    <value>Bond Applicants</value>
+  </data>
+  <data name="BondArea" xml:space="preserve">
+    <value>Bond Area</value>
+  </data>
+  <data name="BondCategory" xml:space="preserve">
+    <value>Bond Category</value>
+  </data>
+  <data name="BondCircle" xml:space="preserve">
+    <value>Bond Circle</value>
+  </data>
+  <data name="BondDivision" xml:space="preserve">
+    <value>Bond Division</value>
+  </data>
+  <data name="BondEntitlement" xml:space="preserve">
+    <value>Bond Entitlement</value>
+  </data>
+  <data name="Bonder" xml:space="preserve">
+    <value>Bonder</value>
+  </data>
+  <data name="BonderLienBank" xml:space="preserve">
+    <value>Bonder Lien Bank</value>
+  </data>
+  <data name="BonderProduct" xml:space="preserve">
+    <value>Bonder Product</value>
+  </data>
+  <data name="BonderRawMaterial" xml:space="preserve">
+    <value>Bonder Raw Material</value>
+  </data>
+  <data name="Bonders" xml:space="preserve">
+    <value>Bonders</value>
+  </data>
+  <data name="BondLicenseNo" xml:space="preserve">
+    <value>Bond License No</value>
+  </data>
+  <data name="BondRegistration" xml:space="preserve">
+    <value>Bond Registration</value>
+  </data>
+  <data name="BondRenewal" xml:space="preserve">
+    <value>Bond Renewal</value>
+  </data>
+  <data name="BondStatus" xml:space="preserve">
+    <value>Bond Status</value>
+  </data>
+  <data name="BondSubCategory" xml:space="preserve">
+    <value>Bond Sub Category</value>
+  </data>
+  <data name="BondType" xml:space="preserve">
+    <value>Bond Type</value>
+  </data>
+  <data name="C" xml:space="preserve">
+    <value>C</value>
+  </data>
+  <data name="CorporateHeadOffice" xml:space="preserve">
+    <value>Corporate/Head Office</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="D" xml:space="preserve">
+    <value>D</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Designation" xml:space="preserve">
+    <value>Designation</value>
+  </data>
+  <data name="District" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="E" xml:space="preserve">
+    <value>E</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Entitlement" xml:space="preserve">
+    <value>Entitlement</value>
+  </data>
+  <data name="EntitlementDetails" xml:space="preserve">
+    <value>Entitlement Details</value>
+  </data>
+  <data name="Expiry" xml:space="preserve">
+    <value>Expiry</value>
+  </data>
+  <data name="Fax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="FinishedProduct" xml:space="preserve">
+    <value>Finished Product</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ListOfApplicants" xml:space="preserve">
+    <value>List of Applicants</value>
+  </data>
+  <data name="ListOfBonders" xml:space="preserve">
+    <value>List of Bonders</value>
+  </data>
+  <data name="ListOfEntitlement" xml:space="preserve">
+    <value>List of Entitlement</value>
+  </data>
+  <data name="Manufacturing" xml:space="preserve">
+    <value>Manufacturing</value>
+  </data>
+  <data name="ManufacturingUnitInformation" xml:space="preserve">
+    <value>Manufacturing Unit Information</value>
+  </data>
+  <data name="MaterialGroup" xml:space="preserve">
+    <value>Materials Group</value>
+  </data>
+  <data name="Materials" xml:space="preserve">
+    <value>Materials</value>
+  </data>
+  <data name="MeasurementUnit" xml:space="preserve">
+    <value>Measurement Unit</value>
+  </data>
+  <data name="Mobile" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="NameOfTheBonder" xml:space="preserve">
+    <value>Name of The Bonder</value>
+  </data>
+  <data name="NameOfTheManufacturingUnit" xml:space="preserve">
+    <value>Name of The Manufacturing Unit</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Office" xml:space="preserve">
+    <value>Office</value>
+  </data>
+  <data name="Parameter" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Premises" xml:space="preserve">
+    <value>Premises</value>
+  </data>
+  <data name="Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Section" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Bond Module System</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="Upazila" xml:space="preserve">
+    <value>Upazila</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ViewEntitlement" xml:space="preserve">
+    <value>View Entitlement</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome to Bond Module System</value>
+  </data>
+</root>

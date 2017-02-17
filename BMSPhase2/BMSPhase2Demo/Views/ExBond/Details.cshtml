@@ -1,0 +1,97 @@
+﻿@model IList<BMSPhase2Demo.Models.BACKTOBACKLC>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3 style=" margin:0 auto; width:30%;">Ex-Bond Details</h3>
+
+<table border="1" id="table">
+    <thead>
+        <tr id="tr">
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].BUYERSNAME)
+
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].LCNUMBER)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].UDNUMBER)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].UDDATE)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].UDCORRECTIONDATE)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].UDPRODUCTDETAIL)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model[0].BONDER.BONDERNAME)
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of Product")
+            </th>
+            <th id="th">
+                @Html.DisplayName("Action")
+            </th>
+
+        </tr>
+    </thead>
+
+    @{string trgb = "#c1deef";}
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+
+        if (Model[i].BACKTOBACKPRODUCTs.Count() < 1) { trgb = "#e6ebee"; }
+        else { trgb = "#c1deef"; }
+        <tbody>
+            <tr style="background: @trgb">
+
+
+                @Html.HiddenFor(modelItem => Model[i].ID)
+                @Html.HiddenFor(modelItem => Model[i].BONDER.BONDERSLNO)
+
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].BUYERSNAME)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].LCNUMBER)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].UDNUMBER)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].UDDATE)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].UDCORRECTIONDATE)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].UDPRODUCTDETAIL)
+                </td>
+                <td id="td">
+                    @Html.DisplayFor(modelItem => Model[i].BONDER.BONDERNAME)
+                </td>
+                <td id="td">
+                    @Model[i].BACKTOBACKPRODUCTs.Count()
+                </td>
+                <td id="td">
+                    @Html.ActionLink("LC Details", "Details", "Back2BackLC", new { id = Model[i].ID }, new { @class = "action-link" })
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index","", new {@class = "action-link" })
+    @if (Model.Count()>0 && Model.ElementAt(0).EXBONDBACKTOBACKs.ElementAt(0).EXBOND.UPEXBONDLISTs.Count() > 0)
+    {
+        <span>| @Html.ActionLink("UP Request Details", "Details", "UpRequest", new { id = Model.ElementAt(0).EXBONDBACKTOBACKs.ElementAt(0).EXBOND.UPEXBONDLISTs.ElementAt(0).UPREQUESTID }, new { @class = "action-link" })</span>
+    }
+</p>

@@ -1,0 +1,2639 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EXBONDBACKTOBACK">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="EXBONDID" Type="Int16" Nullable="false" />
+    <Property Name="BACKTOBACKID" Type="Int16" Nullable="false" />
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="BACKTOBACKLC" Relationship="BMSModel.FK_EXBONDB2B_B2BLC" FromRole="EXBONDBACKTOBACK" ToRole="BACKTOBACKLC" />
+    <NavigationProperty Name="EXBOND" Relationship="BMSModel.FK_EXBONDB2B_EXBOND" FromRole="EXBONDBACKTOBACK" ToRole="EXBOND" />
+  </EntityType>
+  <EntityType Name="UPEXBONDLIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="EXBONDID" Type="Int16" Nullable="false" />
+    <Property Name="UPREQUESTID" Type="Int16" Nullable="false" />
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="UPREQUEST" Relationship="BMSModel.FK_UPEXBONDLIST_UPREQUEST" FromRole="UPEXBONDLIST" ToRole="UPREQUEST" />
+    <NavigationProperty Name="EXBOND" Relationship="BMSModel.FK_UPEXBONDLIST_EXBOND" FromRole="UPEXBONDLIST" ToRole="EXBOND" />
+  </EntityType>
+  <EntityContainer Name="OracleEntitiesConnStr" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EXBONDBACKTOBACKs" EntityType="Self.EXBONDBACKTOBACK" />
+    <EntitySet Name="UPEXBONDLISTs" EntityType="Self.UPEXBONDLIST" />
+    <EntitySet Name="UPs" EntityType="BMSModel.UP" />
+    <EntitySet Name="UPREQUESTs" EntityType="BMSModel.UPREQUEST" />
+    <EntitySet Name="UPREQUESTLISTs" EntityType="BMSModel.UPREQUESTLIST" />
+    <AssociationSet Name="FK_UPREQLIST_UP" Association="BMSModel.FK_UPREQLIST_UP">
+      <End Role="UP" EntitySet="UPs" />
+      <End Role="UPREQUESTLIST" EntitySet="UPREQUESTLISTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPEXBONDLIST_UPREQUEST" Association="BMSModel.FK_UPEXBONDLIST_UPREQUEST">
+      <End Role="UPREQUEST" EntitySet="UPREQUESTs" />
+      <End Role="UPEXBONDLIST" EntitySet="UPEXBONDLISTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPREQLIST_UPREQ" Association="BMSModel.FK_UPREQLIST_UPREQ">
+      <End Role="UPREQUEST" EntitySet="UPREQUESTs" />
+      <End Role="UPREQUESTLIST" EntitySet="UPREQUESTLISTs" />
+    </AssociationSet>
+    <EntitySet Name="RAWMATERIALs" EntityType="BMSModel.RAWMATERIAL" />
+    <EntitySet Name="BACKTOBACKLCs" EntityType="BMSModel.BACKTOBACKLC" />
+    <EntitySet Name="BACKTOBACKPRODUCTs" EntityType="BMSModel.BACKTOBACKPRODUCT" />
+    <EntitySet Name="EXBONDs" EntityType="BMSModel.EXBOND" />
+    <EntitySet Name="INBONDs" EntityType="BMSModel.INBOND" />
+    <EntitySet Name="INBONDRAWMATERIALs" EntityType="BMSModel.INBONDRAWMATERIAL" />
+    <AssociationSet Name="FK_B2BPRODUT_B2B" Association="BMSModel.FK_B2BPRODUT_B2B">
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLCs" />
+      <End Role="BACKTOBACKPRODUCT" EntitySet="BACKTOBACKPRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXBONDB2B_B2BLC" Association="BMSModel.FK_EXBONDB2B_B2BLC">
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLCs" />
+      <End Role="EXBONDBACKTOBACK" EntitySet="EXBONDBACKTOBACKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWMATERIAL_B2BPRODUCT" Association="BMSModel.FK_RAWMATERIAL_B2BPRODUCT">
+      <End Role="BACKTOBACKPRODUCT" EntitySet="BACKTOBACKPRODUCTs" />
+      <End Role="RAWMATERIAL" EntitySet="RAWMATERIALs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXBONDB2B_EXBOND" Association="BMSModel.FK_EXBONDB2B_EXBOND">
+      <End Role="EXBOND" EntitySet="EXBONDs" />
+      <End Role="EXBONDBACKTOBACK" EntitySet="EXBONDBACKTOBACKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPEXBONDLIST_EXBOND" Association="BMSModel.FK_UPEXBONDLIST_EXBOND">
+      <End Role="EXBOND" EntitySet="EXBONDs" />
+      <End Role="UPEXBONDLIST" EntitySet="UPEXBONDLISTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INBONDRAWMATERIAL_INBOND" Association="BMSModel.FK_INBONDRAWMATERIAL_INBOND">
+      <End Role="INBOND" EntitySet="INBONDs" />
+      <End Role="INBONDRAWMATERIAL" EntitySet="INBONDRAWMATERIALs" />
+    </AssociationSet>
+    <EntitySet Name="ANNUALENTLRAWMATERIALs" EntityType="BMSModel.ANNUALENTLRAWMATERIAL" />
+    <EntitySet Name="APPUSERs" EntityType="BMSModel.APPUSER" />
+    <EntitySet Name="ASSOCIATIONENROLLs" EntityType="BMSModel.ASSOCIATIONENROLL" />
+    <EntitySet Name="ATTACHMENTs" EntityType="BMSModel.ATTACHMENT" />
+    <EntitySet Name="BANKs" EntityType="BMSModel.BANK" />
+    <EntitySet Name="BANKBRANCHes" EntityType="BMSModel.BANKBRANCH" />
+    <EntitySet Name="BONDAPPLICATIONPROGRESSes" EntityType="BMSModel.BONDAPPLICATIONPROGRESS" />
+    <EntitySet Name="BONDAREAs" EntityType="BMSModel.BONDAREA" />
+    <EntitySet Name="BONDCATEGORies" EntityType="BMSModel.BONDCATEGORY" />
+    <EntitySet Name="BONDCIRCLEs" EntityType="BMSModel.BONDCIRCLE" />
+    <EntitySet Name="BONDDIVISIONs" EntityType="BMSModel.BONDDIVISION" />
+    <EntitySet Name="BONDERs" EntityType="BMSModel.BONDER" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTs" EntityType="BMSModel.BONDERANNUALENTITLEMENT" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTCOEDETs" EntityType="BMSModel.BONDERANNUALENTITLEMENTCOEDET" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTCOMs" EntityType="BMSModel.BONDERANNUALENTITLEMENTCOM" />
+    <EntitySet Name="BONDERANNUALENTITLEMENTDETs" EntityType="BMSModel.BONDERANNUALENTITLEMENTDET" />
+    <EntitySet Name="BONDERLIENBANKs" EntityType="BMSModel.BONDERLIENBANK" />
+    <EntitySet Name="BONDERPRODUCTs" EntityType="BMSModel.BONDERPRODUCT" />
+    <EntitySet Name="BONDERRAWMATERIALs" EntityType="BMSModel.BONDERRAWMATERIAL" />
+    <EntitySet Name="BONDREGISTRATIONs" EntityType="BMSModel.BONDREGISTRATION" />
+    <EntitySet Name="BONDSTATUS" EntityType="BMSModel.BONDSTATU" />
+    <EntitySet Name="BONDSUBCATEGORies" EntityType="BMSModel.BONDSUBCATEGORY" />
+    <EntitySet Name="BONDTYPEs" EntityType="BMSModel.BONDTYPE" />
+    <EntitySet Name="COUNTRies" EntityType="BMSModel.COUNTRY" />
+    <EntitySet Name="CURRENCies" EntityType="BMSModel.CURRENCY" />
+    <EntitySet Name="DESIGNATIONs" EntityType="BMSModel.DESIGNATION" />
+    <EntitySet Name="DISTRICTs" EntityType="BMSModel.DISTRICT" />
+    <EntitySet Name="DOCHEADINGINFOes" EntityType="BMSModel.DOCHEADINGINFO" />
+    <EntitySet Name="DOCUMENTATTACHMENTs" EntityType="BMSModel.DOCUMENTATTACHMENT" />
+    <EntitySet Name="EMPLOYEEs" EntityType="BMSModel.EMPLOYEE" />
+    <EntitySet Name="FINISHEDPRODUCTS" EntityType="BMSModel.FINISHEDPRODUCT" />
+    <EntitySet Name="INSTALLEDMACHINEINFOes" EntityType="BMSModel.INSTALLEDMACHINEINFO" />
+    <EntitySet Name="MACHINEINFORMATIONs" EntityType="BMSModel.MACHINEINFORMATION" />
+    <EntitySet Name="MATERIALS" EntityType="BMSModel.MATERIAL" />
+    <EntitySet Name="MATERIALSGROUPs" EntityType="BMSModel.MATERIALSGROUP" />
+    <EntitySet Name="MEASUREMENTUNITs" EntityType="BMSModel.MEASUREMENTUNIT" />
+    <EntitySet Name="MEASUREMENTUNITCONVERSIONs" EntityType="BMSModel.MEASUREMENTUNITCONVERSION" />
+    <EntitySet Name="MODELs" EntityType="BMSModel.MODEL" />
+    <EntitySet Name="OFFICEs" EntityType="BMSModel.OFFICE" />
+    <EntitySet Name="OWNERASSOCIATEBUSINESSes" EntityType="BMSModel.OWNERASSOCIATEBUSINESS" />
+    <EntitySet Name="OWNERINFOes" EntityType="BMSModel.OWNERINFO" />
+    <EntitySet Name="PRODCAPACITYMACHINEWISEDETs" EntityType="BMSModel.PRODCAPACITYMACHINEWISEDET" />
+    <EntitySet Name="PRODCAPACITYMACHINEWISEMs" EntityType="BMSModel.PRODCAPACITYMACHINEWISEM" />
+    <EntitySet Name="STATUS" EntityType="BMSModel.STATUS" />
+    <EntitySet Name="UPAZILAs" EntityType="BMSModel.UPAZILA" />
+    <EntitySet Name="USERPERMISSIONs" EntityType="BMSModel.USERPERMISSION" />
+    <AssociationSet Name="FK1_ANNUALENTLRAWMATERIAL" Association="BMSModel.FK1_ANNUALENTLRAWMATERIAL">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="ANNUALENTLRAWMATERIAL" EntitySet="ANNUALENTLRAWMATERIALs" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_ANNUALENTLRAWMATERIAL" Association="BMSModel.FK3_ANNUALENTLRAWMATERIAL">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="ANNUALENTLRAWMATERIAL" EntitySet="ANNUALENTLRAWMATERIALs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERMISSION_APPUSER" Association="BMSModel.FK_USERPERMISSION_APPUSER">
+      <End Role="APPUSER" EntitySet="APPUSERs" />
+      <End Role="USERPERMISSION" EntitySet="USERPERMISSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_ASSOCIATIONENROLL" Association="BMSModel.FK1_ASSOCIATIONENROLL">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="ASSOCIATIONENROLL" EntitySet="ASSOCIATIONENROLLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_ASSOCIATIONENROLL" Association="BMSModel.FK2_ASSOCIATIONENROLL">
+      <End Role="OFFICE" EntitySet="OFFICEs" />
+      <End Role="ASSOCIATIONENROLL" EntitySet="ASSOCIATIONENROLLs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ATTACHMENT_UPREQ" Association="BMSModel.FK_ATTACHMENT_UPREQ">
+      <End Role="UPREQUEST" EntitySet="UPREQUESTs" />
+      <End Role="ATTACHMENT" EntitySet="ATTACHMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BACK2BACK_BANKBRANCH" Association="BMSModel.FK_BACK2BACK_BANKBRANCH">
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCHes" />
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BACK2BACKLC_BANK" Association="BMSModel.FK_BACK2BACKLC_BANK">
+      <End Role="BANK" EntitySet="BANKs" />
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BACKTOBACKLC_BONDER" Association="BMSModel.FK_BACKTOBACKLC_BONDER">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BACKTOBACKLC" EntitySet="BACKTOBACKLCs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LIENBANK_BANK" Association="BMSModel.FK_LIENBANK_BANK">
+      <End Role="BANK" EntitySet="BANKs" />
+      <End Role="BONDERLIENBANK" EntitySet="BONDERLIENBANKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BANKBRANCH" Association="BMSModel.FK1_BANKBRANCH">
+      <End Role="BANK" EntitySet="BANKs" />
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BRANCH" Association="BMSModel.FK_BRANCH">
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCHes" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERLIENBANK" Association="BMSModel.FK2_BONDERLIENBANK">
+      <End Role="BANKBRANCH" EntitySet="BANKBRANCHes" />
+      <End Role="BONDERLIENBANK" EntitySet="BONDERLIENBANKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDAPPLICATIONPROGRESS" Association="BMSModel.FK1_BONDAPPLICATIONPROGRESS">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDAPPLICATIONPROGRESS" EntitySet="BONDAPPLICATIONPROGRESSes" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDAPPLICATIONPROGRESS" Association="BMSModel.FK2_BONDAPPLICATIONPROGRESS">
+      <End Role="BONDSTATU" EntitySet="BONDSTATUS" />
+      <End Role="BONDAPPLICATIONPROGRESS" EntitySet="BONDAPPLICATIONPROGRESSes" />
+    </AssociationSet>
+    <AssociationSet Name="FK6_BONDER" Association="BMSModel.FK6_BONDER">
+      <End Role="BONDCATEGORY" EntitySet="BONDCATEGORies" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDCIRCLE" Association="BMSModel.FK1_BONDCIRCLE">
+      <End Role="BONDDIVISION" EntitySet="BONDDIVISIONs" />
+      <End Role="BONDCIRCLE" EntitySet="BONDCIRCLEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDREGISTRATION" Association="BMSModel.FK3_BONDREGISTRATION">
+      <End Role="BONDCIRCLE" EntitySet="BONDCIRCLEs" />
+      <End Role="BONDREGISTRATION" EntitySet="BONDREGISTRATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EXBOND_BONDER" Association="BMSModel.FK_EXBOND_BONDER">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="EXBOND" EntitySet="EXBONDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INBOND_BONDER" Association="BMSModel.FK_INBOND_BONDER">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="INBOND" EntitySet="INBONDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UP_BONDER" Association="BMSModel.FK_UP_BONDER">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="UP" EntitySet="UPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UPREQUEST_BONDER" Association="BMSModel.FK_UPREQUEST_BONDER">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="UPREQUEST" EntitySet="UPREQUESTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERMISSION_BONDER" Association="BMSModel.FK_USERPERMISSION_BONDER">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="USERPERMISSION" EntitySet="USERPERMISSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDER" Association="BMSModel.FK1_BONDER">
+      <End Role="UPAZILA" EntitySet="UPAZILAs" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERANNUALENTITLEMENT" Association="BMSModel.FK1_BONDERANNUALENTITLEMENT">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERLIENBANK" Association="BMSModel.FK1_BONDERLIENBANK">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDERLIENBANK" EntitySet="BONDERLIENBANKs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDREGISTRATION" Association="BMSModel.FK1_BONDREGISTRATION">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDREGISTRATION" EntitySet="BONDREGISTRATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDSTATUS" Association="BMSModel.FK1_BONDSTATUS">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDSTATU" EntitySet="BONDSTATUS" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_DOCUMENTATTACHMENT" Association="BMSModel.FK1_DOCUMENTATTACHMENT">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="DOCUMENTATTACHMENT" EntitySet="DOCUMENTATTACHMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDER" Association="BMSModel.FK2_BONDER">
+      <End Role="DISTRICT" EntitySet="DISTRICTs" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERANNUALENTITLEMENTCOD" Association="BMSModel.FK2_BONDERANNUALENTITLEMENTCOD">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDERANNUALENTITLEMENTCOEDET" EntitySet="BONDERANNUALENTITLEMENTCOEDETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERANNUALENTTLMNTCM" Association="BMSModel.FK2_BONDERANNUALENTTLMNTCM">
+      <End Role="BONDER" EntitySet="BONDERs" />
+      <End Role="BONDERANNUALENTITLEMENTCOM" EntitySet="BONDERANNUALENTITLEMENTCOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDER" Association="BMSModel.FK3_BONDER">
+      <End Role="UPAZILA" EntitySet="UPAZILAs" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK4_BONDER" Association="BMSModel.FK4_BONDER">
+      <End Role="DISTRICT" EntitySet="DISTRICTs" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK5_BONDER" Association="BMSModel.FK5_BONDER">
+      <End Role="BONDTYPE" EntitySet="BONDTYPEs" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK7_BONDER" Association="BMSModel.FK7_BONDER">
+      <End Role="BONDSUBCATEGORY" EntitySet="BONDSUBCATEGORies" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK8_BONDER" Association="BMSModel.FK8_BONDER">
+      <End Role="DESIGNATION" EntitySet="DESIGNATIONs" />
+      <End Role="BONDER" EntitySet="BONDERs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERANNUALENTITLEMENT" Association="BMSModel.FK2_BONDERANNUALENTITLEMENT">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDERANNUALENTITLEMENT" Association="BMSModel.FK3_BONDERANNUALENTITLEMENT">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK4_BONDERANNUALENTITLEMENT" Association="BMSModel.FK4_BONDERANNUALENTITLEMENT">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK5_BONDERANNUALENTITLEMENT" Association="BMSModel.FK5_BONDERANNUALENTITLEMENT">
+      <End Role="BONDSTATU" EntitySet="BONDSTATUS" />
+      <End Role="BONDERANNUALENTITLEMENT" EntitySet="BONDERANNUALENTITLEMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERANNUALENTITLEMENTCOD" Association="BMSModel.FK1_BONDERANNUALENTITLEMENTCOD">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="BONDERANNUALENTITLEMENTCOEDET" EntitySet="BONDERANNUALENTITLEMENTCOEDETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDERANNUALENTITLEMENTCOD" Association="BMSModel.FK3_BONDERANNUALENTITLEMENTCOD">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="BONDERANNUALENTITLEMENTCOEDET" EntitySet="BONDERANNUALENTITLEMENTCOEDETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERANNUALENTTLMNTCM" Association="BMSModel.FK1_BONDERANNUALENTTLMNTCM">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="BONDERANNUALENTITLEMENTCOM" EntitySet="BONDERANNUALENTITLEMENTCOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_BONDERANNUALENTTLMNTCM" Association="BMSModel.FK3_BONDERANNUALENTTLMNTCM">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATIONs" />
+      <End Role="BONDERANNUALENTITLEMENTCOM" EntitySet="BONDERANNUALENTITLEMENTCOMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_BONDERPRODUCT" Association="BMSModel.FK1_BONDERPRODUCT">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="BONDERPRODUCT" EntitySet="BONDERPRODUCTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDERRAWMATERIAL" Association="BMSModel.FK2_BONDERRAWMATERIAL">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="BONDERRAWMATERIAL" EntitySet="BONDERRAWMATERIALs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_BONDREGISTRATION" Association="BMSModel.FK2_BONDREGISTRATION">
+      <End Role="BONDTYPE" EntitySet="BONDTYPEs" />
+      <End Role="BONDREGISTRATION" EntitySet="BONDREGISTRATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_COUNTRYSLNO" Association="BMSModel.FK_COUNTRYSLNO">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_DISTRICT" Association="BMSModel.FK1_DISTRICT">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="DISTRICT" EntitySet="DISTRICTs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_OFFICE" Association="BMSModel.FK1_OFFICE">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="OFFICE" EntitySet="OFFICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_EMPLOYEE" Association="BMSModel.FK1_EMPLOYEE">
+      <End Role="DESIGNATION" EntitySet="DESIGNATIONs" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_OWNERINFO" Association="BMSModel.FK1_OWNERINFO">
+      <End Role="DESIGNATION" EntitySet="DESIGNATIONs" />
+      <End Role="OWNERINFO" EntitySet="OWNERINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK3_OFFICE" Association="BMSModel.FK3_OFFICE">
+      <End Role="DESIGNATION" EntitySet="DESIGNATIONs" />
+      <End Role="OFFICE" EntitySet="OFFICEs" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0011192" Association="BMSModel.SYS_C0011192">
+      <End Role="DESIGNATION" EntitySet="DESIGNATIONs" />
+      <End Role="OWNERASSOCIATEBUSINESS" EntitySet="OWNERASSOCIATEBUSINESSes" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_UPAZILA" Association="BMSModel.FK1_UPAZILA">
+      <End Role="DISTRICT" EntitySet="DISTRICTs" />
+      <End Role="UPAZILA" EntitySet="UPAZILAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_OFFICE" Association="BMSModel.FK2_OFFICE">
+      <End Role="DISTRICT" EntitySet="DISTRICTs" />
+      <End Role="OFFICE" EntitySet="OFFICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_OWNERINFO" Association="BMSModel.FK2_OWNERINFO">
+      <End Role="DISTRICT" EntitySet="DISTRICTs" />
+      <End Role="OWNERINFO" EntitySet="OWNERINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USERPERMISSION_EMPLOY" Association="BMSModel.FK_USERPERMISSION_EMPLOY">
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+      <End Role="USERPERMISSION" EntitySet="USERPERMISSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_EMPLOYEE" Association="BMSModel.FK2_EMPLOYEE">
+      <End Role="OFFICE" EntitySet="OFFICEs" />
+      <End Role="EMPLOYEE" EntitySet="EMPLOYEEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INBONDRAWMATERIAL_MATERIAL" Association="BMSModel.FK_INBONDRAWMATERIAL_MATERIAL">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="INBONDRAWMATERIAL" EntitySet="INBONDRAWMATERIALs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_INSTALLEDMACHINE_MODELSLNO" Association="BMSModel.FK_INSTALLEDMACHINE_MODELSLNO">
+      <End Role="MODEL" EntitySet="MODELs" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_INSTALLEDMACHINEINFO" Association="BMSModel.FK1_INSTALLEDMACHINEINFO">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATIONs" />
+      <End Role="INSTALLEDMACHINEINFO" EntitySet="INSTALLEDMACHINEINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MACHINEINFO_MACHINESLNO" Association="BMSModel.FK_MACHINEINFO_MACHINESLNO">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATIONs" />
+      <End Role="MODEL" EntitySet="MODELs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MACHINESLNO" Association="BMSModel.FK_MACHINESLNO">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATIONs" />
+      <End Role="PRODCAPACITYMACHINEWISEM" EntitySet="PRODCAPACITYMACHINEWISEMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_PRODCAPACITYMACHINEWISEDET" Association="BMSModel.FK1_PRODCAPACITYMACHINEWISEDET">
+      <End Role="MACHINEINFORMATION" EntitySet="MACHINEINFORMATIONs" />
+      <End Role="PRODCAPACITYMACHINEWISEDET" EntitySet="PRODCAPACITYMACHINEWISEDETs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RAWMATERIAL_MATERIALS" Association="BMSModel.FK_RAWMATERIAL_MATERIALS">
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+      <End Role="RAWMATERIAL" EntitySet="RAWMATERIALs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_MATERIALS" Association="BMSModel.FK1_MATERIALS">
+      <End Role="MATERIALSGROUP" EntitySet="MATERIALSGROUPs" />
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_MATERIALS" Association="BMSModel.FK2_MATERIALS">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="MATERIAL" EntitySet="MATERIALS" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_MEASUREMENTUNITCONVERSION" Association="BMSModel.FK1_MEASUREMENTUNITCONVERSION">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="MEASUREMENTUNITCONVERSION" EntitySet="MEASUREMENTUNITCONVERSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK1_PRODCAPACITYMACHINEWISEM" Association="BMSModel.FK1_PRODCAPACITYMACHINEWISEM">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="PRODCAPACITYMACHINEWISEM" EntitySet="PRODCAPACITYMACHINEWISEMs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_MEASUREMENTUNITCONVERSION" Association="BMSModel.FK2_MEASUREMENTUNITCONVERSION">
+      <End Role="MEASUREMENTUNIT" EntitySet="MEASUREMENTUNITs" />
+      <End Role="MEASUREMENTUNITCONVERSION" EntitySet="MEASUREMENTUNITCONVERSIONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK2_PRODCAPACITYMACHINEWISEDET" Association="BMSModel.FK2_PRODCAPACITYMACHINEWISEDET">
+      <End Role="PRODCAPACITYMACHINEWISEM" EntitySet="PRODCAPACITYMACHINEWISEMs" />
+      <End Role="PRODCAPACITYMACHINEWISEDET" EntitySet="PRODCAPACITYMACHINEWISEDETs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="BONDERID" Type="Int32" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="UPREQUESTLISTs" Relationship="BMSModel.FK_UPREQLIST_UP" FromRole="UP" ToRole="UPREQUESTLIST" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK_UP_BONDER" FromRole="UP" ToRole="BONDER" />
+    <Property Name="UPNO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UPREQUEST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="STATUS" Type="Int16" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <Property Name="BONDERID" Type="Int32" Nullable="false" />
+    <Property Name="REJECTCOMMENT" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UPEXBONDLISTs" Relationship="BMSModel.FK_UPEXBONDLIST_UPREQUEST" FromRole="UPREQUEST" ToRole="UPEXBONDLIST" />
+    <NavigationProperty Name="UPREQUESTLISTs" Relationship="BMSModel.FK_UPREQLIST_UPREQ" FromRole="UPREQUEST" ToRole="UPREQUESTLIST" />
+    <NavigationProperty Name="ATTACHMENTs" Relationship="BMSModel.FK_ATTACHMENT_UPREQ" FromRole="UPREQUEST" ToRole="ATTACHMENT" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK_UPREQUEST_BONDER" FromRole="UPREQUEST" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="UPREQUESTLIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="UPREQUESTID" Type="Int16" Nullable="false" />
+    <Property Name="UPID" Type="Int16" Nullable="false" />
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="UP" Relationship="BMSModel.FK_UPREQLIST_UP" FromRole="UPREQUESTLIST" ToRole="UP" />
+    <NavigationProperty Name="UPREQUEST" Relationship="BMSModel.FK_UPREQLIST_UPREQ" FromRole="UPREQUESTLIST" ToRole="UPREQUEST" />
+  </EntityType>
+  <Association Name="FK_UPREQLIST_UP">
+    <End Type="BMSModel.UP" Role="UP" Multiplicity="1" />
+    <End Type="BMSModel.UPREQUESTLIST" Role="UPREQUESTLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPREQUESTLIST">
+        <PropertyRef Name="UPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPEXBONDLIST_UPREQUEST">
+    <End Type="BMSModel.UPREQUEST" Role="UPREQUEST" Multiplicity="1" />
+    <End Type="BMSModel.UPEXBONDLIST" Role="UPEXBONDLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPREQUEST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPEXBONDLIST">
+        <PropertyRef Name="UPREQUESTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPREQLIST_UPREQ">
+    <End Type="BMSModel.UPREQUEST" Role="UPREQUEST" Multiplicity="1" />
+    <End Type="BMSModel.UPREQUESTLIST" Role="UPREQUESTLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPREQUEST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPREQUESTLIST">
+        <PropertyRef Name="UPREQUESTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="RAWMATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="RAWMATERIALCODE" Type="Int16" Nullable="false" />
+    <Property Name="QUANTITY" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="UNIT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PERMITTEDWASTE" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="PRODUCTID" Type="Int16" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="BACKTOBACKPRODUCT" Relationship="BMSModel.FK_RAWMATERIAL_B2BPRODUCT" FromRole="RAWMATERIAL" ToRole="BACKTOBACKPRODUCT" />
+    <NavigationProperty Name="MATERIAL" Relationship="BMSModel.FK_RAWMATERIAL_MATERIALS" FromRole="RAWMATERIAL" ToRole="MATERIAL" />
+  </EntityType>
+  <EntityType Name="BACKTOBACKLC">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="BUYERSNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BUYERSADDRESS" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LCNUMBER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LCDATE" Type="DateTime" Nullable="false" />
+    <Property Name="BUYERSBANKID" Type="Int16" Nullable="false" />
+    <Property Name="BUYERSBANKBRANCHID" Type="Int16" Nullable="false" />
+    <Property Name="SHIPPINGDATE" Type="DateTime" />
+    <Property Name="CORRECTIONDATE" Type="DateTime" />
+    <Property Name="PRODUCTQUANTITY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="QUANTITYUNIT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LCUSEDPRICE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PRICEUNIT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MASTERLCNUMBER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MASTERLCCORRECTIONDATE" Type="DateTime" Nullable="false" />
+    <Property Name="UDNUMBER" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="UDDATE" Type="DateTime" Nullable="false" />
+    <Property Name="UDCORRECTIONDATE" Type="DateTime" />
+    <Property Name="UDPRODUCTDETAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BONDERID" Type="Int32" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="BACKTOBACKPRODUCTs" Relationship="BMSModel.FK_B2BPRODUT_B2B" FromRole="BACKTOBACKLC" ToRole="BACKTOBACKPRODUCT" />
+    <NavigationProperty Name="EXBONDBACKTOBACKs" Relationship="BMSModel.FK_EXBONDB2B_B2BLC" FromRole="BACKTOBACKLC" ToRole="EXBONDBACKTOBACK" />
+    <NavigationProperty Name="BANKBRANCH" Relationship="BMSModel.FK_BACK2BACK_BANKBRANCH" FromRole="BACKTOBACKLC" ToRole="BANKBRANCH" />
+    <NavigationProperty Name="BANK" Relationship="BMSModel.FK_BACK2BACKLC_BANK" FromRole="BACKTOBACKLC" ToRole="BANK" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK_BACKTOBACKLC_BONDER" FromRole="BACKTOBACKLC" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="BACKTOBACKPRODUCT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SIZEANDDETAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="QUANTITY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="QUANTITYUNIT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BACKTOBACKLCID" Type="Int16" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="BACKTOBACKLC" Relationship="BMSModel.FK_B2BPRODUT_B2B" FromRole="BACKTOBACKPRODUCT" ToRole="BACKTOBACKLC" />
+    <NavigationProperty Name="RAWMATERIALs" Relationship="BMSModel.FK_RAWMATERIAL_B2BPRODUCT" FromRole="BACKTOBACKPRODUCT" ToRole="RAWMATERIAL" />
+  </EntityType>
+  <EntityType Name="EXBOND">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BONDERID" Type="Int32" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="EXBONDBACKTOBACKs" Relationship="BMSModel.FK_EXBONDB2B_EXBOND" FromRole="EXBOND" ToRole="EXBONDBACKTOBACK" />
+    <NavigationProperty Name="UPEXBONDLISTs" Relationship="BMSModel.FK_UPEXBONDLIST_EXBOND" FromRole="EXBOND" ToRole="UPEXBONDLIST" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK_EXBOND_BONDER" FromRole="EXBOND" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="INBOND">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="LCNUMBER" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LCDATE" Type="DateTime" Nullable="false" />
+    <Property Name="BOENUMBER" Type="String" Nullable="false" MaxLength="100" />
+    <Property Name="BOEDATE" Type="DateTime" Nullable="false" />
+    <Property Name="BONDERID" Type="Int32" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="INBONDRAWMATERIALs" Relationship="BMSModel.FK_INBONDRAWMATERIAL_INBOND" FromRole="INBOND" ToRole="INBONDRAWMATERIAL" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK_INBOND_BONDER" FromRole="INBOND" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="INBONDRAWMATERIAL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="RAWMATERIALCODE" Type="Int16" Nullable="false" />
+    <Property Name="PRODUCTQUANTITY" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="QUANTITYUNIT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="PRODUCTCOST" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="COSTUNIT" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="INBONDID" Type="Int16" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="INBOND" Relationship="BMSModel.FK_INBONDRAWMATERIAL_INBOND" FromRole="INBONDRAWMATERIAL" ToRole="INBOND" />
+    <NavigationProperty Name="MATERIAL" Relationship="BMSModel.FK_INBONDRAWMATERIAL_MATERIAL" FromRole="INBONDRAWMATERIAL" ToRole="MATERIAL" />
+  </EntityType>
+  <Association Name="FK_B2BPRODUT_B2B">
+    <End Type="BMSModel.BACKTOBACKLC" Role="BACKTOBACKLC" Multiplicity="1" />
+    <End Type="BMSModel.BACKTOBACKPRODUCT" Role="BACKTOBACKPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BACKTOBACKLC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BACKTOBACKPRODUCT">
+        <PropertyRef Name="BACKTOBACKLCID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXBONDB2B_B2BLC">
+    <End Type="BMSModel.BACKTOBACKLC" Role="BACKTOBACKLC" Multiplicity="1" />
+    <End Type="BMSModel.EXBONDBACKTOBACK" Role="EXBONDBACKTOBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BACKTOBACKLC">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXBONDBACKTOBACK">
+        <PropertyRef Name="BACKTOBACKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWMATERIAL_B2BPRODUCT">
+    <End Type="BMSModel.BACKTOBACKPRODUCT" Role="BACKTOBACKPRODUCT" Multiplicity="1" />
+    <End Type="BMSModel.RAWMATERIAL" Role="RAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BACKTOBACKPRODUCT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RAWMATERIAL">
+        <PropertyRef Name="PRODUCTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXBONDB2B_EXBOND">
+    <End Type="BMSModel.EXBOND" Role="EXBOND" Multiplicity="1" />
+    <End Type="BMSModel.EXBONDBACKTOBACK" Role="EXBONDBACKTOBACK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXBOND">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EXBONDBACKTOBACK">
+        <PropertyRef Name="EXBONDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPEXBONDLIST_EXBOND">
+    <End Type="BMSModel.EXBOND" Role="EXBOND" Multiplicity="1" />
+    <End Type="BMSModel.UPEXBONDLIST" Role="UPEXBONDLIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EXBOND">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UPEXBONDLIST">
+        <PropertyRef Name="EXBONDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INBONDRAWMATERIAL_INBOND">
+    <End Type="BMSModel.INBOND" Role="INBOND" Multiplicity="1" />
+    <End Type="BMSModel.INBONDRAWMATERIAL" Role="INBONDRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="INBOND">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="INBONDRAWMATERIAL">
+        <PropertyRef Name="INBONDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ANNUALENTLRAWMATERIAL">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="MSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MUSLNO" Type="Int16" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="AEQTY" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="AIL_HSCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SPEC_GRADE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MATERIAL" Relationship="BMSModel.FK1_ANNUALENTLRAWMATERIAL" FromRole="ANNUALENTLRAWMATERIAL" ToRole="MATERIAL" />
+    <NavigationProperty Name="MEASUREMENTUNIT" Relationship="BMSModel.FK3_ANNUALENTLRAWMATERIAL" FromRole="ANNUALENTLRAWMATERIAL" ToRole="MEASUREMENTUNIT" />
+  </EntityType>
+  <EntityType Name="APPUSER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="155" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWARD" Type="String" Nullable="false" MaxLength="155" FixedLength="false" Unicode="false" />
+    <Property Name="SALT" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FIRSTNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="LASTNAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Int16" Nullable="false" />
+    <Property Name="LASTLOGIN" Type="DateTime" />
+    <NavigationProperty Name="USERPERMISSIONs" Relationship="BMSModel.FK_USERPERMISSION_APPUSER" FromRole="APPUSER" ToRole="USERPERMISSION" />
+  </EntityType>
+  <EntityType Name="ASSOCIATIONENROLL">
+    <Key>
+      <PropertyRef Name="ASSOENSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="OFFICESLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="ASSOENSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="OFFICESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BSNO" Type="Int16" Nullable="false" />
+    <Property Name="MEMBERSHIPREGNO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MEMBERSHIPREGNOBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ISSUEDATE" Type="DateTime" />
+    <Property Name="EXPDATE" Type="DateTime" />
+    <Property Name="CERATTACHFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CERATTACHFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CERATTACHFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="RECATTACHFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RECATTACHFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RECATTACHFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_ASSOCIATIONENROLL" FromRole="ASSOCIATIONENROLL" ToRole="BONDER" />
+    <NavigationProperty Name="OFFICE" Relationship="BMSModel.FK2_ASSOCIATIONENROLL" FromRole="ASSOCIATIONENROLL" ToRole="OFFICE" />
+  </EntityType>
+  <EntityType Name="ATTACHMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CONTENT" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UPREQUESTID" Type="Int16" Nullable="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+    <NavigationProperty Name="UPREQUEST" Relationship="BMSModel.FK_ATTACHMENT_UPREQ" FromRole="ATTACHMENT" ToRole="UPREQUEST" />
+  </EntityType>
+  <EntityType Name="BANK">
+    <Key>
+      <PropertyRef Name="BANKSLNO" />
+    </Key>
+    <Property Name="BANKSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BANKNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BANKNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SWIFT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WEB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BACKTOBACKLCs" Relationship="BMSModel.FK_BACK2BACKLC_BANK" FromRole="BANK" ToRole="BACKTOBACKLC" />
+    <NavigationProperty Name="BONDERLIENBANKs" Relationship="BMSModel.FK_LIENBANK_BANK" FromRole="BANK" ToRole="BONDERLIENBANK" />
+    <NavigationProperty Name="BANKBRANCHes" Relationship="BMSModel.FK1_BANKBRANCH" FromRole="BANK" ToRole="BANKBRANCH" />
+  </EntityType>
+  <EntityType Name="BANKBRANCH">
+    <Key>
+      <PropertyRef Name="BBRANCHSLNO" />
+    </Key>
+    <Property Name="BBRANCHSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BANKSLNO" Type="Int16" />
+    <Property Name="BRANCHNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BRANCHNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESSBG" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAXBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OTHER" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="OTHERBG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BACKTOBACKLCs" Relationship="BMSModel.FK_BACK2BACK_BANKBRANCH" FromRole="BANKBRANCH" ToRole="BACKTOBACKLC" />
+    <NavigationProperty Name="BANK" Relationship="BMSModel.FK1_BANKBRANCH" FromRole="BANKBRANCH" ToRole="BANK" />
+    <NavigationProperty Name="INSTALLEDMACHINEINFOes" Relationship="BMSModel.FK_BRANCH" FromRole="BANKBRANCH" ToRole="INSTALLEDMACHINEINFO" />
+    <NavigationProperty Name="BONDERLIENBANKs" Relationship="BMSModel.FK2_BONDERLIENBANK" FromRole="BANKBRANCH" ToRole="BONDERLIENBANK" />
+  </EntityType>
+  <EntityType Name="BONDAPPLICATIONPROGRESS">
+    <Key>
+      <PropertyRef Name="PROGRESSSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="PROGRESSSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="BSNO" Type="Int16" Nullable="false" />
+    <Property Name="READYFORAPP" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="ACTION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIONDATE" Type="DateTime" />
+    <Property Name="ATTACHFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ATTACHFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ATTACHFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_BONDAPPLICATIONPROGRESS" FromRole="BONDAPPLICATIONPROGRESS" ToRole="BONDER" />
+    <NavigationProperty Name="BONDSTATU" Relationship="BMSModel.FK2_BONDAPPLICATIONPROGRESS" FromRole="BONDAPPLICATIONPROGRESS" ToRole="BONDSTATU" />
+  </EntityType>
+  <EntityType Name="BONDAREA">
+    <Key>
+      <PropertyRef Name="BONDAREASLNO" />
+    </Key>
+    <Property Name="BONDAREASLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDDIVISIONSLNO" Type="Int16" />
+    <Property Name="BONDAREAENAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BONDAREAENAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="BONDCATEGORY">
+    <Key>
+      <PropertyRef Name="BCATSLNO" />
+    </Key>
+    <Property Name="BCATSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BCATNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BCATNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDERs" Relationship="BMSModel.FK6_BONDER" FromRole="BONDCATEGORY" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="BONDCIRCLE">
+    <Key>
+      <PropertyRef Name="BONDCIRCLESLNO" />
+    </Key>
+    <Property Name="BONDCIRCLESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDDIVISIONSLNO" Type="Int16" />
+    <Property Name="BONDCIRCLENAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BONDCIRCLENAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDDIVISION" Relationship="BMSModel.FK1_BONDCIRCLE" FromRole="BONDCIRCLE" ToRole="BONDDIVISION" />
+    <NavigationProperty Name="BONDREGISTRATIONs" Relationship="BMSModel.FK3_BONDREGISTRATION" FromRole="BONDCIRCLE" ToRole="BONDREGISTRATION" />
+  </EntityType>
+  <EntityType Name="BONDDIVISION">
+    <Key>
+      <PropertyRef Name="BONDDIVISIONSLNO" />
+    </Key>
+    <Property Name="BONDDIVISIONSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDDIVISIONNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BONDDIVISIONNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDCIRCLEs" Relationship="BMSModel.FK1_BONDCIRCLE" FromRole="BONDDIVISION" ToRole="BONDCIRCLE" />
+  </EntityType>
+  <EntityType Name="BONDER">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="BONDLICENSENO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BONDLICENSENOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BONDSTATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="BONDERNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BONDERNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="HOLDINGNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ROADNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AREAVILLAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOWJA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UNIONNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUPAZILASLNO" Type="Int16" />
+    <Property Name="BDISTRICTSLNO" Type="Int16" />
+    <Property Name="PSTATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WARD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CITYPOURO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOLDINGNOBG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ROADNOBG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AREAVILLAGEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOWJABG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UNIONBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PSTATIONBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WARDBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CITYPOUROBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAXBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOHOLDINGNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HOROADNO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HOAREAVILLAGE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOMOWJA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOUNION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOUPAZILASLNO" Type="Int16" />
+    <Property Name="HODISTRICTSLNO" Type="Int16" />
+    <Property Name="HOPSTATION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOWARD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOCITYPOURO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOPHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOFAX" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOMOBILE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOEMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOHOLDINGNOBG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HOROADNOBG" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="HOAREAVILLAGEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOMOWJABG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOUNIONBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOPSTATIONBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOWARDBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOCITYPOUROBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOPHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOFAXBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HOMOBILEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PREMESISSTATUS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HIREDATE" Type="DateTime" />
+    <Property Name="HIREEXPDATE" Type="DateTime" />
+    <Property Name="HIREDEEDNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERSHIPDATE" Type="DateTime" />
+    <Property Name="OWNERSHIPDOLILNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CSDAGNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RSDAGNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DEEDFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DEEDFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DOLILFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DOLILFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="RENTVATCHALLANNO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="VCHALNFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VCHALNFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BONDEDFAC" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="BTYPESLNO" Type="Int16" />
+    <Property Name="BCATSLNO" Type="Int16" />
+    <Property Name="BSCATSLNO" Type="Int16" />
+    <Property Name="BONDFACPREV" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="BONDFACPREVLICENNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BONDFACPREVLICENNOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERCATEGORY" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="TOTFACLENG" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTFACWIDTH" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTRMWHLENG" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTRMWHWIDTH" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTRMWHHEIGHT" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTFGWHLENG" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTFGWHWIDTH" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TOTFGWHHEIGHT" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="AUTHORIZEDSIGNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AUTHORIZEDSIGNAMEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INITIALAUTHSIGFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INITIALAUTHSIGFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PHOTOFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTOFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DECLARFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DECLARFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DECLARSIGFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DECLARSIGFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DECLARSEALFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DECLARSEALFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DECLARDESSLNO" Type="Int16" />
+    <Property Name="DECLARDATE" Type="DateTime" />
+    <Property Name="REMARKS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="DECLARNMBLOCK" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="COADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ASSOCIATIONENROLLs" Relationship="BMSModel.FK1_ASSOCIATIONENROLL" FromRole="BONDER" ToRole="ASSOCIATIONENROLL" />
+    <NavigationProperty Name="BACKTOBACKLCs" Relationship="BMSModel.FK_BACKTOBACKLC_BONDER" FromRole="BONDER" ToRole="BACKTOBACKLC" />
+    <NavigationProperty Name="BONDAPPLICATIONPROGRESSes" Relationship="BMSModel.FK1_BONDAPPLICATIONPROGRESS" FromRole="BONDER" ToRole="BONDAPPLICATIONPROGRESS" />
+    <NavigationProperty Name="BONDCATEGORY" Relationship="BMSModel.FK6_BONDER" FromRole="BONDER" ToRole="BONDCATEGORY" />
+    <NavigationProperty Name="EXBONDs" Relationship="BMSModel.FK_EXBOND_BONDER" FromRole="BONDER" ToRole="EXBOND" />
+    <NavigationProperty Name="INBONDs" Relationship="BMSModel.FK_INBOND_BONDER" FromRole="BONDER" ToRole="INBOND" />
+    <NavigationProperty Name="UPs" Relationship="BMSModel.FK_UP_BONDER" FromRole="BONDER" ToRole="UP" />
+    <NavigationProperty Name="UPREQUESTs" Relationship="BMSModel.FK_UPREQUEST_BONDER" FromRole="BONDER" ToRole="UPREQUEST" />
+    <NavigationProperty Name="USERPERMISSIONs" Relationship="BMSModel.FK_USERPERMISSION_BONDER" FromRole="BONDER" ToRole="USERPERMISSION" />
+    <NavigationProperty Name="UPAZILA" Relationship="BMSModel.FK1_BONDER" FromRole="BONDER" ToRole="UPAZILA" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTs" Relationship="BMSModel.FK1_BONDERANNUALENTITLEMENT" FromRole="BONDER" ToRole="BONDERANNUALENTITLEMENT" />
+    <NavigationProperty Name="BONDERLIENBANKs" Relationship="BMSModel.FK1_BONDERLIENBANK" FromRole="BONDER" ToRole="BONDERLIENBANK" />
+    <NavigationProperty Name="BONDREGISTRATIONs" Relationship="BMSModel.FK1_BONDREGISTRATION" FromRole="BONDER" ToRole="BONDREGISTRATION" />
+    <NavigationProperty Name="BONDSTATUS1" Relationship="BMSModel.FK1_BONDSTATUS" FromRole="BONDER" ToRole="BONDSTATU" />
+    <NavigationProperty Name="DOCUMENTATTACHMENTs" Relationship="BMSModel.FK1_DOCUMENTATTACHMENT" FromRole="BONDER" ToRole="DOCUMENTATTACHMENT" />
+    <NavigationProperty Name="DISTRICT" Relationship="BMSModel.FK2_BONDER" FromRole="BONDER" ToRole="DISTRICT" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTCOEDETs" Relationship="BMSModel.FK2_BONDERANNUALENTITLEMENTCOD" FromRole="BONDER" ToRole="BONDERANNUALENTITLEMENTCOEDET" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTCOMs" Relationship="BMSModel.FK2_BONDERANNUALENTTLMNTCM" FromRole="BONDER" ToRole="BONDERANNUALENTITLEMENTCOM" />
+    <NavigationProperty Name="UPAZILA1" Relationship="BMSModel.FK3_BONDER" FromRole="BONDER" ToRole="UPAZILA" />
+    <NavigationProperty Name="DISTRICT1" Relationship="BMSModel.FK4_BONDER" FromRole="BONDER" ToRole="DISTRICT" />
+    <NavigationProperty Name="BONDTYPE" Relationship="BMSModel.FK5_BONDER" FromRole="BONDER" ToRole="BONDTYPE" />
+    <NavigationProperty Name="BONDSUBCATEGORY" Relationship="BMSModel.FK7_BONDER" FromRole="BONDER" ToRole="BONDSUBCATEGORY" />
+    <NavigationProperty Name="DESIGNATION" Relationship="BMSModel.FK8_BONDER" FromRole="BONDER" ToRole="DESIGNATION" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENT">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="BSNO" Type="Int16" />
+    <Property Name="ENTLTYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="TOTALSTORAGEQTY" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="TSMUSLNO" Type="Int16" />
+    <Property Name="TOTALSTORAGEQTYEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TOTALSTORAGEQTYBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ONETIMESTORAGEQTY" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="OTMUSLNO" Type="Int16" />
+    <Property Name="ONETIMESTORAGEQTYEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ONETIMESTORAGEQTYBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ENTITLEPERCENTQTY" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="ETMUSLNO" Type="Int16" />
+    <Property Name="ENTITLEPERCENTEN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ENTITLEPERCENTBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ENTITLEFROM" Type="DateTime" />
+    <Property Name="ENTITLETO" Type="DateTime" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="PERCENTVAL" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="STATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_BONDERANNUALENTITLEMENT" FromRole="BONDERANNUALENTITLEMENT" ToRole="BONDER" />
+    <NavigationProperty Name="MEASUREMENTUNIT" Relationship="BMSModel.FK2_BONDERANNUALENTITLEMENT" FromRole="BONDERANNUALENTITLEMENT" ToRole="MEASUREMENTUNIT" />
+    <NavigationProperty Name="MEASUREMENTUNIT1" Relationship="BMSModel.FK3_BONDERANNUALENTITLEMENT" FromRole="BONDERANNUALENTITLEMENT" ToRole="MEASUREMENTUNIT" />
+    <NavigationProperty Name="MEASUREMENTUNIT2" Relationship="BMSModel.FK4_BONDERANNUALENTITLEMENT" FromRole="BONDERANNUALENTITLEMENT" ToRole="MEASUREMENTUNIT" />
+    <NavigationProperty Name="BONDSTATU" Relationship="BMSModel.FK5_BONDERANNUALENTITLEMENT" FromRole="BONDERANNUALENTITLEMENT" ToRole="BONDSTATU" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENTCOEDET">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+      <PropertyRef Name="RMSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="MSLNO" Type="Int16" Nullable="false" />
+    <Property Name="RMSLNO" Type="Int16" Nullable="false" />
+    <Property Name="GROSSQT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="WASTAGEQT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="SHRINKAGEQT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="NETQT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK2_BONDERANNUALENTITLEMENTCOD" FromRole="BONDERANNUALENTITLEMENTCOEDET" ToRole="BONDER" />
+    <NavigationProperty Name="MATERIAL" Relationship="BMSModel.FK1_BONDERANNUALENTITLEMENTCOD" FromRole="BONDERANNUALENTITLEMENTCOEDET" ToRole="MATERIAL" />
+    <NavigationProperty Name="MATERIAL1" Relationship="BMSModel.FK3_BONDERANNUALENTITLEMENTCOD" FromRole="BONDERANNUALENTITLEMENTCOEDET" ToRole="MATERIAL" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENTCOM">
+    <Key>
+      <PropertyRef Name="AESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="AESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="MSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MEASUREMENT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MSIZE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WEIGHT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MACHINESLNO" Type="Int16" />
+    <Property Name="MDESC" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK2_BONDERANNUALENTTLMNTCM" FromRole="BONDERANNUALENTITLEMENTCOM" ToRole="BONDER" />
+    <NavigationProperty Name="MATERIAL" Relationship="BMSModel.FK1_BONDERANNUALENTTLMNTCM" FromRole="BONDERANNUALENTITLEMENTCOM" ToRole="MATERIAL" />
+    <NavigationProperty Name="MACHINEINFORMATION" Relationship="BMSModel.FK3_BONDERANNUALENTTLMNTCM" FromRole="BONDERANNUALENTITLEMENTCOM" ToRole="MACHINEINFORMATION" />
+  </EntityType>
+  <EntityType Name="BONDERANNUALENTITLEMENTDET">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="MSLNO" Type="Int16" Nullable="false" />
+    <Property Name="ENTITLEMENTQTY" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="MUSLNO" Type="Int16" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="BONDERLIENBANK">
+    <Key>
+      <PropertyRef Name="LBANKSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BBRANCHSLNO" />
+    </Key>
+    <Property Name="LBANKSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="BBRANCHSLNO" Type="Int16" Nullable="false" />
+    <Property Name="LIENBANKCODE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LIENBANKCODEBG" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CERATTACHFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CERATTACHFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CERATTACHFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="BANKSLNO" Type="Int16" />
+    <Property Name="ADDRESS" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BANK" Relationship="BMSModel.FK_LIENBANK_BANK" FromRole="BONDERLIENBANK" ToRole="BANK" />
+    <NavigationProperty Name="BANKBRANCH" Relationship="BMSModel.FK2_BONDERLIENBANK" FromRole="BONDERLIENBANK" ToRole="BANKBRANCH" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_BONDERLIENBANK" FromRole="BONDERLIENBANK" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="BONDERPRODUCT">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="FPSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="FPSLNO" Type="Int16" Nullable="false" />
+    <Property Name="REGFROM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="REGFROMBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="MATERIAL" Relationship="BMSModel.FK1_BONDERPRODUCT" FromRole="BONDERPRODUCT" ToRole="MATERIAL" />
+  </EntityType>
+  <EntityType Name="BONDERRAWMATERIAL">
+    <Key>
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="MSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MUSLNO" Type="Int16" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="QTY" Type="Decimal" Precision="12" Scale="2" />
+    <NavigationProperty Name="MEASUREMENTUNIT" Relationship="BMSModel.FK2_BONDERRAWMATERIAL" FromRole="BONDERRAWMATERIAL" ToRole="MEASUREMENTUNIT" />
+  </EntityType>
+  <EntityType Name="BONDREGISTRATION">
+    <Key>
+      <PropertyRef Name="RGSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="RGSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="BSNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDLICENSENO" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="BTYPESLNO" Type="Int16" />
+    <Property Name="BONDCIRCLESLNO" Type="Int16" />
+    <Property Name="FEEAMT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="VATPCT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="VATAMT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="TOTAMT" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="ISSUEDATE" Type="DateTime" />
+    <Property Name="EXPIRYDATE" Type="DateTime" />
+    <Property Name="RENEWALDATE" Type="DateTime" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="AUTORENEWAL" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BONDCIRCLE" Relationship="BMSModel.FK3_BONDREGISTRATION" FromRole="BONDREGISTRATION" ToRole="BONDCIRCLE" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_BONDREGISTRATION" FromRole="BONDREGISTRATION" ToRole="BONDER" />
+    <NavigationProperty Name="BONDTYPE" Relationship="BMSModel.FK2_BONDREGISTRATION" FromRole="BONDREGISTRATION" ToRole="BONDTYPE" />
+  </EntityType>
+  <EntityType Name="BONDSTATU">
+    <Key>
+      <PropertyRef Name="BSNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="BSNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="REFNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="BSDATE" Type="DateTime" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="SUBMITTEDBYNM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="REMARKS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BONDAPPLICATIONPROGRESSes" Relationship="BMSModel.FK2_BONDAPPLICATIONPROGRESS" FromRole="BONDSTATU" ToRole="BONDAPPLICATIONPROGRESS" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_BONDSTATUS" FromRole="BONDSTATU" ToRole="BONDER" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTs" Relationship="BMSModel.FK5_BONDERANNUALENTITLEMENT" FromRole="BONDSTATU" ToRole="BONDERANNUALENTITLEMENT" />
+  </EntityType>
+  <EntityType Name="BONDSUBCATEGORY">
+    <Key>
+      <PropertyRef Name="BSCATSLNO" />
+    </Key>
+    <Property Name="BSCATSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BSTYPECODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BSTYPECODEBG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BSCATNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BSCATNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDERs" Relationship="BMSModel.FK7_BONDER" FromRole="BONDSUBCATEGORY" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="BONDTYPE">
+    <Key>
+      <PropertyRef Name="BTYPESLNO" />
+    </Key>
+    <Property Name="BTYPESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BTYPECODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BTYPECODEBG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BTYPENAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BTYPENAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDERs" Relationship="BMSModel.FK5_BONDER" FromRole="BONDTYPE" ToRole="BONDER" />
+    <NavigationProperty Name="BONDREGISTRATIONs" Relationship="BMSModel.FK2_BONDREGISTRATION" FromRole="BONDTYPE" ToRole="BONDREGISTRATION" />
+  </EntityType>
+  <EntityType Name="COUNTRY">
+    <Key>
+      <PropertyRef Name="COUNTRYSLNO" />
+    </Key>
+    <Property Name="COUNTRYSLNO" Type="Int16" Nullable="false" />
+    <Property Name="COUNTRYCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COUNTRYCODEBG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COUNTRYNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="COUNTRYNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="INSTALLEDMACHINEINFOes" Relationship="BMSModel.FK_COUNTRYSLNO" FromRole="COUNTRY" ToRole="INSTALLEDMACHINEINFO" />
+    <NavigationProperty Name="DISTRICTs" Relationship="BMSModel.FK1_DISTRICT" FromRole="COUNTRY" ToRole="DISTRICT" />
+    <NavigationProperty Name="OFFICEs" Relationship="BMSModel.FK1_OFFICE" FromRole="COUNTRY" ToRole="OFFICE" />
+  </EntityType>
+  <EntityType Name="CURRENCY">
+    <Key>
+      <PropertyRef Name="CURRSLNO" />
+    </Key>
+    <Property Name="CURRSLNO" Type="Int16" Nullable="false" />
+    <Property Name="CURRENCYCODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CURRENCYSNM" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CURRENCYSNMBG" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="CURRENCYNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CURRENCYNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="DESIGNATION">
+    <Key>
+      <PropertyRef Name="DESSLNO" />
+    </Key>
+    <Property Name="DESSLNO" Type="Int16" Nullable="false" />
+    <Property Name="DESCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESCODEBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DESNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDERs" Relationship="BMSModel.FK8_BONDER" FromRole="DESIGNATION" ToRole="BONDER" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="BMSModel.FK1_EMPLOYEE" FromRole="DESIGNATION" ToRole="EMPLOYEE" />
+    <NavigationProperty Name="OWNERINFOes" Relationship="BMSModel.FK1_OWNERINFO" FromRole="DESIGNATION" ToRole="OWNERINFO" />
+    <NavigationProperty Name="OFFICEs" Relationship="BMSModel.FK3_OFFICE" FromRole="DESIGNATION" ToRole="OFFICE" />
+    <NavigationProperty Name="OWNERASSOCIATEBUSINESSes" Relationship="BMSModel.SYS_C0011192" FromRole="DESIGNATION" ToRole="OWNERASSOCIATEBUSINESS" />
+  </EntityType>
+  <EntityType Name="DISTRICT">
+    <Key>
+      <PropertyRef Name="DISTRICTSLNO" />
+    </Key>
+    <Property Name="DISTRICTSLNO" Type="Int16" Nullable="false" />
+    <Property Name="COUNTRYSLNO" Type="Int16" />
+    <Property Name="DISTRICTNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DISTRICTNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDERs" Relationship="BMSModel.FK2_BONDER" FromRole="DISTRICT" ToRole="BONDER" />
+    <NavigationProperty Name="BONDERs1" Relationship="BMSModel.FK4_BONDER" FromRole="DISTRICT" ToRole="BONDER" />
+    <NavigationProperty Name="COUNTRY" Relationship="BMSModel.FK1_DISTRICT" FromRole="DISTRICT" ToRole="COUNTRY" />
+    <NavigationProperty Name="UPAZILAs" Relationship="BMSModel.FK1_UPAZILA" FromRole="DISTRICT" ToRole="UPAZILA" />
+    <NavigationProperty Name="OFFICEs" Relationship="BMSModel.FK2_OFFICE" FromRole="DISTRICT" ToRole="OFFICE" />
+    <NavigationProperty Name="OWNERINFOes" Relationship="BMSModel.FK2_OWNERINFO" FromRole="DISTRICT" ToRole="OWNERINFO" />
+  </EntityType>
+  <EntityType Name="DOCHEADINGINFO">
+    <Key>
+      <PropertyRef Name="DOCHEADINGSLNO" />
+    </Key>
+    <Property Name="DOCHEADINGSLNO" Type="Int16" Nullable="false" />
+    <Property Name="DOCHEADINGNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DOCHEADINGNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="DOCUMENTATTACHMENT">
+    <Key>
+      <PropertyRef Name="ATTCHSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="BSNO" />
+    </Key>
+    <Property Name="ATTCHSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="BSNO" Type="Int16" Nullable="false" />
+    <Property Name="APPLICANTREFNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOCHEADINGNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DOCHEADINGNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RGATTCHNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RGATTCHNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ISSUEDATE" Type="DateTime" />
+    <Property Name="EXPDATE" Type="DateTime" />
+    <Property Name="ATTACHFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ATTACHFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ATTACHFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK1_DOCUMENTATTACHMENT" FromRole="DOCUMENTATTACHMENT" ToRole="BONDER" />
+  </EntityType>
+  <EntityType Name="EMPLOYEE">
+    <Key>
+      <PropertyRef Name="EMPLOYEESLNO" />
+    </Key>
+    <Property Name="EMPLOYEESLNO" Type="Int16" Nullable="false" />
+    <Property Name="OFFICESLNO" Type="Int16" />
+    <Property Name="EMPLOYEENAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYEENAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTOFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTOFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="DESSLNO" Type="Int16" />
+    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="EMPLOYEETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="DESIGNATION" Relationship="BMSModel.FK1_EMPLOYEE" FromRole="EMPLOYEE" ToRole="DESIGNATION" />
+    <NavigationProperty Name="USERPERMISSIONs" Relationship="BMSModel.FK_USERPERMISSION_EMPLOY" FromRole="EMPLOYEE" ToRole="USERPERMISSION" />
+    <NavigationProperty Name="OFFICE" Relationship="BMSModel.FK2_EMPLOYEE" FromRole="EMPLOYEE" ToRole="OFFICE" />
+  </EntityType>
+  <EntityType Name="FINISHEDPRODUCT">
+    <Key>
+      <PropertyRef Name="FPSLNO" />
+    </Key>
+    <Property Name="FPSLNO" Type="Int16" Nullable="false" />
+    <Property Name="PRODCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PRODCODEBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FPNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FPNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MSLNO" Type="Int16" />
+    <Property Name="FPDESCRIPTION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="FPDESCRIPTIONBG" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="INSTALLEDMACHINEINFO">
+    <Key>
+      <PropertyRef Name="MACHINESLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="MACHINESLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="DATEOFINSTALL" Type="DateTime" />
+    <Property Name="BENO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BENOBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BENODATE" Type="DateTime" />
+    <Property Name="VATCHNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VATCHNOBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VATCHNODATE" Type="DateTime" />
+    <Property Name="BLNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BLNOBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="BLNODATE" Type="DateTime" />
+    <Property Name="INVOICENO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INVOICENOBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INVOICENODATE" Type="DateTime" />
+    <Property Name="LCNO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LCNOBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LCNODATE" Type="DateTime" />
+    <Property Name="MACHINEQTY" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="MACHINETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="PROCUREMENTTYPE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="INDEMNITYBOND" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="INDEMNITYUNDERTKNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INDEMNITYUNDERTKNOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INDEMNITYUNDERTKDT" Type="DateTime" />
+    <Property Name="CASHCHALNVOUCHNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CASHCHALNVOUCHNOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CASHCHALNVOUCHDT" Type="DateTime" />
+    <Property Name="DUERELEASDT" Type="DateTime" />
+    <Property Name="ACTRELEASDT" Type="DateTime" />
+    <Property Name="LOCALPURCLEARENCEFROM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LOCALPURCLEARENCEFROMBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LOCALPURCLEARENCENO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LOCALPURCLEARENCENOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LOCALPURCLEARENCEDT" Type="DateTime" />
+    <Property Name="LOCALPURPERMISSIONFROMCBC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LOCALPURPERMISSIONFROMCBCDT" Type="DateTime" />
+    <Property Name="TRANSFERLIENBANK" Type="Int16" />
+    <Property Name="TRANSFERLIENBANKNOCNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TRANSFERLIENBANKNOCNOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TRANSFERLIENBANKDT" Type="DateTime" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTIONBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MANUFACTUREYEAR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="MANUFACTUREYEARBG" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="COUNTRYSLNO" Type="Int16" />
+    <Property Name="MODELSLNO" Type="Int16" />
+    <NavigationProperty Name="BANKBRANCH" Relationship="BMSModel.FK_BRANCH" FromRole="INSTALLEDMACHINEINFO" ToRole="BANKBRANCH" />
+    <NavigationProperty Name="COUNTRY" Relationship="BMSModel.FK_COUNTRYSLNO" FromRole="INSTALLEDMACHINEINFO" ToRole="COUNTRY" />
+    <NavigationProperty Name="MODEL" Relationship="BMSModel.FK_INSTALLEDMACHINE_MODELSLNO" FromRole="INSTALLEDMACHINEINFO" ToRole="MODEL" />
+    <NavigationProperty Name="MACHINEINFORMATION" Relationship="BMSModel.FK1_INSTALLEDMACHINEINFO" FromRole="INSTALLEDMACHINEINFO" ToRole="MACHINEINFORMATION" />
+  </EntityType>
+  <EntityType Name="MACHINEINFORMATION">
+    <Key>
+      <PropertyRef Name="MACHINESLNO" />
+    </Key>
+    <Property Name="MACHINESLNO" Type="Int16" Nullable="false" />
+    <Property Name="MODELNM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MODELNMBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="REMARKS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="BRAND_NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTCOMs" Relationship="BMSModel.FK3_BONDERANNUALENTTLMNTCM" FromRole="MACHINEINFORMATION" ToRole="BONDERANNUALENTITLEMENTCOM" />
+    <NavigationProperty Name="INSTALLEDMACHINEINFOes" Relationship="BMSModel.FK1_INSTALLEDMACHINEINFO" FromRole="MACHINEINFORMATION" ToRole="INSTALLEDMACHINEINFO" />
+    <NavigationProperty Name="MODELs" Relationship="BMSModel.FK_MACHINEINFO_MACHINESLNO" FromRole="MACHINEINFORMATION" ToRole="MODEL" />
+    <NavigationProperty Name="PRODCAPACITYMACHINEWISEMs" Relationship="BMSModel.FK_MACHINESLNO" FromRole="MACHINEINFORMATION" ToRole="PRODCAPACITYMACHINEWISEM" />
+    <NavigationProperty Name="PRODCAPACITYMACHINEWISEDETs" Relationship="BMSModel.FK1_PRODCAPACITYMACHINEWISEDET" FromRole="MACHINEINFORMATION" ToRole="PRODCAPACITYMACHINEWISEDET" />
+  </EntityType>
+  <EntityType Name="MATERIAL">
+    <Key>
+      <PropertyRef Name="MSLNO" />
+    </Key>
+    <Property Name="MSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MGSLNO" Type="Int16" />
+    <Property Name="MHSCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MHSCODEBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MDESCRIPTION" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="MDESCRIPTIONBG" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="SPGRADE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SPGRADEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MUSLNO" Type="Int16" />
+    <Property Name="MTYPE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="REMARKS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="MATERIALNAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ANNUALENTLRAWMATERIALs" Relationship="BMSModel.FK1_ANNUALENTLRAWMATERIAL" FromRole="MATERIAL" ToRole="ANNUALENTLRAWMATERIAL" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTCOEDETs" Relationship="BMSModel.FK1_BONDERANNUALENTITLEMENTCOD" FromRole="MATERIAL" ToRole="BONDERANNUALENTITLEMENTCOEDET" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTCOEDETs1" Relationship="BMSModel.FK3_BONDERANNUALENTITLEMENTCOD" FromRole="MATERIAL" ToRole="BONDERANNUALENTITLEMENTCOEDET" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTCOMs" Relationship="BMSModel.FK1_BONDERANNUALENTTLMNTCM" FromRole="MATERIAL" ToRole="BONDERANNUALENTITLEMENTCOM" />
+    <NavigationProperty Name="BONDERPRODUCTs" Relationship="BMSModel.FK1_BONDERPRODUCT" FromRole="MATERIAL" ToRole="BONDERPRODUCT" />
+    <NavigationProperty Name="INBONDRAWMATERIALs" Relationship="BMSModel.FK_INBONDRAWMATERIAL_MATERIAL" FromRole="MATERIAL" ToRole="INBONDRAWMATERIAL" />
+    <NavigationProperty Name="RAWMATERIALs" Relationship="BMSModel.FK_RAWMATERIAL_MATERIALS" FromRole="MATERIAL" ToRole="RAWMATERIAL" />
+    <NavigationProperty Name="MATERIALSGROUP" Relationship="BMSModel.FK1_MATERIALS" FromRole="MATERIAL" ToRole="MATERIALSGROUP" />
+    <NavigationProperty Name="MEASUREMENTUNIT" Relationship="BMSModel.FK2_MATERIALS" FromRole="MATERIAL" ToRole="MEASUREMENTUNIT" />
+  </EntityType>
+  <EntityType Name="MATERIALSGROUP">
+    <Key>
+      <PropertyRef Name="MGSLNO" />
+    </Key>
+    <Property Name="MGSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MGROUPCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MGROUPCODEBG" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MGROUPCODENAME" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="MGROUPCODENAMEBG" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="MATERIALS" Relationship="BMSModel.FK1_MATERIALS" FromRole="MATERIALSGROUP" ToRole="MATERIAL" />
+  </EntityType>
+  <EntityType Name="MEASUREMENTUNIT">
+    <Key>
+      <PropertyRef Name="MUSLNO" />
+    </Key>
+    <Property Name="MUSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MUNAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MUNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="ANNUALENTLRAWMATERIALs" Relationship="BMSModel.FK3_ANNUALENTLRAWMATERIAL" FromRole="MEASUREMENTUNIT" ToRole="ANNUALENTLRAWMATERIAL" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTs" Relationship="BMSModel.FK2_BONDERANNUALENTITLEMENT" FromRole="MEASUREMENTUNIT" ToRole="BONDERANNUALENTITLEMENT" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTs1" Relationship="BMSModel.FK3_BONDERANNUALENTITLEMENT" FromRole="MEASUREMENTUNIT" ToRole="BONDERANNUALENTITLEMENT" />
+    <NavigationProperty Name="BONDERANNUALENTITLEMENTs2" Relationship="BMSModel.FK4_BONDERANNUALENTITLEMENT" FromRole="MEASUREMENTUNIT" ToRole="BONDERANNUALENTITLEMENT" />
+    <NavigationProperty Name="BONDERRAWMATERIALs" Relationship="BMSModel.FK2_BONDERRAWMATERIAL" FromRole="MEASUREMENTUNIT" ToRole="BONDERRAWMATERIAL" />
+    <NavigationProperty Name="MATERIALS" Relationship="BMSModel.FK2_MATERIALS" FromRole="MEASUREMENTUNIT" ToRole="MATERIAL" />
+    <NavigationProperty Name="MEASUREMENTUNITCONVERSIONs" Relationship="BMSModel.FK1_MEASUREMENTUNITCONVERSION" FromRole="MEASUREMENTUNIT" ToRole="MEASUREMENTUNITCONVERSION" />
+    <NavigationProperty Name="PRODCAPACITYMACHINEWISEMs" Relationship="BMSModel.FK1_PRODCAPACITYMACHINEWISEM" FromRole="MEASUREMENTUNIT" ToRole="PRODCAPACITYMACHINEWISEM" />
+    <NavigationProperty Name="MEASUREMENTUNITCONVERSIONs1" Relationship="BMSModel.FK2_MEASUREMENTUNITCONVERSION" FromRole="MEASUREMENTUNIT" ToRole="MEASUREMENTUNITCONVERSION" />
+  </EntityType>
+  <EntityType Name="MEASUREMENTUNITCONVERSION">
+    <Key>
+      <PropertyRef Name="CONVSLNO" />
+    </Key>
+    <Property Name="CONVSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MUSLNO1" Type="Int16" />
+    <Property Name="MUSLNO2" Type="Int16" />
+    <Property Name="CONVVALUE" Type="Decimal" Precision="15" Scale="6" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="MEASUREMENTUNIT" Relationship="BMSModel.FK1_MEASUREMENTUNITCONVERSION" FromRole="MEASUREMENTUNITCONVERSION" ToRole="MEASUREMENTUNIT" />
+    <NavigationProperty Name="MEASUREMENTUNIT1" Relationship="BMSModel.FK2_MEASUREMENTUNITCONVERSION" FromRole="MEASUREMENTUNITCONVERSION" ToRole="MEASUREMENTUNIT" />
+  </EntityType>
+  <EntityType Name="MODEL">
+    <Key>
+      <PropertyRef Name="MODELSLNO" />
+    </Key>
+    <Property Name="MODELSLNO" Type="Int16" Nullable="false" />
+    <Property Name="MODELNM" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MACHINESLNO" Type="Int16" />
+    <NavigationProperty Name="INSTALLEDMACHINEINFOes" Relationship="BMSModel.FK_INSTALLEDMACHINE_MODELSLNO" FromRole="MODEL" ToRole="INSTALLEDMACHINEINFO" />
+    <NavigationProperty Name="MACHINEINFORMATION" Relationship="BMSModel.FK_MACHINEINFO_MACHINESLNO" FromRole="MODEL" ToRole="MACHINEINFORMATION" />
+  </EntityType>
+  <EntityType Name="OFFICE">
+    <Key>
+      <PropertyRef Name="OFFICESLNO" />
+    </Key>
+    <Property Name="OFFICESLNO" Type="Int16" Nullable="false" />
+    <Property Name="OFFICENAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OFFICENAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OFFICESNAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="OFFICESNAMEBG" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="ADDRESSBG" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="COUNTRYSLNO" Type="Int16" />
+    <Property Name="DISTRICTSLNO" Type="Int16" />
+    <Property Name="CONTACTPERSON" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CONTACTPERSONBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESSLNO" Type="Int16" />
+    <Property Name="MOBILENO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MOBILENOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAX" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FAXBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="WEB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OFFICETYPE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="ASSOCIATIONENROLLs" Relationship="BMSModel.FK2_ASSOCIATIONENROLL" FromRole="OFFICE" ToRole="ASSOCIATIONENROLL" />
+    <NavigationProperty Name="COUNTRY" Relationship="BMSModel.FK1_OFFICE" FromRole="OFFICE" ToRole="COUNTRY" />
+    <NavigationProperty Name="DESIGNATION" Relationship="BMSModel.FK3_OFFICE" FromRole="OFFICE" ToRole="DESIGNATION" />
+    <NavigationProperty Name="DISTRICT" Relationship="BMSModel.FK2_OFFICE" FromRole="OFFICE" ToRole="DISTRICT" />
+    <NavigationProperty Name="EMPLOYEEs" Relationship="BMSModel.FK2_EMPLOYEE" FromRole="OFFICE" ToRole="EMPLOYEE" />
+  </EntityType>
+  <EntityType Name="OWNERASSOCIATEBUSINESS">
+    <Key>
+      <PropertyRef Name="ASSOCIATESLNO" />
+      <PropertyRef Name="OWNERSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="ASSOCIATESLNO" Type="Int16" Nullable="false" />
+    <Property Name="OWNERSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="ASSOBUSINESSNAME" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ASSOBUSINESSNAMEBG" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="ASSOBUSINESSADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ASSOBUSINESSADDRESSBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TINASSOBUSINESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TINASSOBUSINESSBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TINDATE" Type="DateTime" />
+    <Property Name="BINASSOBUSINESS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BINASSOBUSINESSBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BINDATE" Type="DateTime" />
+    <Property Name="BUSINESSNATURE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESSNATUREBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESSPOS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESSPOSBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESSSHARE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BUSINESSSHAREBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="OWNERDESSLNO" Type="Int16" />
+    <Property Name="OWNERNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERTINNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERTINISSDT" Type="DateTime" />
+    <Property Name="OWNERNATIONALZIDNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DESIGNATION" Relationship="BMSModel.SYS_C0011192" FromRole="OWNERASSOCIATEBUSINESS" ToRole="DESIGNATION" />
+  </EntityType>
+  <EntityType Name="OWNERINFO">
+    <Key>
+      <PropertyRef Name="OWNERSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="OWNERSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="DESSLNO" Type="Int16" />
+    <Property Name="OWNERNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERFHNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERFHNAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERPERADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERPERADDRESSBG" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERPRSADDRESS" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERPRSADDRESSBG" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERCONTACTNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERCONTACTNOBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERRESPHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERRESPHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERMOBPHONE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OWNERMOBPHONEBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TINNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TINISSDT" Type="DateTime" />
+    <Property Name="PASSPORTNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PASSDISTRICTSLNO" Type="Int16" />
+    <Property Name="PASSISSUEDT" Type="DateTime" />
+    <Property Name="PASSEXPDT" Type="DateTime" />
+    <Property Name="NATIONALITY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NATIONALITYBG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NATIONALZIDNO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SIGNATUREFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SIGNATUREFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SIGNATUREFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="PHOTOFILENM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTOFILEPATH" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PHOTOFILEDATA" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="DESIGNATION" Relationship="BMSModel.FK1_OWNERINFO" FromRole="OWNERINFO" ToRole="DESIGNATION" />
+    <NavigationProperty Name="DISTRICT" Relationship="BMSModel.FK2_OWNERINFO" FromRole="OWNERINFO" ToRole="DISTRICT" />
+  </EntityType>
+  <EntityType Name="PRODCAPACITYMACHINEWISEDET">
+    <Key>
+      <PropertyRef Name="FPSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+      <PropertyRef Name="MACHINESLNO" />
+    </Key>
+    <Property Name="FPSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="MACHINESLNO" Type="Int16" Nullable="false" />
+    <Property Name="MACHINEQTY" Type="Int16" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="MACHINETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MACHINEINFORMATION" Relationship="BMSModel.FK1_PRODCAPACITYMACHINEWISEDET" FromRole="PRODCAPACITYMACHINEWISEDET" ToRole="MACHINEINFORMATION" />
+    <NavigationProperty Name="PRODCAPACITYMACHINEWISEM" Relationship="BMSModel.FK2_PRODCAPACITYMACHINEWISEDET" FromRole="PRODCAPACITYMACHINEWISEDET" ToRole="PRODCAPACITYMACHINEWISEM" />
+  </EntityType>
+  <EntityType Name="PRODCAPACITYMACHINEWISEM">
+    <Key>
+      <PropertyRef Name="FPSLNO" />
+      <PropertyRef Name="BONDERSLNO" />
+    </Key>
+    <Property Name="FPSLNO" Type="Int16" Nullable="false" />
+    <Property Name="BONDERSLNO" Type="Int32" Nullable="false" />
+    <Property Name="ANNUALPRODUCTION" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="MUSLNO" Type="Int16" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <Property Name="MACHINESLNO" Type="Int16" />
+    <Property Name="MACHINEQTY" Type="Int16" />
+    <Property Name="MHSCODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MACHINEINFORMATION" Relationship="BMSModel.FK_MACHINESLNO" FromRole="PRODCAPACITYMACHINEWISEM" ToRole="MACHINEINFORMATION" />
+    <NavigationProperty Name="MEASUREMENTUNIT" Relationship="BMSModel.FK1_PRODCAPACITYMACHINEWISEM" FromRole="PRODCAPACITYMACHINEWISEM" ToRole="MEASUREMENTUNIT" />
+    <NavigationProperty Name="PRODCAPACITYMACHINEWISEDETs" Relationship="BMSModel.FK2_PRODCAPACITYMACHINEWISEDET" FromRole="PRODCAPACITYMACHINEWISEM" ToRole="PRODCAPACITYMACHINEWISEDET" />
+  </EntityType>
+  <EntityType Name="STATUS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="NAME" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIEDDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="UPAZILA">
+    <Key>
+      <PropertyRef Name="UPAZILASLNO" />
+    </Key>
+    <Property Name="UPAZILASLNO" Type="Int16" Nullable="false" />
+    <Property Name="DISTRICTSLNO" Type="Int16" />
+    <Property Name="UPAZILANAME" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UPAZILANAMEBG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="INPUTDATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYDATE" Type="DateTime" />
+    <NavigationProperty Name="BONDERs" Relationship="BMSModel.FK1_BONDER" FromRole="UPAZILA" ToRole="BONDER" />
+    <NavigationProperty Name="BONDERs1" Relationship="BMSModel.FK3_BONDER" FromRole="UPAZILA" ToRole="BONDER" />
+    <NavigationProperty Name="DISTRICT" Relationship="BMSModel.FK1_UPAZILA" FromRole="UPAZILA" ToRole="DISTRICT" />
+  </EntityType>
+  <EntityType Name="USERPERMISSION">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int16" Nullable="false" />
+    <Property Name="USERID" Type="Int16" />
+    <Property Name="ROLENAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BONDERID" Type="Int32" />
+    <Property Name="EMPLOYID" Type="Int16" />
+    <NavigationProperty Name="APPUSER" Relationship="BMSModel.FK_USERPERMISSION_APPUSER" FromRole="USERPERMISSION" ToRole="APPUSER" />
+    <NavigationProperty Name="BONDER" Relationship="BMSModel.FK_USERPERMISSION_BONDER" FromRole="USERPERMISSION" ToRole="BONDER" />
+    <NavigationProperty Name="EMPLOYEE" Relationship="BMSModel.FK_USERPERMISSION_EMPLOY" FromRole="USERPERMISSION" ToRole="EMPLOYEE" />
+  </EntityType>
+  <Association Name="FK1_ANNUALENTLRAWMATERIAL">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.ANNUALENTLRAWMATERIAL" Role="ANNUALENTLRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="ANNUALENTLRAWMATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_ANNUALENTLRAWMATERIAL">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.ANNUALENTLRAWMATERIAL" Role="ANNUALENTLRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="ANNUALENTLRAWMATERIAL">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERMISSION_APPUSER">
+    <End Type="BMSModel.APPUSER" Role="APPUSER" Multiplicity="0..1" />
+    <End Type="BMSModel.USERPERMISSION" Role="USERPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APPUSER">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERPERMISSION">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_ASSOCIATIONENROLL">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.ASSOCIATIONENROLL" Role="ASSOCIATIONENROLL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="ASSOCIATIONENROLL">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_ASSOCIATIONENROLL">
+    <End Type="BMSModel.OFFICE" Role="OFFICE" Multiplicity="1" />
+    <End Type="BMSModel.ASSOCIATIONENROLL" Role="ASSOCIATIONENROLL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFICE">
+        <PropertyRef Name="OFFICESLNO" />
+      </Principal>
+      <Dependent Role="ASSOCIATIONENROLL">
+        <PropertyRef Name="OFFICESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ATTACHMENT_UPREQ">
+    <End Type="BMSModel.UPREQUEST" Role="UPREQUEST" Multiplicity="1" />
+    <End Type="BMSModel.ATTACHMENT" Role="ATTACHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPREQUEST">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ATTACHMENT">
+        <PropertyRef Name="UPREQUESTID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BACK2BACK_BANKBRANCH">
+    <End Type="BMSModel.BANKBRANCH" Role="BANKBRANCH" Multiplicity="1" />
+    <End Type="BMSModel.BACKTOBACKLC" Role="BACKTOBACKLC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKBRANCH">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Principal>
+      <Dependent Role="BACKTOBACKLC">
+        <PropertyRef Name="BUYERSBANKBRANCHID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BACK2BACKLC_BANK">
+    <End Type="BMSModel.BANK" Role="BANK" Multiplicity="1" />
+    <End Type="BMSModel.BACKTOBACKLC" Role="BACKTOBACKLC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Principal>
+      <Dependent Role="BACKTOBACKLC">
+        <PropertyRef Name="BUYERSBANKID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BACKTOBACKLC_BONDER">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BACKTOBACKLC" Role="BACKTOBACKLC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BACKTOBACKLC">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LIENBANK_BANK">
+    <End Type="BMSModel.BANK" Role="BANK" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERLIENBANK" Role="BONDERLIENBANK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Principal>
+      <Dependent Role="BONDERLIENBANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BANKBRANCH">
+    <End Type="BMSModel.BANK" Role="BANK" Multiplicity="0..1" />
+    <End Type="BMSModel.BANKBRANCH" Role="BANKBRANCH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANK">
+        <PropertyRef Name="BANKSLNO" />
+      </Principal>
+      <Dependent Role="BANKBRANCH">
+        <PropertyRef Name="BANKSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BRANCH">
+    <End Type="BMSModel.BANKBRANCH" Role="BANKBRANCH" Multiplicity="0..1" />
+    <End Type="BMSModel.INSTALLEDMACHINEINFO" Role="INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKBRANCH">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="TRANSFERLIENBANK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERLIENBANK">
+    <End Type="BMSModel.BANKBRANCH" Role="BANKBRANCH" Multiplicity="1" />
+    <End Type="BMSModel.BONDERLIENBANK" Role="BONDERLIENBANK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BANKBRANCH">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Principal>
+      <Dependent Role="BONDERLIENBANK">
+        <PropertyRef Name="BBRANCHSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDAPPLICATIONPROGRESS">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDAPPLICATIONPROGRESS" Role="BONDAPPLICATIONPROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDAPPLICATIONPROGRESS">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDAPPLICATIONPROGRESS">
+    <End Type="BMSModel.BONDSTATU" Role="BONDSTATU" Multiplicity="1" />
+    <End Type="BMSModel.BONDAPPLICATIONPROGRESS" Role="BONDAPPLICATIONPROGRESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDSTATU">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDAPPLICATIONPROGRESS">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK6_BONDER">
+    <End Type="BMSModel.BONDCATEGORY" Role="BONDCATEGORY" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDCATEGORY">
+        <PropertyRef Name="BCATSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BCATSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDCIRCLE">
+    <End Type="BMSModel.BONDDIVISION" Role="BONDDIVISION" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDCIRCLE" Role="BONDCIRCLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDDIVISION">
+        <PropertyRef Name="BONDDIVISIONSLNO" />
+      </Principal>
+      <Dependent Role="BONDCIRCLE">
+        <PropertyRef Name="BONDDIVISIONSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDREGISTRATION">
+    <End Type="BMSModel.BONDCIRCLE" Role="BONDCIRCLE" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDREGISTRATION" Role="BONDREGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDCIRCLE">
+        <PropertyRef Name="BONDCIRCLESLNO" />
+      </Principal>
+      <Dependent Role="BONDREGISTRATION">
+        <PropertyRef Name="BONDCIRCLESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EXBOND_BONDER">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.EXBOND" Role="EXBOND" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="EXBOND">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INBOND_BONDER">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.INBOND" Role="INBOND" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="INBOND">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UP_BONDER">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.UP" Role="UP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="UP">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UPREQUEST_BONDER">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.UPREQUEST" Role="UPREQUEST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="UPREQUEST">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERMISSION_BONDER">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="0..1" />
+    <End Type="BMSModel.USERPERMISSION" Role="USERPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="USERPERMISSION">
+        <PropertyRef Name="BONDERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDER">
+    <End Type="BMSModel.UPAZILA" Role="UPAZILA" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPAZILA">
+        <PropertyRef Name="UPAZILASLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BUPAZILASLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERANNUALENTITLEMENT">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENT" Role="BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERLIENBANK">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDERLIENBANK" Role="BONDERLIENBANK" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERLIENBANK">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDREGISTRATION">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDREGISTRATION" Role="BONDREGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDREGISTRATION">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDSTATUS">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDSTATU" Role="BONDSTATU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDSTATU">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_DOCUMENTATTACHMENT">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.DOCUMENTATTACHMENT" Role="DOCUMENTATTACHMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="DOCUMENTATTACHMENT">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDER">
+    <End Type="BMSModel.DISTRICT" Role="DISTRICT" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BDISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERANNUALENTITLEMENTCOD">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENTCOEDET" Role="BONDERANNUALENTITLEMENTCOEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOEDET">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERANNUALENTTLMNTCM">
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENTCOM" Role="BONDERANNUALENTITLEMENTCOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDER">
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOM">
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDER">
+    <End Type="BMSModel.UPAZILA" Role="UPAZILA" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UPAZILA">
+        <PropertyRef Name="UPAZILASLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="HOUPAZILASLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK4_BONDER">
+    <End Type="BMSModel.DISTRICT" Role="DISTRICT" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="HODISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK5_BONDER">
+    <End Type="BMSModel.BONDTYPE" Role="BONDTYPE" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDTYPE">
+        <PropertyRef Name="BTYPESLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BTYPESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK7_BONDER">
+    <End Type="BMSModel.BONDSUBCATEGORY" Role="BONDSUBCATEGORY" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDSUBCATEGORY">
+        <PropertyRef Name="BSCATSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="BSCATSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK8_BONDER">
+    <End Type="BMSModel.DESIGNATION" Role="DESIGNATION" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDER" Role="BONDER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="BONDER">
+        <PropertyRef Name="DECLARDESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERANNUALENTITLEMENT">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENT" Role="BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="TSMUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDERANNUALENTITLEMENT">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENT" Role="BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="OTMUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK4_BONDERANNUALENTITLEMENT">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENT" Role="BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="ETMUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK5_BONDERANNUALENTITLEMENT">
+    <End Type="BMSModel.BONDSTATU" Role="BONDSTATU" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENT" Role="BONDERANNUALENTITLEMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDSTATU">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENT">
+        <PropertyRef Name="BSNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERANNUALENTITLEMENTCOD">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENTCOEDET" Role="BONDERANNUALENTITLEMENTCOEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOEDET">
+        <PropertyRef Name="MSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDERANNUALENTITLEMENTCOD">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENTCOEDET" Role="BONDERANNUALENTITLEMENTCOEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOEDET">
+        <PropertyRef Name="RMSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERANNUALENTTLMNTCM">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENTCOM" Role="BONDERANNUALENTITLEMENTCOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOM">
+        <PropertyRef Name="MSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_BONDERANNUALENTTLMNTCM">
+    <End Type="BMSModel.MACHINEINFORMATION" Role="MACHINEINFORMATION" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERANNUALENTITLEMENTCOM" Role="BONDERANNUALENTITLEMENTCOM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="BONDERANNUALENTITLEMENTCOM">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_BONDERPRODUCT">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.BONDERPRODUCT" Role="BONDERPRODUCT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="BONDERPRODUCT">
+        <PropertyRef Name="FPSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDERRAWMATERIAL">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDERRAWMATERIAL" Role="BONDERRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="BONDERRAWMATERIAL">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_BONDREGISTRATION">
+    <End Type="BMSModel.BONDTYPE" Role="BONDTYPE" Multiplicity="0..1" />
+    <End Type="BMSModel.BONDREGISTRATION" Role="BONDREGISTRATION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BONDTYPE">
+        <PropertyRef Name="BTYPESLNO" />
+      </Principal>
+      <Dependent Role="BONDREGISTRATION">
+        <PropertyRef Name="BTYPESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_COUNTRYSLNO">
+    <End Type="BMSModel.COUNTRY" Role="COUNTRY" Multiplicity="0..1" />
+    <End Type="BMSModel.INSTALLEDMACHINEINFO" Role="INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_DISTRICT">
+    <End Type="BMSModel.COUNTRY" Role="COUNTRY" Multiplicity="0..1" />
+    <End Type="BMSModel.DISTRICT" Role="DISTRICT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Principal>
+      <Dependent Role="DISTRICT">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_OFFICE">
+    <End Type="BMSModel.COUNTRY" Role="COUNTRY" Multiplicity="0..1" />
+    <End Type="BMSModel.OFFICE" Role="OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Principal>
+      <Dependent Role="OFFICE">
+        <PropertyRef Name="COUNTRYSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_EMPLOYEE">
+    <End Type="BMSModel.DESIGNATION" Role="DESIGNATION" Multiplicity="0..1" />
+    <End Type="BMSModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="DESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_OWNERINFO">
+    <End Type="BMSModel.DESIGNATION" Role="DESIGNATION" Multiplicity="0..1" />
+    <End Type="BMSModel.OWNERINFO" Role="OWNERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="OWNERINFO">
+        <PropertyRef Name="DESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK3_OFFICE">
+    <End Type="BMSModel.DESIGNATION" Role="DESIGNATION" Multiplicity="0..1" />
+    <End Type="BMSModel.OFFICE" Role="OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="OFFICE">
+        <PropertyRef Name="DESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0011192">
+    <End Type="BMSModel.DESIGNATION" Role="DESIGNATION" Multiplicity="0..1" />
+    <End Type="BMSModel.OWNERASSOCIATEBUSINESS" Role="OWNERASSOCIATEBUSINESS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DESIGNATION">
+        <PropertyRef Name="DESSLNO" />
+      </Principal>
+      <Dependent Role="OWNERASSOCIATEBUSINESS">
+        <PropertyRef Name="OWNERDESSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_UPAZILA">
+    <End Type="BMSModel.DISTRICT" Role="DISTRICT" Multiplicity="0..1" />
+    <End Type="BMSModel.UPAZILA" Role="UPAZILA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="UPAZILA">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_OFFICE">
+    <End Type="BMSModel.DISTRICT" Role="DISTRICT" Multiplicity="0..1" />
+    <End Type="BMSModel.OFFICE" Role="OFFICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="OFFICE">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_OWNERINFO">
+    <End Type="BMSModel.DISTRICT" Role="DISTRICT" Multiplicity="0..1" />
+    <End Type="BMSModel.OWNERINFO" Role="OWNERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRICT">
+        <PropertyRef Name="DISTRICTSLNO" />
+      </Principal>
+      <Dependent Role="OWNERINFO">
+        <PropertyRef Name="PASSDISTRICTSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USERPERMISSION_EMPLOY">
+    <End Type="BMSModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="0..1" />
+    <End Type="BMSModel.USERPERMISSION" Role="USERPERMISSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLOYEE">
+        <PropertyRef Name="EMPLOYEESLNO" />
+      </Principal>
+      <Dependent Role="USERPERMISSION">
+        <PropertyRef Name="EMPLOYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_EMPLOYEE">
+    <End Type="BMSModel.OFFICE" Role="OFFICE" Multiplicity="0..1" />
+    <End Type="BMSModel.EMPLOYEE" Role="EMPLOYEE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OFFICE">
+        <PropertyRef Name="OFFICESLNO" />
+      </Principal>
+      <Dependent Role="EMPLOYEE">
+        <PropertyRef Name="OFFICESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INBONDRAWMATERIAL_MATERIAL">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.INBONDRAWMATERIAL" Role="INBONDRAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="INBONDRAWMATERIAL">
+        <PropertyRef Name="RAWMATERIALCODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_INSTALLEDMACHINE_MODELSLNO">
+    <End Type="BMSModel.MODEL" Role="MODEL" Multiplicity="0..1" />
+    <End Type="BMSModel.INSTALLEDMACHINEINFO" Role="INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODEL">
+        <PropertyRef Name="MODELSLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="MODELSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_INSTALLEDMACHINEINFO">
+    <End Type="BMSModel.MACHINEINFORMATION" Role="MACHINEINFORMATION" Multiplicity="1" />
+    <End Type="BMSModel.INSTALLEDMACHINEINFO" Role="INSTALLEDMACHINEINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="INSTALLEDMACHINEINFO">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MACHINEINFO_MACHINESLNO">
+    <End Type="BMSModel.MACHINEINFORMATION" Role="MACHINEINFORMATION" Multiplicity="0..1" />
+    <End Type="BMSModel.MODEL" Role="MODEL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="MODEL">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MACHINESLNO">
+    <End Type="BMSModel.MACHINEINFORMATION" Role="MACHINEINFORMATION" Multiplicity="0..1" />
+    <End Type="BMSModel.PRODCAPACITYMACHINEWISEM" Role="PRODCAPACITYMACHINEWISEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEM">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_PRODCAPACITYMACHINEWISEDET">
+    <End Type="BMSModel.MACHINEINFORMATION" Role="MACHINEINFORMATION" Multiplicity="1" />
+    <End Type="BMSModel.PRODCAPACITYMACHINEWISEDET" Role="PRODCAPACITYMACHINEWISEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MACHINEINFORMATION">
+        <PropertyRef Name="MACHINESLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEDET">
+        <PropertyRef Name="MACHINESLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RAWMATERIAL_MATERIALS">
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="1" />
+    <End Type="BMSModel.RAWMATERIAL" Role="RAWMATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIAL">
+        <PropertyRef Name="MSLNO" />
+      </Principal>
+      <Dependent Role="RAWMATERIAL">
+        <PropertyRef Name="RAWMATERIALCODE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_MATERIALS">
+    <End Type="BMSModel.MATERIALSGROUP" Role="MATERIALSGROUP" Multiplicity="0..1" />
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MATERIALSGROUP">
+        <PropertyRef Name="MGSLNO" />
+      </Principal>
+      <Dependent Role="MATERIAL">
+        <PropertyRef Name="MGSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_MATERIALS">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.MATERIAL" Role="MATERIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="MATERIAL">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_MEASUREMENTUNITCONVERSION">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.MEASUREMENTUNITCONVERSION" Role="MEASUREMENTUNITCONVERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="MEASUREMENTUNITCONVERSION">
+        <PropertyRef Name="MUSLNO1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK1_PRODCAPACITYMACHINEWISEM">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.PRODCAPACITYMACHINEWISEM" Role="PRODCAPACITYMACHINEWISEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEM">
+        <PropertyRef Name="MUSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_MEASUREMENTUNITCONVERSION">
+    <End Type="BMSModel.MEASUREMENTUNIT" Role="MEASUREMENTUNIT" Multiplicity="0..1" />
+    <End Type="BMSModel.MEASUREMENTUNITCONVERSION" Role="MEASUREMENTUNITCONVERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEASUREMENTUNIT">
+        <PropertyRef Name="MUSLNO" />
+      </Principal>
+      <Dependent Role="MEASUREMENTUNITCONVERSION">
+        <PropertyRef Name="MUSLNO2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK2_PRODCAPACITYMACHINEWISEDET">
+    <End Type="BMSModel.PRODCAPACITYMACHINEWISEM" Role="PRODCAPACITYMACHINEWISEM" Multiplicity="1" />
+    <End Type="BMSModel.PRODCAPACITYMACHINEWISEDET" Role="PRODCAPACITYMACHINEWISEDET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODCAPACITYMACHINEWISEM">
+        <PropertyRef Name="FPSLNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Principal>
+      <Dependent Role="PRODCAPACITYMACHINEWISEDET">
+        <PropertyRef Name="FPSLNO" />
+        <PropertyRef Name="BONDERSLNO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

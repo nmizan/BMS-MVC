@@ -1,0 +1,3020 @@
+﻿@using System.Globalization;
+@using BMSPhase2Demo.Resources;
+@*@model IEnumerable<BMS.INSTALLEDMACHINEINFO>*@
+@model IEnumerable<BMSPhase2Demo.Models.RegistrationViewModel>
+
+@{
+    ViewBag.Title = "Edit";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>*@
+<script src="~/Scripts/angular.min.js"></script>
+
+
+@using (Html.BeginForm("Create", "BondRegistration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <h2 class="text-center">@(Resource.Bonder + " " + Resource.Edit)</h2>
+
+
+    <fieldset>
+        <legend>Bond Registration</legend>
+        <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
+        <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+        <script src="@Url.Content("~/Scripts/jquery-ui-1.8.24.min.js")" type="text/javascript"></script>
+        <script src="/Scripts/MicrosoftAjax.js" type="text/javascript"></script>
+        <script src="/Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
+        <link href="~/CommonCss/StyleSheet1.css" rel="stylesheet" />
+        <script type="text/javascript">
+            function deleteComplete() {
+                window.location.reload();
+            }
+        </script>
+        <div id="tabs" class="tab-content">
+
+            <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="active"><a href="#tabs-1" data-toggle="tab">@(Resource.Section + " " + Resource.A)</a></li>
+                <li><a href="#tabs-2" data-toggle="tab">@(Resource.Section + " " + Resource.B)</a></li>
+                <li><a href="#tabs-3" data-toggle="tab">@(Resource.Section + " " + Resource.C)</a></li>
+                <li><a href="#tabs-4" data-toggle="tab">@(Resource.Section + " " + Resource.D)</a></li>
+                @*<li class="text-right">@Html.ActionLink("Back to Home", "Index", "Home")</li>*@
+            </ul>
+
+
+
+            <div id="tabs-1" class="tab-pane active">
+
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="3" style="text-align: center; background-color:honeydew"> @Resource.ManufacturingUnitInformation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width:auto">
+                                @(Resource.Manufacturing + " " + Resource.Unit):
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="ManufacturingUnitName" value="@ViewBag.ManufacturingUnitName" class="addressBox" readonly />
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                @Resource.Address:
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="Address" value="@ViewBag.ADDRESS" required="required" class="addressBox" readonly />
+                            </td>
+                 
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.District:
+                            </td>
+                            <td>
+                                @Html.DropDownList("District",null, string.Empty, new { @disabled = "disabled" })
+                            </td>
+                        </tr>
+                        <tr>
+                     
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Phone:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Phone" value="@ViewBag.PHONE" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Fax:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Fax" value="@ViewBag.FAX" readonly /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Mobile:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Mobile" value="@ViewBag.MOBILE" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Email:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Email" value="@ViewBag.EMAIL" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Resource.CorporateHeadOffice
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Resource.Address:
+                            </td>
+                            <td colspan="2">
+                                <input type="text" name="coAddress" value="@ViewBag.COADDRESS" class="addressBox" readonly />
+                            </td>
+              
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.District:
+                            </td>
+                            <td>
+                                @Html.DropDownList("HoDistrict", null, string.Empty, new { @disabled = "disabled" })
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Phone:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Phone2" value="@ViewBag.HOPHONE" readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Fax:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Fax2" value="@ViewBag.HOFAX" readonly /><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Mobile:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Mobile2" value="@ViewBag.HOMOBILE" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Email:
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="Email2" value="@ViewBag.HOEMAIL"readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Resource.CorporateHeadOffice
+                            </td>
+                            <td colspan="2"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @(Resource.Manufacturing + " " + Resource.Unit + " " + Resource.Premises + " " + Resource.Status)
+                            </td>
+                            @* <td>
+                                    @Resource.PremisesStatus
+                                </td>*@
+                            <td>
+
+                                <select name="MUPSSelect" disabled >
+                                    @* <option value="Hired">@ViewBag.PREMESISSTATUS</option>   *@
+
+                                    @{
+                                        if (ViewBag.PREMESISSTATUS == "Hired")
+                                        {
+                                            <option value="Hired">Hired</option>
+                                            <option value="Owned">Owned</option>
+                                        }
+                                        else if (ViewBag.PREMESISSTATUS == "Owned")
+                                        {
+                                            <option value="Owned">Owned</option>
+                                              <option value="Hired">Hired</option>
+                                        }
+                                        else
+                                        {
+                                            <option value=""></option>
+                                            <option value="Hired">Hired</option>
+                                            <option value="Owned">Owned</option>
+                                        }
+                                    }
+
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @Resource.Date
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize datefield" name="MUPSDate" id="MUPSDate" value="@ViewBag.HIREDATE" placeholder="dd/mm//yyyy" readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @(Resource.Expiry + " " + Resource.Date)
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize datefield" name="MUPSExpDate" id="MUPSExpDate" value="@ViewBag.HIREEXPDATE" placeholder="dd/mm//yyyy" readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                (if owned)
+                            </td>
+                            <td>
+                                @Resource.Date
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize datefield" name="IfOwnedDate" id="IfOwnedDate" value="@ViewBag.OWNERSHIPDATE"readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                Dolil No
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="DolilNo" value="@ViewBag.OWNERSHIPDOLILNO"readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                Dolil File
+                            </td>
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.DOLILFILENM))
+    {
+        <td>
+            <input type="text" style="width:200px" name="showDolilFileName" value="@Path.GetFileName(ViewBag.DOLILFILENM)" readonly />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.DOLILFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "DOLILFILENM", filePath = ViewBag.DOLILFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:200px" name="UploadDolil" />
+        </td>
+    }
+                            }
+
+                            <input type="hidden" class="textBoxSize" name="DolilFileName" value="@ViewBag.DOLILFILENM"readonly  />
+                        </tr>
+                        <tr>
+                            <td>
+                                (if Hired)
+                            </td>
+                            <td>
+                                Deed No
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="DeedNo" value="@ViewBag.HIREDEEDNO" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                Deed file
+                            </td>
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.DEEDFILENM))
+    {
+        <td>
+            <input type="text" style="width:200px" name="showDeedFileName" value="@Path.GetFileName(ViewBag.DEEDFILENM)" readonly />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.DEEDFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "DEEDFILENM", filePath = ViewBag.DEEDFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:200px" name="UploadDeed" />
+        </td>
+    }
+                            }
+                            <input type="hidden" class="textBoxSize" name="DeedFileName" value="@ViewBag.DEEDFILENM" readonly/>
+                        </tr>
+                        <tr>
+                            <td>Rental VAT Challan No</td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="RentalVATChallanNo" value="@ViewBag.RENTVATCHALLANNO"readonly  />
+                            </td>
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.VCHALNFILENM))
+    {
+        <td>
+            <input type="text" class="textBoxSize" name="showRentalVATChallanFileName" value="@Path.GetFileName(ViewBag.VCHALNFILENM)"readonly  />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.VCHALNFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "VCHALNFILENM", filePath = ViewBag.VCHALNFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:200px" name="UploadRentalVATChallan" readonly />
+        </td>
+    }
+                            }
+                            <input type="hidden" class="textBoxSize" name="RentalVATChallanFileName" value="@ViewBag.VCHALNFILENM" readonly  />
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                CS Dag No
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="CSDagNo" value="@ViewBag.CSDAGNO" readonly  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                RS Dag No
+                            </td>
+                            <td>
+                                <input type="text" class="textBoxSize" name="RSDagNo" value="@ViewBag.RSDAGNO" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize"readonly  /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Whether there was <br />any other bonded factory<br /> before at this premises</td>
+                            <td>
+                                <select name="OtherBondedFactorySelect" disabled>
+                                    @* <option value="No">@ViewBag.BONDFACPREV</option>*@
+
+                                    @{
+                                            if (ViewBag.BONDFACPREV == "Yes")
+                                            {
+                                                <option value="Yes">Yes</option>
+                                                 <option value="No">No</option>
+                                            }
+                                            else if (ViewBag.BONDFACPREV == "No")
+                                            {
+                                                <option value="No">No</option>
+                                                <option value="Yes">Yes</option>
+                                            }
+                                            else
+                                            {
+                                                <option value=""></option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            }
+                                    }
+
+                                </select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>(if Yes )</td>
+                            <td>Bond License No</td>
+                            <td><input type="text" class="textBoxSize" name="BondLicenseNo" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize"readonly  /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td><input type="text" class="textBoxSize" readonly /></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align:center; background-color:honeydew"> Type Of Bond</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Type
+                            </td>
+                            <td>
+                                @Html.DropDownList("BondType", null, string.Empty, new { @class = "bigddl", @disabled = "disabled" })
+                              
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Category
+                            </td>
+                            <td>
+                                @Html.DropDownList("BondCategory", null, string.Empty, new { @class = "bigddl", @disabled = "disabled" })
+                              
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sub Category
+                            </td>
+                            <td>
+                                @Html.DropDownList("BondSubCategory", null, string.Empty, new { @class = "bigddl", @disabled = "disabled" })
+                                
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+                <table class="table" id="table_DocumentsInput">
+                    <thead>
+                        <tr>
+                            <th colspan="6" style="text-align: center; background-color:honeydew"> Document Information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TIN No</td>
+                            <td><input type="text" class="textBoxSize" name="DI_TIN_NO" value="@ViewBag.TinRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_TIN_Issue_Date" id="DI_TIN_Issue_Date" value="@ViewBag.TinISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*   <td><select name="DI_TIN_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @*<td><input type="file" name="DI_TIN_Upload" value="@ViewBag.TinDOCHEADINGNAME"/></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.TinATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.TinATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.TinATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.TinATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_TIN_Upload" readonly />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.TinRGATTCHNAME))
+    {
+        <td>
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.TinRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td></td>
+    }
+                            }
+                            @* <td><input type="file" name="DI_TIN_Upload"/></td>*@
+                            @* <td><input type="text" name="DI_TIN_FileName" value="@ViewBag.TinATTACHFILENM"/></td>*@
+                        </tr>
+                        <tr>
+                            <td>BOI Reg. No</td>
+                            <td><input type="text" class="textBoxSize" name="DI_BOI_Reg_NO" value="@ViewBag.BoiRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_BOI_Issue_Date" id="DI_BOI_Issue_Date" value="@ViewBag.BoiISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*  <td><select name="DI_BOI_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.BoiATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.BoiATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.BoiATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.BoiATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_BOI_Upload" readonly  />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.BoiRGATTCHNAME))
+    {
+        <td>
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.BoiRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td></td>
+    }
+                            }
+                            @*   <td><input type="file" name="DI_BOI_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_BOI_FileName" /></td>*@
+                        </tr>
+
+                        <tr>
+                            <td>BSCIC Reg. No</td>
+                            <td><input type="text" class="textBoxSize" name="DI_BSCIC_Reg_No" value="@ViewBag.BSCICRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_BSCIC_Issue_Date" id="DI_BSCIC_Issue_Date" value="@ViewBag.BSCICISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @* <td><select name="DI_BSCIC_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.BSCICATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.BSCICATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.BSCICATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.BSCICATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_BSCIC_Upload" readonly  />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.BSCICRGATTCHNAME))
+    {
+        <td>
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.BSCICRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+            
+        </td>
+    }
+    else
+    {
+        <td></td>
+    }
+                            }
+                            @* <td><input type="file" name="DI_BSCIC_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_BSCIC_FileName" /></td>*@
+                        </tr>
+                        <tr>
+                            <td rowspan="2">ERC No</td>
+                            <td rowspan="2"><input type="text" class="textBoxSize" name="DI_ERC_No" value="@ViewBag.ERCRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_ERC_Issue_Date" id="DI_ERC_Issue_Date" value="@ViewBag.ERCISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*  <td><select name="DI_ERC_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.ERCATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.ERCATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.ERCATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.ERCATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_ERC_Upload" readonly  />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.ERCRGATTCHNAME))
+    {
+        <td rowspan="2">
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.ERCRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td rowspan="2"></td>
+    }
+                            }
+                            @*<td><input type="file" name="DI_ERC_Upload" value="Upload"/></td>*@
+                            @*   <td><input type="text" name="DI_ERC_FileName" /></td>*@
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td colspan="2"><input type="text" class="textBoxSize datefield" name="DI_ERC_Expiry_Date" id="DI_ERC_Expiry_Date" value="@ViewBag.ERCEXPDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*<td></td>
+                                <td></td>*@
+                        </tr></tr>
+                        <tr>
+                            <td rowspan="2">IRC No</td>
+                            <td rowspan="2"><input type="text" class="textBoxSize" name="DI_IRC_No" value="@ViewBag.IRCRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_IRC_Issue_Date" id="DI_IRC_Issue_Date" value="@ViewBag.IRCISSUEDATE" placeholder="dd/mm//yyyy" readonly  /></td>
+                            @*     <td><select name="DI_IRC_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.IRCATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.IRCATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.IRCATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.IRCATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_IRC_Upload" readonly  />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.IRCRGATTCHNAME))
+    {
+        <td rowspan="2">
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.IRCRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td rowspan="2"></td>
+    }
+                            }
+                            @*  <td><input type="file" name="DI_IRC_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_IRC_FileName" /></td>*@
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td colspan="2"><input type="text" class="textBoxSize datefield" name="DI_IRC_Expiry_Date" id="DI_IRC_Expiry_Date" value="@ViewBag.IRCEXPDATE" placeholder="dd/mm//yyyy" readonly /></td>
+
+                            @* <td></td>*@
+                        </tr>
+                        <tr>
+                            <td>VAT Reg. No(BIN)</td>
+                            <td><input type="text" class="textBoxSize" name="DI_VAT_No" value="@ViewBag.VATRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_VAT_Issue_Date" id="DI_VAT_Issue_Date" value="@ViewBag.VATISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*  <td><select name="DI_VAT_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.VATATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.VATATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.VATATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.VATATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_VAT_Upload" readonly />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.VATRGATTCHNAME))
+    {
+        <td>
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.VATRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td></td>
+    }
+                            }
+                            @*<td><input type="file" name="DI_VAT_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_VAT_FileName" /></td>*@
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Trade License No</td>
+                            <td rowspan="2"><input type="text" class="textBoxSize" name="DI_Trade_License_No" value="@ViewBag.TradeLicenseRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_Trade_License_Issue_Date" id="DI_Trade_License_Issue_Date" value="@ViewBag.TradeLicenseISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @* <td><select name="DI_Trade_License_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.TradeLicenseATTACHFILENM))
+    {
+        <td>
+            Path.GetFileName(ViewBag.TradeLicenseATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.TradeLicenseATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.TradeLicenseATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_Trade_License_Upload" readonly  />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.TradeLicenseRGATTCHNAME))
+    {
+        <td rowspan="2">
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.TradeLicenseRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td rowspan="2"></td>
+    }
+                            }
+                            @*<td><input type="file" name="DI_Trade_License_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_Trade_License_FileName" /></td>*@
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td colspan="2"><input type="text" class="textBoxSize datefield" name="DI_Trade_License_Expiry_Date" id="DI_Trade_License_Expiry_Date" value="@ViewBag.TradeLicenseISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Fire License No</td>
+                            <td rowspan="2"><input type="text" class="textBoxSize" name="DI_Fire_License_No" value="@ViewBag.FireLicenseRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_Fire_License_Issue_Date" id="DI_Fire_License_Issue_Date" value="@ViewBag.FireLicenseISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*<td><select name="DI_Fire_License_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.FireLicenseATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.FireLicenseATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.FireLicenseATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.FireLicenseATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_Fire_License_Upload" readonly />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.FireLicenseRGATTCHNAME))
+    {
+        <td rowspan="2">
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.FireLicenseRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td rowspan="2"></td>
+    }
+                            }
+                            @* <td><input type="file" name="DI_Fire_License_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_Fire_License_FileName" /></td>*@
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td colspan="2"><input type="text" class="textBoxSize datefield" name="DI_Fire_License_Expiry_Date" id="DI_Fire_License_Expiry_Date" value="@ViewBag.FireLicenseEXPDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Environment Certificate No(If applicable)</td>
+                            <td rowspan="2"><input type="text" class="textBoxSize" name="DI_Environment_Certificate_No" value="@ViewBag.EnvironmentCertificateRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_Environment_Certificate_Issue_Date" id="DI_Environment_Certificate_Issue_Date" value="@ViewBag.EnvironmentCertificateISSUEDATE" placeholder="dd/mm//yyyy" readonly  /></td>
+                            @*<td><select name="DI_Environment_Certificate_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.EnvironmentCertificateATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.EnvironmentCertificateATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.EnvironmentCertificateATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.EnvironmentCertificateATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_Environment_Certificate_Upload" readonly />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.EnvironmentCertificateRGATTCHNAME))
+    {
+        <td rowspan="2">
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.EnvironmentCertificateRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+          
+        </td>
+    }
+    else
+    {
+        <td rowspan="2"></td>
+    }
+                            }
+                            @* <td><input type="file" name="DI_Environment_Certificate_Upload" value="Upload"/></td>*@
+                            @* <td><input type="text" name="DI_Environment_Certificate_FileName" /></td>*@
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td colspan="2"><input type="text" class="textBoxSize datefield" name="DI_Environment_Certificate_Expiry_Date" id="DI_Environment_Certificate_Expiry_Date" value="@ViewBag.EnvironmentCertificateEXPDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">Boiler Certificate No(if applicable)</td>
+                            <td rowspan="2"><input type="text" class="textBoxSize" name="DI_Boiler_Certificate_No" value="@ViewBag.BoilerCertificateRGATTCHNAME" readonly /></td>
+                            <td>Issue Date</td>
+                            <td><input type="text" class="textBoxSize datefield" name="DI_Boiler_Certificate_Issue_Date" id="DI_Boiler_Certificate_Issue_Date" value="@ViewBag.BoilerCertificateISSUEDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                            @*   <td><select name="DI_Boiler_Certificate_Attached_Select"><option value="Attached">Attached</option></select></td>*@
+                            @{
+    if (!String.IsNullOrEmpty(ViewBag.BoilerCertificateATTACHFILENM))
+    {
+        <td>
+            @Path.GetFileName(ViewBag.BoilerCertificateATTACHFILENM)<br />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.BoilerCertificateATTACHFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = ViewBag.BoilerCertificateATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" style="width:170px" name="DI_Boiler_Certificate_Upload" readonly />
+        </td>
+    }
+    if (!string.IsNullOrEmpty(ViewBag.BoilerCertificateRGATTCHNAME))
+    {
+        <td rowspan="2">
+            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "RGATTCHNAME", id = ViewBag.BoilerCertificateRGATTCHNAME }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+           
+        </td>
+    }
+    else
+    {
+        <td rowspan="2"></td>
+    }
+                            }
+                            @* <td><input type="file" name="DI_Boiler_Certificate_Upload" value="Upload"/></td>*@
+                            @*   <td><input type="text" name="DI_Boiler_Certificate_FileName" /></td>*@
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td colspan="2"><input type="text" class="textBoxSize datefield" name="DI_Boiler_Certificate_Expiry_Date" id="DI_Boiler_Certificate_Expiry_Date" value="@ViewBag.BoilerCertificateEXPDATE" placeholder="dd/mm//yyyy" readonly /></td>
+                        </tr>
+                        </tr>
+                        <tr>
+                            <td colspan="6">&nbsp;&nbsp;<input type="button" class="btn" id="btnDocument_ADD" name="btnDocument_ADD" value="Add Other Documents" onclick="addOtherDoc()" disabled /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="6" style="text-align: center; background-color:honeydew"> Other Documents</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Document Name</td>
+                            <td>Document No</td>
+                            <td>Issue Date</td>
+                            <td>Expiry Date</td>
+                            <td>Document File</td>
+                            <td></td>
+                        </tr>
+                        @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.documentattachment)
+            {
+                if (item.DOCHEADINGNAME != "Tin" && item.DOCHEADINGNAME != "TIN" &&
+                    item.DOCHEADINGNAME != "Boi" && item.DOCHEADINGNAME != "BOI" && item.DOCHEADINGNAME != "BSCIC"
+                    && item.DOCHEADINGNAME != "ERC" && item.DOCHEADINGNAME != "IRC" && item.DOCHEADINGNAME != "VAT"
+                    && item.DOCHEADINGNAME != "TradeLicense" && item.DOCHEADINGNAME != "FireLicense"
+                    && item.DOCHEADINGNAME != "EnvironmentCertificate" && item.DOCHEADINGNAME != "BoilerCertificate")
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.DOCHEADINGNAME)</td>
+                        <td>@Html.DisplayFor(modelItem => item.RGATTCHNAME)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ISSUEDATE)</td>
+                        <td>@Html.DisplayFor(modelItem => item.EXPDATE)</td>
+                        @{
+                    if (!String.IsNullOrEmpty(item.ATTACHFILENM))
+                    {
+                        <td>
+                            @Path.GetFileName(item.ATTACHFILENM)<br />
+                            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = item.ATTACHFILENM })
+                            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTACHFILENM", filePath = item.ATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            @*Document File:<input type="file" name="DocumentFile" id="DocumentFile[]"/>*@
+                        </td>
+                    }
+                        }
+                        @* <input type="hidden" name="DocFileName" id="DocFileName[]" value="@item.ATTACHFILENM" />*@
+                        <td>
+                            @Html.ActionLink("Delete", "DeleteByID", new { tableName = "DOCUMENTATTACHMENT", columnName = "ATTCHSLNO", id = item.ATTCHSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                           
+                    </tr>
+                }
+            }
+        }
+    }
+    catch { }
+                        }
+                    </tbody>
+                </table>
+
+                <script>
+                    $("document").ready(function () {
+                        $(window).keydown(function (event) {
+                            if (event.keyCode == 13) {
+                                event.preventDefault();
+                                return false;
+                            }
+                        });
+                        document.getElementById("MUPSDate").valueAsDate = Date.parse('@ViewBag.HIREDATE');
+                        document.getElementById("MUPSExpDate").valueAsDate = Date.parse('@ViewBag.HIREEXPDATE');
+                        document.getElementById("IfOwnedDate").valueAsDate = Date.parse('@ViewBag.OWNERSHIPDATE');
+                        document.getElementById("DI_TIN_Issue_Date").valueAsDate = parseDate('@ViewBag.TinISSUEDATE');
+                        document.getElementById("DI_BOI_Issue_Date").valueAsDate = Date.parse('@ViewBag.BoiISSUEDATE');
+                        document.getElementById("DI_BSCIC_Issue_Date").valueAsDate = Date.parse('@ViewBag.BSCICISSUEDATE');
+                        document.getElementById("DI_ERC_Issue_Date").valueAsDate = Date.parse('@ViewBag.ERCISSUEDATE');
+                        document.getElementById("DI_ERC_Expiry_Date").valueAsDate = Date.parse('@ViewBag.ERCEXPDATE');
+                        document.getElementById("DI_IRC_Issue_Date").valueAsDate = Date.parse('@ViewBag.IRCISSUEDATE');
+                        document.getElementById("DI_IRC_Expiry_Date").valueAsDate = Date.parse('@ViewBag.IRCEXPDATE');
+                        document.getElementById("DI_VAT_Issue_Date").valueAsDate = Date.parse('@ViewBag.VATISSUEDATE');
+                        document.getElementById("DI_Trade_License_Issue_Date").valueAsDate = Date.parse('@ViewBag.TradeLicenseISSUEDATE');
+                        document.getElementById("DI_Trade_License_Expiry_Date").valueAsDate = Date.parse('@ViewBag.TradeLicenseISSUEDATE');
+                        document.getElementById("DI_Fire_License_Issue_Date").valueAsDate = Date.parse('@ViewBag.FireLicenseISSUEDATE');
+                        document.getElementById("DI_Fire_License_Expiry_Date").valueAsDate = Date.parse('@ViewBag.FireLicenseEXPDATE');
+                        document.getElementById("DI_Environment_Certificate_Issue_Date").valueAsDate = Date.parse('@ViewBag.EnvironmentCertificateISSUEDATE');
+                        document.getElementById("DI_Environment_Certificate_Expiry_Date").valueAsDate = Date.parse('@ViewBag.EnvironmentCertificateEXPDATE');
+                        document.getElementById("DI_Boiler_Certificate_Issue_Date").valueAsDate = Date.parse('@ViewBag.BoilerCertificateISSUEDATE');
+                        document.getElementById("DI_Boiler_Certificate_Expiry_Date").valueAsDate = Date.parse('@ViewBag.BoilerCertificateEXPDATE');
+                        //$("#DocumentFile[]").change(function () {
+                        //    alert('changed!');
+                        //});
+                    });
+                </script>
+                <div id="divAddDoc"></div>
+
+
+               
+                <script>
+                    function addOtherDoc() {
+                        $('#table_DocumentsInput > tbody:last').append(
+                              '<tr>'
+                              + '<td>Document Name:<input type="text" class="textBoxSize" name="DocumentName" id="DocumentName[]" readonly="true"/></td>'
+                              + '<td>Document No:<input type="text" class="textBoxSize" name="DocumentNo" id="DocumentNo[]" readonly="true"/></td>'
+                              + '<td>Issue Date:<input class="textBoxSize datefield" name="DocumentIssueDate" placeholder="mm/dd//yyyy" readonly="true"/></td>'
+                              + '<td>Expiry Date:<input class="textBoxSize datefield" name="DocumentExpiryDate" placeholder="mm/dd//yyyy" readonly="true"/></td>'
+                              + '<td>Document File:<input type="file" style="width:170px" name="DocumentFile" id="DocumentFile[]"/></td>'
+                              + '<td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td>'
+                              + '</tr>'
+                              //+ '<tr><td><input type="button" id="btnDocument_ADD" name="btnDocument_ADD" value="Add Other Documents"/></td></tr>'
+                          );
+                        $(".datefield").datepicker();
+                    };
+                    $(document).ready(function () {
+                        $("#btnDocument_ADD").click(function () {
+                            //$(this).closest("tr").remove();
+                            $('#table_DocumentsInput > tbody:last').append(
+                                '<tr>'
+                                + '<td>Document Name:<input type="text" name="DocumentName" id="DocumentName[]"/></td>'
+                                + '<td>Document No:<input type="text" name="DocumentNo" id="DocumentNo[]"/></td>'
+                                + '<td>Issue Date:<input type="text" class="textBoxSize datefield" name="DocumentIssueDate" id="DocumentIssueDate[]"/></td>'
+                                + '<td>Expiry Date:<input type="text" class="textBoxSize datefield" name="DocumentExpiryDate" id="DocumentExpiryDate[]"/></td>'
+                                + '<td>Document File:<input type="file" name="DocumentFile" id="DocumentFile[]"/></td>'
+                                + '<td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td>'
+                                + '</tr>'
+                                //+ '<tr><td><input type="button" id="btnDocument_ADD" name="btnDocument_ADD" value="Add Other Documents"/></td></tr>'
+                            );
+
+                        });
+                    });
+                </script>
+                <br />
+
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew"> Enrollment Input</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Enrolled With</td>
+
+                            <td>
+                                @Html.DropDownList("Office", null, string.Empty, new { id = "Office", @class = "bigddl", @disabled = "disabled" })
+                                @* @Html.DropDownList("Office", string.Empty)*@
+                                @*<select name="EnrollmentInputSelect"><option value="1">BGMEA</option><option value="2">CCL</option></select>*@
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>Membership/Reg. No</td>
+                            <td>
+                                <input type="text" id="EnrollmetnMEMBERSHIPREGNO" name="EnrollmetnMEMBERSHIPREGNO" readonly />
+                                @*<input type="text" name="EnrollmetnMEMBERSHIPREGNO" value="@ViewBag.ASSOCIATIONENROLL_MEMBERSHIPREGNO" />*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Issue Date</td>
+                            <td>
+                                <input type="text" class="datefield" id="EnrollmetnInputIssueDate" name="EnrollmetnInputIssueDate" placeholder="dd/mm//yyyy" readonly />
+                                @*<input type="date" name="EnrollmetnInputIssueDate" value="@ViewBag.ASSOCIATIONENROLL_ISSUEDATE" />*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Expiry Date</td>
+                            <td>
+                                <input type="text" class="datefield" id="EnrollmetnInputExpiryDate" name="EnrollmetnInputExpiryDate" placeholder="dd/mm//yyyy"readonly  />
+                                @*<input type="date" name="EnrollmetnInputExpiryDate" value="@ViewBag.ASSOCIATIONENROLL_EXPDATE" />*@
+                            </td>
+                        </tr>
+                      
+                        <tr>
+                            <td></td>
+                            <td><input type="button" class="btn" id="btnEI_ADD" name="btnEI_ADD" value="Add" onclick="addEI()" disabled /></td>
+                            @*  <td><input type="button" name="btnEI_Update" value="Update" /></td>
+                                <td><input type="button" name="btnEI_Delete" value="Delete" /></td>*@
+                        </tr>
+                    </tbody>
+                </table>
+                <br />
+
+                <table class="table" border="1" id="table_Enroll">
+                    <thead>
+                        <tr>
+                            <th colspan="7" style="text-align: center; background-color:honeydew"> Enrollment Information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Enrollment With</td>
+                            <td>Membership/Reg. No</td>
+                            <td>Issue Date</td>
+                            <td>Expiry Date</td>
+                            <td>Membership File</td>
+                            <td>Recommendation File</td>
+                            <td></td>
+                        </tr>
+                        @{
+    foreach (var OutItem in Model)
+    {
+        foreach (var item in OutItem.associationenroll)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OFFICE.OFFICENAME, new { id = item.OFFICESLNO })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MEMBERSHIPREGNO)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ISSUEDATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EXPDATE)
+                </td>
+                <td>
+                    @{
+            if (!string.IsNullOrEmpty(item.CERATTACHFILENM))
+            {
+                @Path.GetFileName(item.CERATTACHFILENM)<br />
+                        @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = item.CERATTACHFILENM })
+                        @Html.ActionLink("Delete", "DeleteFile", new { tableName = "ASSOCIATIONENROLL", columnName = "CERATTACHFILENM", filePath = item.CERATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+            }
+                    }
+                </td>
+                <td>
+                    @{
+            if (!string.IsNullOrEmpty(item.RECATTACHFILENM))
+            {
+                @Path.GetFileName(item.RECATTACHFILENM)<br />
+                        @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = item.RECATTACHFILENM })
+                        @Html.ActionLink("Delete", "DeleteFile", new { tableName = "ASSOCIATIONENROLL", columnName = "RECATTACHFILENM", filePath = item.RECATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+            }
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "DeleteByID", new { tableName = "ASSOCIATIONENROLL", columnName = "ASSOENSLNO", id = item.ASSOENSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                   
+                </td>
+            </tr>
+        }
+    }
+                        }
+                    </tbody>
+                </table>
+                <script>
+                    function addEI() {
+                        if ($.trim($('#Office').val()) == '') {
+                            alert('Office required !');
+                            $("#Office").focus();
+                            return;
+                        }
+                        if ($.trim($('#EnrollmetnMEMBERSHIPREGNO').val()) == '') {
+                            alert('Membership/Reg. No required !');
+                            $("#EnrollmetnMEMBERSHIPREGNO").focus();
+                            return;
+                        }
+                        $('#table_Enroll > tbody:last').append(
+                            '<tr>'
+                            + '<td><input type="hidden" name="Office" id="Office[]" value="' + $('#Office').val() + '" />' + $('#Office option:selected').text()
+                            + '</td><td><input type="hidden" name="EnrollmetnMEMBERSHIPREGNO" id="EnrollmetnMEMBERSHIPREGNO[]" value="' + $('#EnrollmetnMEMBERSHIPREGNO').val() + '" />' + $('#EnrollmetnMEMBERSHIPREGNO').val()
+                            + '</td><td><input type="hidden" name="EnrollmetnInputIssueDate" id="EnrollmetnInputIssueDate[]" value="' + $('#EnrollmetnInputIssueDate').val() + '" />' + $('#EnrollmetnInputIssueDate').val()
+                            + '</td><td><input type="hidden" name="EnrollmetnInputExpiryDate" id="EnrollmetnInputExpiryDate[]" value="' + $('#EnrollmetnInputExpiryDate').val() + '" />' + $('#EnrollmetnInputExpiryDate').val()
+                            + '</td><td><input type="file" name="EI_CertificateFileName" id="EI_CertificateFileName[]" />'
+                            + '</td><td><input type="file" name="EI_RecommendationFileName" id="EI_RecommendationFileName[]" />'
+                            + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>'
+                            );
+                        $("#Office").val('');
+                        $("#EnrollmetnMEMBERSHIPREGNO").val('');
+                        $("#EnrollmetnInputIssueDate").val('');
+                        $("#EnrollmetnInputExpiryDate").val('');
+                    };
+                    $(document).ready(function () {
+                        $("#btnEI_ADD").click(function () {
+                            if ($.trim($('#Office').val()) == '') {
+                                alert('Office required !');
+                                $("#Office").focus();
+                                return;
+                            }
+                            $('#table_Enroll > tbody:last').append(
+                                '<tr>'
+                                + '<td><input type="hidden" name="Office" id="Office[]" value="' + $('#Office').val() + '" />' + $('#Office option:selected').text()
+                                + '</td><td><input type="hidden" name="EnrollmetnMEMBERSHIPREGNO" id="EnrollmetnMEMBERSHIPREGNO[]" value="' + $('#EnrollmetnMEMBERSHIPREGNO').val() + '" />' + $('#EnrollmetnMEMBERSHIPREGNO').val()
+                                + '</td><td><input type="hidden" name="EnrollmetnInputIssueDate" id="EnrollmetnInputIssueDate[]" value="' + $('#EnrollmetnInputIssueDate').val() + '" />' + $('#EnrollmetnInputIssueDate').val()
+                                + '</td><td><input type="hidden" name="EnrollmetnInputExpiryDate" id="EnrollmetnInputExpiryDate[]" value="' + $('#EnrollmetnInputExpiryDate').val() + '" />' + $('#EnrollmetnInputExpiryDate').val()
+                                + '</td><td><input type="file" name="EI_CertificateFileName" id="EI_CertificateFileName[]" />'
+                                + '</td><td><input type="file" name="EI_RecommendationFileName" id="EI_RecommendationFileName[]" />'
+                                + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>'
+                                );
+                            $("#Office").val('');
+                            $("#EnrollmetnMEMBERSHIPREGNO").val('');
+                            $("#EnrollmetnInputIssueDate").val('');
+                            $("#EnrollmetnInputExpiryDate").val('');
+                        });
+                    });
+                </script>
+                <script>
+                    function FillLienBankInfo() {
+                        FillDesc('Branch', 'LBI_Address', 'BANKBRANCH', 'ADDRESS', 'BBRANCHSLNO');
+                        FillDesc('Branch', 'LBI_Phone', 'BANKBRANCH', 'PHONE', 'BBRANCHSLNO');
+                        FillDesc('Branch', 'LBI_Fax', 'BANKBRANCH', 'FAX', 'BBRANCHSLNO');
+                    };
+                </script>
+                <br />
+                <table class="table" border="1">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: center; background-color:honeydew"> Lien Bank Input</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Code</td>
+                            <td colspan="3">
+                                @*<input type="text" id="LBI_Code" name="LBI_Code" value="@ViewBag.BONDERLIENBANK_LIENBANKCODE"/>*@
+                                <input type="text" id="LBI_Code" name="LBI_Code" readonly  />
+                            </td>
+                        </tr>
+                        @*<tr>*@
+
+                        @*</tr>*@
+                        <tr>
+                            <td>Bank Name</td>
+                            <td>
+                                @Html.DropDownList("Bank", null, string.Empty, new { id = "Bank", @onchange = "fillBranch(this.id)", @disabled = "disabled" })
+                                @*  @Html.DropDownList("Bank", string.Empty)
+                                    <input type="text" name="LBI_BankName"/>*@
+                            </td>
+                            <td>Branch</td>
+                            <td>
+                                @Html.DropDownList("Branch", null, string.Empty, new { id = "Branch", @onchange = "FillLienBankInfo()", @class = "bigddl", @disabled = "disabled" })
+                                @*@Html.DropDownList("Branch", string.Empty)*@
+                                @*<input type="text" name="LBI_Branch" value="@ViewBag.BBRANCHSLNO"/>*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td colspan="3">
+                                @*<input type="text" id="LBI_Address" name="LBI_Address" value="@ViewBag.BONDERLIENBANK_Address"/>*@
+                                <input type="text" id="LBI_Address" name="LBI_Address" readonly="true"  />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            <td colspan="3">
+                                @*<input type="text" id="LBI_Phone" name="LBI_Phone" value="@ViewBag.BONDERLIENBANK_Phone"/>*@
+                                <input type="text" id="LBI_Phone" name="LBI_Phone" readonly="true" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Fax</td>
+                            <td colspan="3">
+                                @*<input type="text" id="LBI_Fax" name="LBI_Fax" value="@ViewBag.BONDERLIENBANK_Fax"/>*@
+                                <input type="text" id="LBI_Fax" name="LBI_Fax" readonly="true" />
+                            </td>
+                        </tr>
+                        @*   <tr>
+                            <td>Solvency Certificate</td>
+                            <td><input type="file" id="LBI_CertificateFileName" name="LBI_CertificateFileName"/></td>*@
+                        @*<td><input type="hidden" id="LBI_CertificateFileName" name="LBI_CertificateFileName" value="@ViewBag.BONDERLIENBANK_CERATTACHFILENM"/></td>*@
+                        @*   <td><input type="hidden" id="LBI_CertificateFileName" name="LBI_CertificateFileName" /></td>
+                            </tr>*@
+                        <tr>
+                            <td></td>
+                            <td colspan="3">&nbsp;&nbsp;<input type="button" class="btn" id="btnLBI_ADD" name="btnLBI_ADD" value="Add" onclick="addLBI()" disabled /></td>
+                            @*   <td><input type="button" name="btnLBI_Update" value="Update"/></td>
+                                <td><input type="button" name="btnLBI_Delete" value="Delete"/></td>*@
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <table class="table" border="1" id="table_LBI">
+                    <thead>
+                        <tr>
+                            <th colspan="7" style="text-align: center; background-color:honeydew"> Lien Bank Information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Code</td>
+                            @* <td>Bank Name</td>*@
+                            <td>Branch</td>
+                            <td>Address</td>
+                            <td>Phone</td>
+                            <td>Fax</td>
+                            <td>Solvency File</td>
+                            <td></td>
+                        </tr>
+                        @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.bonderlienbank)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LIENBANKCODE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BANKBRANCH.BRANCHNAME, new { id = item.BBRANCHSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BANKBRANCH.ADDRESS, new { id = item.BBRANCHSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BANKBRANCH.PHONE, new { id = item.BBRANCHSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BANKBRANCH.FAX, new { id = item.BBRANCHSLNO })
+                    </td>
+                    <td>
+                        @{
+                if (!string.IsNullOrEmpty(item.CERATTACHFILENM))
+                {
+                    @Path.GetFileName(item.CERATTACHFILENM)<br />
+                            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = item.CERATTACHFILENM })
+                            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "BONDERLIENBANK", columnName = "CERATTACHFILENM", filePath = item.CERATTACHFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                }
+                        }
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteByID", new { tableName = "BONDERLIENBANK", columnName = "LBANKSLNO", id = item.LBANKSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                        @*@Ajax.ActionLink("Delete", "DeleteByID", new { tableName = "BONDERLIENBANK", columnName = "LBANKSLNO", id = item.LBANKSLNO }, new AjaxOptions
+                            {
+                                Confirm = "Are you sure you want to delete?",
+                                OnComplete = "deleteComplete",
+                                HttpMethod = "POST"
+                            })        *@
+                    </td>
+                </tr>
+            }
+        }
+    }
+    catch { }
+                        }
+                    </tbody>
+                </table>
+                <script>
+                    function addLBI() {
+                        if ($.trim($('#Branch').val()) == '') {
+                            alert('Branch required !');
+                            $("#Branch").focus();
+                            return;
+                        }
+                        $('#table_LBI > tbody:last').append(
+                            '<tr><td><input type="hidden" name="LBI_Code" id="LBI_Code[]" value="' + $('#LBI_Code').val() + '" />' + $('#LBI_Code').val()
+                            //+ '</td><td><input type="hidden" name="Bank" id="Bank[]" value="' + $('#Bank').val() + '" />' + $('#Bank').val()
+                            + '</td><td><input type="hidden" name="Branch" id="Branch[]" value="' + $('#Branch').val() + '" />' + $('#Branch option:selected').text()
+                            + '</td><td><input type="hidden" name="LBI_Address" id="LBI_Address[]" value="' + $('#LBI_Address').val() + '" />' + $('#LBI_Address').val()
+                            + '</td><td><input type="hidden" name="LBI_Phone" id="LBI_Phone[]" value="' + $('#LBI_Phone').val() + '" />' + $('#LBI_Phone').val()
+                            + '</td><td><input type="hidden" name="LBI_Fax" id="LBI_Fax[]" value="' + $('#LBI_Fax').val() + '" />' + $('#LBI_Fax').val()
+                            + '</td><td><input type="file" name="LBI_CertificateFileName" id="LBI_CertificateFileName[]" " />'
+                            //+ '</td><td><input type="hidden" name="LBI_CertificateFileName" id="LBI_CertificateFileName[]" value="' + $('#LBI_CertificateFileName').val() + '" />' + $('#LBI_CertificateFileName').val()
+                            + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>'
+                            );
+                        //$('#LBI_CertificateFileName').attr('LBI_CertificateFileName', 'LBI_CertificateFileName' + rowCount);
+                        $("#LBI_Code").val('');
+                        $("#Bank").val('');
+                        $("#Branch").val('');
+                        $("#LBI_Address").val('');
+                        $("#LBI_Phone").val('');
+                        $("#LBI_Fax").val('');
+                        $('#Branch option').remove();
+                        //$("#LBI_CertificateFileName").val('');
+                    };
+                    $(document).ready(function () {
+                        $("#btnLBI_ADD").click(function () {
+                            //if ($.trim($('#Bank').val()) == '') {
+                            //    alert('Bank Name required !');
+                            //    $("#Bank").focus();
+                            //    return;
+                            //}
+                            if ($.trim($('#Branch').val()) == '') {
+                                alert('Branch required !');
+                                $("#Branch").focus();
+                                return;
+                            }
+                            $('#table_LBI > tbody:last').append(
+                                '<tr><td><input type="hidden" name="LBI_Code" id="LBI_Code[]" value="' + $('#LBI_Code').val() + '" />' + $('#LBI_Code').val()
+                                //+ '</td><td><input type="hidden" name="Bank" id="Bank[]" value="' + $('#Bank').val() + '" />' + $('#Bank').val()
+                                + '</td><td><input type="hidden" name="Branch" id="Branch[]" value="' + $('#Branch').val() + '" />' + $('#Branch option:selected').text()
+                                + '</td><td><input type="hidden" name="LBI_Address" id="LBI_Address[]" value="' + $('#LBI_Address').val() + '" />' + $('#LBI_Address').val()
+                                + '</td><td><input type="hidden" name="LBI_Phone" id="LBI_Phone[]" value="' + $('#LBI_Phone').val() + '" />' + $('#LBI_Phone').val()
+                                + '</td><td><input type="hidden" name="LBI_Fax" id="LBI_Fax[]" value="' + $('#LBI_Fax').val() + '" />' + $('#LBI_Fax').val()
+                                + '</td><td><input type="file" name="LBI_CertificateFileName" id="LBI_CertificateFileName[]" " />'
+                                //+ '</td><td><input type="hidden" name="LBI_CertificateFileName" id="LBI_CertificateFileName[]" value="' + $('#LBI_CertificateFileName').val() + '" />' + $('#LBI_CertificateFileName').val()
+                                + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>'
+                                );
+                            //$('#LBI_CertificateFileName').attr('LBI_CertificateFileName', 'LBI_CertificateFileName' + rowCount);
+                            $("#LBI_Code").val('');
+                            $("#Bank").val('');
+                            $("#Branch").val('');
+                            $("#LBI_Address").val('');
+                            $("#LBI_Phone").val('');
+                            $("#LBI_Fax").val('');
+                            //$("#LBI_CertificateFileName").val('');
+                        });
+                    });
+                </script>
+                <br />
+
+                <input type="submit" id="SaveAsDraft_A" class="btn btn-info" name="Save" value="Save as Draft(Section A)" disabled />
+
+            </div>
+            <div id="tabs-2" class="tab-pane">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align:center; background-color:honeydew">Ownership Category</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @if (ViewBag.OWNERCATEGORY == "Prop")
+                            {
+                                <td><input type="radio" name="OwnershipCategory" value="Prop" checked />Proprietorship</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Part" />Partnership</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Priv" />Private Limited</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Publ" />Public Limited</td>
+                            }
+                            @if (ViewBag.OWNERCATEGORY == "Part")
+                            {
+                                <td><input type="radio" name="OwnershipCategory" value="Prop" />Proprietorship</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Part" checked />Partnership</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Priv" />Private Limited</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Publ" />Public Limited</td>
+                            }
+                            @if (ViewBag.OWNERCATEGORY == "Priv")
+                            {
+                                <td><input type="radio" name="OwnershipCategory" value="Prop" />Proprietorship</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Part" />Partnership</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Priv" checked />Private Limited</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Publ" />Public Limited</td>
+                            }
+                            @if (ViewBag.OWNERCATEGORY == "Publ")
+                            {
+                                <td><input type="radio" name="OwnershipCategory" value="Prop" />Proprietorship</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Part" />Partnership</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Priv" />Private Limited</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Publ" checked />Public Limited</td>
+                            }
+                            @if (!(ViewBag.OWNERCATEGORY == "Prop" || ViewBag.OWNERCATEGORY == "Part" || ViewBag.OWNERCATEGORY == "Priv" || ViewBag.OWNERCATEGORY == "Publ"))
+                            {
+                                <td><input type="radio" name="OwnershipCategory" value="Prop" />Proprietorship</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Part" />Partnership</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Priv" />Private Limited</td>
+                                <td><input type="radio" name="OwnershipCategory" value="Publ" />Public Limited</td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: center; background-color:honeydew">Chairman/MD/Director's/Proprietor's Information Input</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Position</td>
+                            <td colspan="3">
+                                @Html.DropDownList("OwnerPositionDesignation", null, string.Empty, new { id = "OwnerPositionDesignation", @class = "bigddl", @disabled = "disabled" })
+                                @* @Html.DropDownList("OwnerPositionDesignation", string.Empty)*@
+                                @*<input type="text" name="OII_Position" value="@ViewBag.OWNERINFO_DESSLNO"*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_Name" name="OII_Name" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Father’s/Husband’s Name</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_FathersHusbandName" name="OII_FathersHusbandName" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>TIN No</td>
+                            <td><input type="text" class="textBoxSize" id="OII_TIN_No" name="OII_TIN_No" readonly  /></td>
+                            <td>Issue Date</td>
+                            <td><input class="textBoxSize datefield" id="OII_IssueDate" name="OII_IssueDate" placeholder="dd/mm//yyyy" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Present Address</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_Present_Address" name="OII_Present_Address"readonly  /></td>
+                        </tr>
+                        <tr>
+                            <td>Permanent Address</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_Permanent_Address" name="OII_Permanent_Address" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Contact No</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_ContactNo" name="OII_ContactNo" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Residence Phone No</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_ResidencePhoneNo" name="OII_ResidencePhoneNo" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Mobile No</td>
+                            <td colspan="3"><input type="text" class="textBoxSize" id="OII_MobileNo" name="OII_MobileNo" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Passport No(if any)</td>
+                            <td><input type="text" class="textBoxSize" id="OII_PassportNo" name="OII_PassportNo" readonly /></td>
+                            <td>Passport Issuing Place</td>
+                            <td>
+                                @Html.DropDownList("OwnerPassportDistrict", null, string.Empty, new { id = "OwnerPassportDistrict", @disabled = "disabled" })
+                                @*@Html.DropDownList("OwnerPassportDistrict", string.Empty)*@
+                                @*<input type="text" name="OII_PassportIssuingPlace" value="@ViewBag.OWNERINFO_PASSDISTRICTSLNO"/>*@
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Passport Issue Date</td>
+                            <td><input class="textBoxSize datefield" id="OII_PassportIssueDate" name="OII_PassportIssueDate" placeholder="dd/mm//yyyy" readonly /></td>
+                            <td>Passport Expiry Date</td>
+                            <td><input class="textBoxSize datefield" id="OII_PassportExpiryDate" name="OII_PassportExpiryDate" placeholder="dd/mm//yyyy" readonly /></td>
+                        </tr>
+                        <tr>
+                            <td>Nationality</td>
+                            <td><input type="text" class="textBoxSize" id="OII_Nationality" name="OII_Nationality" readonly /></td>
+                            <td>National ID No(for Bangladesh)</td>
+                            <td><input type="text" class="textBoxSize" id="OII_NationalID_No" name="OII_NationalID_No" readonly /></td>
+                        </tr>
+                       
+                        <tr>
+                            <td></td>
+                            <td colspan="3"><input type="button" id="btnOII_Add" name="btnOII_Add" value="Add" onclick="addOII()" disabled /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <script>
+                    function addOII() {
+                        if ($.trim($('#OwnerPositionDesignation').val()) == '') {
+                            alert('Position required !');
+                            $("#OwnerPositionDesignation").focus();
+                            return;
+                        }
+                        else if ($.trim($('#OII_Name').val()) == '') {
+                            alert('Name required !');
+                            $("#OII_Name").focus();
+                            return;
+                        }
+                        $('#tbl_OII > tbody:last').append(
+                               '<tr><td><input type="hidden" name="OwnerPositionDesignation" id="OwnerPositionDesignation[]" value="' + $('#OwnerPositionDesignation').val() + '" />' + $('#OwnerPositionDesignation option:selected').text()
+                               + '</td><td><input type="hidden" name="OII_Name" id="OII_Name[]" value="' + $('#OII_Name').val() + '" />' + $('#OII_Name').val()
+                               + '<input type="hidden" name="OII_FathersHusbandName" id="OII_FathersHusbandName[]" value="' + $('#OII_FathersHusbandName').val() + '" />'
+                               + '<input type="hidden" name="OII_TIN_No" id="OII_TIN_No[]" value="' + $('#OII_TIN_No').val() + '" />'
+                               + '<input type="hidden" name="OII_IssueDate" id="OII_IssueDate[]" value="' + $('#OII_IssueDate').val() + '" />'
+                               + '</td><td><input type="hidden" name="OII_Present_Address" id="OII_Present_Address[]" value="' + $('#OII_Present_Address').val() + '" />' + $('#OII_Present_Address').val()
+                               + '<input type="hidden" name="OII_Permanent_Address" id="OII_Permanent_Address[]" value="' + $('#OII_Permanent_Address').val() + '" />'
+                               + '</td><td><input type="hidden" name="OII_ContactNo" id="OII_ContactNo[]" value="' + $('#OII_ContactNo').val() + '" />' + $('#OII_ContactNo').val()
+                               + '<input type="hidden" name="OII_ResidencePhoneNo" id="OII_ResidencePhoneNo[]" value="' + $('#OII_ResidencePhoneNo').val() + '" />' + $('#OII_ResidencePhoneNo').val()
+                               + '<input type="hidden" name="OII_MobileNo" id="OII_MobileNo[]" value="' + $('#OII_MobileNo').val() + '" />'
+                               + '<input type="hidden" name="OII_PassportNo" id="OII_PassportNo[]" value="' + $('#OII_PassportNo').val() + '" />'
+                               + '<input type="hidden" name="OwnerPassportDistrict" id="OwnerPassportDistrict[]" value="' + $('#OwnerPassportDistrict').val() + '" />'
+                               + '<input type="hidden" name="OII_PassportIssueDate" id="OII_PassportIssueDate[]" value="' + $('#OII_PassportIssueDate').val() + '" />'
+                               + '<input type="hidden" name="OII_PassportExpiryDate" id="OII_PassportExpiryDate[]" value="' + $('#OII_PassportExpiryDate').val() + '" />'
+                               + '<input type="hidden" name="OII_Nationality" id="OII_Nationality[]" value="' + $('#OII_Nationality').val() + '" />'
+                               + '<input type="hidden" name="OII_NationalID_No" id="OII_NationalID_No[]" value="' + $('#OII_NationalID_No').val() + '" />'
+                               + '</td><td><input type="file" name="OII_SignatureUpload" id="OII_SignatureUpload[]" style="width:170px" />'
+                               + '</td><td><input type="file" name="OII_PhotoUpload" id="OII_PhotoUpload[]" style="width:170px" />'
+                               + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>'
+                               );
+                        $("#OwnerPositionDesignation").val('');
+                        $("#OII_Name").val('');
+                        $("#OII_FathersHusbandName").val('');
+                        $("#OII_TIN_No").val('');
+                        $("#OII_IssueDate").val('');
+                        $("#OII_Present_Address").val('');
+                        $("#OII_Permanent_Address").val('');
+                        $("#OII_ContactNo").val('');
+                        $("#OII_ResidencePhoneNo").val('');
+                        $("#OII_MobileNo").val('');
+                        $("#OII_PassportNo").val('');
+                        $("#OwnerPassportDistrict").val('');
+                        $("#OII_PassportIssueDate").val('');
+                        $("#OII_PassportExpiryDate").val('');
+                        $("#OII_Nationality").val('');
+                        $("#OII_NationalID_No").val('');
+                        $("#OII_SignatureUpload").val('');
+                        $("#OII_PhotoUpload").val('');
+                    };
+                    $(document).ready(function () {
+                        $("#btnOII_Add").click(function () {
+                            if ($.trim($('#OwnerPositionDesignation').val()) == '') {
+                                alert('Position required !');
+                                $("#OwnerPositionDesignation").focus();
+                                return;
+                            }
+                            else if ($.trim($('#OII_Name').val()) == '') {
+                                alert('Name required !');
+                                $("#OII_Name").focus();
+                                return;
+                            }
+                            $('#tbl_OII > tbody:last').append(
+                                '<tr><td><input type="hidden" name="OwnerPositionDesignation" id="OwnerPositionDesignation[]" value="' + $('#OwnerPositionDesignation').val() + '" />' + $('#OwnerPositionDesignation option:selected').text()
+                                + '</td><td><input type="hidden" name="OII_Name" id="OII_Name[]" value="' + $('#OII_Name').val() + '" />' + $('#OII_Name').val()
+                                + '<input type="hidden" name="OII_FathersHusbandName" id="OII_FathersHusbandName[]" value="' + $('#OII_FathersHusbandName').val() + '" />'
+                                + '<input type="hidden" name="OII_TIN_No" id="OII_TIN_No[]" value="' + $('#OII_TIN_No').val() + '" />'
+                                + '<input type="hidden" name="OII_IssueDate" id="OII_IssueDate[]" value="' + $('#OII_IssueDate').val() + '" />'
+                                + '</td><td><input type="hidden" name="OII_Present_Address" id="OII_Present_Address[]" value="' + $('#OII_Present_Address').val() + '" />' + $('#OII_Present_Address').val()
+                                + '<input type="hidden" name="OII_Permanent_Address" id="OII_Permanent_Address[]" value="' + $('#OII_Permanent_Address').val() + '" />'
+                                + '</td><td><input type="hidden" name="OII_ContactNo" id="OII_ContactNo[]" value="' + $('#OII_ContactNo').val() + '" />' + $('#OII_ContactNo').val()
+                                + '<input type="hidden" name="OII_ResidencePhoneNo" id="OII_ResidencePhoneNo[]" value="' + $('#OII_ResidencePhoneNo').val() + '" />' + $('#OII_ResidencePhoneNo').val()
+                                + '<input type="hidden" name="OII_MobileNo" id="OII_MobileNo[]" value="' + $('#OII_MobileNo').val() + '" />'
+                                + '<input type="hidden" name="OII_PassportNo" id="OII_PassportNo[]" value="' + $('#OII_PassportNo').val() + '" />'
+                                + '<input type="hidden" name="OwnerPassportDistrict" id="OwnerPassportDistrict[]" value="' + $('#OwnerPassportDistrict').val() + '" />'
+                                + '<input type="hidden" name="OII_PassportIssueDate" id="OII_PassportIssueDate[]" value="' + $('#OII_PassportIssueDate').val() + '" />'
+                                + '<input type="hidden" name="OII_PassportExpiryDate" id="OII_PassportExpiryDate[]" value="' + $('#OII_PassportExpiryDate').val() + '" />'
+                                + '<input type="hidden" name="OII_Nationality" id="OII_Nationality[]" value="' + $('#OII_Nationality').val() + '" />'
+                                + '<input type="hidden" name="OII_NationalID_No" id="OII_NationalID_No[]" value="' + $('#OII_NationalID_No').val() + '" />'
+                                + '</td><td><input type="file" name="OII_SignatureUpload" id="OII_SignatureUpload[]" " />'
+                                + '</td><td><input type="file" name="OII_PhotoUpload" id="OII_PhotoUpload[]" " />'
+                                + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>'
+                                );
+                            $("#OwnerPositionDesignation").val('');
+                            $("#OII_Name").val('');
+                            $("#OII_FathersHusbandName").val('');
+                            $("#OII_TIN_No").val('');
+                            $("#OII_IssueDate").val('');
+                            $("#OII_Present_Address").val('');
+                            $("#OII_Permanent_Address").val('');
+                            $("#OII_ContactNo").val('');
+                            $("#OII_ResidencePhoneNo").val('');
+                            $("#OII_MobileNo").val('');
+                            $("#OII_PassportNo").val('');
+                            $("#OwnerPassportDistrict").val('');
+                            $("#OII_PassportIssueDate").val('');
+                            $("#OII_PassportExpiryDate").val('');
+                            $("#OII_Nationality").val('');
+                            $("#OII_NationalID_No").val('');
+                            $("#OII_SignatureUpload").val('');
+                            $("#OII_PhotoUpload").val('');
+                        });
+                    });
+                </script>
+
+                <br />
+
+                <table class="table" id="tbl_OII">
+                    <thead>
+                        <tr>
+                            <th colspan="7" style="text-align: center; background-color:honeydew">Chairman/MD/Director's/Proprietor's Information</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Position</td>
+                        <td>Name</td>
+                       
+                        <td>Present Address</td>
+                        @*<td>Permanent Address</td>*@
+                        <td>Contact No</td>
+                       
+                        <td>Signature File</td>
+                        <td>Photo File</td>
+                        <td></td>
+                    </tr>
+
+                    @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.ownerinfo)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DESIGNATION.DESNAME, new { id = item.DESSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OWNERNAME)
+                    </td>
+                
+                    <td>
+                        @{
+                if (!string.IsNullOrEmpty(item.SIGNATUREFILENM))
+                {
+                    @Path.GetFileName(item.SIGNATUREFILENM)<br />
+                            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = item.SIGNATUREFILENM })
+                            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "OWNERINFO", columnName = "SIGNATUREFILENM", filePath = item.SIGNATUREFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                }
+                        }
+
+                    </td>
+                    <td>
+                        @{
+                if (!string.IsNullOrEmpty(item.PHOTOFILENM))
+                {
+                    @Path.GetFileName(item.PHOTOFILENM)<br />
+                            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = item.PHOTOFILENM })
+                            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "OWNERINFO", columnName = "SIGNATUREFILENM", filePath = item.PHOTOFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                }
+                        }
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteByID", new { tableName = "OWNERINFO", columnName = "OWNERSLNO", id = item.OWNERSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                       
+                    </td>
+                </tr>
+            }
+        }
+    }
+    catch { }
+                    }
+
+                </table>
+
+                <br />
+
+         
+
+                
+                <input type="submit" id="SaveAsDraft_B" name="Save" class="btn btn-info" value="Save as Draft(Section B)" disabled />
+
+            </div>
+
+            <div id="tabs-3" class="tab-pane">
+                @*<h2>Manufactured Goods Information</h2>*@
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew">Manufactured Goods Information Input</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Description of goods to be manufactured(as per reg. no.)</td>
+                        <td>@Html.TextBox("regOrg", "", new { placeholder = "BOI/BSCIC/…………" ,@readonly ="readonly"})</td>
+                    </tr>
+                    <tr>
+                        <td>HS Code</td>
+                        <td>
+                            @Html.DropDownList("fpHsCode", null, string.Empty, new { id = "fpHsCode", @onchange = "FillDesc('fpHsCode','fpDesc','MATERIALS','MDESCRIPTION','MSLNO')", @disabled = "disabled" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Commercial Description</td>
+                        <td>
+                            @*@Html.DropDownList("fpDesc", null, string.Empty, new { id = "fpDesc" })*@
+                            <input type="text" name="fpDesc" id="fpDesc" readonly />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" id="btnMGI_Add" name="btnMGI_Add" value="Add" onclick="addMGI()" disabled/></td>
+                    </tr>
+                </table>
+                <script>
+                    rootUrl = '@Url.Content("~")'
+                </script>
+                <script>
+                    function FillDesc(selectedId, toFillId, tableName, dataColumnName, idColumnName) {
+                        $.getJSON('getData', { table: tableName, dataColumn: dataColumnName, idColumn: idColumnName, id: document.getElementById(selectedId).value }, function (data) {
+                            $("#" + toFillId).html("");
+                            document.getElementById(toFillId).value = data;
+                        }).fail(function (jqXHR, textStatus, errorThrown) {
+                            alert('Error getting data!');
+                        });
+
+              
+                    };
+
+                    function addMGI() {
+                        if ($.trim($('#fpHsCode').val()) == '') {
+                            alert('HS Code required !');
+                            $("#fpHsCode").focus();
+                            return;
+                        }
+                        $('#tbl_MGI > tbody:last').append(
+                            '<tr><td><input type="hidden" name="fpHsCode" id="fpHsCode[]" value="' + $('#fpHsCode').val() + '" />' + $('#fpHsCode option:selected').text()
+                            + '</td><td><input type="hidden" name="fpDesc" id="fpDesc[]" value="' + $('#fpDesc').val() + '" />' + $('#fpDesc').val()
+                            + '</td><td><input type="hidden" name="regOrg" id="regOrg[]" value="' + $('#regOrg').val() + '" />' + $('#regOrg').val()
+                             + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a>'
+                       + '</td></tr>'
+                            );
+                        $("#fpHsCode").val('');
+                        $("#fpDesc").val('');
+                        $("#regOrg").val('');
+                    };
+
+                    function fillBranch(id) {
+                        //var bankId = $(this).find(":selected").val();
+                        var bankId = document.getElementById(id).value;
+                        if (bankId.length > 0) {
+                            // Populate branches.
+                            $.getJSON('GetBranches', { intBankId: bankId }, function (data) {
+                                // Ajax success callback function. Populate dropdown from Json data returned from server.
+                                $('#Branch option').remove();
+                                $('#Branch').append('<option value=""></option');
+                                for (i = 0; i < data.length; i++) {
+                                    $('#Branch').append('<option value="' + data[i].BBRANCHSLNO + '">' + data[i].BRANCHNAME + '</option');
+                                }
+                            }).fail(function (jqXHR, textStatus, errorThrown) {
+                                // Ajax fail callback function.
+                                debugger;
+                                alert('Error getting Branches!');
+                            });
+                        }
+                        else {
+                            // Remove all second dropdown options if empty option is selected in first dropdown.
+                            $('#Branch option').remove();
+                            $('#Branch').append('<option value=""></option');
+                        }
+                    }
+
+                </script>
+
+                <br />
+                <table class="table" id="tbl_MGI">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: center; background-color:honeydew">Manufactured Goods Information</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HS Code</td>
+                            <td>Commercial Description</td>
+                            <td>Rgistered By</td>
+                            <td></td>
+                        </tr>
+                        @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.bonderproduct)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MATERIAL.MHSCODE, new { id = item.FPSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MATERIAL.MDESCRIPTION, new { id = item.FPSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.REGFROM)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteByID", new { tableName = "BONDERPRODUCT", columnName = "FPSLNO", id = item.FPSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                      
+                    </td>
+                </tr>
+            }
+        }
+    }
+    catch { }
+                        }
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew">Total Area of Factory</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Length(ft)</td>
+                            <td>
+                                <input type="text" name="TofLen" id="ToFLen" value="@ViewBag.TOTFACLENG" onchange="calcFacArea();"
+                                       onkeyup="this.onchange();" oninput="this.onchange();" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Width(ft)</td>
+                            <td>
+                                <input type="text" name="TofWid" id="ToFWid" value="@ViewBag.TOTFACWIDTH" onchange="calcFacArea();"
+                                       onkeyup="this.onchange();" oninput="this.onchange();" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Area(sq-ft)</td>
+                            <td>
+                                @* <input type="button" name="calcFactArea" id="calcFactArea" value="Calculate Area"/>*@
+                                <input type="text" name="TofArea" id="ToFArea" readonly />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew">Total Area of Raw Materials Warehouse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Length(ft)</td>
+                            <td>
+                                <input type="text" name="TorLen" id="TorLen" value="@ViewBag.TOTRMWHLENG" onchange="calcRawArea();"
+                                       onkeyup="this.onchange();" oninput="this.onchange();" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Width(ft)</td>
+                            <td>
+                                <input type="text" name="TorWid" id="TorWid" value="@ViewBag.TOTRMWHWIDTH" onchange="calcRawArea();"
+                                       onkeyup="this.onchange();" oninput="this.onchange();" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Area(sq-ft)</td>
+                            <td>
+                                @* <input type="button" name="calcFactArea" id="calcFactArea" value="Calculate Area"/>*@
+                                <input type="text" name="TorArea" id="TorArea" readonly />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew">Total Area of Finished Goods Warehouse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Length(ft)</td>
+                            <td>
+                                <input type="text" name="TogLen" id="TogLen" value="@ViewBag.TOTFGWHLENG" onchange="calcGoodArea();"
+                                       onkeyup="this.onchange();" oninput="this.onchange();" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Width(ft)</td>
+                            <td>
+                                <input type="text" name="TogWid" id="TogWid" value="@ViewBag.TOTFGWHWIDTH" onchange="calcGoodArea();"
+                                       onkeyup="this.onchange();" oninput="this.onchange();" readonly />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Area(sq-ft)</td>
+                            <td>
+                                @* <input type="button" name="calcFactArea" id="calcFactArea" value="Calculate Area"/>*@
+                                <input type="text" name="TogArea" id="TogArea" readonly />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br />
+
+                <script>
+                    function calcFacArea() {
+                        document.getElementById("ToFArea").value = document.getElementById("ToFLen").value * document.getElementById("ToFWid").value;
+                    };
+                    function calcRawArea() {
+                        document.getElementById("TorArea").value = document.getElementById("TorLen").value * document.getElementById("TorWid").value;
+                    };
+                    function calcGoodArea() {
+                        document.getElementById("TogArea").value = document.getElementById("TogLen").value * document.getElementById("TogWid").value;
+                    };
+                    $(window).load(function () {
+                        calcFacArea();
+                        calcRawArea();
+                        calcGoodArea();
+                        $('#Branch option').remove();
+                    });
+                </script>
+               
+
+           
+
+                <input type="submit" id="SaveAsDraft_C" name="Save" class="btn btn-info" value="Save as Draft(Section C)" disabled/>
+
+            </div>
+
+            <div id="tabs-4" class="tab-pane">
+                <h2 class="text-center">Installed Machineries Information</h2>
+
+                <table class="table" id="tbl_IMI">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: center; background-color:honeydew">Description of the Installed Machineries Input</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Brand Name</td>
+                        <td colspan="3">
+                            @Html.DropDownList("IMI_Brand_Name", null, string.Empty, new { id = "IMI_Brand_Name", @disabled = "disabled" })
+                            @*<input type="text" id="IMI_Brand_Name" name="IMI_Brand_Name" />*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Model No</td>
+                        <td colspan="3">
+                            @Html.DropDownList("IMI_Model_No", null, string.Empty, new { id = "IMI_Model_No", @disabled = "disabled" })
+                            @*<input type="text" id="IMI_Model_No" name="IMI_Model_No" />*@
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Description</td>
+                        <td colspan="3"><input type="text" id="IMI_Description" name="IMI_Description" readonly /></td>
+                    </tr>
+
+                    <tr>
+                        <td>Manufacturing Year</td>
+                        <td colspan="3"><input type="text" id="IMI_Manufacturing_Year" name="IMI_Manufacturing_Year" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Country of Origin</td>
+                        <td colspan="3">
+                            @Html.DropDownList("IMI_Country_of_Origin", null, string.Empty, new { id = "IMI_Country_of_Origin", @disabled = "disabled" })
+                            @*<input type="text" id="IMI_Country_of_Origin" name="IMI_Country_of_Origin" />*@
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Date of Installation</td>
+                        <td colspan="3"><input type="date" id="IMI_Date_of_Installation" name="IMI_Date_of_Installation" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>B/E No or VAT Challan No</td>
+                        <td><input type="text" id="IMI_BE_No_or_VAT_Challan_No" name="IMI_BE_No_or_VAT_Challan_No" readonly  /></td>
+                        <td>Date</td>
+                        <td><input type="date" id="IMI_VAT_Date" name="IMI_VAT_Date" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>BL No</td>
+                        <td><input type="text" id="IMI_BL_No" name="IMI_BL_No" readonly /></td>
+                        <td>Date</td>
+                        <td><input type="date" id="IMI_BL_Date" name="IMI_BL_Date" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Invoice No</td>
+                        <td><input type="text" id="IMI_Invoice_No" name="IMI_Invoice_No" readonly /></td>
+                        <td>Date</td>
+                        <td><input type="date" id="IMI_Invoice_Date" name="IMI_Invoice_Date" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>LC No</td>
+                        <td><input type="text" id="IMI_LC_No" name="IMI_LC_No" readonly /></td>
+                        <td>Date</td>
+                        <td><input type="date" id="IMI_LC_Date" name="IMI_LC_Date" readonly  /></td>
+                    </tr>
+                    <tr>
+                        <td>No. of Machines</td>
+                        <td colspan="3"><input type="text" id="IMI_No_of_Machines" name="IMI_No_of_Machines" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Machine Type</td>
+                        <td colspan="3"><select id="IMI_Machine_Type" name="IMI_Machine_Type" disabled><option> </option><option value="M">Mother</option><option value="A">Auxiliary</option></select></td>
+                    </tr>
+                    <tr>
+                        <td>Procurement Type</td>
+                        <td colspan="3"><input type="text" id="IMI_Procurement_Type" name="IMI_Procurement_Type" readonly  /></td>
+                    </tr>
+                    <tr>
+                        @*<td>Indemnity Bond /Undertaking</td>*@
+                        <td>Purchase Type</td>
+                        @*<td><select id="IMI_Indemnity_Bond" name="IMI_Indemnity_Bond" onchange="addIndemnity()"><option> </option><option value="Y">Yes</option><option value="N">No</option></select></td>*@
+                        <td colspan="3"><select id="IMI_Indemnity_Bond" name="IMI_Indemnity_Bond" disabled onchange="addIndemnity() "><option value="D">Direct</option><option value="I">Indemnity Bond /Undertaking</option><option value="L">Local Purchase</option></select></td>
+                    </tr>
+
+                </table>
+                <div id="indemnityLocal"></div>
+                <input type="button" value="Add" id="btnAdd_IMI_Content" onclick="addIMI()" disabled />
+
+                <script id="MPO_Bank" type="text/template">
+                    @Html.DropDownList("MPO_Bank", null, string.Empty, new { @onchange = "FillDesc('MPO_Bank','MPO_Bank_Code','BANK','SWIFT','BANKSLNO')", @disabled = "disabled" })
+                </script>
+
+                <script id="MPO_Branch" type="text/template">
+                    @Html.DropDownList("MPO_Branch", null, string.Empty, new { @onchange = "FillDesc('MPO_Branch','MPO_Bank_Address','BANKBRANCH','ADDRESS','BBRANCHSLNO')", @disabled = "disabled" })
+                </script>
+
+
+                <script>
+                    var rowCount = 0;
+                    function addIndemnity() {
+                        if ($('#IMI_Indemnity_Bond').val() == 'I') {
+                            $('#local').remove();
+                            if (!$('#MII_Machine_Desc').length) {
+                                $('#indemnityLocal').append('<table class="table" id="indemnity"><th colspan="4" style="text-align: center; background-color:honeydew">Machineries Imported by Indemnity Bond Undertaking Input</th>'
+                                     + '<tr><td>B/E No</td><td><input type="text" id="MII_BE_No" /></td> <td>Date</td><td><input type="date" id="MII_BE_Date" readonly/></td></tr>'
+                                     + '<tr><td>Indemnity/Undertaking No</td><td><input type="text" id="MII_Indemn_Undertake_No" readonly /></td> <td>Date</td><td><input type="date" id="MII_Indemn_Date" readonly/></td></tr>'
+                                     + '<tr><td>Cash Memo/Challan/Voucher No</td><td><input type="text" id="MII_Cash_Challan_No" readonly/></td> <td>Date</td><td><input type="date" id="MII_Cash_Challan_Date" readonly/></td></tr>'
+                                     + '<tr><td>Due date of release</td><td><input type="date" id="MII_Due_Date" readonly/></td> <td>Actual Date of Release</td><td><input type="date" id="MII_Actual_Date" readonly/></td></tr></table>'
+                                     );
+                            }
+                        }
+                        else if ($('#IMI_Indemnity_Bond').val() == 'L') {
+                            $('#indemnity').remove();
+                            if (!$('#MPO_Clear_Cer_No').length) {
+                                $('#indemnityLocal').append('<table class="table" id="local"><th colspan="4" style="text-align: center; background-color:honeydew">Machineries Purchased from Other Bonded Factory(after release of indemnity bond/undertaking by importer) Input</th>'
+                                   + '<tr><td>Clearance certificate No(from BOI/BSCIC/…)</td><td><input type="text" id="MPO_Clear_Cer_No" readonly/></td><td>Date</td><td><input type="date" id="MPO_Clear_Date" readonly/></td></tr>'
+                                   + '<tr><td>Permission from the bond authority</td><td><input type="text" id="MPO_Perm" /></td> <td>Date</td><td><input type="date" id="MPO_Perm_Date" readonly /></td></tr>'
+                                   + '<tr><td>Transferor Lien bank NOC No</td><td><input type="text" id="MPO_Transfer_No" readonly/></td> <td>Date</td><td><input type="date" id="MPO_Transfer_Date" readonly/></td></tr>'
+                                   + '<tr><td>Bank Name</td><td>' + $('#MPO_Bank').html() + '</td><td>Bank Code</td><td><input type="text" id="MPO_Bank_Code" readonly="true"/></td></tr>'
+                                   + '<tr><td>Branch</td><td>' + $('#MPO_Branch').html() + '</td> <td>Bank Address</td><td><input type="text" id="MPO_Bank_Address" readonly="true"/></td></tr></table>'
+                                   );
+                            }
+                        }
+                        else if ($('#IMI_Indemnity_Bond').val() == 'D') {
+                            $('#indemnity').remove();
+                            $('#local').remove();
+                        }
+                    }
+                    function addIMI() {
+                        if ($.trim($('#IMI_Brand_Name').val()) == '') {
+                            alert('Brand Name required !');
+                            $("#IMI_Brand_Name").focus();
+                            return;
+                        }
+                        else if ($.trim($('#IMI_Model_No').val()) == '') {
+                            alert('Model Name required !');
+                            $("#IMI_Model_No").focus();
+                            return;
+                        }
+                        $('#tableInstalledMachines > tbody:last').append('<tr>'
+                              + '<td><input type="hidden" name="IMI_Brand_Name" id="IMI_Brand_Name[]" value="' + $('#IMI_Brand_Name').val() + '" />' + $('#IMI_Brand_Name option:selected').text()
+                               + '<input type="hidden" name="IMI_Model_No" id="IMI_Model_No[]" value="' + $('#IMI_Model_No').val() + '" />'
+                               + '</td> <td><input type="hidden" name="IMI_Description" id="IMI_Description[]" value="' + $('#IMI_Description').val() + '" />' + $('#IMI_Description').val()
+                               + '<input type="hidden" name="IMI_Manufacturing_Year" id="IMI_Manufacturing_Year[]" value="' + $('#IMI_Manufacturing_Year').val() + '" />'
+                                + '</td><td><input type="hidden" name="IMI_Country_of_Origin" id="IMI_Country_of_Origin[]" value="' + $('#IMI_Country_of_Origin').val() + '" />' + $('#IMI_Country_of_Origin option:selected').text()
+                                 + '</td><td><input type="hidden" name="IMI_Date_of_Installation" id="IMI_Date_of_Installation[]" value="' + $('#IMI_Date_of_Installation').val() + '" />' + $('#IMI_Date_of_Installation').val()
+                                  + '<input type="hidden" name="IMI_BE_No_or_VAT_Challan_No" id="IMI_BE_No_or_VAT_Challan_No[]" value="' + $('#IMI_BE_No_or_VAT_Challan_No').val() + '" />'
+                                  + '<input type="hidden" name="IMI_VAT_Date" id="IMI_VAT_Date[]" value="' + $('#IMI_VAT_Date').val() + '" />'
+                                  + '<input type="hidden" name="IMI_BL_No" id="IMI_BL_No[]" value="' + $('#IMI_BL_No').val() + '" />'
+                                  + '<input type="hidden" name="IMI_BL_Date" id="IMI_BL_Date[]" value="' + $('#IMI_BL_Date').val() + '" />'
+                                  + '<input type="hidden" name="IMI_Invoice_No" id="IMI_Invoice_No[]" value="' + $('#IMI_Invoice_No').val() + '" />'
+                                  + '<input type="hidden" name="IMI_Invoice_Date" id="IMI_Invoice_Date[]" value="' + $('#IMI_Invoice_Date').val() + '" />'
+                                  + '<input type="hidden" name="IMI_LC_No" id="IMI_LC_No[]" value="' + $('#IMI_LC_No').val() + '" />'
+                                  + '<input type="hidden" name="IMI_LC_Date" id="IMI_LC_Date[]" value="' + $('#IMI_LC_Date').val() + '" />'
+                                  + '</td><td><input type="hidden" name="IMI_No_of_Machines" id="IMI_No_of_Machines[]" value="' + $('#IMI_No_of_Machines').val() + '" />' + $('#IMI_No_of_Machines').val()
+                                  + '<input type="hidden" name="IMI_Machine_Type" id="IMI_Machine_Type[]" value="' + $('#IMI_Machine_Type').val() + '" />'
+                                  + '<input type="hidden" name="IMI_Procurement_Type" id="IMI_Procurement_Type[]" value="' + $('#IMI_Procurement_Type').val() + '" />'
+                                  + '<input type="hidden" name="IMI_Indemnity_Bond" id="IMI_Indemnity_Bond[]" value="' + $('#IMI_Indemnity_Bond').val() + '" />'
+                                   + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>');
+
+
+
+                        if ($('#IMI_Indemnity_Bond').val() == 'I') {
+                            if ($.trim($('#MII_BE_No').val()) == '') {
+                                alert('BE No required !');
+                                $("#MII_BE_No").focus();
+                                return;
+                            }
+
+                            $('#tbl_Indemnity> tbody:last').append('<tr>'
+                             + '<td><input type="hidden" name="MII_BE_No" id="MII_BE_No[]" value="' + $('#MII_BE_No').val() + '" />' + $('#MII_BE_No').val()
+                             + '<td><input type="hidden" name="MII_BE_Date" id="MII_BE_Date[]" value="' + $('#MII_BE_Date').val() + '" />' + $('#MII_BE_Date').val()
+                             + '<td><input type="hidden" name="MII_Indemn_Undertake_No" id="MII_Indemn_Undertake_No[]" value="' + $('#MII_Indemn_Undertake_No').val() + '" />' + $('#MII_Indemn_Undertake_No').val()
+                             + '<td><input type="hidden" name="MII_Indemn_Date" id="MII_Indemn_Date[]" value="' + $('#MII_Indemn_Date').val() + '" />' + $('#MII_Indemn_Date').val()
+                             + '<td><input type="hidden" name="MII_Cash_Challan_No" id="MII_Cash_Challan_No[]" value="' + $('#MII_Cash_Challan_No').val() + '" />' + $('#MII_Cash_Challan_No').val()
+                             + '<td><input type="hidden" name="MII_Cash_Challan_Date" id="MII_Cash_Challan_Date[]" value="' + $('#MII_Cash_Challan_Date').val() + '" />' + $('#MII_Cash_Challan_Date').val()
+                             + '<td><input type="hidden" name="MII_Due_Date" id="MII_Due_Date[]" value="' + $('#MII_Due_Date').val() + '" />' + $('#MII_Due_Date').val()
+                             + '<td><input type="hidden" name="MII_Actual_Date" id="MII_Actual_Date[]" value="' + $('#MII_Actual_Date').val() + '" />' + $('#MII_Actual_Date').val()
+                             + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>');
+
+                            $("#MII_Machine_Desc").val('');
+                            $("#MII_BE_No").val('');
+                            $("#MII_BE_Date").val('');
+                            $("#MII_Indemn_Undertake_No").val('');
+                            $("#MII_Indemn_Date").val('');
+                            $("#MII_Cash_Challan_No").val('');
+                            $("#MII_Cash_Challan_Date").val('');
+                            $("#MII_Due_Date").val('');
+                            $("#MII_Actual_Date").val('');
+                            $("#IMI_Indemnity_Bond").val('');
+
+                            $('#indemnity').remove();
+                        }
+                        else if ($('#IMI_Indemnity_Bond').val() == 'L') {
+                            if ($.trim($('#MPO_Clear_Cer_No').val()) == '') {
+                                alert('Clearance certificate No required !');
+                                $("#MPO_Clear_Cer_No").focus();
+                                return;
+                            }
+
+                            $('#tbl_Local> tbody:last').append('<tr>'
+                             + '<td><input type="hidden" name="MPO_Clear_Cer_No" id="MPO_Clear_Cer_No[]" value="' + $('#MPO_Clear_Cer_No').val() + '" />' + $('#MPO_Clear_Cer_No').val()
+                             + '<td><input type="hidden" name="MPO_Clear_Date" id="MPO_Clear_Date[]" value="' + $('#MPO_Clear_Date').val() + '" />' + $('#MPO_Clear_Date').val()
+                             + '<td><input type="hidden" name="MPO_Perm" id="MPO_Perm[]" value="' + $('#MPO_Perm').val() + '" />' + $('#MPO_Perm').val()
+                             + '<td><input type="hidden" name="MPO_Perm_Date" id="MPO_Perm_Date[]" value="' + $('#MPO_Perm_Date').val() + '" />' + $('#MPO_Perm_Date').val()
+                             + '<td><input type="hidden" name="MPO_Transfer_No" id="MPO_Transfer_No[]" value="' + $('#MPO_Transfer_No').val() + '" />' + $('#MPO_Transfer_No').val()
+                             + '<td><input type="hidden" name="MPO_Transfer_Date" id="MPO_Transfer_Date[]" value="' + $('#MPO_Transfer_Date').val() + '" />' + $('#MPO_Transfer_Date').val()
+                             + '<td><input type="hidden" name="MPO_Bank_Code" id="MPO_Bank_Code[]" value="' + $('#MPO_Bank_Code').val() + '" />' + $('#MPO_Bank_Code').val()
+                             + '<td><input type="hidden" name="MPO_Bank" id="MPO_Bank[]" value="' + $('#MPO_Bank').val() + '" />' + $('#MPO_Bank option:selected').text()
+                             + '<td><input type="hidden" name="MPO_Branch" id="MPO_Branch[]" value="' + $('#MPO_Branch').val() + '" />' + $('#MPO_Branch option:selected').text()
+                             + '<td><input type="hidden" name="MPO_Bank_Address" id="MPO_Bank_Address[]" value="' + $('#MPO_Bank_Address').val() + '" />' + $('#MPO_Bank_Address').val()
+                             + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>');
+
+                            $("#MPO_Clear_Cer_No").val('');
+                            $("#MPO_Clear_Date").val('');
+                            $("#MPO_Perm").val('');
+                            $("#MPO_Perm_Date").val('');
+                            $("#MPO_Transfer_No").val('');
+                            $("#MPO_Transfer_Date").val('');
+                            $("#MPO_Bank_Code").val('');
+                            $("#MPO_Bank_Name").val('');
+                            $("#MPO_Branch").val('');
+                            $("#MPO_Bank_Address").val('');
+                            $("#IMI_Indemnity_Bond").val('');
+
+                            $('#local').remove();
+                        }
+                        $("#IMI_Description").val('');
+                        $("#IMI_Brand_Name").val('');
+                        $("#IMI_Model_No").val('');
+                        $("#IMI_Manufacturing_Year").val('');
+                        $("#IMI_Country_of_Origin").val('');
+                        $("#IMI_Date_of_Installation").val('');
+                        $("#IMI_BE_No_or_VAT_Challan_No").val('');
+                        $("#IMI_VAT_Date").val('');
+                        $("#IMI_BL_No").val('');
+                        $("#IMI_BL_Date").val('');
+                        $("#IMI_Invoice_No").val('');
+                        $("#IMI_Invoice_Date").val('');
+                        $("#IMI_LC_No").val('');
+                        $("#IMI_LC_Date").val('');
+                        $("#IMI_No_of_Machines").val('');
+                        $("#IMI_Machine_Type").val('');
+                        $("#IMI_Procurement_Type").val('');
+                    };
+                    $(document).ready(function () {
+                        rowCount++;
+                        //rowCount = '@ViewBag.IMI_RowCount';
+
+                        $("#btnAdd_IMI_Content").click(function () {
+                            //AddRow();
+                            if ($.trim($('#IMI_Brand_Name').val()) == '') {
+                                alert('Brand Name required !');
+                                $("#IMI_Brand_Name").focus();
+                                return;
+                            }
+                            else if ($.trim($('#IMI_Model_No').val()) == '') {
+                                alert('Model Name required !');
+                                $("#IMI_Model_No").focus();
+                                return;
+                            }
+
+                            rowCount++;
+
+                            $('#tableInstalledMachines > tbody:last').append('<tr>'
+                               + '<td><input type="hidden" name="IMI_Brand_Name" id="IMI_Brand_Name[]" value="' + $('#IMI_Brand_Name').val() + '" />' + $('#IMI_Brand_Name option:selected').text()
+                                + '</td><td><input type="hidden" name="IMI_Model_No" id="IMI_Model_No[]" value="' + $('#IMI_Model_No').val() + '" />' + $('#IMI_Model_No option:selected').text()
+                                + '</td> <td><input type="hidden" name="IMI_Description" id="IMI_Description[]" value="' + $('#IMI_Description').val() + '" />' + $('#IMI_Description').val()
+                                + '</td><td><input type="hidden" name="IMI_Manufacturing_Year" id="IMI_Manufacturing_Year[]" value="' + $('#IMI_Manufacturing_Year').val() + '" />' + $('#IMI_Manufacturing_Year').val()
+                                 + '</td><td><input type="hidden" name="IMI_Country_of_Origin" id="IMI_Country_of_Origin[]" value="' + $('#IMI_Country_of_Origin').val() + '" />' + $('#IMI_Country_of_Origin option:selected').text()
+                                  + '</td><td><input type="hidden" name="IMI_Date_of_Installation" id="IMI_Date_of_Installation[]" value="' + $('#IMI_Date_of_Installation').val() + '" />' + $('#IMI_Date_of_Installation').val()
+                                   + '</td><td><input type="hidden" name="IMI_BE_No_or_VAT_Challan_No" id="IMI_BE_No_or_VAT_Challan_No[]" value="' + $('#IMI_BE_No_or_VAT_Challan_No').val() + '" />' + $('#IMI_BE_No_or_VAT_Challan_No').val()
+                                   + '</td><td><input type="hidden" name="IMI_VAT_Date" id="IMI_VAT_Date[]" value="' + $('#IMI_VAT_Date').val() + '" />' + $('#IMI_VAT_Date').val()
+                                   + '</td><td><input type="hidden" name="IMI_BL_No" id="IMI_BL_No[]" value="' + $('#IMI_BL_No').val() + '" />' + $('#IMI_BL_No').val()
+                                   + '</td><td><input type="hidden" name="IMI_BL_Date" id="IMI_BL_Date[]" value="' + $('#IMI_BL_Date').val() + '" />' + $('#IMI_BL_Date').val()
+                                   + '</td><td><input type="hidden" name="IMI_Invoice_No" id="IMI_Invoice_No[]" value="' + $('#IMI_Invoice_No').val() + '" />' + $('#IMI_Invoice_No').val()
+                                   + '</td><td><input type="hidden" name="IMI_Invoice_Date" id="IMI_Invoice_Date[]" value="' + $('#IMI_Invoice_Date').val() + '" />' + $('#IMI_Invoice_Date').val()
+                                   + '</td><td><input type="hidden" name="IMI_LC_No" id="IMI_LC_No[]" value="' + $('#IMI_LC_No').val() + '" />' + $('#IMI_LC_No').val()
+                                   + '</td><td><input type="hidden" name="IMI_LC_Date" id="IMI_LC_Date[]" value="' + $('#IMI_LC_Date').val() + '" />' + $('#IMI_LC_Date').val()
+                                   + '</td><td><input type="hidden" name="IMI_No_of_Machines" id="IMI_No_of_Machines[]" value="' + $('#IMI_No_of_Machines').val() + '" />' + $('#IMI_No_of_Machines').val()
+                                   + '</td><td><input type="hidden" name="IMI_Machine_Type" id="IMI_Machine_Type[]" value="' + $('#IMI_Machine_Type').val() + '" />' + $('#IMI_Machine_Type option:selected').text()
+                                   + '</td><td><input type="hidden" name="IMI_Procurement_Type" id="IMI_Procurement_Type[]" value="' + $('#IMI_Procurement_Type').val() + '" />' + $('#IMI_Procurement_Type').val()
+                                   + '</td><td><input type="hidden" name="IMI_Indemnity_Bond" id="IMI_Indemnity_Bond[]" value="' + $('#IMI_Indemnity_Bond').val() + '" />' + $('#IMI_Indemnity_Bond option:selected').text()
+                                    + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>');
+
+                            $("#IMI_Description").val('');
+                            $("#IMI_Brand_Name").val('');
+                            $("#IMI_Model_No").val('');
+                            $("#IMI_Manufacturing_Year").val('');
+                            $("#IMI_Country_of_Origin").val('');
+                            $("#IMI_Date_of_Installation").val('');
+                            $("#IMI_BE_No_or_VAT_Challan_No").val('');
+                            $("#IMI_VAT_Date").val('');
+                            $("#IMI_BL_No").val('');
+                            $("#IMI_BL_Date").val('');
+                            $("#IMI_Invoice_No").val('');
+                            $("#IMI_Invoice_Date").val('');
+                            $("#IMI_LC_No").val('');
+                            $("#IMI_LC_Date").val('');
+                            $("#IMI_No_of_Machines").val('');
+                            $("#IMI_Machine_Type").val('');
+                            $("#IMI_Procurement_Type").val('');
+
+                        });
+                    });
+
+                    
+
+                </script>
+                <table class="table" id="tableInstalledMachines">
+                    <thead>
+                        <tr>
+                            <th colspan="6" style="text-align: center; background-color:honeydew"> Description of the Installed Machineries </th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        @*  <td>SL. No</td>           *@
+                        <td>Brand Name</td>
+                        @*   <td>Model No</td>*@
+                        <td>Description</td>
+                        @*   <td>Manufacturing Year</td>*@
+                        <td>Country of Origin</td>
+                        <td>Date of Installation</td>
+                       
+                        <td>No. of Machines </td>
+                       
+                        <td></td>
+                    </tr>
+                    @{
+    int i = 0;
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.installedmachineinfo)
+            {
+                i++;
+                <tr>
+                    @*  <td>
+                            @i
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MACHINEINFORMATION.BRAND_NAME, new { id = item.MACHINESLNO })
+                    </td>
+                    @* <td>
+                            @Html.DisplayFor(modelItem => item.MODEL.MODELNM, new { id = item.MODELSLNO })
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DESCRIPTION)
+                    </td>
+                    @*   <td>
+                            @Html.DisplayFor(modelItem => item.MANUFACTUREYEAR)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COUNTRY.COUNTRYNAME, new { id = item.COUNTRYSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DATEOFINSTALL)
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MACHINEQTY)
+                    </td>
+                   
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteByID", new { tableName = "INSTALLEDMACHINEINFO", columnName = "MACHINESLNO", id = item.MACHINESLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                       
+                    </td>
+                </tr>
+            }
+        }
+    }
+    catch { }
+    ViewBag.IMI_RowCount = i;
+                    }
+                </table>
+                <br />
+                <table class="table" id="tbl_Indemnity">
+                    <thead>
+                        <tr>
+                            <th colspan="8" style="text-align: center; background-color:honeydew">Machineries Imported by Indemnity Bond Undertaking</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>B/E No</td>
+                        <td>B/E Date</td>
+                        <td>Indemnity/Undertaking No</td>
+                        <td>Indemnity/Undertaking Date</td>
+                        <td>Cash Memo/Challan/Voucher No</td>
+                        <td>Cash Memo/Challan/Voucher Date</td>
+                        <td>Due date of release</td>
+                        <td>Actual Date of Release</td>
+                    </tr>
+                    @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.installedmachineinfo)
+            {
+                if (item.BENO != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BENO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BENODATE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.INDEMNITYUNDERTKNO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.INDEMNITYUNDERTKDT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CASHCHALNVOUCHNO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CASHCHALNVOUCHDT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DUERELEASDT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACTRELEASDT)
+                        </td>
+                       
+                    </tr>
+                }
+            }
+        }
+    }
+    catch { }
+                    }
+                </table>
+                <br />
+                <table class="table" id="tbl_Local">
+                    <thead>
+                        <tr>
+                            <th colspan="10" style="text-align: center; background-color:honeydew">Machineries Purchased from Other Bonded Factory(after release of indemnity bond/undertaking by importer)</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Clearance certificate No(from BOI/BSCIC/…)</td>
+                        <td>Clearance certificate Date</td>
+                        <td>Permission from the bond authority</td>
+                        <td>Permission Date</td>
+                        <td>Transferor Lien bank NOC No</td>
+                        <td>Transferor Lien bank NOC Date</td>
+                        <td>Bank Name</td>
+                        <td>Bank Code</td>
+                        <td>Branch</td>
+                        <td>Bank Address</td>
+                    </tr>
+                    @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.installedmachineinfo)
+            {
+                if (item.LOCALPURCLEARENCENO != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOCALPURCLEARENCENO)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOCALPURCLEARENCEDT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOCALPURPERMISSIONFROMCBC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LOCALPURPERMISSIONFROMCBCDT)
+                        </td>
+                        <td>
+                            @*@if (item.BANKBRANCH.BANKSLNO!=null)
+                                @Html.DisplayFor(modelItem => item.BANKBRANCH.BANK.BANKNAME, new { id=item.BANKBRANCH.BANKSLNO })*@
+                        </td>
+                        <td>
+                            @*@if (item.BANKBRANCH.BANKSLNO!=null)
+                                @Html.DisplayFor(modelItem => item.BANKBRANCH.BANK.SWIFT, new { id=item.BANKBRANCH.BANKSLNO })*@
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.BANKBRANCH.BANK.BANKNAME, new { id = item.BANKBRANCH.BANK.BANKSLNO})*@
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.BANKBRANCH.BANK.SWIFT, new { id = item.BANKBRANCH.BANK.BANKSLNO})*@
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BANKBRANCH.BRANCHNAME, new { id = item.TRANSFERLIENBANK })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BANKBRANCH.ADDRESS, new { id = item.TRANSFERLIENBANK })
+                        </td>
+                        @* <td>
+                                 @Ajax.ActionLink("Delete", "DeleteByID", new { tableName = "INSTALLEDMACHINEINFO", columnName = "MACHINESLNO", id = item.MACHINESLNO }, new AjaxOptions
+                            {
+                                Confirm = "Are you sure you want to delete?",
+                                OnComplete = "deleteComplete",
+                                HttpMethod = "POST"
+                            })
+                             </td>*@
+                    </tr>
+                }
+            }
+        }
+    }
+    catch { }
+                    }
+                </table>
+                <br />
+                <h2>Product Wise Mother and Auxiliary machineries and total production capacity</h2>
+
+                <br />
+                <table class="table" id="tbl_PWM_input">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: center; background-color:honeydew">Product wise machineries production Input</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>HS Code</td>
+                        <td>
+                            @Html.DropDownList("PWM_HS_Code", null, string.Empty, new { @onchange = "FillDesc('PWM_HS_Code','PWM_Commercial_Description','MATERIALS','MDESCRIPTION','MHSCODE')",@disabled="disabled" })
+                            @*<input type="text" name="PWM_HS_Code" />*@
+                        </td>
+                        <td>Commercial Description </td>
+                        <td><input type="text" name="PWM_Commercial_Description" id="PWM_Commercial_Description" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Annual Production Capacity</td>
+                        <td><input type="text" name="PWM_AnnualCapacity" id="PWM_AnnualCapacity" readonly /></td>
+                        <td>Unit</td>
+                        <td>
+                            @Html.DropDownList("PWM_Unit", null, string.Empty, new { id = "PWM_Unit", @disabled = "disabled" })
+                        </td>
+                        @* <td><input type="text" name="PWM_Unit" id="PWM_Unit" /></td>*@
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td>Mother Machine</td>
+                        <td>
+                            @Html.DropDownList("PWM_Model_No", null, string.Empty, new { id = "PWM_Machine", @disabled = "disabled" })
+                            @*<input type="text" name="PWM_Machine" id="PWM_Machine" />*@
+                        </td>
+                        @*   <td>Machine Type</td>
+                            <td>
+                                <select id="PWM_MachineType" name="PWM_MachineType"><option> </option><option value="M">Mother</option><option value="A">Auxiliary</option></select>
+                            </td>*@
+                        <td>Qty</td>
+                        <td><input type="text" name="PWM_Qty" id="PWM_Qty" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="button" name="btn_AddPWM_Machine" id="btn_AddPWM_Machine" value="Add Machine" onclick="addPWM_Machine()" disabled/>
+                        </td>
+                    </tr>
+                </table>
+                <input type="button" name="btn_AddPWM" id="btn_AddPWM" value="Add" onclick="addPWM()" disabled/>
+                <br />
+                <script id="template" type="text/template">
+                    @Html.DropDownList("PWM_Model_No", null, string.Empty, new { @disabled = "disabled" })
+                </script>
+
+                <script>
+                    function addPWM_Machine() {
+                        $('#tbl_PWM_input > tbody:last').append('<tr>'
+                              + '<td>Machine</td>'
+                               + '<td>' + $('#template').html() + '</td>'
+                               + '<td>Machine Type</td>'
+                               + '<td><select id="PWM_Machines_Type" name="PWM_Machines_Type" id="PWM_Machines_Type[]" disabled><option> </option><option value="M">Mother</option><option value="A">Auxiliary</option></select></td>'
+                               + '<td>Qty</td>'
+                               + '<td><input type="text" name="PWM_Machines_Qty" id="PWM_Machines_Qty[]" readonly/></td>'
+                                   + '<td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td>'
+                                   + '</tr>');
+                    };
+                    function addPWM() {
+                        if ($.trim($('#PWM_HS_Code').val()) == '') {
+                            alert('HS Code required !');
+                            $("#PWM_HS_Code").focus();
+                            return;
+                        }
+                        $('#tbl_PWM > tbody:last').append('<tr>'
+                              + '<td><input type="hidden" name="PWM_HS_Code" id="PWM_HS_Code[]" value="' + $('#PWM_HS_Code').val() + '" />' + $('#PWM_HS_Code').val()
+                               + '</td><td><input type="hidden" name="PWM_AnnualCapacity" id="PWM_AnnualCapacity[]" value="' + $('#PWM_AnnualCapacity').val() + '" />' + $('#PWM_AnnualCapacity').val()
+                                + '</td><td><input type="hidden" name="PWM_Unit" id="PWM_Unit[]" value="' + $('#PWM_Unit').val() + '" />' + $('#PWM_Unit option:selected').text()
+                                 + '</td><td><input type="hidden" name="PWM_Machine" id="PWM_Machine[]" value="' + $('#PWM_Machine').val() + '" />' + $('#PWM_Machine option:selected').text()
+                                  + '</td><td><input type="hidden" name="PWM_Qty" id="PWM_Qty[]" value="' + $('#PWM_Qty').val() + '" />' + $('#PWM_Qty').val()
+                                   + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>');
+
+                        $("#PWM_HS_Code").val('');
+                        $("#PWM_Commercial_Description").val('');
+                        $("#PWM_AnnualCapacity").val('');
+                        $("#PWM_Unit").val('');
+                        $("#PWM_Machine").val('');
+                        $("#PWM_Qty").val('');
+                    }
+                </script>
+                <table class="table" id="tbl_PWM">
+                    <thead>
+                        <tr>
+                            <th colspan="6" style="text-align: center; background-color:honeydew">Product wise machineries production Information</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>HS Code</td>
+                        @*  <td>Commercial Description</td>*@
+                        <td>Annual Production</td>
+                        <td>Unit</td>
+                        <td>Mother Machine</td>
+                        <td>Qty</td>
+                        <td></td>
+                    </tr>
+                    @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.prodcapacitymachinewisem)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MHSCODE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ANNUALPRODUCTION)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MEASUREMENTUNIT.MUNAME, new { id = item.MUSLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MACHINEINFORMATION.MODELNM, new { id = item.MACHINESLNO })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MACHINEQTY)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteByID", new { tableName = "PRODCAPACITYMACHINEWISEM", columnName = "FPSLNO", id = item.FPSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                       
+                    </td>
+                </tr>
+            }
+        }
+    }
+    catch { }
+                    }
+                </table>
+
+              
+
+
+
+                <br />
+
+            
+
+                <br />
+
+               
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="4" style="text-align: center; background-color:honeydew">Associate business Input (applicable for all Directors/Partners)</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Name</td>
+                        <td colspan="3"><input type="text" name="ABI_Name" id="ABI_Name" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Position</td>
+                        <td colspan="3">@Html.DropDownList("ABI_Designation", null, string.Empty, new { id = "ABI_Designation", @disabled = "disabled" })</td>
+                        @*<td><input type="text" name="ABI_Position" id="ABI_Position" /></td>*@
+                    </tr>
+                    <tr>
+                        <td>TIN No</td>
+                        <td><input type="text" name="ABI_TIN_No" id="ABI_TIN_No" readonly/></td>
+                        <td>Issue Date</td>
+                        <td><input type="date" name="ABI_TIN_Issue_Date" id="ABI_TIN_Issue_Date" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>NID No</td>
+                        <td><input type="text" name="ABI_NID_No" id="ABI_NID_No" readonly/></td>
+                        <td>Issue Date</td>
+                        <td><input type="date" name="ABI_NID_Issue_Date" id="ABI_NID_Issue_Date" readonly /></td>
+                    </tr>
+                    <tr>
+                        <td>Name of the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_NameOfAssoc" id="ABI_NameOfAssoc" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Address of the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_AddressOfAssoc" id="ABI_AddressOfAssoc" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>BIN of the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_BINOfAssoc" id="ABI_BINOfAssoc" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>TIN of the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_TIN_OfAssoc" id="ABI_TIN_OfAssoc" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Nature of the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_NatureOfAssoc" id="ABI_NatureOfAssoc" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Position of in the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_PositionOfAssoc" id="ABI_PositionOfAssoc" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Share of in the associate business</td>
+                        <td colspan="3"><input type="text" name="ABI_ShareOfAssoc" id="ABI_ShareOfAssoc" readonly/></td>
+                    </tr>
+                    @* <tr>
+                            <td colspan="4"><input type="button" name="btnAddABI" id="btnAddABI" value="Add" onclick="addABI()" /></td>
+                        </tr>*@
+                </table>
+
+                <input type="button" name="btnAddABI" id="btnAddABI" value="Add" onclick="addABI()" disabled/>
+
+                <table id="tblABI" class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="7" style="text-align: center; background-color:honeydew">Chairman/MD/Director's/Proprietor's Information</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Name</td>
+                        <td>Position</td>
+                        @*            <td>TIN No</td>
+                             <td>TIN Issue Date</td>
+                             <td>NID No</td>
+                            <td>NID Issue Date</td>  *@
+                        <td>Name of the Associate business</td>
+                        @*      <td>Address of the associate business</td>
+                            <td>BIN of the associate business</td>
+                            <td>TIN of the associate business</td>*@
+                        <td>Nature of the Associate business</td>
+                        <td>Position in the associate business</td>
+                        <td>Share of that associate business</td>
+                        <td></td>
+                    </tr>
+                    @{
+    try
+    {
+        foreach (var OutItem in Model)
+        {
+            foreach (var item in OutItem.ownerassociatebusiness)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OWNERNAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DESIGNATION.DESNAME, new { id = item.OWNERDESSLNO })
+                    </td>
+                  
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ASSOBUSINESSNAME)
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BUSINESSNATURE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BUSINESSPOS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BUSINESSSHARE)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Delete", "DeleteByID", new { tableName = "OWNERASSOCIATEBUSINESS", columnName = "ASSOCIATESLNO", id = item.ASSOCIATESLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+                       
+                    </td>
+                </tr>
+            }
+        }
+    }
+    catch { }
+                    }
+                </table>
+                <script>
+                    function addABI() {
+                        if ($.trim($('#ABI_Name').val()) == '') {
+                            alert('Name required !');
+                            $("#ABI_Name").focus();
+                            return;
+                        }
+                        else if ($.trim($('#ABI_NameOfAssoc').val()) == '') {
+                            alert('Name required !');
+                            $("#ABI_NameOfAssoc").focus();
+                            return;
+                        }
+                        $('#tblABI > tbody:last').append('<tr>'
+                              + '<td><input type="hidden" name="ABI_Name" id="ABI_Name[]" value="' + $('#ABI_Name').val() + '" />' + $('#ABI_Name').val()
+                               + '</td><td><input type="hidden" name="ABI_Designation" id="ABI_Designation[]" value="' + $('#ABI_Designation').val() + '" />' + $('#ABI_Designation option:selected').text()
+                                + '<input type="hidden" name="ABI_TIN_No" id="ABI_TIN_No[]" value="' + $('#ABI_TIN_No').val() + '" />'
+                                 + '<input type="hidden" name="ABI_TIN_Issue_Date" id="ABI_TIN_Issue_Date[]" value="' + $('#ABI_TIN_Issue_Date').val() + '" />'
+                                  + '<input type="hidden" name="ABI_NID_No" id="ABI_NID_No[]" value="' + $('#ABI_NID_No').val() + '" />'
+                                  + '</td><td><input type="hidden" name="ABI_NameOfAssoc" id="ABI_NameOfAssoc[]" value="' + $('#ABI_NameOfAssoc').val() + '" />' + $('#ABI_NameOfAssoc').val()
+                                  + '<input type="hidden" name="ABI_AddressOfAssoc" id="ABI_AddressOfAssoc[]" value="' + $('#ABI_AddressOfAssoc').val() + '" />'
+                                  + '<input type="hidden" name="ABI_BINOfAssoc" id="ABI_BINOfAssoc[]" value="' + $('#ABI_BINOfAssoc').val() + '" />'
+                                  + '<input type="hidden" name="ABI_TIN_OfAssoc" id="ABI_TIN_OfAssoc[]" value="' + $('#ABI_TIN_OfAssoc').val() + '" />'
+                                  + '</td><td><input type="hidden" name="ABI_NatureOfAssoc" id="ABI_NatureOfAssoc[]" value="' + $('#ABI_NatureOfAssoc').val() + '" />' + $('#ABI_NatureOfAssoc').val()
+                                  + '</td><td><input type="hidden" name="ABI_PositionOfAssoc" id="ABI_PositionOfAssoc[]" value="' + $('#ABI_PositionOfAssoc').val() + '" />' + $('#ABI_PositionOfAssoc').val()
+                                  + '</td><td><input type="hidden" name="ABI_ShareOfAssoc" id="ABI_ShareOfAssoc[]" value="' + $('#ABI_ShareOfAssoc').val() + '" />' + $('#ABI_ShareOfAssoc').val()
+                                   + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">Remove</a></td></tr>');
+
+                        $("#ABI_Name").val('');
+                        $("#ABI_Designation").val('');
+                        $("#ABI_TIN_No").val('');
+                        $("#ABI_TIN_Issue_Date").val('');
+                        $("#ABI_NID_No").val('');
+                        $("#ABI_NID_Issue_Date").val('');
+                        $("#ABI_NameOfAssoc").val('');
+                        $("#ABI_AddressOfAssoc").val('');
+                        $("#ABI_BINOfAssoc").val('');
+                        $("#ABI_TIN_OfAssoc").val('');
+                        $("#ABI_NatureOfAssoc").val('');
+                        $("#ABI_PositionOfAssoc").val('');
+                        $("#ABI_ShareOfAssoc").val('');
+                    }
+                </script>
+
+              
+
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew">Information about the Authorized signatory</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Name of the Authorized signatory</td>
+                        <td><input type="text" name="nameOfAuthSign" id="nameOfAuthSign" value="@ViewBag.AUTHORIZEDSIGNAME" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Signature of the authorized signatory
+                            <input type="hidden" name="SignFileName" value="@ViewBag.INITIALAUTHSIGFILENM" />
+                        </td>
+                        @{
+    if (!String.IsNullOrEmpty(ViewBag.INITIALAUTHSIGFILENM))
+    {
+        <td>
+            <input type="text" name="showSignFileName" value="@Path.GetFileName(ViewBag.INITIALAUTHSIGFILENM)" />
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.INITIALAUTHSIGFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "INITIALAUTHSIGFILENM", filePath = ViewBag.INITIALAUTHSIGFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" name="uploadAuthSign" />
+        </td>
+    }
+                        }
+                        @*<td><input type="file" name="uploadAuthSign" id="signOfAuthSign" /></td>*@
+                        @*   <td>
+                                <input type ="hidden" name="SignFileName" value="@ViewBag.INITIALAUTHSIGFILENM"/>
+                            </td>  *@
+                    </tr>
+                    <tr>
+                        <td>
+                            Photograph of the authorized signatory
+                            <input type="hidden" name="PhotoFileName" value="@ViewBag.PHOTOFILENM" />
+                        </td>
+                        @{
+    if (!String.IsNullOrEmpty(ViewBag.PHOTOFILENM))
+    {
+        <td>
+            <input type="text" name="showPhotoSignFileName" value="@Path.GetFileName(ViewBag.PHOTOFILENM)" readonly/>
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.PHOTOFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "PHOTOFILENM", filePath = ViewBag.PHOTOFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" name="uploadPhotoOfAuthSign" />
+        </td>
+    }
+                        }
+                        @*<td><input type="file" name="uploadPhotoOfAuthSign" id="photoOfAuthSign" /></td>*@
+                        @*    <td>
+                                <input type ="hidden" name="PhotoFileName" value="@ViewBag.PHOTOFILENM"/>
+                            </td>*@
+                    </tr>
+                </table>
+
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center; background-color:honeydew">Declaration (by the Chairman/MD/Proprietor/Sole Partner)</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td colspan="2">I declare that the particulars supplied by me in this application are correct and true in every respect.</td>
+                    </tr>
+                    <tr>
+                        <td>Name(in BLOCK letters)</td>
+                        <td><input type="text" name="DeclarationName" value="@ViewBag.DeclarNmBlock" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Signature
+                            <input type="hidden" name="DeclareSignFileName" value="@ViewBag.DECLARSIGFILENM" />
+                        </td>
+                        @{
+    if (!String.IsNullOrEmpty(ViewBag.DECLARSIGFILENM))
+    {
+        <td>
+            <input type="text" name="showDeclareSignFileName" value="@Path.GetFileName(ViewBag.DECLARSIGFILENM)" readonly/>
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.DECLARSIGFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "DECLARSIGFILENM", filePath = ViewBag.DECLARSIGFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" name="uploadDeclareSign" readonly/>
+        </td>
+    }
+                        }
+                        @*  <td>
+                                <input type ="hidden" name="DeclareSignFileName" value="@ViewBag.DECLARSIGFILENM"/>
+                            </td>*@
+                    </tr>
+                    <tr>
+                        <td>
+                            Seal
+                            <input type="hidden" name="DeclareSealFileName" value="@ViewBag.DECLARSEALFILENM" />
+                        </td>
+                        @{
+    if (!String.IsNullOrEmpty(ViewBag.DECLARSEALFILENM))
+    {
+        <td>
+            <input type="text" name="showDeclareSealFileName" value="@Path.GetFileName(ViewBag.DECLARSEALFILENM)" readonly/>
+            @Html.ActionLink("Download", "DownloadFileByPath", new { filePath = ViewBag.DECLARSEALFILENM })
+            @Html.ActionLink("Delete", "DeleteFile", new { tableName = "Bonder", columnName = "DECLARSEALFILENM", filePath = ViewBag.DECLARSEALFILENM }, new { onclick = "return confirm('Are you sure you want to delete this ?');" })
+        </td>
+    }
+    else
+    {
+        <td>
+            <input type="file" name="uploadDeclareSeal" />
+        </td>
+    }
+                        }
+                        @*    <td>
+                                <input type ="hidden" name="DeclareSealFileName" value="@ViewBag.DECLARSEALFILENM"/>
+                            </td>*@
+                    </tr>
+                    <tr>
+                        <td>Designation of the signatory</td>
+                        <td>
+                            @Html.DropDownList("Declare_Designation", null,string.Empty, new { @disabled = "disabled" })
+                        </td>
+                    </tr>
+                    @*<td><input type="text" name="DeclarationDesignation"</td>*@
+                    <tr>
+                        <td>Date</td>
+                        <td><input type="date" name="DeclarationDate" value="@ViewBag.DECLARDATE" readonly/></td>
+                    </tr>
+                </table>
+
+                <br />
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th colspan="3" style="text-align: center; background-color:honeydew">License Application Information</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>Application Status</td>
+                        @if (ViewBag.STATUS == "Cm" || ViewBag.STATUS == "R")
+                        {
+                            <td><input type="radio" name="STATUS" value="Cm" checked />Application Complete</td>
+                            <td><input type="radio" name="STATUS" value="In" />Application Incomplete</td>
+                        }
+                        @if (ViewBag.STATUS == "In")
+                        {
+                            <td><input type="radio" name="STATUS" value="Cm" />Application Complete</td>
+                            <td><input type="radio" name="STATUS" value="In" checked />Application Incomplete</td>
+                        }
+                        @if (!(ViewBag.STATUS == "Cm" || ViewBag.STATUS == "In" || ViewBag.STATUS == "R"))
+                        {
+                            <td><input type="radio" name="STATUS" value="Cm" />Application Complete</td>
+                            <td><input type="radio" name="STATUS" value="In" />Application Incomplete</td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Application Submission Date</td>
+                        <td colspan="2"><input class="datefield" name="ApplicationSubmissionDate" value="@ViewBag.BSDATE" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Submitted By</td>
+                        <td colspan="2"><input type="text" name="SubmittedBy" value="@ViewBag.SUBMITTEDBYNM" readonly/></td>
+                    </tr>
+                    <tr>
+                        <td>Remarks</td>
+                        <td colspan="2"><input type="text" name="Remarks" value="@ViewBag.REMARKS" readonly/></td>
+                    </tr>
+                    @* <tr>
+                            <td> </td>
+                        </tr>*@
+                </table>
+
+                <br />
+                <input type="submit" name="Save" class="btn btn-info" value="Save Application" disabled/>
+            </div>
+
+
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                $("#tabs").tabs();
+            });
+        </script>
+
+        @* <input type="submit" value="Create" />*@
+        @*<input type="submit" value="Create" formaction="@Url.Action("SubmitAction","BondRegistration")" />*@
+
+    </fieldset>
+}
+
+
+@section Scripts{
+    @*<script type="text/javascript">
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $(".datefield").datepicker({
+                dateFormat: "dd/MM/yy",
+                // dateFormat: "mm/dd/yy",
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+    </script>*@
+}  

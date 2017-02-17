@@ -1,0 +1,111 @@
+﻿@model BMSPhase2Demo.Models.COUNTRY
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<style type="text/css">
+    .editor-label,.editor-field {
+      
+        margin-left : 270px;
+    }
+
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Country Information</p>
+<h2  style ="margin-left :270px;">Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>COUNTRY</legend>
+
+        <div class="editor-label">
+            Country SL No
+        </div>
+        <div class="editor-field">
+         @*   @Html.EditorFor(model => model.COUNTRYSLNO)
+            @Html.ValidationMessageFor(model => model.COUNTRYSLNO)*@
+            @Html.TextBoxFor(model => model.COUNTRYSLNO  , new { @readonly="readonly" })
+        </div>
+
+        <div class="editor-label">
+            Country Code
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUNTRYCODE)
+            @Html.ValidationMessageFor(model => model.COUNTRYCODE)
+        </div>
+
+        <div class="editor-label">
+           Country Code BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUNTRYCODEBG)
+            @Html.ValidationMessageFor(model => model.COUNTRYCODEBG)
+        </div>
+
+        <div class="editor-label">
+            Country Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUNTRYNAME)
+            @Html.ValidationMessageFor(model => model.COUNTRYNAME)
+        </div>
+
+        <div class="editor-label">
+             Country Name BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COUNTRYNAMEBG)
+            @Html.ValidationMessageFor(model => model.COUNTRYNAMEBG)
+        </div>
+
+        <div class="editor-label">
+          Input By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTBY)
+            @Html.ValidationMessageFor(model => model.INPUTBY)
+        </div>
+
+        <div class="editor-label">
+              Input Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTDATE)
+            @Html.ValidationMessageFor(model => model.INPUTDATE)
+        </div>
+
+        <div class="editor-label">
+           Modified By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+             Modify Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFYDATE)
+            @Html.ValidationMessageFor(model => model.MODIFYDATE)
+        </div>
+
+       <div class="editor-label">
+           &nbsp;&nbsp;
+        </div>
+        <p style ="margin-left :270px;">
+            <input type="submit" value="Save" />|
+             @Html.ActionLink("Back to List", "Index")
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

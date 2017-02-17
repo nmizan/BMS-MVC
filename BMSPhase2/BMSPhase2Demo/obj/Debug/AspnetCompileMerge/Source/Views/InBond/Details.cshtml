@@ -1,0 +1,106 @@
+﻿@model BMSPhase2Demo.Models.INBOND
+
+@{
+    ViewBag.Title = "Details Inbond";
+}
+
+<h3 style=" margin:0 auto; width:30%;">Imported LC Details </h3>
+
+<fieldset>
+    <legend>INBOND</legend>
+
+    <div class="col-lg-8">
+        <table class="table">
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCNUMBER):
+                </th>
+                <td>
+
+                    @Html.DisplayFor(model => model.LCNUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LCDATE)
+                </td>
+
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BOENUMBER):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BOENUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BOEDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BOEDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BONDER.BONDERNAME):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BONDER.BONDERNAME)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <table class="table">
+                        @for (int i = 0; i < Model.INBONDRAWMATERIALs.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.INBONDRAWMATERIALs[i].RAWMATERIALCODE)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST)
+                                    </th>
+
+                                </tr>
+                            }
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].MATERIAL.MATERIALNAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY)
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].QUANTITYUNIT)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST)
+                                    @Html.DisplayFor(model => model.INBONDRAWMATERIALs[i].COSTUNIT)
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="pull-right">
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "action-link" }) |
+                </td>
+                <td>
+                    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-4"></div>
+
+</fieldset>

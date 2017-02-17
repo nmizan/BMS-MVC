@@ -1,0 +1,64 @@
+﻿@model BMSPhase2Demo.Models.ATTACHMENT
+@{Random rand = new Random();
+int ranid = rand.Next(1, 1000);
+}
+@{int id = 0;}
+<table id="rawMaterialTable" class="table">
+    @using (Html.BeginCollectionItem("ATTACHMENTs"))
+    {
+
+        <tr>
+            <th class="col-lg-2">
+                @Html.LabelFor(model => model.NAME)
+            </th>
+            <td>
+                @Html.TextBoxFor(model => model.NAME)
+            </td>
+            <th>
+                @Html.LabelFor(model => model.CONTENT)
+            </th> 
+            <td>
+                @Html.HiddenFor(model => model.CONTENT, new {id="content_"+@ranid })
+                <input type="file" id="files_@ranid" name="files" />
+            </td>
+            <td>
+                <input type="button" class="btn btn-danger" value="Delete" onclick='$(this).parent().parent().remove();' />
+            </td>
+
+        </tr>
+      
+
+           
+
+      
+    }
+</table>
+
+<script>
+    $("#files_" + Number(@ranid)).change(function () {
+       
+        var data = new FormData();
+        var files = $("#files_" + Number(@ranid)).get(0).files;
+        if (files.length > 0) {
+            data.append("MyImages", files[0]);
+        }
+
+        $.ajax({
+            url: "/UPRequest/getFileName",
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                //code after success
+                $("#content_" + Number(@ranid)).val(response);
+                //alert(response);
+
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    });
+</script>

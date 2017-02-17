@@ -1,0 +1,786 @@
+﻿@model BMSPhase2Demo.Models.EntitlementViewModel
+           
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="/Scripts/MicrosoftMvcAjax.js" type="text/javascript"></script>
+
+@using (Html.BeginForm("Create", "BondEntitlementRenewal", FormMethod.Post))
+{
+    <div class="well">
+
+        <h4>Bonder Name :  @Model.Bonder.BONDERNAME</h4>
+
+        <h4>Bonder License No : @Model.Bonder.BONDLICENSENO</h4>
+
+        <input type="hidden" name="bondersl" id="bondersl" value=@Model.Bonder.BONDERSLNO />
+    </div>
+    <hr />
+    <b>Entitlement Type : </b>
+    <select name="entitlementtype" id="entitlementtype">
+        <option value="R">Regular</option>
+        <option value="E">Extention</option>
+        <option value="RG">Registration</option>
+        <option value="RN">Renewal</option>
+    </select>
+
+    <hr />
+    <h4 style="text-align: center; text-decoration: underline;">Annual Import/Local Purchase Entitlement for Raw Materials</h4>
+
+    <table class="table ">
+          
+        <tr>
+            <td>HS Code  </td>
+            <td>
+                @Html.DropDownList("HSCodesR", null, "", new { id = "hsCodeR", @onchange = "RawMaterialInfo()" })
+            </td>
+            
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <input type="text" name="description" id="description" disabled="disabled">
+            </td>
+        </tr>
+        <tr>
+            <td>Specification/Grade</td>
+            <td>
+                <input type="text" name="specificationorgrade" id="specificationorgrade" disabled="disabled">
+            </td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td>
+                <input type="text" name="quantity" id="quantity">
+            </td>
+        </tr>
+        <tr>
+            <td>Unit </td>
+            <td>
+                <input type="text" name="unit" id="unit" disabled="disabled">
+                <input type="hidden" name="unitslno" id="unitslno">
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" id="btnAddContent" value="Add" class="btn btn-success" onclick="AddRow()" />
+    <hr />
+    <table id="sTabContent" class="table table-bordered" style="width: 100%">
+        <tr>
+            <th colspan="7" style="text-align: center; background-color: lightcyan;">Annual Import/Local Purchase Entitlement for raw Materials</th>
+        </tr>
+        <tr>  
+            @*<th>Raw Material</th>*@
+            <th>HS Code</th>
+            <th>Description</th>
+            <th>Specification/Grade</th>
+            <th>Quantity</th>
+            <th>Unit</th>
+           
+        </tr>
+
+        @foreach (var item in Model.AnnualEntitlementRawMaterials )
+        {
+            <tr>
+                @*<td>@item.MATERIAL.MATERIALNAME</td>*@
+                <td>@item.MATERIAL.MHSCODE</td>
+                <td>@item.MATERIAL.MDESCRIPTION</td>
+                <td>@item.MATERIAL.SPGRADE</td>
+                <td>@item.AEQTY</td>
+                <td>@item.MEASUREMENTUNIT.MUNAME</td>
+
+            </tr>
+        }
+    </table>
+    <hr />
+    @*<input type="button" id="btnCalculateTotalQuantity" value="Calculate Total Entitlement" class="btn btn-success" onclick="CalculateStorageInfo()" />*@
+
+    <table class="table " style="width: 100%">
+        <tr>
+            <th colspan="5" style="text-align: center; background-color: lightcyan;">Storage Information</th>
+        </tr>
+        <tr>
+            
+                 @{
+           if(Model.BonderAnnualEntitlement !=null )
+           {
+               <td>Total Entitlement </td>
+            <td>
+               @Html.TextBoxFor(model => model.BonderAnnualEntitlement.TOTALSTORAGEQTY, new { required = "required", Name = "totalentitlement", id = "totalentitlement" })
+            </td>
+             <td>
+               @Html.DropDownList("UnitTS", null, "--Select A Unit--", new { Name = "totalentitlementunit", required = "required", id = "totalentitlementunit", onchange = "totalUnitInWords()" })
+            </td>
+            <td>In Words</td>
+             <td> @Html.TextBoxFor(model => model.BonderAnnualEntitlement.TOTALSTORAGEQTYEN, new { Name = "totalentitlementinword", id = "totalentitlementinword" }) </td>
+           }
+           else
+           {
+            <td>Total Entitlement </td>
+            <td> <input type="text" readonly="true" name="totalentitlement" id="totalentitlement" required="required" /></td>
+            <td>  @Html.DropDownList("Unit", null, "--Select A Unit--", new { Name = "totalentitlementunit", id = "totalentitlementunit", required = "required", onchange = "totalUnitInWords()" })</td>
+            <td>In Words</td>
+            <td> <input type="text" name="totalentitlementinword" id="totalentitlementinword" />   </td>
+           }
+               }
+                 
+        </tr>
+
+
+        <tr>
+             @{
+        if (Model.BonderAnnualEntitlement != null)
+        {
+            <td>One time Storage Quantity</td>
+            <td> @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ONETIMESTORAGEQTY, new { required = "required", Name="onetimestoragequantity", id="onetimestoragequantity", onchange = "inWordsOneTimeStorage()", onkeyup = "this.onchange()", oninput = "this.onchange()" }) </td>
+            <td> @Html.DropDownList("UnitOT", null, "--Select A Unit--", new { Name = "onetimestoragequantitytunit", required = "required", onchange = "oneTimeUnitInWords()", id = "onetimestoragequantitytunit" }) </td>
+            <td>In Words</td>
+             <td>@Html.TextBoxFor(model => model.BonderAnnualEntitlement.ONETIMESTORAGEQTYEN, new { Name = "onetimestoragequantityinwords", id = "onetimestoragequantityinwords" })</td>
+        }
+        else
+        { 
+          <td>One time Storage Quantity</td>
+          <td>  <input type="text" name="onetimestoragequantity" id="onetimestoragequantity" required="required" onchange="inWordsOneTimeStorage();" onkeyup="this.onchange();" oninput="this.onchange();" />  </td>
+          <td> @Html.DropDownList("Unit", null, "--Select A Unit--", new { Name = "onetimestoragequantitytunit", id = "onetimestoragequantitytunit", required = "required", onchange = "oneTimeUnitInWords()" }) </td>
+          <td>In Words</td>
+          <td><input type="text" name="onetimestoragequantityinwords" id="onetimestoragequantityinwords" /> </td>
+        }
+            
+           
+               }
+        </tr>
+        <tr>
+            <td>Percentage</td>
+            <td colspan="1">
+                <input type="text" name="percentage" id="percentage" required="required" onchange="CalculateEntitlementPercentage()" onkeyup="this.onchange();" oninput="this.onchange();" />
+            </td>
+            @*<td><input type="button" id="btnCalculateEntitlementPercentage" class="btn btn-success" value="Calculate Entitlement Percentage" onclick="CalculateEntitlementPercentage()" /></td>*@
+        </tr>
+        <tr>
+           @{
+        if (Model.BonderAnnualEntitlement != null)
+        {
+           <td>Entitlement % according to Production</td>
+           <td> @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLEPERCENTQTY, new { Name = "entitlementpercentaccordingtoproduction", required = "required", id = "entitlementpercentaccordingtoproduction" }) </td>
+           <td>@Html.DropDownList("UnitET", null, "--Select A Unit--", new { Name = "entitlementpercentaccordingtoproductionunit", required = "required", id = "entitlementpercentaccordingtoproductionunit", onchange = "inWordsProduction()" }) </td>
+           <td>In Words</td>
+           <td> @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLEPERCENTEN, new { Name = "entitlementpercentaccordingtoproductioninword", id = "entitlementpercentaccordingtoproductioninword" })</td>
+           
+        }
+        else
+        {
+           <td>Entitlement % according to Production</td>
+           <td> <input type="text" readonly="true" name="entitlementpercentaccordingtoproduction" id="entitlementpercentaccordingtoproduction" required="required" /> </td>
+           <td> @Html.DropDownList("Unit", null, "--Select A Unit--", new { Name = "entitlementpercentaccordingtoproductionunit", id = "entitlementpercentaccordingtoproductionunit", required = "required", onchange = "inWordsProduction()" }) </td>
+           <td>In Words</td>
+           <td><input type="text" name="entitlementpercentaccordingtoproductioninword" id="entitlementpercentaccordingtoproductioninword" /> </td>
+        }
+               
+          }
+        </tr>
+    </table>
+    <hr />
+    <table class="table " style="width: 100%">
+        <tr>
+            <th colspan="4" style="text-align: center; background-color: lightcyan;">Entitlement  period</th>
+        </tr>
+        <tr>
+         @{
+        if (Model.BonderAnnualEntitlement != null)
+        { 
+            <td>Date From</td>
+            <td>  @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLEFROM, new { required = "required", @class = "datefield", Name = "entitlementdatefrom" })</td>
+            <td>Date To</td>
+            <td> @Html.TextBoxFor(model => model.BonderAnnualEntitlement.ENTITLETO, new { required = "required", @class = "datefield", Name = "entitlementdateto" }) </td>
+        }
+        else
+        {
+           <td>Date From</td>
+            <td> <input type="text" name="entitlementdatefrom" class="datefield" required="required" /> </td>
+            <td>Date To</td>
+            <td> <input type="text" name="entitlementdateto" class="datefield" required="required" /> </td>
+        }
+            
+            }
+        </tr>
+    </table>
+    <hr />
+
+    <hr />
+    <h4 style="text-align: center; text-decoration: underline;">Production Input-Output Coefficient Input</h4>
+
+    <table class="table">
+        <tr>
+            <th colspan="10" style="text-align: center; background-color: lightcyan;">Product</th>
+        </tr>
+        @*work 1*@
+        @*<tr>
+                <td>Product</td>
+                <td>
+                    @Html.DropDownList("Products", null, "--Select A Product--", new { id = "CoProduct", @onchange = "ProductInfo()" })
+                </td>
+            </tr>*@
+        <tr>
+            <td>HS Code  </td>
+            <td>
+                @Html.DropDownList("HSCodesF", null, "", new { name = "hsCodeF", id = "hsCodeF", @onchange = "ProductInfo()" })
+                @*<input type="text" name="ProductHsCode" id="ProductHsCode" disabled="disabled"></td>*@
+                @* @Html.TextBox("searchString" , null, new{ id="hscode" })*@
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <input type="text" name="ProductDescription" id="ProductDescription" disabled="disabled">
+            </td>
+        </tr>
+        <tr>
+            <td>Unit</td>
+            <td>
+                <input type="text" name="ProductUnit" id="ProductUnit" disabled="disabled">
+        <tr>
+            <td>Mother Machine</td>
+            <td>
+                @Html.DropDownList("MachineList", null, "", new { id = "CoProductMachine" })
+            </td>
+        </tr>
+        <tr>
+            <td>Size </td>
+            <td>
+                <input type="text" name="Productsize" id="Productsize">
+            </td>
+        </tr>
+        <tr>
+            <td>Weight </td>
+            <td>
+                <input type="text" name="ProductWeight" id="ProductWeight">
+            </td>
+        </tr>
+        <tr>
+            <td>Measurement </td>
+            <td>
+                <input type="text" name="ProductMeasurement" id="ProductMeasurement">
+            </td>
+        </tr>
+    </table>
+
+    <table class="table" id="TblRawmaterialsCoE">
+        <tr>
+            <th colspan="8" style="text-align: center; background-color: lightcyan;">Raw Materials</th>
+        </tr>
+        <tr>
+            @*<td>Raw Materials </td>*@
+            <td>HS Code</td>
+            <td>Unit of Measurement</td>
+            <td>Gross</td>
+            <td>Wastage</td>
+            <td>Shrinkage</td>
+            <td>Net</td>
+            <td>Action</td>
+        </tr>
+        <tr>
+            @*<td style="width: 120px;">@Html.DropDownList("Rawmaterilas", null, "--Select A Raw Material--", new { id = "CoRawmaterials", @onchange = "CoRawMaterialInfo()" })</td>*@
+            <td>
+                @Html.DropDownList("HSCodesR", null, "", new { id = "HSCodeCoE", @onchange = "CoRawMaterialInfo()" })
+                @*<input type="text" style="width: 100px;" name="HSCodeCoE" id="HSCodeCoE" disabled="disabled">*@
+            </td>
+
+            <td>
+                <input type="text" style="width: 100px;" name="UnitofMeasurementCoE" id="UnitofMeasurementCoE" disabled="disabled">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="GrossCoE" id="GrossCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="WastageCoE" id="WastageCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="ShrinkageCoE" id="ShrinkageCoE">
+            </td>
+            <td>
+                <input type="text" style="width: 100px;" name="NetCoE" id="NetCoE">
+            </td>
+            <td>
+                <input type="button" value="Add" name="btnAddCoE" id="btnAddCoE" onclick="AddRawMaterialsCoE()">
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <input type="button" value="Add Product" name="btnAddProductCoE" id="btnAddProductCoE" onclick="AddProductCoE()">
+    <table class="table" id="TblProductCoE">
+        <tr>
+            <th colspan="8" style="text-align: center; background-color: lightcyan;">Products</th>
+        </tr>
+
+        <tr>
+            @*<td>Product</td>*@
+            <td>HS Code</td>
+            <td>Weight</td>
+            <td>Size</td>
+            <td>Measurement</td>
+            <td>Raw Materilas</td>
+            <td>MotherMachine</td>
+        </tr>
+        @foreach (var item in Model.BonderAnnualEntitlementCoMs)
+        {
+            <tr>
+                @*<td>@item.MATERIAL.MATERIALNAME</td>*@
+
+                <td style="width: 160px;">
+
+                    @item.MATERIAL.MHSCODE
+                </td>
+
+                <td style="width: 100px;">
+
+                    @item.WEIGHT
+                </td>
+
+                <td style="width: 80px;">
+
+                    @item.MSIZE
+                </td>
+
+                <td style="width: 80px;">
+
+                    @item.MEASUREMENT
+                </td>
+
+                <td style="width: 160px;">
+                    @foreach (var r in Model.BonderannualEntitlementCoEDets)
+                    {
+                        if (r.MSLNO == item.MSLNO)
+                        {
+                            <b>@r.INPUTBY</b>
+                        }
+                    }
+                </td>
+
+                <td style="width: 100px;">
+
+                    @item.MACHINEINFORMATION.MODELNM
+
+                </td>
+    
+
+            </tr>
+        }
+
+    </table>
+    <div>
+        <input type="submit" value="Save Entitlement" class="btn  btn-info" />
+    </div>
+}
+
+
+@section Scripts{
+    <script>
+        rootUrl = '@Url.Content("~")'
+    </script>
+    <script type="text/javascript">
+
+        $(function () {
+            $.datepicker.setDefaults($.datepicker.regional['bn-BD']);
+            $(".datefield").datepicker({
+                dateFormat: "dd/MM/yy",
+                changeMonth: true,
+                changeYear: true
+            }, $.datepicker.regional['bn-BD']);
+        });
+
+        var a = ['', 'one ', 'two ', 'three ', 'four ', 'five ', 'six ', 'seven ', 'eight ', 'nine ', 'ten ', 'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
+        var b = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+
+        function inWords(num) {
+            if ((num = num.toString()).length > 9) return '';
+            n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+            if (!n) return; var str = '';
+            str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+            str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+            str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+            str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+            str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + '' : '';
+            return str;
+        }
+
+        function totalUnitInWords() {
+            if ($('#totalentitlementunit option:selected').text() != '--Select A Unit--') {
+                if ($.trim($('#totalentitlement').val()) != '') {
+                    document.getElementById("totalentitlementinword").value = inWords(parseInt(document.getElementById("totalentitlement").value)) + $('#totalentitlementunit option:selected').text();
+                }
+            }
+            else {
+                if ($.trim($('#totalentitlement').val()) != '') {
+                    document.getElementById("totalentitlementinword").value = inWords(parseInt(document.getElementById("totalentitlement").value));
+                }
+            }
+        }
+
+        function oneTimeUnitInWords() {
+            if ($('#onetimestoragequantitytunit option:selected').text() != '--Select A Unit--') {
+                if ($.trim($('#onetimestoragequantity').val()) != '') {
+                    document.getElementById("onetimestoragequantityinwords").value = inWords(parseInt(document.getElementById("onetimestoragequantity").value)) + $('#onetimestoragequantitytunit option:selected').text();
+                }
+            }
+            else {
+                if ($.trim($('#onetimestoragequantity').val()) != '') {
+                    document.getElementById("onetimestoragequantityinwords").value = inWords(parseInt(document.getElementById("onetimestoragequantity").value));
+                }
+            }
+        }
+
+        function unitInWords(selectedUnit, numTxtBox, inWordTxtBox) {
+            if ($('#' + selectedUnit + ' option:selected').text() != '--Select A Unit--') {
+                if ($.trim($('#' + numTxtBox).val()) != '') {
+                    document.getElementById(inWordTxtBox).value = inWords(parseInt(document.getElementById(numTxtBox).value)) + $('#' + selectedUnit + ' option:selected').text();
+                }
+            }
+            else {
+                if ($.trim($('#' + numTxtBox).val()) != '') {
+                    document.getElementById(inWordTxtBox).value = inWords(parseInt(document.getElementById(numTxtBox).value));
+                }
+            }
+        }
+
+        function inWordsOneTimeStorage() {
+            if ($('#onetimestoragequantitytunit option:selected').text() != '--Select A Unit--') {
+                if ($.trim($('#onetimestoragequantity').val()) != '') {
+                    document.getElementById("onetimestoragequantityinwords").value = inWords(parseInt(document.getElementById("onetimestoragequantity").value)) + $('#onetimestoragequantitytunit option:selected').text();
+                }
+            }
+            else {
+                if ($.trim($('#onetimestoragequantity').val()) != '') {
+                    document.getElementById("onetimestoragequantityinwords").value = inWords(parseInt(document.getElementById("onetimestoragequantity").value));
+                }
+            }
+            //document.getElementById("onetimestoragequantityinwords").value = inWords(parseInt(document.getElementById("onetimestoragequantity").value));
+        }
+
+        function inWordsProduction() {
+            if ($('#entitlementpercentaccordingtoproductionunit option:selected').text() != '--Select A Unit--') {
+                if ($.trim($('#entitlementpercentaccordingtoproduction').val()) != '') {
+                    document.getElementById("entitlementpercentaccordingtoproductioninword").value = inWords(parseInt(document.getElementById("entitlementpercentaccordingtoproduction").value)) + $('#entitlementpercentaccordingtoproductionunit option:selected').text();
+                }
+            }
+            else {
+                if ($.trim($('#entitlementpercentaccordingtoproduction').val()) != '') {
+                    document.getElementById("entitlementpercentaccordingtoproductioninword").value = inWords(parseInt(document.getElementById("entitlementpercentaccordingtoproduction").value));
+                }
+            }
+        }
+
+        var totalstorage = [];
+
+        $(function () {
+            $("#tabs").tabs();
+        });
+
+        //$(function () {
+        //    $(".datefield").datepicker();
+        //});
+
+        function RawMaterialInfo() {
+            $.ajax({
+                url: rootUrl + '/BondEntitlementRenewal/GetRawMaterial',
+                //url: '/BondEntitlementRenewal/GetRawMaterial',
+                type: "GET",
+                dataType: "JSON",
+                data:
+                {
+                    //table: "MATERIALS",
+                    //dataColumn: "MHSCODE",
+                    //idColumn: "MSLNO",
+                    id: document.getElementById("hsCodeR").value
+
+                },
+
+                success: function (data) {
+                    //$("#hscode").html("");
+                    //document.getElementById("hscode").value = data[0];
+
+                    $("#description").html("");
+                    document.getElementById("description").value = data[1];
+
+                    $("#specificationorgrade").html("");
+                    document.getElementById("specificationorgrade").value = data[2];
+
+                    $("#unit").html("");
+                    document.getElementById("unit").value = data[3];
+
+                    $("#unitslno").html("");
+                    document.getElementById("unitslno").value = data[4];
+
+
+                }
+
+
+            });
+        };
+
+        function ProductInfo() {
+            $.ajax({
+                url: rootUrl + '/BondEntitlementRenewal/GetProduct',
+                //url: '/BondEntitlementRenewal/GetProduct',
+                type: "GET",
+                dataType: "JSON",
+
+                data:
+                {
+
+                    //table: "MATERIALS",
+                    //dataColumn: "MHSCODE",
+                    //idColumn: "MSLNO",
+                    id: document.getElementById("hsCodeF").value
+
+                },
+
+                success: function (data) {
+                    //$("#ProductHsCode").html("");
+                    //document.getElementById("ProductHsCode").value = data[0];
+
+                    $("#ProductDescription").html("");
+                    document.getElementById("ProductDescription").value = data[1];
+
+                    $("#ProductUnit").html("");
+                    document.getElementById("ProductUnit").value = data[2];
+
+                }
+            });
+        };
+
+        function CoRawMaterialInfo() {
+
+            $.ajax({
+                url: rootUrl + '/BondEntitlementRenewal/GetCoRawMaterial',
+                //url: '/BondEntitlementRenewal/GetCoRawMaterial',
+                type: "GET",
+                dataType: "JSON",
+
+                data:
+                {
+
+                    //table: "MATERIALS",
+                    //dataColumn: "MHSCODE",
+                    //idColumn: "MSLNO",
+                    id: document.getElementById("HSCodeCoE").value
+
+                },
+
+                success: function (data) {
+                    $("#UnitofMeasurementCoE").html("");
+                    document.getElementById("UnitofMeasurementCoE").value = data[0];
+
+                    //$("#HSCodeCoE").html("");
+                    //document.getElementById("HSCodeCoE").value = data[1];
+
+
+                }
+
+
+            });
+        };
+
+        var total = [];
+        var sum = 0;
+
+        $('#btnAddContent').click(function (e) {
+            jQuery("input[name=sub]").on("click", function () {
+
+                var returnvalue;
+
+                if (jQuery("select[name=subject]").val() == 0) {
+
+                    jQuery("label#select_error").show(); // show Warning
+                    jQuery("select#sel").focus();  // Focus the select box
+                    returnvalue = false;
+
+                }
+
+                return returnvalue;
+
+            });
+            //AddRow();
+        });
+        
+        function AddRow() {
+
+
+            if ($.trim($('#hsCodeR').val()) == '') {
+                alert('HS Code required !');
+                $("#hsCodeR").focus();
+                return;
+            }
+            $('#sTabContent > tbody:last').append('<tr>' +
+                ''
+                //+ '<td><input type="hidden" name="rawmaterials" id="rawmaterials[]" value="' + $('#rawmaterial').val() + '" />' + $('#rawmaterial  option:selected').text() + '</td>'
+                + '<td><input type="hidden" name="hscodes" id="hscodes[]" value="' + $('#hsCodeR').val() + '" />' + $('#hsCodeR option:selected').text()
+                + '</td><td><input type="hidden" name="descriptions" id="descriptions[]" value="' + $('#description').val() + '" />' + $('#description').val()
+                + '</td><td><input type="hidden" name="specificationorgrades" id="specificationorgrades[]" value="' + $('#specificationorgrade').val() + '" />' + $('#specificationorgrade').val()
+                + '</td><td><input type="hidden" name="quantitys" id="quantitys[]" value="' + $('#quantity').val() + '" />' + $('#quantity').val()
+                + '</td><td><input type="hidden" name="units" id="units[]" value="' + $('#unitslno').val() + '" />' + $('#unit').val()
+                + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+
+            if ($.trim($('#totalentitlement').val()) == '') {
+                document.getElementById("totalentitlement").value = $("#quantity").val();
+               
+            }
+            else {
+                if ($.trim($('#quantity').val()) != '' && ($.trim($('#totalentitlement').val()) != '')) {
+                    
+                    document.getElementById("totalentitlement").value = parseInt(document.getElementById("totalentitlement").value)
+                    + parseInt($("#quantity").val());
+                }
+            }
+
+            if ($.trim($('#totalentitlement').val()) != '') {
+                
+                totalUnitInWords();
+                //document.getElementById("totalentitlementinword").value = inWords(parseInt($.trim($('#totalentitlement').val())));
+            }
+
+            total.push($("#quantity").val());
+
+
+            //$("#rawmaterial").val('');
+            $("#hsCodeR").val('');
+            $("#description").val('');
+            $("#rawmaterial").val('');
+            $("#specificationorgrade").val('');
+            $("#quantity").val('');
+            $("#unit").val('');
+
+        };
+
+        function CalculateStorageInfo() {
+            var i;
+            for (i = 0; i < total.length; i++) {
+                sum = parseInt(sum) + parseInt(total[i]);
+            }
+            $("#totalentitlement").html("");
+            document.getElementById("totalentitlement").value = sum;
+        };
+        function CalculateEntitlementPercentage() {
+            //var percentage = 0;
+            //percentage = parseInt(document.getElementById("percentage").value / 100 * parseInt(document.getElementById("totalentitlement").value));
+            //$("#entitlementpercentaccordingtoproduction").html("");
+            if ($.trim($('#totalentitlement').val()) != '') {
+                document.getElementById("entitlementpercentaccordingtoproduction").value = parseInt(document.getElementById("percentage").value / 100 * parseInt(document.getElementById("totalentitlement").value));
+                inWordsProduction();
+            }
+        };
+
+        var rawMaterials = '';
+
+        function AddRawMaterialsCoE() {
+
+            //$('#btnAddCoE').click(function (e) {
+
+            if ($.trim($('#HSCodeCoE').val()) == '') {
+                var newDiv = $(document.createElement('div'));
+                newDiv.attr('title', 'Message');
+                newDiv.html('No HS Code Selected');
+                newDiv.dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                return false;
+            }
+
+
+            $('#TblRawmaterialsCoE > tbody:last').append('<tr>'
+            + '<td><input type="hidden" name="hscodesCoE" id="hscodesCoE[]" value="' + $('#HSCodeCoE').val() + '" />' + $('#HSCodeCoE option:selected').text()
+   + '</td><td><input type="hidden" name="measuementoCoE" id="measuementoCoE[]" value="' + $('#UnitofMeasurementCoE').val() + '" />' + $('#UnitofMeasurementCoE').val()
+   + '</td><td><input type="hidden" name="grossCoEs" id="grossCoEs[]" value="' + $('#GrossCoE').val() + '" />' + $('#GrossCoE').val()
+   + '</td><td><input type="hidden" name="wastageCoEs" id="wastageCoEs[]" value="' + $('#WastageCoE').val() + '" />' + $('#WastageCoE').val()
+   + '</td><td><input type="hidden" name="shrinkageCoEs" id="shrinkageCoEs[]" value="' + $('#ShrinkageCoE').val() + '" />' + $('#ShrinkageCoE').val()
+   + '</td><td><input type="hidden" name="netCoEs" id="netCoEs[]" value="' + $('#NetCoE').val() + '" />' + $('#NetCoE').val()
+   + '</td><td><input type="hidden" name="RawmaterialProductID" id="RawmaterialProductID[]" value="' + $('#hsCodeF').val() + '" />'
+
+   + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+
+
+            if (rawMaterials == '') {
+                rawMaterials = $('#HSCodeCoE option:selected').text();
+            }
+            else {
+                rawMaterials = rawMaterials + ', ' + $('#HSCodeCoE option:selected').text();
+            }
+            //$("#CoRawmaterials").val('');
+            $("#UnitofMeasurementCoE").val('');
+            $("#HSCodeCoE").val('');
+            $("#GrossCoE").val('');
+            $("#WastageCoE").val('');
+            $("#ShrinkageCoE").val('');
+            $("#NetCoE").val('');
+
+        };
+
+
+
+        function AddProductCoE() {
+
+            //$('#btnAddProductCoE').click(function (e) {
+
+            if ($.trim($('#hsCodeF').val()) == '') {
+                var newDiv = $(document.createElement('div'));
+                newDiv.attr('title', 'Message');
+                newDiv.html('No HS Code Selected');
+                newDiv.dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                });
+
+                return false;
+            }
+            //work 1
+
+
+            $('#TblProductCoE > tbody:last').append('<tr><td><input type="hidden" name="ProductCoE" id="ProductCoE[]" value="' + $('#hsCodeF').val() + '" />' + $('#hsCodeF option:selected').text()
+     + '</td><td><input type="hidden" name="ProductWeightCoE" id="ProductWeightCoE[]" value="' + $('#ProductWeight').val() + '" />' + $('#ProductWeight').val()
+    //+ '</td><td><input type="hidden" name="ProductHSCodeCoE" id="ProductHSCodeCoE[]" value="' + $('#ProductHsCode').val() + '" />' + $('#ProductHsCode').val()
+     + '</td><td><input type="hidden" name="ProductSizeCoE" id="ProductSizeCoE[]" value="' + $('#Productsize').val() + '" />' + $('#Productsize').val()
+       + '</td><td><input type="hidden" name="ProductMeasurementCoE" id="ProductMeasurementCoE[]" value="' + $('#ProductMeasurement').val() + '" />' + $('#ProductMeasurement').val()
+           + '</td><td><input type="hidden" name="ProductMachineCoE" id="ProductMachineCoE[]" value="' + $('#CoProductMachine').val() + '" />' + rawMaterials
+           + '</td><td><input type="hidden" name="ProductRawmaterialsCoE" id="ProductRawmaterialsCoE[]" value="' + $('#CoProductMachine').val() + '" />' + $('#CoProductMachine option:selected').text()
+
+ + '</td><td align="center"><a href="javascript:void(0)" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);">X</a></td></tr>');
+
+
+            '<input type="hidden" name="ProductDescriptionCoE" id="ProductDescriptionCoE[]" value="' + $('#ProductHsCode').val() + '" />'
+
+            //'<input type="hidden" name="BonderStatus" id="BonderStatu" value="' + $('#ProductHsCode').val() + '" />'
+            //$("#CoProduct").val('');
+
+            rawMaterials = '';
+            $("#hsCodeF").val('');
+            $("#ProductWeight").val('');
+            $("#ProductHsCode").val('');
+            $("#Productsize").val('');
+            $("#ProductMeasurement").val('');
+            $("#CoProductMachine").val('');
+            $("#ProductDescription").val('');
+            $("#ProductUnit").val('');
+
+
+            //$("#NetCoE").val('');
+            //})
+
+        };
+
+
+    </script>
+}
+
+
+
+

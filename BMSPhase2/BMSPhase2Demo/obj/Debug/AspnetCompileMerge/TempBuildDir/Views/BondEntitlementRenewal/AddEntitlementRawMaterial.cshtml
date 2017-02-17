@@ -1,0 +1,137 @@
+﻿@model BMSPhase2Demo.Models.ANNUALENTLRAWMATERIAL
+
+@{
+    ViewBag.Title = "AddEntitlementRawMaterial";
+}
+<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/jquery-ui.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<h2>Add New Entitlement Raw Material</h2>
+
+<h3>@ViewBag.Error</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ANNUALENTLRAWMATERIAL</legend>
+
+        <input type="hidden" value="@ViewBag.AeSlno" name="aeslno">
+        <input type="hidden" value="@ViewBag.BonderSlno" name="bonderslno">
+
+        <table class="table ">
+
+            <tr>
+                <td>Raw Materials</td>
+                <td>
+                    @Html.DropDownList("Rawmaterilas", null, "--Select A Raw Material--", new { id = "rawmaterilas", name = "rawmaterilas", @onchange = "RawMaterialInfo()" })
+                    @* @Html.DropDownList("Rawmaterilas", null,null, new{ id="rawmaterial"})*@
+                    @*<input type="text" name="rawmaterial" id="rawmaterial">*@
+                </td>
+            </tr>
+
+            <tr>
+                <td>HS Code  </td>
+
+                <td>
+                    <input type="text" name="hscode" id="hscode">
+                </td>
+
+                @* @Html.TextBox("searchString" , null, new{ id="hscode" })*@
+
+
+            </tr>
+
+            <tr>
+                <td>Description</td>
+                <td>
+                    <input type="text" name="description" id="description">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Specification/Grade</td>
+                <td>
+                    <input type="text" name="specificationorgrade" id="specificationorgrade">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Quantity</td>
+                <td>
+                    <input type="text" name="quantity" id="quantity" required="required">
+                </td>
+            </tr>
+            <tr>
+                <td>Unit </td>
+                <td>
+                    <input type="text" name="unit" id="unit" disabled="disabled">
+                    <input type="hidden" name="unitslno" id="unitslno">
+
+                </td>
+            </tr>
+        </table>
+        <p>
+            <input type="submit" value="Add" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "EntitlementDetails", new { ID = @ViewBag.BonderSlno })
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+
+        function RawMaterialInfo() {
+            $.ajax({
+                url: '/BondEntitlementRenewal/GetRawMaterial',
+                type: "GET",
+                dataType: "JSON",
+
+                data:
+                {
+                    id: document.getElementById("rawmaterilas").value
+
+                },
+
+                success: function (data) {
+                    $("#hscode").html("");
+                    document.getElementById("hscode").value = data[0];
+
+                    $("#description").html("");
+                    document.getElementById("description").value = data[1];
+
+                    $("#specificationorgrade").html("");
+                    document.getElementById("specificationorgrade").value = data[2];
+
+                    $("#unit").html("");
+                    document.getElementById("unit").value = data[3];
+
+                    $("#unitslno").html("");
+                    document.getElementById("unitslno").value = data[4];
+                }
+
+
+            });
+        };
+
+
+    </script>
+    @Scripts.Render("~/bundles/jqueryval")
+}

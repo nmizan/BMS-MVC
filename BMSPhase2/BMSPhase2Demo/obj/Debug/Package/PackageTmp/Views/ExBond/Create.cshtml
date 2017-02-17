@@ -1,0 +1,46 @@
+﻿@model BMSPhase2Demo.Models.EXBOND
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Ex-Bond</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DESCRIPTION)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DESCRIPTION)
+            @Html.ValidationMessageFor(model => model.DESCRIPTION)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BONDERID, "BONDER")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("BONDERID", String.Empty)
+            @Html.ValidationMessageFor(model => model.BONDERID)
+        </div>
+
+       
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

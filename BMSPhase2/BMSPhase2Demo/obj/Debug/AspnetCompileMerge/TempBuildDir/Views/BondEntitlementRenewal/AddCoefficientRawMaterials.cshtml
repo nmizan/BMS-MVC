@@ -1,0 +1,88 @@
+﻿@model BMSPhase2Demo.Models.BONDERANNUALENTITLEMENTCOEDET
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "AddCoefficientRawMaterials";
+}
+
+<h3>Add Coefficient RawMaterials</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>BONDERANNUALENTITLEMENTCOEDET</legend>
+
+
+        <input type="hidden" name="aeslno" value="@ViewBag.aeslno">
+        <input type="hidden" name="bonderslno" value="@ViewBag.bonderslno">
+        <input type="hidden" name="mslno" value="@ViewBag.mslno">
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RMSLNO, "Product")
+        </div>
+        <input type="text" name="mslno" disabled="disabled" value="@ViewBag.materialname">
+
+
+        @*   @Html.HiddenFor(model => model.AESLNO)
+            @Html.HiddenFor(model => model.BONDERSLNO)
+
+            @Html.EditorFor(model => model.MATERIAL.MATERIALNAME)*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RMSLNO, "Rawmaterilas")
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownList("Rawmaterilas", null, "", new { name = "Rawmaterilas" })
+            @Html.ValidationMessageFor(model => model.RMSLNO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GROSSQT, "Gross Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GROSSQT)
+            @Html.ValidationMessageFor(model => model.GROSSQT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.WASTAGEQT, "Wastage Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.WASTAGEQT)
+            @Html.ValidationMessageFor(model => model.WASTAGEQT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SHRINKAGEQT, "Shrinkage Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SHRINKAGEQT)
+            @Html.ValidationMessageFor(model => model.SHRINKAGEQT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NETQT, "Net Quantity")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NETQT)
+            @Html.ValidationMessageFor(model => model.NETQT)
+        </div>
+
+
+        <p>
+            <input type="submit" value="Add" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

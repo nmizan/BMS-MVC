@@ -1,0 +1,43 @@
+BonderSlNo=from table Bonder (match BondLiceneNo)
+AESlNo= Trigger for Individual Table
+
+Controller= BondEntitlementRenewalController
+Action = Create
+View = Create.cshtml
+Model= Class { BondEntitlementRepository }
+
+  Add data into DB : 
+
+for BonderAnnualEntitlement :
+
+    BondEntitlementRepository => AddBonderAnnualEntitlement()--Method
+ 
+for AnnualEntitlementRawMaterilas
+
+BondEntitlementRepository => AddAnnualEntitlementRawMaterilas()--Method      
+
+
+
+
+CREATE OR REPLACE TRIGGER "BMS_N".ANNUALENTLRAWMATERIAL_trig
+before insert on ANNUALENTLRAWMATERIAL
+for each row
+begin
+select ANNUALENTLRAWMATERIAL_seq.NextVal
+into :new.AESLNO
+from dual;
+end;
+/
+
+
+CREATE OR REPLACE TRIGGER "BMS_N"."UPREQUEST_TRG" 
+BEFORE INSERT
+ON UPREQUEST
+REFERENCING NEW AS New OLD AS Old
+FOR EACH ROW
+BEGIN
+-- For Toad:  Highlight column ID
+  :new.ID := UPREQUEST_SEQ.nextval;
+END UPREQUEST_TRG;
+/
+

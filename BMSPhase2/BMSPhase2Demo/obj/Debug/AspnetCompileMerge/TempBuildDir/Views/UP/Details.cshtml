@@ -1,0 +1,115 @@
+﻿@model BMSPhase2Demo.ViewModels.ApprovedUPViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table border="1" id="table">
+    <thead>
+        <tr id="tr">
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.UP.ID)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.UP.CREATEDDATE)
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of Request")
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of Exbond")
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of Back2Back")
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of Product")
+            </th>
+            <th id="th">
+                @Html.DisplayName("No of RawMaterials")
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td id="td">@Html.DisplayFor(model => model.UP.ID)</td>
+
+            <td id="td">@Html.DisplayFor(model => model.UP.CREATEDDATE)</td>
+            <td id="td">@Model.UPREQUESTs.Count</td>
+            <td id="td">@Model.EXBONDs.Count</td>
+            <td id="td">@Model.BACKTOBACKLCs.Count</td>
+            <td id="td">@Model.BACKTOBACKPRODUCTs.Count</td>
+            <td id="td">@Model.RAWMATERIALs.Count</td>
+
+        </tr>
+    </tbody>
+</table>
+<h4>UP Requests</h4>
+<table border="1" id="table">
+    <thead>
+        <tr id="tr">
+
+            <th id="th">
+                @Html.DisplayNameFor(model => model.UPREQUESTs[0].ID)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.UPREQUESTs[0].STATUS)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.UPREQUESTs[0].CREATEDDATE)
+            </th>
+            <th id="th">
+                @Html.DisplayNameFor(model => model.UPREQUESTs[0].CREATEDBY)
+            </th>
+            <th id="th">
+                @Html.DisplayName("Action")
+            </th>
+        </tr>
+    </thead>
+    @for (int i = 0; i < Model.UPREQUESTs.Count(); i++)
+    {
+
+
+        <tbody>
+            <tr>
+                <td id="td">@Html.DisplayFor(model => model.UPREQUESTs[i].ID)</td>
+                <td id="td">@Html.DisplayFor(model => model.UPREQUESTs[i].STATUS)</td>
+                <td id="td">@Html.DisplayFor(model => model.UPREQUESTs[i].CREATEDDATE)</td>
+                <td id="td">@Html.DisplayFor(model => model.UPREQUESTs[i].CREATEDBY)</td>
+                <td id="td">
+                    @Html.ActionLink("Details", "Details", "UpRequest", new { id = Model.UPREQUESTs[i].ID }, new { @class = "action-link" })
+                </td>
+            </tr>
+        </tbody>
+    }
+</table>
+<p>
+    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+</p>
+
+
+<script>
+    $(document).ready(function () {
+        $('#hide').on('click', function (event) {
+            if ($('#div_attachment').is(':hidden')) {
+                $("#hide").val('Hide Attachment');
+            }
+            if ($('#div_attachment').is(':visible')) {
+                $("#hide").val('Show Attachment');
+            }
+            $('#div_attachment').toggle('show');
+
+        });
+    });
+</script>
+
+
+
+
+
+
+
+

@@ -1,0 +1,93 @@
+﻿@model BMSPhase2Demo.Models.MEASUREMENTUNIT
+
+@{
+    ViewBag.Title = "Create";
+}
+<style type="text/css">
+    .editor-label,.editor-field {
+      
+        margin-left : 350px;
+    }
+
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Measurement Unit Information</p>
+<h2 style ="margin-left :350px;">Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+   <fieldset>
+        <legend>MEASUREMENTUNIT</legend>
+
+        @*<div class="editor-label">
+           Measurement Unit SL No
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MUSLNO)
+            @Html.ValidationMessageFor(model => model.MUSLNO)
+        </div>*@
+
+        <div class="editor-label">
+          Measurement Unit Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MUNAME)
+            @Html.ValidationMessageFor(model => model.MUNAME)
+        </div>
+
+        <div class="editor-label">
+          Measurement Unit Name BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MUNAMEBG)
+            @Html.ValidationMessageFor(model => model.MUNAMEBG)
+        </div>
+
+        <div class="editor-label">
+            Input By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTBY)
+            @Html.ValidationMessageFor(model => model.INPUTBY)
+        </div>
+
+        <div class="editor-label">
+            Input Date 
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTDATE)
+            @Html.ValidationMessageFor(model => model.INPUTDATE)
+        </div>
+
+        <div class="editor-label">
+           Modified By
+ 
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+           Modify Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFYDATE)
+            @Html.ValidationMessageFor(model => model.MODIFYDATE)
+        </div>
+
+        <div class="editor-label">
+           &nbsp;&nbsp;
+        </div>
+        <p style ="margin-left :350px;">
+            <input type="submit" value="Save" />|
+             @Html.ActionLink("Back to List", "Index")
+        </p>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

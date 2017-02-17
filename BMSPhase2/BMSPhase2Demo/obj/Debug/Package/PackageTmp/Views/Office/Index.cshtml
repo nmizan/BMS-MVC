@@ -1,0 +1,127 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.OFFICE>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left : 10px ;
+        padding-right : 10px;
+        padding-top  : 10px ;
+        padding-bottom  : 10px;
+    }
+    
+ 
+</style>
+<p  style =" font-size :20px;">
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+     <tr><th colspan="15" style="text-align: center;">Office Summary View </th></tr>
+    <tr>
+        <th>
+           Office SL No
+        </th>
+        <th>
+            Office Name
+        </th>
+       @* <th>
+            Office Name BG
+        </th>*@
+        <th>
+           Office Short Name
+        </th>
+        @*<th>
+            Office SName BG
+        </th>*@
+        <th>
+           Address
+        </th>
+        @*<th>
+          Address BG
+        </th>*@
+        
+        <th>
+            District
+        </th>
+        <th>
+           phone
+        </th>
+        @*<th>
+           Phone BG
+        </th>*@
+       
+        <th>
+            Email
+        </th>
+        
+        <th>
+            Office Type
+        </th>
+        <th colspan="3"  style="text-align :center " >
+            
+            Action
+     </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFFICESLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFFICENAME)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.OFFICENAMEBG)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.OFFICESNAME)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.OFFICESNAMEBG)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.ADDRESSBG)
+        </td>*@
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.DISTRICT.DISTRICTNAME)
+        </td>
+       
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.PHONEBG)
+        </td>*@
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.OFFICETYPE)
+        </td>
+         <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.OFFICESLNO }) 
+           
+        </td>
+         <td>
+           
+            @Html.ActionLink("Details", "Details", new { id = item.OFFICESLNO }) 
+         </td>
+        <td>
+             @Html.ActionLink("Delete", "Delete", new { id = item.OFFICESLNO })
+        </td>
+    </tr>
+}
+
+</table>
+

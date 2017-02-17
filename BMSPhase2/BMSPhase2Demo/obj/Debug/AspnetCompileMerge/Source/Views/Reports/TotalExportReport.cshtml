@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "TotalExportReport";
+}
+
+  <h2>Total Export Report</h2>
+
+<p>
+    @Html.ActionLink("Back to Report", "Index", "", new { @class = "action-link" })
+</p>
+
+<h3 style="color:#ff6a00">@ViewBag.ErrorMsg</h3>
+
+
+
+@using (Html.BeginForm("TotalExportReport", "Reports", FormMethod.Post))
+{
+
+    <table class="table">
+        <tr>
+
+            <th id="search-th">
+                @Html.Label("From Date: ")
+            </th>
+            <td id="search-td">
+                @Html.TextBox("FromDate", ViewBag.FromDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+            <th id="search-th">
+                @Html.Label("To Date: ")
+            </th>
+            <td id="search-td">
+                @Html.TextBox("ToDate", ViewBag.ToDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+        </tr>
+        
+    </table>
+
+    <button type="submit" name="submit" class="btn btn-primary">Crystal Report</button>
+}
+

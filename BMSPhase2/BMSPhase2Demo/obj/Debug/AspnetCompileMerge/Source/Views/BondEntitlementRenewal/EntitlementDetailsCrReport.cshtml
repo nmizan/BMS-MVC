@@ -1,0 +1,61 @@
+﻿
+
+
+@*<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>*@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="~/Content/bootstrap.min.js"></script>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@{
+
+
+    ViewBag.Title = "EntitlementDetailsCrReport";
+
+}
+
+
+@using (Html.BeginForm("BonderEntitlementDetails", "Report", FormMethod.Get))
+{
+
+    @*<h5>Annual Entitlement Serial No For Entitlement Details Report</h5>*@
+
+    <div>
+        @*Annual Entitlement Serial No :
+
+        @Html.DropDownList("AESLNO", null, "---Select A Serial No---", new { @class = "form-control", id = "SerialNo", required = "required" })
+
+        <a href="@Url.Action("BonderEntitlementDetails", "Report", new { id = "xxx" })" id="rpt">Export Entitlement Report</a>*@
+        <table class="table">
+            <tr>
+                <th id="search-th">
+                    Annual Entitlement Serial No :
+                </th>
+                <td id="search-td">
+                    @Html.DropDownList("AESLNO", null, "---Select A Serial No---", new { @class = "form-control", id = "SerialNo", required = "required" })
+                </td>
+ 
+                <td id="search-td">
+                    <a href="@Url.Action("BonderEntitlementDetails", "Report", new { id = "xxx" })" id="rpt">Export Entitlement Report</a>
+                </td>
+        </table>
+    </div>
+
+
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#rpt').click(function () {
+                
+                var aeslno = $("#SerialNo").val();
+                this.href = this.href.replace("xxx", aeslno);
+
+            });
+        });
+    </script>
+}
+
+

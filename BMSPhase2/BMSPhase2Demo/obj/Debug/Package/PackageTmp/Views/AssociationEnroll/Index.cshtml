@@ -1,0 +1,123 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.ASSOCIATIONENROLL>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ASSOENSLNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BONDER.BONDLICENSENO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OFFICE.OFFICENAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BSNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MEMBERSHIPREGNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MEMBERSHIPREGNOBG)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ISSUEDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EXPDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CERATTACHFILENM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CERATTACHFILEPATH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RECATTACHFILENM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RECATTACHFILEPATH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INPUTBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.INPUTDATE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFIEDBY)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MODIFYDATE)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ASSOENSLNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BONDER.BONDLICENSENO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OFFICE.OFFICENAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BSNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MEMBERSHIPREGNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MEMBERSHIPREGNOBG)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISSUEDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EXPDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CERATTACHFILENM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CERATTACHFILEPATH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RECATTACHFILENM)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RECATTACHFILEPATH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INPUTBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.INPUTDATE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFIEDBY)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MODIFYDATE)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ASSOENSLNO }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ASSOENSLNO }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ASSOENSLNO })
+        </td>
+    </tr>
+}
+
+</table>

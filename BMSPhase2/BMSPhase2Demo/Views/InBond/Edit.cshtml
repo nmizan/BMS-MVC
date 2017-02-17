@@ -1,0 +1,177 @@
+﻿@model BMSPhase2Demo.Models.INBOND
+
+@{
+    ViewBag.Title = "Edit Inbond";
+}
+
+<h3 style=" margin:0 auto; width:30%;">Edit Existing Inbond</h3>
+<p style="color: red; padding-left:50px;">@ViewBag.error</p>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th class="pull-right">
+                            @Html.LabelFor(model => model.LCNUMBER):
+                        </th>
+                        <td class="col-lg-7">
+                            @Html.TextBoxFor(model => model.LCNUMBER, new { @class = "form-control", @placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.LCNUMBER)
+                        </td>
+                        <td class="col-lg-3"></td>
+                    </tr>
+                    <tr>
+                        <th class="pull-right">
+                            @Html.LabelFor(model => model.LCDATE):
+                        </th>
+                        <td>
+                            @Html.TextBoxFor(model => model.LCDATE, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker" })
+                            @Html.ValidationMessageFor(model => model.LCDATE)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pull-right">
+                            @Html.LabelFor(model => model.BOENUMBER):
+                        </th>
+                        <td>
+                            @Html.TextBoxFor(model => model.BOENUMBER, new { @class = "form-control", @placeholder = "" })
+                            @Html.ValidationMessageFor(model => model.BOENUMBER)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pull-right">
+                            @Html.LabelFor(model => model.BOEDATE):
+                        </th>
+                        <td>
+                            @Html.TextBoxFor(model => model.BOEDATE, "{0:yyyy-MM-dd}", new { @class = "form-control datepicker" })
+                            @Html.ValidationMessageFor(model => model.BOEDATE)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="pull-right">
+                            @Html.LabelFor(model => model.BONDER.BONDERNAME):
+                        </th>
+                        <td>
+                            @Html.DropDownList("BONDERID", null, "-- Select Bonder --", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.BONDERID)
+                        </td>
+                    </tr>
+                    @Html.HiddenFor(model => model.CREATEDBY)
+                    @Html.HiddenFor(model => model.CREATEDDATE)
+                    @for (int i = 0; i < Model.INBONDRAWMATERIALs.Count; i++)
+                    {
+                        if (i == 0)
+                        {
+                            <tr>
+                                <td colspan="3" class="col-lg-7">
+                                    @Html.Display(" Raw Materials:")
+                                </td>
+                            </tr>
+                        }
+
+                        <tr>
+                            <td colspan="3" class="col-lg-12">
+                                <div class="table-responsive">
+
+                                    <table id="rawMaterialTable" class="table">
+                                        <tr>
+                                            <th class="col-lg-2">
+                                                @Html.LabelFor(model => model.INBONDRAWMATERIALs[i].RAWMATERIALCODE)
+                                            </th>
+                                            <th>
+                                                @Html.LabelFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY)
+                                            </th>
+                                            <th>
+                                                @Html.LabelFor(model => model.INBONDRAWMATERIALs[i].QUANTITYUNIT)
+                                            </th>
+
+                                            <th>
+                                                @Html.LabelFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST)
+                                            </th>
+                                            <th>
+                                                @Html.LabelFor(model => model.INBONDRAWMATERIALs[i].COSTUNIT)
+                                            </th>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="col-lg-2">
+                                                @Html.DropDownListFor(model => model.INBONDRAWMATERIALs[i].RAWMATERIALCODE, null, "-- Select --", new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(model => model.INBONDRAWMATERIALs[i].RAWMATERIALCODE)
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY, new { @class = "form-control", @placeholder = "" })
+                                                @Html.ValidationMessageFor(model => model.INBONDRAWMATERIALs[i].PRODUCTQUANTITY)
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(model => model.INBONDRAWMATERIALs[i].QUANTITYUNIT, null, "-- Select --", new { @class = "form-control" })
+                                                @*@Html.TextBoxFor(model => model.INBONDRAWMATERIALs[i].QUANTITYUNIT, new { @class = "form-control", @placeholder = "" })*@
+                                                @Html.ValidationMessageFor(model => model.INBONDRAWMATERIALs[i].QUANTITYUNIT)
+                                            </td>
+
+                                            <td>
+                                                @Html.TextBoxFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST, new { @class = "form-control", @placeholder = "" })
+                                                @Html.ValidationMessageFor(model => model.INBONDRAWMATERIALs[i].PRODUCTCOST)
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(model => model.INBONDRAWMATERIALs[i].COSTUNIT, null, "-- Select --", new { @class = "form-control" })
+                                                @*@Html.TextBoxFor(model => model.INBONDRAWMATERIALs[i].COSTUNIT, new { @class = "form-control", @placeholder = "" })*@
+                                                @Html.ValidationMessageFor(model => model.INBONDRAWMATERIALs[i].COSTUNIT)
+                                            </td>
+                                            <td id="id_@Model.INBONDRAWMATERIALs[i].ID">
+                                                @Html.HiddenFor(model => model.INBONDRAWMATERIALs[i].INBONDID)
+
+                                                @Html.HiddenFor(model => model.INBONDRAWMATERIALs[i].ID)
+                                                @Html.HiddenFor(model => model.INBONDRAWMATERIALs[i].CREATEDBY)
+                                                @Html.HiddenFor(model => model.INBONDRAWMATERIALs[i].CREATEDDATE)
+                                                @Html.HiddenFor(model => model.INBONDRAWMATERIALs[i].MODIFIEDBY)
+                                                @Html.HiddenFor(model => model.INBONDRAWMATERIALs[i].MODIFIEDDATE)
+                                                @*<input type="button" class="btn btn-danger" value="Delete" onclick="$(this).parent().parent().parent().remove();" />*@
+                                                @Ajax.ActionLink("Delete", "DeleteRawMaterials", new { id = Model.INBONDRAWMATERIALs[i].ID },
+                                            new AjaxOptions()
+                                            {
+                                                HttpMethod = "Delete",
+                                                OnComplete = "$('#id_" + @Model.INBONDRAWMATERIALs[i].ID + "').parent().parent().remove();"
+                                            }, new { @class = "btn btn-danger" })
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                    <tr>
+                        <td class="col-lg-4"></td>
+                        <td>
+                            <button type="submit" name="submit" class="btn btn-primary">Save</button>
+                            @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("Addmore", "InBond", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            @Html.HiddenFor(model => model.ID)
+            <button type="submit" name="submit" class="btn btn-info">Add More Product</button>
+        </div>
+
+        <div class="col-lg-4"></div>
+    </div>
+
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

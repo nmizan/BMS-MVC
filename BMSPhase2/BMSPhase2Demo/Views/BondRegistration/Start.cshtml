@@ -1,0 +1,45 @@
+﻿@using BMSPhase2Demo.Resources;
+@{
+    ViewBag.Title = "Start";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link href="~/CommonCss/StyleSheet1.css" rel="stylesheet" />
+<script>
+    //$(function () {
+    //    $("#startForm").submit(function (event) {
+    //        if ($('#ManufacturingUnitName').is(':empty')) {
+    //            event.preventDefault();
+    //        }
+    //    });
+    //});
+
+    function checkValidate() {
+        if (document.getElementById("ManufacturingUnitName").value.trim() != '') {
+            return true;
+        }
+        else {
+            alert('Name required !');
+            return false;
+        }
+    };
+
+    $("document").ready(function () {
+        $(window).keydown(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+    });
+</script>
+
+@using (Html.BeginForm("Start", "BondRegistration", FormMethod.Post, new { enctype = "multipart/form-data", id = "startForm", onsubmit = "return checkValidate()" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h2>@Resource.BondRegistration</h2>
+    <p>@Resource.NameOfTheManufacturingUnit</p><input type="text" name="ManufacturingUnitName" id="ManufacturingUnitName" required="required" class="bigddl" /> <input type="submit" name="next" id="next" value="@Resource.Next" />
+}
+

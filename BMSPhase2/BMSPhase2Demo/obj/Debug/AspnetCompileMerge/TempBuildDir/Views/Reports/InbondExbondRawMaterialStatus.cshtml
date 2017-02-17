@@ -1,0 +1,105 @@
+﻿@model List<BMSPhase2Demo.Models.InBondExBondMaterial>
+
+@{
+    ViewBag.Title = "InbondExbondRawMaterialStatus";
+}
+
+<h2>Inbond Exbond Raw Material Status</h2>
+
+<p>
+    @Html.ActionLink("Back to Report", "Index", "", new { @class = "action-link" })
+</p>
+
+<h3 style="color:#ff6a00">@ViewBag.ErrorMsg</h3>
+
+@if (Model != null)
+{
+    using (Html.BeginForm("InBondExBondRawMaterialReport", "Reports", FormMethod.Post))
+    {
+        @Html.Hidden("SearchBonderID")
+        @Html.Hidden("SearchFromDate")
+        @Html.Hidden("SearchToDate")
+
+        <button type="submit" name="submit" class="btn btn-info">Export as PDF</button>
+    }
+}
+
+
+@using (Html.BeginForm("InbondExbondRawMaterialStatus", "Reports", FormMethod.Post))
+{
+
+    <table class="table">
+        <tr>
+            <th id="search-th">
+                @Html.Label("Bonder: ")
+            </th>
+            <td id="search-td">
+                @Html.DropDownList("BonderID", null, "-Select Bonder-",new { @class = "form-control"})
+            </td>
+
+            <th id="search-th">
+                @Html.Label("From Date: ")
+            </th>
+            <td id="search-td">
+                @Html.TextBox("FromDate", ViewBag.FromDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+            <th id="search-th">
+                @Html.Label("To Date: ")
+            </th>
+            <td id="search-td">
+                @Html.TextBox("ToDate", ViewBag.ToDate as string, new { @class = "form-control datepicker", @placeholder = "yyyy-mm-dd" })
+            </td>
+        </tr>
+    </table>
+
+    <button type="submit" name="submit" class="btn btn-primary">Search</button>
+}
+
+
+@*@if (Model != null)
+{
+    //Show data table
+    <table class="table-bordered">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().RawMaterialName)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().HSCode)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().AnnualEntitlement)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().TotalInBondOfThePeriod)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BalanceEntitlement)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ImportDate) @Html.Label(" & ") @Html.DisplayNameFor(model => model.FirstOrDefault().LC)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BOE)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().InBondDate)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().InBondQuantity)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().InBondValue)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ExBondDate)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ExBondQuantity)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().ExBondValue)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().PreviousBalance)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BalanceQuantity)</th>
+            <th>@Html.DisplayNameFor(model => model.FirstOrDefault().BalanceValue)</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.RawMaterialName)</td>
+                <td>@Html.DisplayFor(modelItem => item.HSCode)</td>
+                <td>@Html.DisplayFor(modelItem => item.AnnualEntitlement) @Html.DisplayFor(modelItem => item.AnnualEntitleUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.TotalInBondOfThePeriod) @Html.DisplayFor(modelItem => item.TotalInBondUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.BalanceEntitlement)</td>
+                <td>@Html.DisplayFor(modelItem => item.ImportDate) @Html.DisplayFor(modelItem => item.LC)</td>
+                <td>@Html.DisplayFor(modelItem => item.BOE)</td>
+                <td>@Html.DisplayFor(modelItem => item.InBondDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.InBondQuantity) @Html.DisplayFor(modelItem => item.InBondQuantityUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.InBondValue) @Html.DisplayFor(modelItem => item.InBondValueUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.ExBondDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.ExBondQuantity) @Html.DisplayFor(modelItem => item.ExBondQuantityUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.ExBondValue) @Html.DisplayFor(modelItem => item.ExBondValueUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.PreviousBalance) @Html.DisplayFor(modelItem => item.PreviousBalanceUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.BalanceQuantity) @Html.DisplayFor(modelItem => item.BalanceQuantityUnit)</td>
+                <td>@Html.DisplayFor(modelItem => item.BalanceValue) @Html.DisplayFor(modelItem => item.BalanceValueUnit)</td>
+            </tr>
+        }
+    </table>*@
+}
+
+ 

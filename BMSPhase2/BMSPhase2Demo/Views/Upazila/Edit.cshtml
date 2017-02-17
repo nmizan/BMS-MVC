@@ -1,0 +1,102 @@
+﻿@model BMSPhase2Demo.Models.UPAZILA
+
+@{
+    ViewBag.Title = "Edit";
+}
+<style type="text/css">
+    .editor-label,.editor-field {
+      
+        margin-left : 310px;
+    }
+
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Upazila Information</p>
+<h2 style ="margin-left :310px;">Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>UPAZILA</legend>
+
+        <div class="editor-label">
+          Upazila SL No
+        </div>
+        <div class="editor-field">
+          @*  @Html.EditorFor(model => model.UPAZILASLNO)
+            @Html.ValidationMessageFor(model => model.UPAZILASLNO)*@
+            @Html.TextBoxFor(model => model.UPAZILASLNO  , new { @readonly="readonly" })
+        </div>
+
+        <div class="editor-label">
+          District
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("DISTRICTSLNO", String.Empty)
+            @Html.ValidationMessageFor(model => model.DISTRICTSLNO)
+        </div>
+
+        <div class="editor-label">
+           Upazila Name
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UPAZILANAME)
+            @Html.ValidationMessageFor(model => model.UPAZILANAME)
+        </div>
+
+        <div class="editor-label">
+           Upazila Name BG
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.UPAZILANAMEBG)
+            @Html.ValidationMessageFor(model => model.UPAZILANAMEBG)
+        </div>
+
+        <div class="editor-label">
+           Input By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTBY)
+            @Html.ValidationMessageFor(model => model.INPUTBY)
+        </div>
+
+        <div class="editor-label">
+           Input Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.INPUTDATE)
+            @Html.ValidationMessageFor(model => model.INPUTDATE)
+        </div>
+
+        <div class="editor-label">
+          Modified By
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFIEDBY)
+            @Html.ValidationMessageFor(model => model.MODIFIEDBY)
+        </div>
+
+        <div class="editor-label">
+           Modify Date
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MODIFYDATE)
+            @Html.ValidationMessageFor(model => model.MODIFYDATE)
+        </div>
+
+       <div class="editor-label">
+           &nbsp;&nbsp;
+        </div>
+        <p style ="margin-left :310px;">
+            <input type="submit" value="Save" />|
+             @Html.ActionLink("Back to List", "Index")
+        </p>
+    </fieldset>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

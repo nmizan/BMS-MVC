@@ -1,0 +1,557 @@
+ 
+ BEGIN
+  FOR c IN (SELECT table_name, constraint_name FROM user_constraints WHERE constraint_type = 'R')
+  LOOP
+    EXECUTE IMMEDIATE ('alter table ' || c.table_name || ' disable constraint ' || c.constraint_name);
+  END LOOP;
+  FOR c IN (SELECT table_name FROM user_tables)
+  LOOP
+    EXECUTE IMMEDIATE ('truncate table ' || c.table_name);
+  END LOOP;
+  FOR c IN (SELECT table_name, constraint_name FROM user_constraints WHERE constraint_type = 'R')
+  LOOP
+    EXECUTE IMMEDIATE ('alter table ' || c.table_name || ' enable constraint ' || c.constraint_name);
+  END LOOP;
+END;
+
+Create:
+
+@model BMS.APPUSER
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>APPUSER</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USERNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USERNAME)
+            @Html.ValidationMessageFor(model => model.USERNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PASSWARD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PASSWARD)
+            @Html.ValidationMessageFor(model => model.PASSWARD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SALT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SALT)
+            @Html.ValidationMessageFor(model => model.SALT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRSTNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIRSTNAME)
+            @Html.ValidationMessageFor(model => model.FIRSTNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LASTNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LASTNAME)
+            @Html.ValidationMessageFor(model => model.LASTNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EMAIL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMAIL)
+            @Html.ValidationMessageFor(model => model.EMAIL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PHONE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONE)
+            @Html.ValidationMessageFor(model => model.PHONE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ISACTIVE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ISACTIVE)
+            @Html.ValidationMessageFor(model => model.ISACTIVE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LASTLOGIN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LASTLOGIN)
+            @Html.ValidationMessageFor(model => model.LASTLOGIN)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+Details :
+
+
+@model BMS.APPUSER
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>APPUSER</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USERNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PASSWARD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PASSWARD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SALT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SALT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRSTNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRSTNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LASTNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LASTNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PHONE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PHONE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADDRESS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADDRESS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ISACTIVE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ISACTIVE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LASTLOGIN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LASTLOGIN)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+Edit :
+
+
+@model BMS.APPUSER
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>APPUSER</legend>
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.USERNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.USERNAME)
+            @Html.ValidationMessageFor(model => model.USERNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PASSWARD)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PASSWARD)
+            @Html.ValidationMessageFor(model => model.PASSWARD)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SALT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SALT)
+            @Html.ValidationMessageFor(model => model.SALT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FIRSTNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FIRSTNAME)
+            @Html.ValidationMessageFor(model => model.FIRSTNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LASTNAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LASTNAME)
+            @Html.ValidationMessageFor(model => model.LASTNAME)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EMAIL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EMAIL)
+            @Html.ValidationMessageFor(model => model.EMAIL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PHONE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PHONE)
+            @Html.ValidationMessageFor(model => model.PHONE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ADDRESS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ADDRESS)
+            @Html.ValidationMessageFor(model => model.ADDRESS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ISACTIVE)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ISACTIVE)
+            @Html.ValidationMessageFor(model => model.ISACTIVE)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LASTLOGIN)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LASTLOGIN)
+            @Html.ValidationMessageFor(model => model.LASTLOGIN)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+Delete :
+
+@model BMS.APPUSER
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>APPUSER</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.USERNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.USERNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PASSWARD)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PASSWARD)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SALT)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SALT)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.FIRSTNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FIRSTNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LASTNAME)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LASTNAME)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EMAIL)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EMAIL)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PHONE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PHONE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ADDRESS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ADDRESS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ISACTIVE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ISACTIVE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LASTLOGIN)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LASTLOGIN)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
+
+Index :
+
+@model PagedList.IPagedList <BMS.APPUSER>
+@using PagedList.Mvc;
+@using BMS.Util; 
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="text-center">User Information</h3>
+
+@using (Html.BeginForm("Index", "AppUser", FormMethod.Post))
+{
+    <table class ="table table-striped table-bordered ">
+        <tr>
+            <th id ="search-th">
+                @Html.DisplayNameFor(model=>model.FirstOrDefault ().USERNAME):
+            </th>
+            <td id = " earch-td">
+                @Html.TextBox("user",ViewBag.CurrentFilterUser as string ,new {@class = "form-control"})
+            </td>
+            <th id ="search-th">
+                @Html.DisplayNameFor(model=>model.FirstOrDefault ().FIRSTNAME):
+            </th>
+            <td id ="search-td">
+                @Html.TextBox("firstname",ViewBag.CurrentFilterFirstname as string ,new {@class = "form-control"})
+            </td>
+            <th id ="search-th">
+                @Html.DisplayNameFor(model=>model.FirstOrDefault ().LASTNAME):
+            </th>
+            <td id ="search-td">
+                @Html.TextBox("lastname",ViewBag.CurrentFilterLastname as string ,new {@class = "form-control"})
+            </td>
+
+        </tr>
+
+    </table>
+    
+    <button type="submit" name="submit" class="btn btn-primary">Search</button>
+}
+
+<p>
+    @Html.ActionLink("Create a New User ", "Create", "", new { @class="action-link"})
+</p>
+<table class ="table table-striped table-bordered ">
+    <tr id ="tr">
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().USERNAME)
+        </th>
+       
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().FIRSTNAME)
+        </th>
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().LASTNAME)
+        </th>
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().EMAIL)
+        </th>
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().PHONE)
+        </th>
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().ADDRESS)
+        </th>
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().ISACTIVE)
+        </th>
+        <th id ="th">
+            @Html.DisplayNameFor(model => model.FirstOrDefault ().LASTLOGIN)
+        </th>
+        <th></th>
+    </tr>
+    @{int i = 0; string trgb = "#c1deef";}
+@foreach (var item in Model) {
+
+    i++;
+    if (i % 2 == 0) { trgb = "#e6ebee"; }
+    else { trgb = "#c1deef"; }
+    
+    <tr style="background: @trgb">
+
+        <td id="td">
+            @Html.DisplayFor(modelItem => item.USERNAME)
+        </td>
+       
+        <td id="td">
+            @Html.DisplayFor(modelItem => item.FIRSTNAME)
+        </td>
+        <td id="td">
+            @Html.DisplayFor(modelItem => item.LASTNAME)
+        </td>
+        <td id="td">
+            @Html.DisplayFor(modelItem => item.EMAIL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONE)
+        </td>
+        <td id="td">
+            @Html.DisplayFor(modelItem => item.ADDRESS)
+        </td>
+        <td id="td">
+           
+             @if (item .ISACTIVE ==1)
+            {
+                <span> Active</span>
+            }
+            else
+            {
+                 <span> Inactive</span>
+            }
+       
+        </td>
+        <td id="td">
+            @Html.DisplayFor(modelItem => item.LASTLOGIN)
+        </td>
+        <td id ="td">
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }, new {@class="action-link"}) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }, new {@class="action-link"}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+@*@if (Model.PageCount > 1)
+{ 
+       <p>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </p>
+     @Html.PagedListPager(Model, page => Url.Action("Index",
+                                                    new { page, currentFilterUser = ViewBag.CurrentFilterUser, currentFilterFirstName = ViewBag.CurrentFilterFirstname, currentFilterLastname = ViewBag.CurrentFilterLastname }))
+}*@

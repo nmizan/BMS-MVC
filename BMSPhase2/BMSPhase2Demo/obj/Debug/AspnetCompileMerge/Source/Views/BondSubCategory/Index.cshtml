@@ -1,0 +1,79 @@
+﻿@model IEnumerable<BMSPhase2Demo.Models.BONDSUBCATEGORY>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-left : 270px;
+    }
+</style>
+
+ <p  style =" font-size :20px;margin-left : 270px;"> @Html.ActionLink("Create New", "Create")</p>
+
+<table>
+     <tr><th colspan="8" style="text-align: center;">Bond Sub Category Summary View </th></tr>
+    <tr>
+        <th>
+            BS Category SL No
+        </th>
+        <th>
+            BS Type Code
+        </th>
+       @* <th>
+            BS Type Code BG
+        </th>*@
+        <th>
+            BS Category Name
+        </th>
+        @*<th>
+            BS Category Name BG
+        </th>*@
+        <th colspan="3"  style="text-align :center " >
+            
+            Action
+     </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BSCATSLNO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BSTYPECODE)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.BSTYPECODEBG)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.BSCATNAME)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.BSCATNAMEBG)
+            </td>*@
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BSCATSLNO })
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Details", "Details", new { id = item.BSCATSLNO })
+
+            </td>
+            <td>
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.BSCATSLNO })
+            </td>
+        </tr>
+    }
+
+</table>

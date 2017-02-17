@@ -1,0 +1,79 @@
+﻿@using BMSPhase2Demo.Resources;
+@model IEnumerable<BMSPhase2Demo.Models.BONDER>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@*<style type="text/css">
+    table, th, td {
+        border: 1px solid #66d9ff;
+        border-collapse: collapse;
+    }
+    </style>*@
+
+@{
+    ViewBag.Title = "Applicants List";
+
+
+}
+
+<h3 class="text-center">List of Renewal Applicants </h3>
+
+<fieldset>
+
+    <legend>ApplicantsList</legend>
+
+    <table class="table table-hover table-condensed table-bordered">
+        <tr>
+            <th>
+                Bonder Name
+            </th>
+
+            <th>
+                Bond License No
+            </th>
+
+            <th>
+                Action
+            </th>
+
+            <th>
+
+            </th>
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BONDERNAME)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.BONDLICENSENO)
+                </td>
+
+                <td>
+                    @* @Html.ActionLink("Edit", "Edit", new { id=item.BONDERSLNO  }) |*@
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Operation Admin"))
+                    {
+                        <span>  @Html.ActionLink("Approve", "ApproveBond", "BondRegistration", new { bonderSlNo = item.BONDERSLNO, renewApproval = true }, null) |</span>
+                    }
+
+                    @Html.ActionLink("Details", "ApplicantDetails", new { id = item.BONDERSLNO }) |
+                    @Html.ActionLink(@Resource.Entitlement, "Create", "BondEntitlementRenewal", new { BondLicenseNo = item.BONDLICENSENO }, null)
+                    @if (System.Web.HttpContext.Current.User.IsInRole("Operation Admin"))
+                    {
+                        <span> | @Html.ActionLink("Delete", "Delete", new { id = item.BONDERSLNO }, new { onclick = "return confirm('Are you sure you want to delete this ?');" }) </span>
+                    }
+
+                </td>
+
+                <td>
+                    @Html.HiddenFor(modelItem => item.BONDERSLNO)
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</fieldset>

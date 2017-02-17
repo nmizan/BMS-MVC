@@ -1,0 +1,95 @@
+﻿@model BMSPhase2Demo.Models.BACKTOBACKPRODUCT
+@using BMSPhase2Demo.Helpers
+@{Random rand = new Random();
+int ranid = rand.Next(1, 1000);
+}
+
+<table id="productlTable" class="table">
+    @using (Html.BeginAjaxContentValidation("form0"))
+    {
+    using (Html.BeginCollectionItem2("BACKTOBACKPRODUCTs"))
+    {
+        @Html.HiddenFor(model => model.BACKTOBACKLCID)
+        @Html.HiddenFor(model => model.ID)
+        <tr>
+            <th class="col-lg-2">
+                @Html.LabelFor(model => model.NAME)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.SIZEANDDETAIL)
+            </th>
+            <th>
+                @Html.LabelFor(model => model.QUANTITY)
+            </th>
+
+            <th>
+                @Html.LabelFor(model => model.QUANTITYUNIT)
+            </th>
+        </tr>
+        <tr>
+            <td class="col-lg-2">
+                @Html.TextBoxFor(model => model.NAME, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.NAME)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.SIZEANDDETAIL, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.SIZEANDDETAIL)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.QUANTITY, new { @class = "form-control", @placeholder = "" })
+                @Html.ValidationMessageFor(model => model.QUANTITY)
+            </td>
+
+            <td>
+                @Html.DropDownListFor(model => model.QUANTITYUNIT, null, "-- Select --", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.QUANTITYUNIT)
+            </td>
+            <td>
+                <input type="button" name="addRawMaterial" class="btn btn-info" id="addRawMaterial_@ranid" data-containerprefix="@ViewData["ContainerPrefix"]" value="Add Raw Material" onclick='addNewRawMaterial(@ranid);' />
+
+            </td>
+            <td>
+                <input type="button" class="btn btn-danger" value="Delete" onclick='$(this).parent().parent().parent().remove();' />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="6">
+                <table class="table">
+                    <tr>
+                        <td>
+                            <ul id="rawMaterials_@ranid" style="list-style-type: none; padding-left: 0px;">
+                                <li style=" display: inline-block;">
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    }
+    }
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    function addNewRawMaterial(ranID,containerPrefix) {
+        //alert("This function is under development.");
+        
+        //$.get('/Back2BackLC/RawMaterialEntryRow', function (template) {
+        //    $("#rawMaterials_" + ranID).append(template);
+        //});
+        //var addButton = $(this);
+        $.ajax({
+            url: "/Back2BackLC/RawMaterialEntryRow",
+            data: { "containerPrefix": $('#addRawMaterial_'+ranID).data('containerprefix') },
+            success: function (data) {
+                $("#rawMaterials_" + ranID).append(data);
+                
+            }
+        });
+    };
+
+</script>

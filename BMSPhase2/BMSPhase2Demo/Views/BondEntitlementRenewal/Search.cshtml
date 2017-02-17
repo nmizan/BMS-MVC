@@ -1,0 +1,25 @@
+﻿@*<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<script src="~/Content/bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+
+@using (Html.BeginForm("Create", "BondEntitlementRenewal", FormMethod.Get))
+{
+
+    <h5>Bond License No for Entitlement : </h5>
+    <div>
+
+        <input type="text"  />
+    </div>
+    <div>
+        <input type="submit" class="btn btn-info" value="Search" />
+    </div>
+
+
+}
+
+

@@ -1,0 +1,289 @@
+﻿@model BMSPhase2Demo.Models.BACKTOBACKLC
+
+@{
+    ViewBag.Title = "Delete LC";
+}
+
+<h2>Delete LC</h2>
+
+<h3 class="text-danger">Are you sure you want to delete this Local LC Details?</h3>
+
+<fieldset>
+    <legend>BACKTOBACKLC</legend>
+
+    <div class="col-lg-8">
+        <table class="table">
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BUYERSNAME):
+                </th>
+                <td class="col-lg-8">
+                    @Html.DisplayFor(model => model.BUYERSNAME)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BUYERSADDRESS):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BUYERSADDRESS)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCNUMBER):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LCNUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LCDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BANK.BANKNAME):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BANK.BANKNAME)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BANKBRANCH.BRANCHNAME):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BANKBRANCH.BRANCHNAME)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.SHIPPINGDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.SHIPPINGDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.CORRECTIONDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.CORRECTIONDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.PRODUCTQUANTITY):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.PRODUCTQUANTITY)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.QUANTITYUNIT):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.QUANTITYUNIT)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.LCUSEDPRICE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.LCUSEDPRICE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.PRICEUNIT):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.PRICEUNIT)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.MASTERLCNUMBER):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.MASTERLCNUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.MASTERLCCORRECTIONDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.MASTERLCCORRECTIONDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.UDNUMBER):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.UDNUMBER)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.UDDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.UDDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.UDCORRECTIONDATE):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.UDCORRECTIONDATE)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.UDPRODUCTDETAIL):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.UDPRODUCTDETAIL)
+                </td>
+            </tr>
+            <tr>
+                <th class="pull-right">
+                    @Html.DisplayNameFor(model => model.BONDER.BONDERNAME):
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.BONDER.BONDERNAME)
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <table class="table">
+                        @for (int i = 0; i < Model.BACKTOBACKPRODUCTs.Count; i++)
+                        {
+                            var product = Model.BACKTOBACKPRODUCTs[i];
+                            if (i == 0)
+                            {
+                                <tr>
+                                    <th>
+                                        @Html.LabelFor(model => product.NAME)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => product.SIZEANDDETAIL)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => product.QUANTITY)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => product.QUANTITYUNIT)
+                                    </th>
+
+                                </tr>
+                            }
+                            else if (i > 0)
+                            {
+                                <tr class="table-bordered"></tr>
+                                <tr>
+                                    <th>
+                                        @Html.LabelFor(model => product.NAME)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => product.SIZEANDDETAIL)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => product.QUANTITY)
+                                    </th>
+                                    <th>
+                                        @Html.LabelFor(model => product.QUANTITYUNIT)
+                                    </th>
+                                </tr>
+                            }
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(model => product.NAME)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => product.SIZEANDDETAIL)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => product.QUANTITY)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => product.QUANTITYUNIT)
+                                </td>
+                            </tr>
+
+                            <tr>
+                                @*<td class="col-lg-1"></td>*@
+                                <td colspan="4">
+                                    <table class="table" style="font-size:10px">
+                                        @for (int j = 0; j < product.RAWMATERIALs.Count; j++)
+                                        {
+                                            var rawMaterial = product.RAWMATERIALs[j];
+                                            if (j == 0)
+                                            {
+                                                <tr>
+                                                    <th>
+                                                        @Html.LabelFor(model => rawMaterial.RAWMATERIALCODE)
+                                                    </th>
+                                                    <th>
+                                                        @Html.LabelFor(model => rawMaterial.QUANTITY)
+                                                    </th>
+                                                    <th>
+                                                        @Html.LabelFor(model => rawMaterial.UNIT)
+                                                    </th>
+                                                    <th>
+                                                        @Html.LabelFor(model => rawMaterial.PERMITTEDWASTE)
+                                                    </th>
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(model => rawMaterial.MATERIAL.MATERIALNAME)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => rawMaterial.QUANTITY)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => rawMaterial.UNIT)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(model => rawMaterial.PERMITTEDWASTE)
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="pull-right">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <button type="submit" name="submit" class="btn btn-danger">Delete</button>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Back to List", "Index", "", new { @class = "action-link" })
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-4"></div>
+</fieldset>

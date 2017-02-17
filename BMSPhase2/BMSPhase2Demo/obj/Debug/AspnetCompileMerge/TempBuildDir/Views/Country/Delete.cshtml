@@ -1,0 +1,95 @@
+﻿@model BMSPhase2Demo.Models.COUNTRY
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<style type="text/css">
+    table, th, td {
+        border: 0px;
+        border-collapse: collapse;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 15px;
+        margin-left :270px;
+    }
+
+    .textBOxSize {
+        width: 220px;
+    }
+</style>
+<p style =" margin-left :400px;font-size :25px; ">Country Information</p>
+<h2  style ="margin-left :270px;">Delete</h2>
+
+<h3  style ="margin-left :270px;">Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>COUNTRY</legend>
+
+  
+
+    <table>
+
+        <tr>
+            <td>
+                Country SL No:
+                @Html.HiddenFor(model => model.COUNTRYSLNO)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.COUNTRYSLNO, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Country Code:
+            </td>
+            <td> @Html.TextBoxFor(model => model.COUNTRYCODE, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>
+                Country Code BG:
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.COUNTRYCODEBG, new { @readonly = "readonly" })
+            </td>
+        </tr>
+        <tr>
+            <td>Country Name:</td>
+            <td>@Html.TextBoxFor(model => model.COUNTRYNAME, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Country Name BG :</td>
+            <td>@Html.TextBoxFor(model => model.COUNTRYNAMEBG, new { @readonly = "readonly" })</td>
+        </tr>
+
+
+        <tr>
+            <td>Input By:</td>
+            <td>@Html.TextBoxFor(model => model.INPUTBY, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Input date:</td>
+            <td>@Html.TextBoxFor(model => model.INPUTDATE, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Modify By:</td>
+            <td>@Html.TextBoxFor(model => model.MODIFIEDBY, new { @readonly = "readonly" })</td>
+        </tr>
+        <tr>
+            <td>Modified Date:</td>
+            <td>@Html.TextBoxFor(model => model.MODIFYDATE, new { @readonly = "readonly" })</td>
+        </tr>
+    </table>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <p  style ="margin-left :270px;">
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
